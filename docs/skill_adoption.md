@@ -54,7 +54,7 @@ These recommendations came from applying the adoption process to a public engine
 | `handoff` | `adopt_now` | Use for recoverable context transfer and public-safe handoff examples. |
 | `codebase-design` | `adopt_now` | Use when changing boundaries between protocol text, validators, public package checks, and explanatory sites. |
 | `grill-with-docs` | `adapt_later` | Useful when a plan or domain vocabulary is unclear, but too heavy for a settled execution plan. |
-| `setup-matt-pocock-skills` | `adapt_later` | Run when the public repository starts using GitHub Issues and agent docs as the main workflow. |
+| `setup-matt-pocock-skills` | `backlog` | Run only after the public repository explicitly adopts GitHub Issues, labels, and agent docs as its main workflow. |
 | `decision-mapping` | `adapt_later` | Useful when multiple continuation paths compete and the decision needs to be split into tickets. |
 | `domain-modeling` | `adapt_later` | Useful when public readers need a glossary for protocol language. |
 | `improve-codebase-architecture` | `adapt_later` | Useful for a dedicated architecture-health round, not for every public sync. |
