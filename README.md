@@ -46,12 +46,14 @@
 
 1. 改协议前先看 `protocol/持续治理协议发布包_20260622.md`。
 2. 涉及历史恢复链时看 `protocol/持续优化变更清单_20260622.md`。
-3. 新项目要求读取 Complex 或 Auto Research 时，先理解低摩擦入口、阶段流程、动态路由、能力发现、子代理/线程、Loop/评分和交付拆分规则，再开始业务执行。
-4. 如果新项目需要运行时骨架，复制或引用 `templates/` 中的 state、evidence、decision、search、question、loop 和 delivery 模板。
-5. 用户说“完全扫描 Complex”“连续节拍”“多线程/子代理”“Goal/Plan 模式”时，先触发对应读取顺序、关键词映射、拓扑复盘、能力复盘和 goal_refresh 检查。
-6. 用户提到外部工具、skill、API、数据库、账号、浏览器、机构权限或 Auto Research 时，先建立能力候选清单，写清 selected / rejected / backlog / manual action；连续节拍默认每 3 轮复盘一次工具组合。
-7. 修改后运行工具或结构检查，记录结果。
-8. 需要并行探索时，从本项目创建 worktree，而不是从原 `ai 科研` 大目录创建。
+3. 新项目要求读取 Complex 或 Auto Research 时，先理解低摩擦入口、启动提问卡、阶段流程、动态路由、能力发现、子代理/线程、Goal/Plan/Loop、评分和交付拆分规则，再开始业务执行。
+4. 不要求用户区分普通项目和重大项目；高风险、高返工或高公共性只触发内部工作力度/风险升级，必要时兼容记录为 `major_project_mode`。
+5. 如果新项目需要运行时骨架，复制或引用 `templates/` 中的 state、evidence、decision、search、question、loop 和 delivery 模板。
+6. 用户只说“按 Complex 推进”时，先用 `complex_setup_question_card` 确认或默认：交付对象、外部能力权限、子代理/多线程、连续节拍和人工边界。
+7. 给新用户展示 `user_visible_trigger_guide`：可以说“完全扫描 Complex”“连续节拍”“多线程/子代理”“外部工具/账号/API”“只要人看版”；这些词改变推进方式，但不自动改写主目标。
+8. 用户提到外部工具、skill、API、数据库、账号、浏览器、机构权限或 Auto Research 时，先建立能力候选清单，写清 selected / rejected / backlog / manual action；连续节拍默认每 3 轮复盘一次工具组合。
+9. 修改后运行工具或结构检查，记录结果。
+10. 需要并行探索时，从本项目创建 worktree，而不是从原 `ai 科研` 大目录创建。
 
 ## 验证命令
 

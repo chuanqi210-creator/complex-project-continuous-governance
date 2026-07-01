@@ -27,12 +27,15 @@ This project is the current authoritative workspace for the Complex project cont
 - Prefer small smoke tests before adopting new capabilities. Do not install or route through large skill/plugin sets just because they exist; record selected, rejected, backlog, and why.
 - If a user names external tools, skills, APIs, databases, accounts, browsers, Auto Research, or Complex, bind those words into an explicit capability list before executing; state what will be used, skipped, backlogged, or delegated to manual user action.
 - If another project asks to read Complex or Auto Research, first spend visible effort understanding the relevant protocol components, dynamic loop, scoring/route-back rules, delivery boundaries, and tool boundaries; do not start the project work from a shallow protocol mention.
+- If a user only says "use Complex" or "按 Complex 推进", show or apply the `complex_setup_question_card`: delivery audience, capability permissions, collaboration topology, cadence, and manual-action boundaries.
+- Show new users the `user_visible_trigger_guide` in plain language: "连续节拍", "多线程/子代理", "外部工具/账号/API", "完整扫描 Complex", and "只要人看版" are available steering words.
 
 ## Runtime Kit
 
 - Treat `templates/` as optional landing pads for new projects: state, evidence, decision, search, question, loop, and delivery records.
 - Do not turn Runtime Kit templates into new mandatory protocol fields unless repeated real project failures justify promotion.
 - When bootstrapping a new Complex project, prefer a small runtime skeleton over copying the full protocol into the project workspace.
+- Do not ask users to choose ordinary vs major project modes. Complex always uses Goal/Plan/Loop, scoring, delivery alignment, and recovery; high-risk or high-rework work only raises internal evidence and validation intensity.
 - In continuous cadence, record round_index and review topology, capabilities, and goal freshness every 3 rounds by default, or earlier when route, version, delivery audience, or evidence changes.
 - Distinguish active_goal from round_goal; do not let a stale or completed round goal stop a still-active continuous route.
 

@@ -6,6 +6,8 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 
 - round_index:
 - round_goal:
+- active_goal link if continuous:
+- core_goal_plan_loop_required: yes / no
 - Main uncertainty:
 - Why this uncertainty matters:
 - What a small test can prove:
@@ -54,5 +56,7 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - blocked:
 - execute:
 - route_reason:
+- delivery contract updated:
+- recovery record updated:
 - next round_goal:
 - next refresh trigger:

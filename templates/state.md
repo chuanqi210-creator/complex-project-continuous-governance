@@ -14,10 +14,21 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - Last updated:
 - Owner or main thread:
 
+## User Choices
+
+- setup_question_card_status: asked / defaulted / not_needed
+- delivery audience and format:
+- capability permission: local_only / public_web_ok / browser_ok / account_required / API_ok / manual_action_required
+- collaboration choice: main_thread / temporary_subagent / long_running_threads / parallel_review / undecided
+- cadence choice: single_round_then_next_route / continuous_until_stopped
+- evidence or privacy boundary:
+- user_visible_trigger_guide_shown: yes / no
+
 ## Goal State
 
 - active_goal:
 - round_goal:
+- core_goal_plan_loop_status:
 - goal_refresh_status:
 - stale_goal_check:
 - goal_migration_note:

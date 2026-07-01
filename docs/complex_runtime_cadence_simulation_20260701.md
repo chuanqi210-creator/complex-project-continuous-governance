@@ -4,6 +4,32 @@
 
 本记录不是新的长期机器看版，不改变当前恢复入口；它只作为本轮协议修复的小题证据。
 
+## Scenario 0: 新用户只说“按 Complex 推进”
+
+用户提示：
+
+```text
+这个项目按 Complex 推进。
+```
+
+旧风险：
+
+- 模型把用户带进“普通项目/重大项目/Plan-only/Goal 模式”的模式菜单，让用户理解内部路由。
+- 模型等用户自己说出“连续节拍、多线程、外部工具、人看版”等触发词，新用户不知道这些入口。
+- 一次性任务没有 round_goal、Loop 或评分路由，后续交付和恢复容易漂移。
+
+新期望：
+
+- 先运行 `complex_setup_question_card`，确认或默认交付对象、能力权限、协作拓扑、推进节拍和人工边界。
+- 展示 `user_visible_trigger_guide`，告诉用户可以用“连续节拍”“多线程/子代理”“外部工具/账号/API”“完整扫描 Complex”“只要人看版”改变推进方式。
+- 不让用户选择普通/重大项目；若有高风险、高返工或高公共性，只在内部做工作力度/风险升级并兼容记录 `major_project_mode`。
+- 无论是否连续，都建立 round_goal、Plan、Loop/小检查、评分路由、交付契约和恢复记录。
+
+模拟结论：
+
+- 新协议可检查到 `hidden_trigger_vocab_gap`、`major_project_user_mode_confusion_gap`、`optional_goal_plan_loop_gap` 和 `setup_question_missing_gap`。
+- Runtime Kit 由 `templates/question.md` 承接启动提问卡，`templates/state.md` 记录用户选择，`templates/loop.md` 记录本轮目标和 Loop 路由。
+
 ## Scenario 1: Plan Mode 完整扫描 Complex
 
 用户提示：
@@ -19,9 +45,10 @@
 
 新期望：
 
-- 先按 `protocol_scan_sequence` 读取：项目状态、快速入口、连续节拍、Stage 0-10、能力发现、子代理/线程、Loop/评分、Plan/Goal、交付拆分、Runtime Kit。
-- 输出 `keyword_trigger_map`，说明“Plan 模式”和“完整扫描”触发的是计划前的协议理解，而不是立即执行。
+- 先按 `protocol_scan_sequence` 读取：项目状态、快速入口、启动提问卡、用户可见触发词、连续节拍、Stage 0-10、能力发现、子代理/线程、Loop/评分、Plan/Goal、交付拆分、Runtime Kit。
+- 输出 `user_visible_trigger_guide`，说明“Plan 模式”和“完整扫描”触发的是计划前的协议理解，而不是立即执行；旧称 Plan-only 只是当前环境限制。
 - 计划中必须写 `adopt_now`、`skip_now`、`backlog` 和最大误读风险。
+- 计划仍必须包含 round_goal、Loop 验证、评分路由和交付契约。
 
 模拟结论：
 
@@ -80,12 +107,16 @@
 
 ## Overall Result
 
-本轮修复把用户体验问题转成 5 个可触发机制：
+本轮修复把用户体验问题转成 9 个可触发机制：
 
 1. `protocol_scan_sequence`
 2. `continuous_cadence_refresh_gate`
 3. `scheduled_topology_capability_review`
 4. `goal_refresh_gate`
 5. `plan_mode_full_scan_coverage`
+6. `complex_setup_question_card`
+7. `user_visible_trigger_guide`
+8. `core_goal_plan_loop_required`
+9. 内部工作力度/风险升级，替代用户侧普通/重大模式选择
 
 这些机制默认不新增 verifier required 字段；它们先作为主协议行为规则、Runtime Kit 模板字段和发布包能力项存在。若后续真实项目继续暴露同类问题，再考虑把其中稳定可检查的字段纳入恢复链验证器。

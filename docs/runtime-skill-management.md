@@ -14,11 +14,26 @@ Runtime skill management keeps capability use tied to project progress:
 4. Test risky capabilities with a small task before relying on them.
 5. Write the result back into state, evidence, decisions, loop checks, or delivery records.
 
+## Startup Choice Card
+
+When a user starts a project by saying "use Complex", "按 Complex 推进", or similar, do not wait for the user to know hidden trigger words. Use the `complex_setup_question_card` from `templates/question.md`, or state safe defaults if the task is low risk.
+
+Confirm or default these choices:
+
+- Delivery audience and format.
+- External capability permission: web, browser, database, account, API, skill, plugin, connector, or external method.
+- Collaboration topology: main thread, temporary subagent, long-running thread, or parallel review.
+- Cadence: one round with a next route, or continuous cadence.
+- Evidence, privacy, account, payment, publishing, or manual-action boundary.
+
+This card is not a new mandatory verifier field. It is a low-friction way to avoid hidden-trigger behavior and to keep capability use tied to user intent.
+
 ## When To Reconsider Capabilities
 
 Reconsider capabilities at these points:
 
 - A new project starts.
+- A Complex startup choice card is asked or defaulted.
 - The project changes stage or route.
 - The user names a tool, skill, API, database, account, browser, Auto Research, Complex, or external method.
 - A search, verification, render, data, or delivery task is blocked.
