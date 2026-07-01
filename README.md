@@ -10,8 +10,8 @@
 - 当前低摩擦入口：`protocol/Complex项目持续治理_低摩擦用户入口_20260622.md`
 - 当前恢复入口：`protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` 的 `## 220. 当前机器看版`
 - 当前 next route：`continue_self_optimization_with_skill_adoption_expansion_or_stop`
-- 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-220 轮、外部 skill 采用扩展，以及新能源汽车项目复盘后的人看版交付/注意力绑定规则。
-- GitHub 同步策略：本仓库保留完整工作区快照；公开轻量说明、可视化站点和 reusable protocol package 可以从该工作区继续整理发布。
+- 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-220 轮、外部 skill 采用扩展、新能源汽车项目复盘后的人看版交付/注意力绑定规则、Runtime Kit 运行模板，以及 `complex_prompt_bootstrap_gate` 提示词设计前置流程。
+- GitHub 同步策略：本仓库保留当前权威协议和 Runtime Kit；公开说明、可视化站点、模板和 reusable protocol package 均从该工作区同步。
 
 ## 项目目标
 
@@ -43,19 +43,62 @@
 - `tools/`：恢复链、链接扫描等辅助工具。
 - `docs/`：后续新增说明和设计笔记。
 
-## 推荐工作流
+## 使用说明
+
+### 推荐最小入口
+
+新项目最省心的用法，是先让 Complex 设计项目专用提示词，再确认执行：
+
+```text
+请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
+```
+
+AI 应先触发 `complex_prompt_bootstrap_gate`，完成协议扫描、启动问题或安全默认、项目专用 `copy_ready_prompt` 和 `execution_bridge`。用户确认前不应进入业务执行、发布、提交外部系统或把 prompt 当成已授权操作。
+
+### 直接推进入口
+
+如果已经知道项目目标，也可以直接说：
+
+```text
+这个项目按 Complex 推进。
+目标是：……
+已有材料在：……
+我希望结果达到：……
+```
+
+AI 应先用 `complex_setup_question_card` 确认或默认交付对象、外部能力权限、子代理/多线程、连续节拍和人工边界。用户不需要区分普通项目和重大项目；高风险、高返工或高公共性的工作只会触发内部工作力度/风险升级。
+
+### 可选触发词
+
+新用户不需要猜隐藏口令。可以直接说：
+
+- `完整扫描 Complex`：先做协议理解，再给业务计划。
+- `先设计提示词/prompt`：先生成项目专用执行 prompt，确认后再推进。
+- `连续节拍`：每轮都有 `round_goal`、Loop、评分路由和 `next_route`；默认每 3 轮复查工具、子代理/线程职责和 goal 是否过期。
+- `多线程/子代理`：先判断主线程、临时子代理或长期线程哪种拓扑合适，再执行。
+- `外部工具/账号/API`：先建立能力候选清单，写清 selected / rejected / backlog / manual action。
+- `只要人看版`：交付以第三方也能读懂的人看版为主，机器恢复记录另行保留或压缩。
+
+### Runtime Kit 落地方式
+
+需要让新项目可恢复时，复制或引用 `templates/` 中的轻量模板：
+
+- `state.md`：当前状态、用户选择、goal、拓扑和能力刷新。
+- `evidence.md`：证据层级、缺口和可声明边界。
+- `decision.md`：关键取舍、拒绝路线和重评条件。
+- `search.md`：资料检索、获取升级、账号/权限/用户协助边界。
+- `question.md`：启动提问卡和高杠杆确认问题。
+- `prompt.md`：先扫描 Complex、设计项目 prompt、确认后执行。
+- `loop.md`：5-30 分钟小循环、评分和 route-back/execute 判断。
+- `delivery.md`：人看版、机器恢复版、老师/专家/第三方版本的交付契约。
+
+### 维护者工作流
 
 1. 改协议前先看 `protocol/持续治理协议发布包_20260622.md`。
 2. 涉及历史恢复链时看 `protocol/持续优化变更清单_20260622.md`。
 3. 新项目要求读取 Complex 或 Auto Research 时，先理解低摩擦入口、启动提问卡、阶段流程、动态路由、能力发现、子代理/线程、Goal/Plan/Loop、评分和交付拆分规则，再开始业务执行。
-4. 不要求用户区分普通项目和重大项目；高风险、高返工或高公共性只触发内部工作力度/风险升级，必要时兼容记录为 `major_project_mode`。
-5. 如果新项目需要运行时骨架，复制或引用 `templates/` 中的 state、evidence、decision、search、question、prompt、loop 和 delivery 模板。
-6. 用户只说“按 Complex 推进”时，先用 `complex_setup_question_card` 确认或默认：交付对象、外部能力权限、子代理/多线程、连续节拍和人工边界。
-7. 用户只想做最小输入时，可使用 `complex_prompt_bootstrap_gate`：先扫描 Complex，按 `templates/prompt.md` 设计项目专用可复制 prompt，用户确认后再进入正式执行。
-8. 给新用户展示 `user_visible_trigger_guide`：可以说“完全扫描 Complex”“先设计提示词/prompt”“连续节拍”“多线程/子代理”“外部工具/账号/API”“只要人看版”；这些词改变推进方式，但不自动改写主目标。
-9. 用户提到外部工具、skill、API、数据库、账号、浏览器、机构权限或 Auto Research 时，先建立能力候选清单，写清 selected / rejected / backlog / manual action；连续节拍默认每 3 轮复盘一次工具组合。
-10. 修改后运行工具或结构检查，记录结果。
-11. 需要并行探索时，从本项目创建 worktree，而不是从原 `ai 科研` 大目录创建。
+4. 修改后运行工具或结构检查，记录结果。
+5. 需要并行探索时，从本项目创建 worktree，而不是从原 `ai 科研` 大目录创建。
 
 ## 验证命令
 
