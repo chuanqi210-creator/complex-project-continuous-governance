@@ -56,6 +56,32 @@
 - 新协议可检查到 `prompt_bootstrap_missing_gap`。
 - Runtime Kit 由 `templates/prompt.md` 承接可复制 prompt，`templates/question.md` 承接 Prompt Bootstrap Card，`templates/state.md` 记录 prompt_bootstrap_status。
 
+## Scenario 0.6: 第二轮 Plan 忘记总 prompt
+
+用户提示：
+
+```text
+根据上一轮设计好的 prompt，开启 Plan 模式继续推进下一轮。
+```
+
+旧风险：
+
+- 第一轮 `copy_ready_prompt` 质量高，但第二轮 Plan 只关注当前任务，把总规划降级成一句“遵循前文”。
+- 用户补充局部细节后，Plan 把细节放大成主线，长期目标、能力边界和交付契约逐渐淡化。
+- 连续几轮后，`active_goal`、`next_route` 和项目实际版本仍在推进，但 master prompt 没有进入恢复链。
+
+新期望：
+
+- 先触发 `round_prompt_rehydration_gate`，从 master prompt / active goal、最新 state 和本轮最高杠杆问题生成 `round_execution_prompt`。
+- 第二轮 Plan 必须写明：来自总规划的约束、来自上一轮状态的变化、本轮新增判断。
+- 用户补充局部细节时默认作为 prompt patch 写入本轮 prompt；除非用户明确改目标，否则总 prompt 不重写。
+- 到第 3 轮或主链变化时，同时触发 prompt rehydration、goal refresh、工具/线程复查。
+
+模拟结论：
+
+- 新协议可检查到 `round_plan_attention_drift_gap`、`master_prompt_decay_gap` 和 `round_prompt_missing_gap`。
+- Runtime Kit 由 `templates/prompt.md` 的 Round Prompt Rehydration、`templates/loop.md` 的 `round_execution_prompt` 和 `templates/state.md` 的 master prompt 字段承接。
+
 ## Scenario 1: Plan Mode 完整扫描 Complex
 
 用户提示：
@@ -133,17 +159,18 @@
 
 ## Overall Result
 
-本轮修复把用户体验问题转成 10 个可触发机制：
+本轮修复把用户体验问题转成 11 个可触发机制：
 
 1. `protocol_scan_sequence`
 2. `complex_prompt_bootstrap_gate`
-3. `continuous_cadence_refresh_gate`
-4. `scheduled_topology_capability_review`
-5. `goal_refresh_gate`
-6. `plan_mode_full_scan_coverage`
-7. `complex_setup_question_card`
-8. `user_visible_trigger_guide`
-9. `core_goal_plan_loop_required`
-10. 内部工作力度/风险升级，替代用户侧普通/重大模式选择
+3. `round_prompt_rehydration_gate`
+4. `continuous_cadence_refresh_gate`
+5. `scheduled_topology_capability_review`
+6. `goal_refresh_gate`
+7. `plan_mode_full_scan_coverage`
+8. `complex_setup_question_card`
+9. `user_visible_trigger_guide`
+10. `core_goal_plan_loop_required`
+11. 内部工作力度/风险升级，替代用户侧普通/重大模式选择
 
 这些机制默认不新增 verifier required 字段；它们先作为主协议行为规则、Runtime Kit 模板字段和发布包能力项存在。若后续真实项目继续暴露同类问题，再考虑把其中稳定可检查的字段纳入恢复链验证器。

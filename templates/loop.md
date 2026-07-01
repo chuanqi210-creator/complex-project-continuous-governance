@@ -7,6 +7,8 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - round_index:
 - round_goal:
 - active_goal link if continuous:
+- round_execution_prompt:
+- plan_alignment_to_master_prompt:
 - core_goal_plan_loop_required: yes / no
 - Main uncertainty:
 - Why this uncertainty matters:

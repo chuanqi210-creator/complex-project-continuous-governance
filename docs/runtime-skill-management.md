@@ -42,6 +42,8 @@ The agent should:
 
 This bootstrap is especially useful for new projects, new users, or handoff into another Codex thread where the receiving agent needs a compact but complete execution prompt.
 
+For continuous prompt-based projects, rehydrate the prompt each round before planning. The round prompt should inherit the confirmed master prompt, current state, capability policy, topology, and delivery contract, then add only the current `round_goal` and prompt patches. Rehydration is not new authorization to use accounts, APIs, external writes, or subagents beyond the existing boundary.
+
 ## When To Reconsider Capabilities
 
 Reconsider capabilities at these points:
@@ -49,6 +51,7 @@ Reconsider capabilities at these points:
 - A new project starts.
 - A Complex startup choice card is asked or defaulted.
 - A Complex prompt bootstrap is requested or confirmed.
+- A continuous round rehydrates the project prompt for a new Plan/Loop.
 - The project changes stage or route.
 - The user names a tool, skill, API, database, account, browser, Auto Research, Complex, or external method.
 - A search, verification, render, data, or delivery task is blocked.

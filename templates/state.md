@@ -19,6 +19,9 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - setup_question_card_status: asked / defaulted / not_needed
 - prompt_bootstrap_status: not_requested / designing / awaiting_confirmation / confirmed / superseded
 - prompt_bootstrap_location:
+- master_prompt_location:
+- round_prompt_status: not_needed / needs_rehydration / rehydrated / route_back_to_state_recovery
+- last_prompt_refresh_round:
 - delivery audience and format:
 - capability permission: local_only / public_web_ok / browser_ok / account_required / API_ok / manual_action_required
 - collaboration choice: main_thread / temporary_subagent / long_running_threads / parallel_review / undecided

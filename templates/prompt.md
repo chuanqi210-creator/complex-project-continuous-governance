@@ -97,3 +97,26 @@ Loop 小循环：
 - First Loop:
 - First verification:
 - First next_route:
+
+## Round Prompt Rehydration
+
+Use this section at the start of each continuous round, Plan-mode continuation, or `next_route` handoff.
+
+- round_index:
+- master_prompt_location:
+- active_goal_summary:
+- latest state/current_basis:
+- inherited master constraints:
+- previous-round status:
+- new round judgment:
+- prompt patch from user details:
+- round_execution_prompt:
+- plan_alignment_to_master_prompt:
+- next_route this prompt should preserve:
+
+Rules:
+
+- Compress and inherit the confirmed master prompt; do not rewrite it unless the user explicitly changes the main goal.
+- Treat user detail changes as prompt patches by default.
+- Generate the Plan and Loop from `round_execution_prompt`, not from the local task alone.
+- If the round prompt cannot be reconstructed, route back to state recovery before execution.

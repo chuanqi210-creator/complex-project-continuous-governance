@@ -30,6 +30,7 @@ This project is the current authoritative workspace for the Complex project cont
 - If a user only says "use Complex" or "按 Complex 推进", show or apply the `complex_setup_question_card`: delivery audience, capability permissions, collaboration topology, cadence, and manual-action boundaries.
 - Show new users the `user_visible_trigger_guide` in plain language: "先设计提示词/prompt", "连续节拍", "多线程/子代理", "外部工具/账号/API", "完整扫描 Complex", and "只要人看版" are available steering words.
 - If the user asks to scan Complex and design a project prompt before execution, apply `complex_prompt_bootstrap_gate`: scan the relevant protocol, ask/default startup choices, output a copy-ready prompt, and wait for confirmation before business execution unless the user explicitly authorizes immediate execution.
+- In continuous prompt-based projects, apply `round_prompt_rehydration_gate` before each new Plan/Loop: recover the master prompt or active goal, current state, and round_goal into a `round_execution_prompt` so the round plan does not drift away from the total plan.
 
 ## Runtime Kit
 
@@ -39,6 +40,7 @@ This project is the current authoritative workspace for the Complex project cont
 - Do not ask users to choose ordinary vs major project modes. Complex always uses Goal/Plan/Loop, scoring, delivery alignment, and recovery; high-risk or high-rework work only raises internal evidence and validation intensity.
 - In continuous cadence, record round_index and review topology, capabilities, and goal freshness every 3 rounds by default, or earlier when route, version, delivery audience, or evidence changes.
 - Distinguish active_goal from round_goal; do not let a stale or completed round goal stop a still-active continuous route.
+- Treat the confirmed copy-ready prompt as the master prompt; later rounds inherit and patch it instead of silently replacing it.
 
 ## Delivery Defaults
 
