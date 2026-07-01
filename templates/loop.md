@@ -4,10 +4,21 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 
 ## Loop Purpose
 
+- round_index:
+- round_goal:
 - Main uncertainty:
 - Why this uncertainty matters:
 - What a small test can prove:
 - What it cannot prove:
+
+## Refresh Gates
+
+- topology review due: yes / no
+- topology decision:
+- capability review due: yes / no
+- capability decision:
+- goal refresh due: yes / no
+- goal decision:
 
 ## Micro Task
 
@@ -43,3 +54,5 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - blocked:
 - execute:
 - route_reason:
+- next round_goal:
+- next refresh trigger:

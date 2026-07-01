@@ -25,6 +25,8 @@ Reconsider capabilities at these points:
 - A subagent, long-running thread, or external write is being considered.
 - A final claim is about to be made.
 
+For continuous cadence, also reconsider capabilities on a fixed schedule. The default review interval is every 3 rounds: round 1, round 3, round 6, round 9, and so on. Run the review earlier if the main chain, delivery audience, project version, subthread responsibility, or evidence gap changes.
+
 Small local tasks may intentionally skip broad discovery, but the skip reason should be clear.
 
 ## Capability Sources
@@ -56,6 +58,29 @@ For each meaningful candidate, record:
 | verification_hint | What evidence will prove it helped |
 
 This can live in a project state file, decision file, machine recovery note, or a short task note. It does not need to be a large table when a sentence is enough.
+
+## Scheduled Refresh
+
+Continuous projects need scheduled refresh because the best capability at round 1 may be wrong by round 4.
+
+At each refresh point, check:
+
+- Which selected capabilities still match the current route.
+- Which rejected or backlog capabilities have become relevant.
+- Whether a long-running thread or subagent needs a new context packet.
+- Whether an external account, browser path, database, or API now needs user authorization.
+- Whether a previous manual action has been completed and should move into evidence.
+
+Record one of these outcomes:
+
+- keep: still fits the current round.
+- adjust: same capability, new role or boundary.
+- replace: old capability no longer fits; use another one.
+- pause: keep in backlog but do not use now.
+- manual_action: user must operate or authorize outside the agent.
+- retire: no longer relevant.
+
+Do not treat this refresh as a full project restart. It is a correction loop.
 
 ## Adoption Rules
 

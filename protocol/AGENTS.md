@@ -16,6 +16,7 @@ This directory contains the current authoritative Complex project continuous-gov
 - For runtime capability work, use `.codex/shared-skills.json` as a candidate list only; still verify actual callable tools and side-effect boundaries in the current environment.
 - When users mention external tools, skills, APIs, databases, browser access, accounts, Auto Research, or Complex, convert those hints into an explicit capability list with selected, rejected, backlog, and manual-action items before executing.
 - When a new project asks to read Complex or Auto Research, first understand the relevant protocol components, tool boundaries, Loop/scoring rules, runtime templates, and delivery rules; shallow acknowledgment is not enough.
+- When users mention continuous cadence, long-running threads, subagents, Goal mode, Plan mode, or version drift, check round_index, topology fit, capability fit, and goal freshness before continuing.
 - For human-readable deliverables, keep protocol jargon, machine board fields, and internal state out of the main explanation unless they are necessary for the reader's decision.
 - For comments, teacher-facing notes, third-party summaries, or mixed human/machine outputs, align audience, purpose, granularity, tone, and internal-information boundary before final delivery.
 

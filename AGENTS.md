@@ -33,6 +33,8 @@ This project is the current authoritative workspace for the Complex project cont
 - Treat `templates/` as optional landing pads for new projects: state, evidence, decision, search, question, loop, and delivery records.
 - Do not turn Runtime Kit templates into new mandatory protocol fields unless repeated real project failures justify promotion.
 - When bootstrapping a new Complex project, prefer a small runtime skeleton over copying the full protocol into the project workspace.
+- In continuous cadence, record round_index and review topology, capabilities, and goal freshness every 3 rounds by default, or earlier when route, version, delivery audience, or evidence changes.
+- Distinguish active_goal from round_goal; do not let a stale or completed round goal stop a still-active continuous route.
 
 ## Delivery Defaults
 

@@ -8,8 +8,35 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - Current objective:
 - Current stage:
 - Current route:
+- round_index:
+- review_interval:
+- current project version or milestone:
 - Last updated:
 - Owner or main thread:
+
+## Goal State
+
+- active_goal:
+- round_goal:
+- goal_refresh_status:
+- stale_goal_check:
+- goal_migration_note:
+
+## Collaboration Topology
+
+- main thread responsibility:
+- subagents or long-running threads:
+- current fit:
+- next topology review:
+- adjustment needed:
+
+## Capability State
+
+- selected now:
+- rejected now:
+- backlog:
+- manual action:
+- next capability review:
 
 ## Current Basis
 
@@ -37,6 +64,8 @@ Unknown or stale:
 
 - next_route:
 - route_reason:
+- topology_refresh_due:
+- capability_refresh_due:
 - manual_action_required:
 - next review trigger:
 

@@ -11,12 +11,28 @@
       "verification_hint": "Confirm the project has a state, evidence, decision, loop, and delivery skeleton before business execution starts."
     },
     {
+      "name": "protocol_scan_sequence",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "The user asks to fully scan Complex or use Complex as the governing method in another project.",
+      "boundary": "Scan order must be explicit; do not infer the protocol from a few familiar keywords.",
+      "verification_hint": "Record protocol_scan_order, keyword_trigger_map, adopt_now, skip_now, backlog, and manual_action."
+    },
+    {
       "name": "capability_discovery_cadence",
       "type": "external_method",
       "status": "recommended",
       "use_when": "Starting a task, changing phase, hitting a blocker, approaching an external write, crossing a subagent boundary, or making a final claim.",
       "boundary": "Do not force tool usage; record selected, rejected, backlog, and manual-action candidates.",
       "verification_hint": "Check that named skills, tools, APIs, accounts, browsers, or databases were explicitly considered."
+    },
+    {
+      "name": "scheduled_topology_capability_review",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "A project is running in continuous cadence, long-running threads, subagents, or persistent external tools.",
+      "boundary": "Default review interval is every 3 rounds, plus any phase, route, version, or evidence change.",
+      "verification_hint": "Record round_index, topology_refresh_due, capability_refresh_due, adjust_or_keep decisions, and next review trigger."
     },
     {
       "name": "local_file_search",
@@ -57,6 +73,14 @@
       "use_when": "Independent evidence lanes, review loops, temporary subagents, or long-running Codex threads would reduce risk or latency.",
       "boundary": "Do not assume subagents or threads are callable; probe capability and define contracts before delegation.",
       "verification_hint": "Record topology choice, context packet, output contract, integration responsibility, and cleanup or stop condition."
+    },
+    {
+      "name": "goal_refresh_gate",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "Continuous cadence, Goal mode, versioned work, or loop engineering could create stale goals.",
+      "boundary": "Distinguish active_goal from round_goal; do not let a completed round goal stop the continuous route.",
+      "verification_hint": "Compare active_goal with current_basis, next_route, project version, and delivery object before each round."
     },
     {
       "name": "document_or_render_qa",
