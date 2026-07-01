@@ -1,6 +1,6 @@
 # Complex Runtime Cadence Simulation 2026-07-01
 
-用途：用小模拟验证本轮修复是否覆盖用户在其他项目使用 Complex 时遇到的三类摩擦：完整扫描不足、连续节拍中拓扑/工具不复盘、Goal 漂移或完成后自动停止。
+用途：用小模拟验证本轮修复是否覆盖用户在其他项目使用 Complex 时遇到的四类摩擦：完整扫描不足、提示词设计未前置、连续节拍中拓扑/工具不复盘、Goal 漂移或完成后自动停止。
 
 本记录不是新的长期机器看版，不改变当前恢复入口；它只作为本轮协议修复的小题证据。
 
@@ -21,7 +21,7 @@
 新期望：
 
 - 先运行 `complex_setup_question_card`，确认或默认交付对象、能力权限、协作拓扑、推进节拍和人工边界。
-- 展示 `user_visible_trigger_guide`，告诉用户可以用“连续节拍”“多线程/子代理”“外部工具/账号/API”“完整扫描 Complex”“只要人看版”改变推进方式。
+- 展示 `user_visible_trigger_guide`，告诉用户可以用“先设计提示词/prompt”“连续节拍”“多线程/子代理”“外部工具/账号/API”“完整扫描 Complex”“只要人看版”改变推进方式。
 - 不让用户选择普通/重大项目；若有高风险、高返工或高公共性，只在内部做工作力度/风险升级并兼容记录 `major_project_mode`。
 - 无论是否连续，都建立 round_goal、Plan、Loop/小检查、评分路由、交付契约和恢复记录。
 
@@ -29,6 +29,32 @@
 
 - 新协议可检查到 `hidden_trigger_vocab_gap`、`major_project_user_mode_confusion_gap`、`optional_goal_plan_loop_gap` 和 `setup_question_missing_gap`。
 - Runtime Kit 由 `templates/question.md` 承接启动提问卡，`templates/state.md` 记录用户选择，`templates/loop.md` 记录本轮目标和 Loop 路由。
+
+## Scenario 0.5: 用户只想先设计项目 prompt
+
+用户提示：
+
+```text
+请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个完美 prompt，再根据这个 prompt 结合 Complex 推进项目。
+```
+
+旧风险：
+
+- 模型直接开始做项目，跳过提示词设计前置。
+- 模型只给普通 prompt 模板，没有说明实际扫描了哪些 Complex 组件。
+- prompt 没有写进能力边界、子代理/多线程、连续节拍、Goal/Loop、评分路由和交付契约，后续线程仍然会漂移。
+
+新期望：
+
+- 先触发 `complex_prompt_bootstrap_gate`，业务执行暂停。
+- 输出 `protocol_scan_summary`、`startup_questions_or_defaults`、`project_prompt_design_rationale`、`copy_ready_prompt` 和 `execution_bridge`。
+- `copy_ready_prompt` 必须包含项目目标、材料、交付对象、能力边界、协作拓扑、cadence、round_goal/active_goal、Loop、评分路由、证据/权限边界和恢复记录方式。
+- 用户确认前不执行、发布或写外部系统；确认后仍以 Complex 主协议和用户最新指令为准。
+
+模拟结论：
+
+- 新协议可检查到 `prompt_bootstrap_missing_gap`。
+- Runtime Kit 由 `templates/prompt.md` 承接可复制 prompt，`templates/question.md` 承接 Prompt Bootstrap Card，`templates/state.md` 记录 prompt_bootstrap_status。
 
 ## Scenario 1: Plan Mode 完整扫描 Complex
 
@@ -107,16 +133,17 @@
 
 ## Overall Result
 
-本轮修复把用户体验问题转成 9 个可触发机制：
+本轮修复把用户体验问题转成 10 个可触发机制：
 
 1. `protocol_scan_sequence`
-2. `continuous_cadence_refresh_gate`
-3. `scheduled_topology_capability_review`
-4. `goal_refresh_gate`
-5. `plan_mode_full_scan_coverage`
-6. `complex_setup_question_card`
-7. `user_visible_trigger_guide`
-8. `core_goal_plan_loop_required`
-9. 内部工作力度/风险升级，替代用户侧普通/重大模式选择
+2. `complex_prompt_bootstrap_gate`
+3. `continuous_cadence_refresh_gate`
+4. `scheduled_topology_capability_review`
+5. `goal_refresh_gate`
+6. `plan_mode_full_scan_coverage`
+7. `complex_setup_question_card`
+8. `user_visible_trigger_guide`
+9. `core_goal_plan_loop_required`
+10. 内部工作力度/风险升级，替代用户侧普通/重大模式选择
 
 这些机制默认不新增 verifier required 字段；它们先作为主协议行为规则、Runtime Kit 模板字段和发布包能力项存在。若后续真实项目继续暴露同类问题，再考虑把其中稳定可检查的字段纳入恢复链验证器。

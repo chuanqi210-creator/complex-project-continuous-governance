@@ -28,12 +28,27 @@ Confirm or default these choices:
 
 This card is not a new mandatory verifier field. It is a low-friction way to avoid hidden-trigger behavior and to keep capability use tied to user intent.
 
+## Prompt Bootstrap
+
+When a user wants to do the minimum human work by saying "scan Complex and design a prompt for this project", use `complex_prompt_bootstrap_gate` and `templates/prompt.md`.
+
+The agent should:
+
+1. Scan the relevant Complex entry points before business execution.
+2. Ask or default the same startup choices: delivery, capabilities, topology, cadence, and boundaries.
+3. Produce a copy-ready project prompt that includes the selected capability policy, rejected/backlogged capabilities, manual-action boundaries, Loop, scoring route, and delivery contract.
+4. Wait for user confirmation before executing, unless the user explicitly authorized "design and execute".
+5. Treat the prompt as a project startup contract, not a replacement for Complex or for later user corrections.
+
+This bootstrap is especially useful for new projects, new users, or handoff into another Codex thread where the receiving agent needs a compact but complete execution prompt.
+
 ## When To Reconsider Capabilities
 
 Reconsider capabilities at these points:
 
 - A new project starts.
 - A Complex startup choice card is asked or defaulted.
+- A Complex prompt bootstrap is requested or confirmed.
 - The project changes stage or route.
 - The user names a tool, skill, API, database, account, browser, Auto Research, Complex, or external method.
 - A search, verification, render, data, or delivery task is blocked.
