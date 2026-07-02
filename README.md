@@ -12,8 +12,6 @@ This repository is the current authoritative Complex Runtime Kit. Install it onc
 2. Set `COMPLEX_HOME` to the clone path.
 3. Ask the agent to scan Complex from `COMPLEX_HOME` and read the target project separately.
 
-If a target project has only `.git` or no `Complex` directory, that is normal. It means the target project does not contain a local copy of Complex; the agent should still read the installed Complex workspace.
-
 ## Install And Deploy
 
 Complex is normally installed once as a separate local repository. Do not copy the whole Complex tree into every project. Keep one authoritative Complex workspace, then point each target project to it.
@@ -49,12 +47,12 @@ Use Complex from another project by telling the agent where Complex is installed
 
 ```text
 请扫描 Complex 并为当前项目设计 prompt。
-Complex 权威来源是：/absolute/path/to/complex-project-front-governance
-目标项目是：/absolute/path/to/target-project
-请分开读取 complex_source 和 target_project_source。
+Complex 路径：/absolute/path/to/complex-project-front-governance
+目标项目路径：/absolute/path/to/target-project
+请先设计项目 prompt，再执行。
 ```
 
-If `COMPLEX_HOME` is set, the agent may use it as the Complex source. If the target project has no `Complex` directory, the agent should still read the installed Complex workspace instead of declaring Complex missing.
+If `COMPLEX_HOME` is set, that is the default Complex source. The target repository remains the project source.
 
 ## Current Entrypoints
 
@@ -93,7 +91,7 @@ Plan mode should produce an orchestration contract before execution when the use
 ```text
 请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
 
-Complex 权威来源优先使用：`COMPLEX_HOME` 或我提供的绝对路径。请把 Complex 协议源和目标项目材料分开读取：Complex 源读 README.md、protocol/current-state.md、docs/quickstart.md、protocol/core.md、templates、behavior cases 和 examples；目标项目再读它自己的 AGENTS.md、CONTEXT.md、状态文件、manifest、stage board 和代码。不要因为目标项目里没有 Complex 目录就说找不到 Complex；如果权威路径不可访问，再向我索要路径。
+Complex 来源使用 `COMPLEX_HOME` 或我提供的路径；目标项目来源使用当前仓库或我提供的材料路径。Complex 提供运行规则，目标项目提供事实材料和本地边界。
 
 如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再进入执行。
 请在设计 prompt 前主动判断并显式使用这些 steering words，避免跑偏：

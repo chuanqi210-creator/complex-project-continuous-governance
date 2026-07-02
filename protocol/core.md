@@ -78,21 +78,17 @@ Do not end a continuous-cadence response with "next time you say continue" or eq
 
 `complex_prompt_bootstrap_gate` applies when the user asks to scan Complex and design a project prompt before execution.
 
-`complex_source_resolution` runs before protocol scanning. Do not assume Complex lives inside the downstream target repository. Resolve sources in this order:
+`complex_source_resolution` runs before protocol scanning. Treat Complex and the target project as two sources:
 
-1. explicit user-provided Complex path or repository
-2. configured environment path such as `COMPLEX_HOME`
-3. common local install paths such as `~/Documents/complex-project-front-governance`
-4. sibling/local repository names such as `complex-project-front-governance` or `complex-project-continuous-governance`
-5. target-repository absorbed adapters/manifests only as downstream evidence, not as the authoritative Complex source
-6. ask the user for the Complex path if none of the above is accessible
+1. `complex_source`: explicit user path, `COMPLEX_HOME`, or a standard local install.
+2. `target_project_source`: the repository or material set being governed.
+3. target-repository adapters/manifests: downstream evidence that may show Complex was adopted, not the Complex rule source.
+4. if `complex_source` cannot be resolved, ask for the installed Complex path instead of reconstructing rules from memory.
 
 Keep two contexts separate:
 
-- `complex_source`: the authoritative Complex Runtime Kit, normally `README.md`, `protocol/current-state.md`, `docs/quickstart.md`, `protocol/core.md`, templates, behavior cases, and examples.
+- `complex_source`: the authoritative Complex Runtime Kit, normally the installed repository at `COMPLEX_HOME` or a user-provided path.
 - `target_project_source`: the repository being governed, such as its `AGENTS.md`, `CONTEXT.md`, status files, manifests, stage boards, code, and outputs.
-
-If the target repository has no `Complex` directory, say that the target repo does not contain a local copy; then resolve the external Complex source. Do not treat unrelated candidate folders as target project material, and do not replace Complex scanning with downstream adapters unless the authoritative source is truly unavailable.
 
 Output:
 

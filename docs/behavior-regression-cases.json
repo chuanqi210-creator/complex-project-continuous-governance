@@ -394,7 +394,7 @@
     },
     {
       "case_id": "complex_source_resolution_outside_target_repo",
-      "user_prompt": "请在一个新项目里扫描 Complex 并设计 prompt。当前目标项目里没有 Complex 目录，只有 .git。",
+      "user_prompt": "请在一个新项目里扫描 Complex 并设计 prompt。Complex 已通过 COMPLEX_HOME 部署，目标项目是另一个仓库。",
       "project_nature": "unknown_at_entry",
       "expected_triggers": [
         "complex_source_resolution",
@@ -403,14 +403,13 @@
         "downstream_activation_reconciliation"
       ],
       "expected_behavior": [
-        "Do not assume Complex must live inside the target project.",
-        "Resolve the authoritative Complex source using an explicit user path, the local authoritative workspace, or sibling Complex repository names.",
+        "Use the configured Complex runtime as the rule source.",
+        "Use the target project as the fact source.",
         "Separate complex_source from target_project_source before scanning.",
-        "If the target repo lacks a Complex directory, state that only the target repo lacks a local copy.",
-        "Use downstream adapters or manifests only as absorbed target-project evidence when the authoritative Complex source is unavailable."
+        "Treat downstream adapters or manifests as target-project evidence, not as the Complex runtime."
       ],
       "forbidden_behavior": [
-        "Say Complex cannot be scanned only because the target repository has no Complex directory.",
+        "Search only the target repository for Complex after a Complex runtime path is configured.",
         "Treat unrelated candidate folders as target project material.",
         "Use downstream adapters as the authoritative Complex source while an authoritative Complex workspace is accessible.",
         "Invent Complex protocol content when no source is accessible.",
