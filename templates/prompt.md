@@ -8,6 +8,15 @@ This prompt is an execution contract for one project. It does not replace the Co
 
 ```text
 请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
+
+请在设计 prompt 前主动判断并显式使用这些 steering words，避免跑偏：
+- 模型发现型 / 先发散研究框架 / 不要早收敛
+- 证据填充型 / 模型和指标已定
+- 连续节拍 / 总规划别丢 / 每轮 prompt 重水化
+- 少问我 / 能推进就继续 / 我给目录你自己读
+- 独立评审 / 客观审查 / 避免上下文污染
+- 外部工具 / 账号 / API / skill
+- 只要人看版
 ```
 
 ## Protocol Scan Summary
@@ -23,6 +32,7 @@ This prompt is an execution contract for one project. It does not replace the Co
 
 - Project goal:
 - Existing materials:
+- User steering words:
 - Current basis:
 - Known constraints:
 - High-risk or high-rework signals:
@@ -73,6 +83,15 @@ This prompt is an execution contract for one project. It does not replace the Co
 
 推进节拍：
 
+Steering words to preserve:
+- 模型发现型 / 先发散研究框架 / 不要早收敛：
+- 证据填充型 / 模型和指标已定：
+- 连续节拍 / 总规划别丢 / 每轮 prompt 重水化：
+- 少问我 / 能推进就继续 / 我给目录你自己读：
+- 独立评审 / 客观审查 / 避免上下文污染：
+- 外部工具 / 账号 / API / skill：
+- 只要人看版：
+
 自适应判断边界：
 - autonomy_level：strong_autonomy_with_guardrails
 - AI 可自行判断：
@@ -113,7 +132,7 @@ Loop 小循环：
 - 机器恢复记录：
 - 不应暴露的内部信息：
 
-请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，然后执行本轮 round_goal。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。
+请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用，然后执行本轮 round_goal。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。
 ```
 
 ## Execution Bridge

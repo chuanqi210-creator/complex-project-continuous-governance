@@ -147,13 +147,13 @@ Ask or default only route-changing choices:
 `user_visible_trigger_guide` means steering words are visible to users, not hidden commands:
 
 - `先设计提示词/prompt`
-- `模型发现型 / 不要早收敛`
-- `证据填充型`
-- `连续节拍`
+- `模型发现型 / 先发散研究框架 / 不要早收敛`
+- `证据填充型 / 模型和指标已定`
+- `连续节拍 / 总规划别丢 / 每轮 prompt 重水化`
 - `多线程/子代理`
-- `外部工具/账号/API`
+- `外部工具 / 账号 / API / skill`
 - `少问我 / 能推进就继续 / 我给目录你自己读`
-- `独立评审 / 避免上下文污染`
+- `独立评审 / 客观审查 / 避免上下文污染`
 - `只要人看版`
 
 ## 9. Runtime Kit And Evaluation

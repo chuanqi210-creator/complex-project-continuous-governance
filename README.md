@@ -36,6 +36,15 @@ The practical default is strong autonomy with guardrails: if the next step is cl
 
 ```text
 请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
+
+请在设计 prompt 前主动判断并显式使用这些 steering words，避免跑偏：
+- 模型发现型 / 先发散研究框架 / 不要早收敛
+- 证据填充型 / 模型和指标已定
+- 连续节拍 / 总规划别丢 / 每轮 prompt 重水化
+- 少问我 / 能推进就继续 / 我给目录你自己读
+- 独立评审 / 客观审查 / 避免上下文污染
+- 外部工具 / 账号 / API / skill
+- 只要人看版
 ```
 
 If the project should move directly:
@@ -46,6 +55,7 @@ If the project should move directly:
 已有材料在：……
 我希望结果达到：……
 采用强自治+护栏：可逆、低副作用的细节由 AI 自行判断；目标、授权、不可逆动作、外部写入、公开口径或高风险主张变化时再问我。
+请显式判断这些 steering words 是否适用：模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；少问我 / 能推进就继续 / 我给目录你自己读；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
 ```
 
 Useful steering words:
