@@ -276,9 +276,150 @@
 - 新协议可检查到 `mechanical_cadence_overhead_gap`。
 - 连续节拍保持可恢复，但不把复盘变成常规打断。
 
+## Scenario 8: 用户只说“按 Complex 动态推进”
+
+用户提示：
+
+```text
+按 Complex 动态推进，让 AI 自己判断细节。
+```
+
+旧风险：
+
+- 模型把“动态推进”理解成完全自由发挥，或者反过来每个细节都回问用户。
+- 路线、工具、分工和深度变化没有留下理由，后续恢复时只能看到结果，看不到判断边界。
+
+新期望：
+
+- 先启用 `adaptive_judgment_controller`，默认 `autonomy_level: strong_autonomy_with_guardrails`。
+- 可逆、低副作用、项目内的计划细节、Loop 探针、证据深度、能力取舍和临时分工由 AI 自行决定。
+- 若涉及主目标、授权、外部写入、不可逆动作、交付公开口径或高风险主张，触发 `ask_user_needed`。
+
+模拟结论：
+
+- 新协议可检查到 `adaptive_judgment_absent_gap`、`over_asking_user_for_reversible_detail_gap` 和 `unsafe_autonomy_without_guardrail_gap`。
+- Runtime Kit 由 `templates/judgment.md`、`templates/state.md` 和 `templates/loop.md` 承接判断模式和回问边界。
+
+## Scenario 9: 模型发现任务中 AI 自行延迟证据填表
+
+用户提示：
+
+```text
+这个研究还没定框架，按 Complex 推进。
+```
+
+旧风险：
+
+- 模型为了显得“有进展”，直接开始检索资料和补 evidence matrix。
+- 用户没有明确说“不要早收敛”时，模型没有主动保护发散空间。
+
+新期望：
+
+- `project_nature_router` 判定为 `model_discovery` 或 pre-convergence `mixed`。
+- `adaptive_judgment_controller` 选择 `judgment_mode: exploratory`。
+- AI 自行延迟证据填表，先建立候选框架、问题-观点-论据图和可区分探针，并记录 `ai_decided_without_user_reason`。
+
+模拟结论：
+
+- 新协议可检查到 `model_discovery_underprotected_gap` 与 `evidence_audit_overrouting_gap`。
+- “先发散”不依赖用户说出准确关键词，AI 可以根据项目性质自行判断。
+
+## Scenario 10: 连续节拍无事件变化时 AI 自行 lightweight keep
+
+用户提示：
+
+```text
+继续下一拍，当前路线没变。
+```
+
+旧风险：
+
+- 固定轮次触发完整工具、线程和目标复查，导致本轮注意力被流程抢走。
+
+新期望：
+
+- `adaptive_judgment_controller` 检查 route_event、项目性质、证据路径、材料类型、外部边界、子线程职责和交付对象。
+- 若无变化，AI 自行决定 `lightweight_keep`，只写短理由和 next refresh trigger。
+- 不把 3 轮兜底误解成每 3 轮强制完整复盘。
+
+模拟结论：
+
+- 新协议可检查到 `mechanical_deep_judgment_gap` 和 `mechanical_cadence_overhead_gap`。
+- 连续节拍保留恢复感，但不牺牲推进效率。
+
+## Scenario 11: 长期分线程职责失配时 AI 微调职责
+
+用户提示：
+
+```text
+继续多线程推进，主线已经从资料审计转到模型方案选择。
+```
+
+旧风险：
+
+- 长期分线程仍按旧职责输出，主线程被迫手动纠偏。
+- 模型认为任何线程职责变化都必须先问用户，造成不必要的等待。
+
+新期望：
+
+- `adaptive_judgment_controller` 判断这是可逆、低副作用的职责微调，而不是主目标改变。
+- AI 可自行把旧“资料审计线程”调整为“候选框架反例审查线程”，同时写清 `ai_decided_without_user_reason` 和 `recovery_route`。
+- 若线程需要外部账号、写入仓库、发布或不可逆操作，再触发用户授权。
+
+模拟结论：
+
+- 新协议把长期线程职责复查从机械流程改成事件触发的深层判断。
+- `templates/judgment.md` 能记录 keep / adjust / pause / close / replace 的理由和回滚路线。
+
+## Scenario 12: 账号/API/外部写入触发回问
+
+用户提示：
+
+```text
+继续推进，必要时可以用外部 API 和发布平台。
+```
+
+旧风险：
+
+- “强自治”被误解成可直接登录、写入、发布或产生费用。
+
+新期望：
+
+- `decision_rights_matrix` 把账号、API 写入、付款、发布、提交、评论和外部系统修改列为 `ask_user_needed` 或 `manual_action_required`。
+- AI 可以先做只读分析、沙盒计划、dry-run 或需要用户操作的具体说明。
+- 缺授权时不得越权执行。
+
+模拟结论：
+
+- 新协议可检查到 `unsafe_autonomy_without_guardrail_gap`。
+- 强自治不是最大自治；它是“项目内细节自治 + 高风险边界回问”。
+
+## Scenario 13: 重要路线切换后记录误判风险和回滚
+
+用户提示：
+
+```text
+我们从证据审计切到模型发现，再决定是否回到数据验证。
+```
+
+旧风险：
+
+- 模型切路线后只给新计划，不说明为什么拒绝旧路线，也没有恢复路径。
+
+新期望：
+
+- 这是 `judgment_mode: strategic`。
+- 启用 `route_evaluator_reflection_gate`，记录 selected route、rejected route、why_selected、highest_misjudgment_risk、counterexample_or_hostile_case 和 rollback_or_recovery_route。
+- 若新路线失败，可以回到旧证据路径或重新进入候选框架池。
+
+模拟结论：
+
+- 新协议可检查到 `route_reflection_missing_gap`。
+- 重要动态判断既有自治，也有可恢复的判断证据。
+
 ## Overall Result
 
-本轮修复把用户体验问题转成 17 个可触发机制：
+本轮修复把用户体验问题转成 21 个可触发机制：
 
 1. `protocol_scan_sequence`
 2. `complex_prompt_bootstrap_gate`
@@ -297,5 +438,9 @@
 15. `ibis_argument_map_gate`
 16. `thought_search_gate`
 17. `event_triggered_capability_refresh`
+18. `adaptive_judgment_controller`
+19. `decision_rights_matrix`
+20. `judgment_depth_ladder`
+21. `route_evaluator_reflection_gate`
 
 这些机制默认不新增 verifier required 字段；它们先作为主协议行为规则、Runtime Kit 模板字段和发布包能力项存在。若后续真实项目继续暴露同类问题，再考虑把其中稳定可检查的字段纳入恢复链验证器。

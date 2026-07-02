@@ -25,6 +25,7 @@ Confirm or default these choices:
 - Collaboration topology: main thread, temporary subagent, long-running thread, or parallel review.
 - Cadence: one round with a next route, or continuous cadence.
 - Project nature: evidence filling, model discovery, mixed discovery-to-evidence, or execution delivery.
+- Autonomy boundary: default to strong autonomy with guardrails for reversible project details, unless the user asks for tighter confirmation.
 - Evidence, privacy, account, payment, publishing, or manual-action boundary.
 
 This card is not a new mandatory verifier field. It is a low-friction way to avoid hidden-trigger behavior and to keep capability use tied to user intent.
@@ -45,6 +46,26 @@ This bootstrap is especially useful for new projects, new users, or handoff into
 
 For continuous prompt-based projects, rehydrate the prompt each round before planning. The round prompt should inherit the confirmed master prompt, current state, capability policy, topology, and delivery contract, then add only the current `round_goal` and prompt patches. Rehydration is not new authorization to use accounts, APIs, external writes, or subagents beyond the existing boundary.
 
+## Adaptive Judgment Boundary
+
+Capability work should not force the user to adjudicate every small tool, depth, or route choice. Complex defaults to `strong_autonomy_with_guardrails`: the agent may decide reversible, low-side-effect project details when the decision can be recovered from state.
+
+The agent may usually decide:
+
+- Whether to deepen, compress, route back, or keep a lightweight refresh.
+- Which candidate capability to select, reject, backlog, or try with a small smoke test.
+- Whether a temporary subagent split, read-only review, or main-thread-only path best fits the current gap.
+- Whether model-discovery work should keep diverging or begin converging based on probes and argument quality.
+
+The agent must ask or require manual action before:
+
+- Changing the main goal or delivery/public voice.
+- Using accounts, paid resources, APIs with side effects, browser sessions tied to private state, publishing, submitting, commenting, or external writes.
+- Performing irreversible file or project operations.
+- Taking high-risk real-world action or making strong public claims with insufficient evidence.
+
+For strategic or critical decisions, record a short `route_evaluator_reflection_gate` note: selected route, rejected route, reason, highest misjudgment risk, counterexample, and rollback or recovery route. For routine fast decisions, a sentence is enough; do not create a table ritual.
+
 ## Per-Round Goal Lifecycle
 
 Continuous cadence should not depend on one long Codex tool Goal that spans dozens of rounds. Use state, master prompt, closure routing, and `next_route` as the continuity carriers. When a tool Goal is useful, make it a narrow per-round objective that can be completed when that beat finishes.
@@ -59,6 +80,7 @@ Reconsider capabilities at these points:
 - A Complex startup choice card is asked or defaulted.
 - A Complex prompt bootstrap is requested or confirmed.
 - A continuous round rehydrates the project prompt for a new Plan/Loop.
+- The adaptive judgment controller marks a route, depth, topology, or tool decision as strategic or critical.
 - The project changes stage or route.
 - The user names a tool, skill, API, database, account, browser, Auto Research, Complex, or external method.
 - A search, verification, render, data, or delivery task is blocked.
@@ -178,6 +200,7 @@ After capability use, update the smallest useful record:
 - `templates/search.md` for external search and access escalation.
 - `templates/framing.md` for model-discovery framing and convergence conditions.
 - `templates/argument.md` for issue-position-argument maps.
+- `templates/judgment.md` for strategic or critical route, autonomy, and recovery decisions.
 - `templates/loop.md` for small capability trials.
 - `templates/delivery.md` if capability output affects the final artifact.
 

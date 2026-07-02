@@ -26,6 +26,17 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - convergence_switch_conditions:
 - current scoring profile:
 
+## Adaptive Judgment
+
+- judgment_mode: fast / diagnostic / exploratory / strategic / critical
+- autonomy_level: strong_autonomy_with_guardrails / ask_before_strategic_change / maximum_autonomy
+- decision_right: ai_decide / ask_user / manual_action_required / blocked_until_authorized
+- ask_user_needed: yes / no
+- ai_decided_without_user_reason:
+- rollback_or_recovery_route:
+- route_evaluator_reflection_status: not_needed / pending / complete
+- last_strategic_or_critical_judgment:
+
 ## User Choices
 
 - setup_question_card_status: asked / defaulted / not_needed
@@ -39,6 +50,7 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - collaboration choice: main_thread / temporary_subagent / long_running_threads / parallel_review / undecided
 - cadence choice: single_round_then_next_route / continuous_until_stopped
 - project nature preference or trigger words:
+- autonomy preference or trigger words:
 - evidence or privacy boundary:
 - user_visible_trigger_guide_shown: yes / no
 

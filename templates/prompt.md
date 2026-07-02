@@ -37,12 +37,15 @@ This prompt is an execution contract for one project. It does not replace the Co
 - Collaboration topology:
 - Cadence:
 - Project nature and convergence preference:
+- Autonomy and judgment boundary:
 - Evidence, privacy, account, publishing, or manual-action boundary:
 
 ## Prompt Design Rationale
 
 - Why this goal needs Complex:
 - Why this project is evidence_fill / model_discovery / mixed / execution_delivery:
+- What the agent may decide without asking:
+- What must trigger user confirmation:
 - Why these capabilities are selected or rejected:
 - Why this collaboration topology fits:
 - Why this cadence fits:
@@ -69,6 +72,13 @@ This prompt is an execution contract for one project. It does not replace the Co
 协作拓扑：
 
 推进节拍：
+
+自适应判断边界：
+- autonomy_level：strong_autonomy_with_guardrails
+- AI 可自行判断：
+- 必须回问用户：
+- judgment_mode 初始默认：
+- rollback_or_recovery_route：
 
 项目性质与收敛状态：
 - project_nature：
@@ -126,6 +136,9 @@ Use this section at the start of each continuous round, Plan-mode continuation, 
 - latest state/current_basis:
 - project_nature:
 - convergence_status:
+- judgment_mode:
+- autonomy_level:
+- decision_right:
 - candidate_frameworks or fixed evidence model:
 - inherited master constraints:
 - previous-round status:
@@ -134,6 +147,8 @@ Use this section at the start of each continuous round, Plan-mode continuation, 
 - round_execution_prompt:
 - plan_alignment_to_master_prompt:
 - next_route this prompt should preserve:
+- ask_user_needed:
+- rollback_or_recovery_route:
 
 Rules:
 

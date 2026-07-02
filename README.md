@@ -10,20 +10,20 @@
 - 当前低摩擦入口：`protocol/Complex项目持续治理_低摩擦用户入口_20260622.md`
 - 当前恢复入口：`protocol/持续治理协议_二十个跨渠道项目逆向校验实验.md` 的 `## 220. 当前机器看版`
 - 当前 next route：`continue_self_optimization_with_skill_adoption_expansion_or_stop`
-- 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-220 轮、外部 skill 采用扩展、新能源汽车项目复盘后的人看版交付/注意力绑定规则、Runtime Kit 运行模板、`complex_prompt_bootstrap_gate` 提示词设计前置流程、`round_prompt_rehydration_gate` 每轮提示词重水化机制、`per_round_goal_lifecycle_gate` 每拍窄 Goal 生命周期机制，以及模型发现层与反早收敛机制。
+- 最近一次整合：仓库独立化、历史回归迁移、恢复链第 215-220 轮、外部 skill 采用扩展、新能源汽车项目复盘后的人看版交付/注意力绑定规则、Runtime Kit 运行模板、`complex_prompt_bootstrap_gate` 提示词设计前置流程、`round_prompt_rehydration_gate` 每轮提示词重水化机制、`per_round_goal_lifecycle_gate` 每拍窄 Goal 生命周期机制、模型发现层与反早收敛机制，以及 `adaptive_judgment_controller` 自适应深层判断层。
 - GitHub 同步策略：本仓库保留当前权威协议和 Runtime Kit；公开说明、可视化站点、模板和 reusable protocol package 均从该工作区同步。
 
 ## 项目目标
 
-- 把复杂项目的项目性质判断、目标对齐、问题框架发现、证据分层、能力发现、动态路由、Loop 小闭环、评分迭代、协作拓扑、恢复链和交付边界放在一个小而清楚的项目里。
+- 把复杂项目的项目性质判断、目标对齐、问题框架发现、证据分层、能力发现、自适应深层判断、动态路由、Loop 小闭环、评分迭代、协作拓扑、恢复链和交付边界放在一个小而清楚的项目里。
 - 让 Codex 可以围绕该协议单独开工作树、持续迭代、测试和发布。
-- 提供 Complex Runtime Kit / 持续治理运行时套件，让新项目能直接建立状态、证据、决策、检索、提问、提示词、framing、argument、Loop 和交付记录。
+- 提供 Complex Runtime Kit / 持续治理运行时套件，让新项目能直接建立状态、证据、决策、检索、提问、提示词、framing、argument、judgment、Loop 和交付记录。
 - 避免继续依赖或修改 `ai 科研` 大目录。
 
 ## 三层结构
 
 1. `protocol/`：Complex 持续治理核心规则，决定项目如何恢复、路由、评分、协作和交付。
-2. `templates/`：Runtime Kit 运行模板，帮助新项目快速建立 state、evidence、decision、search、question、prompt、framing、argument、loop 和 delivery 记录。
+2. `templates/`：Runtime Kit 运行模板，帮助新项目快速建立 state、evidence、decision、search、question、prompt、framing、argument、judgment、loop 和 delivery 记录。
 3. `.codex/`：项目级能力发现入口，记录推荐能力候选和项目本地 skill 放置规则；它不替代实际环境中的工具探测。
 
 ## 目录
@@ -35,6 +35,7 @@
 - `templates/`：Runtime Kit 轻量模板，供新项目复制或引用。
 - `templates/framing.md`：问题域、候选框架、发散预算、可区分探针和收敛条件。
 - `templates/argument.md`：问题-观点-论据图，用于开放式研究和模型发现。
+- `templates/judgment.md`：自适应判断记录，用于路线、深度、工具、协作、回问和回滚边界。
 - `templates/prompt.md`：提示词设计前置模板，用于先扫描 Complex、设计项目专用执行 prompt、确认后再推进。
 - `docs/runtime-skill-management.md`：运行时 skill / tool / plugin / API / 外部方法选择、拒绝、试用和写回规则。
 - `docs/history/`：从旧目录同步来的历史回归记录、真实项目小题和治理样例。
@@ -63,6 +64,12 @@ AI 应先触发 `complex_prompt_bootstrap_gate`，完成协议扫描、启动问
 这是模型发现型任务，先不要证据填表。请先发散研究框架，建立候选解释路径和问题-观点-论据图，再判断何时收敛。
 ```
 
+如果你希望 AI 自己处理可逆、低副作用、项目内的路线细节，可以加一句：
+
+```text
+采用强自治+护栏：让 AI 自行判断细节、动态推进，只在高风险、授权、不可逆动作、主目标或交付公开口径变化时问我；AI 自己调路线，但保留理由。
+```
+
 ### 直接推进入口
 
 如果已经知道项目目标，也可以直接说：
@@ -74,9 +81,11 @@ AI 应先触发 `complex_prompt_bootstrap_gate`，完成协议扫描、启动问
 我希望结果达到：……
 ```
 
-AI 应先用 `complex_setup_question_card` 确认或默认交付对象、外部能力权限、子代理/多线程、连续节拍和人工边界。用户不需要区分普通项目和重大项目；高风险、高返工或高公共性的工作只会触发内部工作力度/风险升级。
+AI 应先用 `complex_setup_question_card` 确认或默认交付对象、外部能力权限、子代理/多线程、连续节拍、自治边界和人工边界。用户不需要区分普通项目和重大项目；高风险、高返工或高公共性的工作只会触发内部工作力度/风险升级。
 
 AI 还应先判断 `project_nature`：证据填充型、模型发现型、混合型，还是执行交付型。模型、公式、指标或研究框架未定时，不应直接进入证据填表。
+
+AI 还应启用 `adaptive_judgment_controller`：默认采用“强自治+护栏”，自行处理计划细节、Loop 探针、证据深度、工具取舍、临时分工、长期线程职责微调和发散/收敛节奏；只有主目标改变、账号/API/付款/发布/外部写入、不可逆动作、交付公开口径变化或证据不足却要对外强主张时，才回问用户。
 
 ### 可选触发词
 
@@ -85,6 +94,7 @@ AI 还应先判断 `project_nature`：证据填充型、模型发现型、混合
 - `完整扫描 Complex`：先做协议理解，再给业务计划。
 - `先设计提示词/prompt`：先生成项目专用执行 prompt，确认后再推进。
 - `模型发现型 / 先发散研究框架 / 不要早收敛 / 先做问题-观点-论据图`：先保护候选框架、反例和可区分探针，再判断何时转入证据填充。
+- `强自治+护栏 / 让 AI 自行判断细节 / 动态推进 / 只在高风险时问我 / AI 自己调路线，但保留理由`：AI 自行选择路线、深度、工具、分工和发散/收敛节奏，并在战略或关键判断时留下选择理由、误判风险和回滚路线。
 - `连续节拍`：每轮先重构 `round_execution_prompt`，再生成 Plan、Loop、评分路由和 `next_route`；Codex 工具 Goal 默认每拍一个窄目标。工具、子代理/线程职责、goal 和 master prompt 采用事件触发优先的复查，3 轮只是兜底上限。
 - `多线程/子代理`：先判断主线程、临时子代理或长期线程哪种拓扑合适，再执行。
 - `外部工具/账号/API`：先建立能力候选清单，写清 selected / rejected / backlog / manual action。
@@ -102,6 +112,7 @@ AI 还应先判断 `project_nature`：证据填充型、模型发现型、混合
 - `prompt.md`：先扫描 Complex、设计项目 prompt、确认后执行。
 - `framing.md`：模型发现型任务的问题域、候选框架和收敛条件。
 - `argument.md`：IBIS 风格的问题-观点-论据图。
+- `judgment.md`：自适应判断、自治边界、回问条件、误判风险和回滚路线。
 - `loop.md`：5-30 分钟小循环、评分和 route-back/execute 判断。
 - `delivery.md`：人看版、机器恢复版、老师/专家/第三方版本的交付契约。
 

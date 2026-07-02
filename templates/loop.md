@@ -15,6 +15,12 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - core_goal_plan_loop_required: yes / no
 - project_nature: evidence_fill / model_discovery / mixed / execution_delivery
 - convergence_status:
+- judgment_mode: fast / diagnostic / exploratory / strategic / critical
+- autonomy_level: strong_autonomy_with_guardrails / ask_before_strategic_change / maximum_autonomy
+- decision_right: ai_decide / ask_user / manual_action_required / blocked_until_authorized
+- ask_user_needed: yes / no
+- ai_decided_without_user_reason:
+- rollback_or_recovery_route:
 - loop_type: framework_probe / evidence_check / capability_trial / execution_check / delivery_check
 - candidate_framework_or_evidence_path:
 - discriminating_probe:
@@ -74,6 +80,11 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - blocked:
 - execute:
 - route_reason:
+- selected_route:
+- rejected_routes:
+- highest_misjudgment_risk:
+- route_evaluator_reflection_needed: yes / no
+- route_evaluator_reflection_note:
 - delivery contract updated:
 - recovery record updated:
 - next round_goal:
