@@ -535,6 +535,10 @@
           "any": ["resource_maturity_review", "成熟度", "线程", "subagent", "automation", "review lane"]
         },
         {
+          "label": "orchestration watchdog",
+          "any": ["orchestration_watchdog", "degraded_or_unobservable", "静默", "unobservable", "watchdog"]
+        },
+        {
           "label": "stop boundary",
           "any": ["stop condition", "停止条件", "真实边界", "no lower-risk internal beat", "没有剩余低风险内部小拍"]
         }
@@ -551,6 +555,10 @@
         {
           "label": "waits for continuation",
           "any": ["等你说继续", "你确认继续后", "是否继续", "要不要继续"]
+        },
+        {
+          "label": "waits for silent resource",
+          "any": ["继续等待后台线程", "等 worker 返回再说", "一直等审核线程", "wait indefinitely"]
         },
         {
           "label": "external boundary stops all internal work",

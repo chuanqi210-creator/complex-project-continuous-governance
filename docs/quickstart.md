@@ -104,6 +104,7 @@ After the user confirms continuous execution, switch from planning to the contin
 - Execute the Beat Router decision before ending the beat.
 - Continue through queued low-risk reversible beats until a real stop condition appears.
 - Assess threads, subagents, review lanes, and automations as resources that may mature over the first few beats; do not block Goal/Plan/Loop because those resources are not ready yet.
+- Watch for unobservable resources: if a clean thread, worker, review lane, or automation produces no contract, action, or result in the first beat window, mark it degraded and route to another safe path instead of waiting indefinitely.
 
 If the user asks for independent review inside the same session, do not claim roleplay is independent. Use clean context, a separate reviewer/thread, read-only audit subagent, or a fact-ledger packet when independence matters. Reset review context every independent review beat; if you stay in the same session, label it as diagnostic self-review.
 

@@ -60,6 +60,8 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - beat_queue:
 - current_beat_goal_source: tool_goal / protocol_round_goal / not_created_yet
 - resource_maturity_review:
+- orchestration_watchdog_status: not_needed / observing / degraded_or_unobservable / recovered
+- unobservable_resource_route: main_thread / smaller_local_beat / diagnostic_review / interrupt_for_input / none
 - complex_source_resolution_status: explicit_user_path / local_authoritative_path / sibling_repo / target_adapter_only / unavailable_need_user_path
 - complex_source:
 - target_project_source:

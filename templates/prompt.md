@@ -120,6 +120,7 @@ Plan 模式：
 - 每一拍必须先重水化 round_execution_prompt，再建立/记录一个窄 round_goal，执行 Loop、评分路由、关闭或迁移本拍，然后自动进入下一拍 queued 的低风险可逆任务。
 - Codex 工具 Goal 如果可用，只用于当前一拍；完成后立刻创建/记录下一拍 protocol_round_goal。不要用一个长期工具 Goal 承载几十拍，也不要等用户再说继续才开启下一拍。
 - 确认执行后，保持 beat_queue、当前 round_goal、下一拍候选、Beat Router 和 stop condition。线程、子代理、automation、长期审核通道可以在前几拍判断成熟度和授权；未成熟时记录原因，但不能因此省略本拍 Goal/Plan/Loop。
+- 干净线程、后台 worker、审核通道或 automation 必须产生可观察启动信号；若在首拍窗口内没有 contract、工具动作、文件变化或结果，标记为 degraded_or_unobservable，并切回可用的主线程/更小本地拍/同 session diagnostic review。
 
 协作拓扑自动启用：
 - 如果临时子代理、并行检查或只读审核能明显降低风险且不触发外部副作用：自动启用可用拓扑，而不是只建议用户以后开启。
@@ -139,6 +140,7 @@ Plan 模式：
 - 主线程是 manager，只维护 global_goal、beat_queue、current_basis/not_current_basis、open resources、stop conditions、next beat；worker 只做 bounded work 并回传摘要。
 - 每拍结束必须执行 Beat Router：CONTINUE / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_INPUT / STOP_COMPLETE。
 - 只有 stop condition 可以停：目标完成、真实外部输入缺失、权限/账号/API 缺失、no-write/evidence boundary、预算/时间/安全限制、不可替代用户判断，或没有剩余低风险内部小拍。commit/push 等外部边界只能阻断对应动作，不能阻断其他已排队的低风险内部小拍。
+- 对后台资源执行 orchestration_watchdog：静默、无输出、无文件触达、无可读结果时，不持续等待；记录降级并选择下一个可执行路由。
 
 Steering words to preserve:
 - 开启 Plan 模式 / 先规划再执行：
@@ -238,6 +240,8 @@ Use this section at the start of each continuous round, Plan-mode continuation, 
 - beat_queue:
 - current_beat_goal_source:
 - resource_maturity_review:
+- orchestration_watchdog:
+- unobservable_resource_route:
 - beat_router_decision:
 - termination_condition:
 - rollback_or_recovery_route:

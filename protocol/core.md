@@ -117,9 +117,12 @@ The contract must include:
 - one current `round_goal`
 - a per-beat tool Goal when available, otherwise a recorded `protocol_round_goal`
 - a `Beat Router` decision that is executed, not merely described
+- an observable start signal for the active beat: a compact contract, first action, file touch, command, or explicit degraded-resource note
 - `STOP_COMPLETE` only when the objective is complete, and `INTERRUPT_FOR_INPUT` only when the next required action crosses a real boundary and no lower-risk internal beat remains
 
 Long-running threads, automations, and durable review lanes may mature over the first few beats. The agent should assess their fit and authorization as part of the orchestration spine; it should not treat their absence in beat one as a reason to drop Goal/Plan/Loop, beat routing, or automatic low-risk continuation.
+
+`orchestration_watchdog`: resources used for clean-context execution, background work, subagents, review lanes, automations, or user-visible threads must become observable. If a resource remains active but produces no readable contract, tool action, file change, or result within a reasonable first-beat window, mark it `degraded_or_unobservable`, record the reason, and continue through another available route such as main-thread execution, same-session diagnostic review, a smaller local beat, or `INTERRUPT_FOR_INPUT` only when no safe route remains.
 
 `round_prompt_rehydration_gate` applies before each new Plan/Loop in a prompt-based or continuous project. Recover the master prompt or `active_goal_summary`, current state, and `round_goal` into `round_execution_prompt`.
 

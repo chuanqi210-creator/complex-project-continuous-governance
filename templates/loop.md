@@ -13,6 +13,7 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - continuous_runtime_activation_status:
 - continuous_orchestration_spine_status:
 - beat_queue_before:
+- orchestration_watchdog_status:
 - next_beat_auto_start:
 - round_execution_prompt:
 - plan_alignment_to_master_prompt:
@@ -47,6 +48,7 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - termination condition:
 - beat_queue_after:
 - stop_boundary_or_continue_reason:
+- unobservable_resource_route:
 - capability review due: yes / no
 - capability decision:
 - capability refresh mode: event_triggered / fallback_cap / lightweight_keep
