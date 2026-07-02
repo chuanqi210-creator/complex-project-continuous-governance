@@ -86,6 +86,8 @@ When Complex is used inside another repository, local project rules can narrow s
 
 Plan mode should produce an orchestration contract before execution when the user asks for continuous cadence, Goal mode, threads, subagents, automation, or independent review. The contract must distinguish user-visible long-running Codex threads from short-lived subagents, check whether Goal/thread/automation tools are available, define manager/worker responsibilities, and end each beat through a route such as `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, or `STOP_COMPLETE`.
 
+After the user confirms execution under continuous cadence, orchestration becomes the default runtime. Each beat should carry a visible `round_goal`, use a per-beat tool Goal when available or a recorded `protocol_round_goal` when not, maintain a small beat queue, execute the Beat Router decision, and continue through queued low-risk work until a real stop condition appears. Threads, automations, and durable review lanes can be evaluated over the first few beats; they do not need to be forced on beat one, but their maturity should be tracked instead of ignored.
+
 ## Best Project Prompt
 
 ```text
@@ -117,7 +119,7 @@ If the project should move directly:
 采用强自治+护栏：可逆、低副作用的细节由 AI 自行判断；目标、授权、不可逆动作、外部写入、公开口径或高风险主张变化时再问我。
 如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成扫描、判断和计划，再进入执行。
 请显式判断这些 steering words 是否适用：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；每拍窄 Goal / 自动进入下一拍 / 不等我说继续；少问我 / 能推进就继续 / 我给目录你自己读；自动启用合适子代理 / 只读审核线程 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
-如果 next_route / round_goal 已经给出清楚、低风险、可逆的下一步，不要以“下次你说继续”作为收尾；默认自动推进到下一拍。只有真实授权、外部写入、不可逆动作、高风险主张或回合/工具边界才暂停。
+如果 next_route / round_goal 已经给出清楚、低风险、可逆的下一步，不要以“下次你说继续”作为收尾；默认自动推进到下一拍。每拍都要有本拍 Goal；如果工具 Goal 可用就用于本拍，否则记录 protocol_round_goal。只有真实授权、外部写入、不可逆动作、高风险主张、回合/工具边界，或已经没有低风险内部小拍时才暂停。
 ```
 
 Useful steering words:
@@ -171,7 +173,7 @@ pnpm -C docs/protocol_explainer_site build
 
 Expected baseline:
 
-- behavior pack: 15 cases and 15 transcript rules
+- behavior pack: 16 cases and 16 transcript rules
 - integrity verifier: `failure_count: 0`
 - site build: Vite build succeeds
 

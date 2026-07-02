@@ -111,6 +111,16 @@ The contract must include:
 - `beat_router`: every beat ends by selecting and executing or recording one route: `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, or `STOP_COMPLETE`.
 - `termination_conditions`: goal complete, true external input missing, permission/account/API missing, no-write/evidence boundary, budget/time/safety limit, or user-only judgment.
 
+`continuous_orchestration_spine`: once the user confirms execution or says to proceed under continuous cadence / orchestration protocol, the prompt-bootstrap waiting boundary is consumed for low-risk reversible work. The runtime must then maintain:
+
+- a short `beat_queue` with the current beat and at least the next plausible low-risk beat
+- one current `round_goal`
+- a per-beat tool Goal when available, otherwise a recorded `protocol_round_goal`
+- a `Beat Router` decision that is executed, not merely described
+- `STOP_COMPLETE` only when the objective is complete, and `INTERRUPT_FOR_INPUT` only when the next required action crosses a real boundary and no lower-risk internal beat remains
+
+Long-running threads, automations, and durable review lanes may mature over the first few beats. The agent should assess their fit and authorization as part of the orchestration spine; it should not treat their absence in beat one as a reason to drop Goal/Plan/Loop, beat routing, or automatic low-risk continuation.
+
 `round_prompt_rehydration_gate` applies before each new Plan/Loop in a prompt-based or continuous project. Recover the master prompt or `active_goal_summary`, current state, and `round_goal` into `round_execution_prompt`.
 
 Each round plan must say what comes from:

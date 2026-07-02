@@ -16,6 +16,7 @@
     "independent_review_context_separation",
     "downstream_local_boundary_reconciliation",
     "orchestration_preflight_contract",
+    "continuous_orchestration_runtime_spine",
     "complex_source_resolution_outside_target_repo"
   ],
   "cases": [
@@ -390,6 +391,39 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ]
+    },
+    {
+      "case_id": "continuous_orchestration_runtime_spine",
+      "user_prompt": "接下来按照连续节拍以及编排协议开展工作。低风险可逆小拍请自动推进；线程、代理和 automation 可以先判断成熟度。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "continuous_orchestration_spine",
+        "continuous_runtime_activation_contract",
+        "orchestration_contract",
+        "per_round_goal_lifecycle_gate",
+        "beat_router"
+      ],
+      "expected_behavior": [
+        "Treat the user's execution request as confirmation to enter the continuous orchestration spine for low-risk reversible work.",
+        "Maintain a beat_queue with the current beat and next plausible low-risk beat.",
+        "Create or record a per-beat round_goal and use a tool Goal when available, otherwise protocol_round_goal.",
+        "Execute the Beat Router decision before ending the beat.",
+        "Assess thread, subagent, review-lane, and automation maturity over the first beats without blocking Goal/Plan/Loop.",
+        "Pause only for STOP_COMPLETE or a named real boundary when no lower-risk internal beat remains."
+      ],
+      "forbidden_behavior": [
+        "Treat the orchestration protocol as a plan-only explanation after the user asked to proceed.",
+        "Skip Goal or protocol_round_goal because threads, subagents, or automation are not mature yet.",
+        "End a non-terminal beat by asking the user whether to continue.",
+        "Let a commit, push, or external boundary stop unrelated low-risk internal beats still in the queue.",
+        "Use one broad long-running tool Goal for the whole continuous project."
+      ],
+      "expected_runtime_records": [
+        "prompt.md",
+        "state.md",
+        "loop.md",
+        "judgment.md"
       ]
     },
     {

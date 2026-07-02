@@ -511,6 +511,59 @@
         "Did it route each beat through a nonterminal or terminal route with clear stop conditions?"
       ]
     },
+    "continuous_orchestration_runtime_spine": {
+      "minimum_required_groups": 6,
+      "required_marker_groups": [
+        {
+          "label": "orchestration spine",
+          "any": ["continuous_orchestration_spine", "编排运行态", "orchestration spine", "continuous orchestration"]
+        },
+        {
+          "label": "beat queue",
+          "any": ["beat_queue", "拍队列", "下一拍候选", "current beat", "next plausible beat"]
+        },
+        {
+          "label": "per-beat goal",
+          "any": ["round_goal", "每拍 Goal", "protocol_round_goal", "per-beat tool Goal", "本拍目标"]
+        },
+        {
+          "label": "router execution",
+          "any": ["Beat Router", "CONTINUE", "SPAWN_SUBAGENT", "INTERRUPT_FOR_INPUT", "STOP_COMPLETE"]
+        },
+        {
+          "label": "resource maturity",
+          "any": ["resource_maturity_review", "成熟度", "线程", "subagent", "automation", "review lane"]
+        },
+        {
+          "label": "stop boundary",
+          "any": ["stop condition", "停止条件", "真实边界", "no lower-risk internal beat", "没有剩余低风险内部小拍"]
+        }
+      ],
+      "forbidden_marker_groups": [
+        {
+          "label": "plan-only orchestration",
+          "any": ["只给出编排建议", "先输出计划，等你确认后再执行", "orchestration as a recommendation only"]
+        },
+        {
+          "label": "goal missing",
+          "any": ["暂不需要 Goal", "没有 Goal 也可以连续节拍", "skip Goal because"]
+        },
+        {
+          "label": "waits for continuation",
+          "any": ["等你说继续", "你确认继续后", "是否继续", "要不要继续"]
+        },
+        {
+          "label": "external boundary stops all internal work",
+          "any": ["因为不能 commit 所以停止所有工作", "push 未授权所以不能继续任何小拍"]
+        }
+      ],
+      "human_review_questions": [
+        "Did the response enter a real orchestration runtime after the user's execution request?",
+        "Did it maintain a beat queue and per-beat goal rather than a broad project goal?",
+        "Did it separate immature resources from the required Goal/Plan/Loop spine?",
+        "Did it stop only for STOP_COMPLETE or a named real boundary with no lower-risk internal beat remaining?"
+      ]
+    },
     "complex_source_resolution_outside_target_repo": {
       "minimum_required_groups": 5,
       "required_marker_groups": [
