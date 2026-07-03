@@ -419,6 +419,7 @@
         "Execute the Beat Router decision before ending the beat.",
         "Assess thread, subagent, review-lane, and automation maturity over the first beats without blocking Goal/Plan/Loop.",
         "Use an orchestration watchdog so silent background or clean-context resources are degraded and rerouted instead of waited on indefinitely.",
+        "Treat fixed beat counts as smoke-test floors, not completion criteria; before STOP_COMPLETE, run a residual-beat scan.",
         "Pause only for STOP_COMPLETE or a named real boundary when no lower-risk internal beat remains."
       ],
       "forbidden_behavior": [
@@ -426,6 +427,7 @@
         "Skip Goal or protocol_round_goal because threads, subagents, or automation are not mature yet.",
         "End a non-terminal beat by asking the user whether to continue.",
         "Wait indefinitely for a silent clean-context thread, worker, review lane, or automation.",
+        "Stop because three beats were executed without proving objective completion and residual-beat depletion.",
         "Let a commit, push, or external boundary stop unrelated low-risk internal beats still in the queue.",
         "Use one broad long-running tool Goal for the whole continuous project."
       ],

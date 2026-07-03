@@ -1,6 +1,6 @@
 # Complex Current State
 
-current_version: 2026-07-02
+current_version: 2026-07-03
 
 ## Recovery Anchor
 
@@ -20,6 +20,7 @@ Default decision:
 - Prefer behavior cases, transcript review rules, and filled examples before expanding `protocol/core.md`.
 - Treat continuous cadence as active runtime activation: per-beat narrow goal, Loop, route, and safe auto-start of the next queued beat.
 - Treat continuous orchestration as the default runtime after confirmation: maintain beat queue, per-beat Goal or protocol_round_goal, Beat Router execution, and clear stop conditions.
+- Do not treat a fixed number of beats as completion. `STOP_COMPLETE` requires objective completion, delivery-level validation, and a residual-beat scan showing no useful low-risk internal beat remains.
 - Reset independent review context every review beat; same-session review is diagnostic only.
 - When Complex is copied into another repository, reconcile steering words with local rules and true manual-action boundaries before judging activation success or failure.
 - Plan mode must design an orchestration contract before continuous execution: capability preflight, resource taxonomy, authorization status, manager/worker split, Beat Router, and stop conditions.

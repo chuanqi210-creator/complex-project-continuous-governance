@@ -576,6 +576,10 @@
         {
           "label": "stop boundary",
           "any": ["stop condition", "停止条件", "真实边界", "no lower-risk internal beat", "没有剩余低风险内部小拍"]
+        },
+        {
+          "label": "residual beat scan",
+          "any": ["residual-beat scan", "residual_beat_scan", "残余可自动小拍", "剩余可自动小拍", "不是停止条件"]
         }
       ],
       "forbidden_marker_groups": [
@@ -596,6 +600,10 @@
           "any": ["继续等待后台线程", "等 worker 返回再说", "一直等审核线程", "wait indefinitely"]
         },
         {
+          "label": "stops after fixed beat count",
+          "any": ["跑了 3 拍所以停止", "执行三拍后停止", "ran 3 beats so stop", "at least 3 beats complete so STOP_COMPLETE"]
+        },
+        {
           "label": "external boundary stops all internal work",
           "any": ["因为不能 commit 所以停止所有工作", "push 未授权所以不能继续任何小拍"]
         }
@@ -604,7 +612,8 @@
         "Did the response enter a real orchestration runtime after the user's execution request?",
         "Did it maintain a beat queue and per-beat goal rather than a broad project goal?",
         "Did it separate immature resources from the required Goal/Plan/Loop spine?",
-        "Did it stop only for STOP_COMPLETE or a named real boundary with no lower-risk internal beat remaining?"
+        "Did it stop only for STOP_COMPLETE or a named real boundary with no lower-risk internal beat remaining?",
+        "Did STOP_COMPLETE include residual-beat scanning rather than a fixed beat-count threshold?"
       ]
     },
     "complex_source_resolution_outside_target_repo": {

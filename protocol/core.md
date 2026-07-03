@@ -112,7 +112,7 @@ The contract must include:
 - `authorization_status`: user-owned long threads, automations, account/API actions, external writes, publishing, and irreversible operations need explicit authorization. Short-lived read-only subagents may be used when the user requested subagents/review and the task is low-side-effect.
 - `manager_worker_contract`: main thread is the manager; workers/subagents perform bounded work and return summaries. Workers do not complete the global goal or upgrade evidence.
 - `beat_router`: every beat ends by selecting and executing or recording one route: `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, or `STOP_COMPLETE`.
-- `termination_conditions`: goal complete, true external input missing, permission/account/API missing, no-write/evidence boundary, budget/time/safety limit, or user-only judgment.
+- `termination_conditions`: goal complete with residual-beat scan clear, true external input missing, permission/account/API missing, no-write/evidence boundary, budget/time/safety limit, or user-only judgment.
 
 `continuous_orchestration_spine`: once the user confirms execution or says to proceed under continuous cadence / orchestration protocol, the prompt-bootstrap waiting boundary is consumed for low-risk reversible work. The runtime must then maintain:
 
@@ -121,7 +121,7 @@ The contract must include:
 - a per-beat tool Goal when available, otherwise a recorded `protocol_round_goal`
 - a `Beat Router` decision that is executed, not merely described
 - an observable start signal for the active beat: a compact contract, first action, file touch, command, or explicit degraded-resource note
-- `STOP_COMPLETE` only when the objective is complete, and `INTERRUPT_FOR_INPUT` only when the next required action crosses a real boundary and no lower-risk internal beat remains
+- `STOP_COMPLETE` only when the objective is complete, validation is clean enough for the delivery contract, and a residual-beat scan finds no useful low-risk internal beat remaining; `INTERRUPT_FOR_INPUT` only when the next required action crosses a real boundary and no lower-risk internal beat remains
 
 Long-running threads, automations, and durable review lanes may mature over the first few beats. The agent should assess their fit and authorization as part of the orchestration spine; it should not treat their absence in beat one as a reason to drop Goal/Plan/Loop, beat routing, or automatic low-risk continuation.
 
@@ -137,6 +137,8 @@ Each round plan must say what comes from:
 - AI autonomous decision
 
 `continuous_runtime_activation_contract`: when the user prompt or confirmed project prompt selects `连续节拍`, `continuous_until_stopped`, or equivalent wording, continuous cadence is an active execution contract, not a decorative steering word. Each beat must: rehydrate the round prompt, create or record a narrow `round_goal`, run the Loop, score/route, close or migrate the beat, and immediately enter the next low-risk reversible queued beat until a real boundary appears.
+
+`continuous_until_no_issue_stop_rule`: a beat count is never a completion condition. Running 3 beats can be a smoke-test floor, not a stop reason. Before `STOP_COMPLETE`, run a residual-beat scan across the objective, current diff/state, validation gaps, obvious consistency gaps, stale resources, and delivery contract. If any useful low-risk reversible beat remains, route `CONTINUE`; if only optional low-value polish remains, state why it is below the delivery threshold before stopping.
 
 `downstream_activation_reconciliation`: when Complex is applied inside another repository, local `AGENTS.md`, `CONTEXT.md`, current state, stage boards, manifests, no-write boundaries, and manual-action records can narrow how steering words execute. Before concluding that cadence, subagents, review, or tools are active, reconcile each requested steering word with local project boundaries and mark it as `active_now`, `active_but_boundary_blocked`, `overridden_by_project_safety`, or `not_needed_with_reason`.
 
