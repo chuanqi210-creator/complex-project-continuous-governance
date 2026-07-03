@@ -43,6 +43,8 @@ AI may decide:
 - Loop probes
 - evidence depth
 - tool/capability fit
+- runtime resource topology
+- standing lane design and manager-owned lane records
 - temporary subagent splits
 - minor long-thread responsibility adjustments
 - divergence/convergence pacing
@@ -52,12 +54,14 @@ AI must ask before:
 
 - changing the main goal
 - using accounts, APIs, payment, publishing, or external writes
+- creating platform-visible persistent resources when the environment makes them user-owned side effects
 - irreversible file or system actions
 - changing delivery/public voice
 - taking high-risk real-world action
 - making strong public claims without enough evidence
 
 `manual_action_required` is for true access, permission, privacy, account, external-write, payment, publication, or real-world responsibility boundaries.
+It is not for routine runtime-resource selection. Choosing whether a standing lane, temporary worker, clean-context review packet, or manager-owned lane record is useful is an AI judgment unless it crosses a real responsibility or platform-side-effect boundary.
 
 ## 4. Anti-Human And Context Drift
 
@@ -110,7 +114,7 @@ Do not say the user selected a route unless the user actually selected it. Plan 
 The control plane contains:
 
 - direction: `active_goal_summary`, project nature, convergence state, delivery contract, and stop conditions.
-- authority: decision rights, authorization boundaries, manual-action records, and anti-human-drift rules.
+- authority: decision rights, responsibility boundaries, platform/tool side-effect boundaries, manual-action records, and anti-human-drift rules.
 - state: `current_basis`, `not_current_basis`, open risks, beat queue, recovery route, and validation status.
 - topology: manager responsibility, standing lanes, temporary workers, automations, and their observability.
 - routing: Beat Router, route-back triggers, residual-beat scan, and recovery notes.
@@ -123,7 +127,7 @@ The topology part must define or refresh:
 - standing lanes: durable responsibility channels for recurring work such as review/evaluation, evidence/data, implementation, external activation, delivery/editorial, or method discovery.
 - temporary workers: bounded subagents or parallel checks that serve one beat or one lane and then return a summary.
 - lane contracts: each standing lane needs `lane_goal`, scope, input fact ledger, output contract, context-reset rule, wake/event triggers, stale/retire conditions, and observability evidence.
-- authorization status: user-visible long-running Codex threads and automations need explicit authorization/tool availability; if they are unavailable, keep a manager-owned lane record and continue rather than pretending the lane exists.
+- authority status: runtime topology is chosen by the agent; platform-visible persistent threads or automations are created only when tool policy and user responsibility boundaries allow them. If a visible resource is unavailable or would create a user-owned side effect, keep a manager-owned lane record and continue rather than pretending the lane exists or asking generic permission.
 
 Standing lanes and temporary subagents are different resources inside the same control plane. A subagent can help a lane, but it is not a long-running lane. If recurring review or evaluation will be needed across many beats, create or plan a standing review lane early and require clean context or a fresh fact ledger for each review beat.
 
@@ -133,7 +137,7 @@ The contract must include:
 - `resource_taxonomy`: distinguish user-visible long-running Codex threads from short-lived subagents/workers, automations/heartbeats, and per-round tool Goals. Do not call a subagent a long-running thread.
 - `control_plane`: direction, authority, state, topology, routing, and stop conditions.
 - `standing_lane_topology`: manager thread, durable lanes, temporary worker pool, lane context-reset policy, lane observability evidence, and stale/retire triggers.
-- `authorization_status`: user-owned long threads, automations, account/API actions, external writes, publishing, and irreversible operations need explicit authorization. Short-lived read-only subagents may be used when the user requested subagents/review and the task is low-side-effect.
+- `authority_status`: the agent self-selects low-side-effect runtime resources such as standing-lane records, temporary workers, read-only audit packets, and manager-owned review lanes. Ask only for responsibility-bearing actions: user-owned persistent thread/automation creation when the platform requires it, account/API actions, external writes, publishing, irreversible operations, or high-risk public claims.
 - `manager_worker_contract`: main thread is the manager; workers/subagents perform bounded work and return summaries. Workers do not complete the global goal or upgrade evidence.
 - `beat_router`: every beat ends by selecting and executing or recording one route: `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, or `STOP_COMPLETE`.
 - `termination_conditions`: goal complete with residual-beat scan clear, true external input missing, permission/account/API missing, no-write/evidence boundary, budget/time/safety limit, or user-only judgment.
@@ -148,7 +152,7 @@ The contract must include:
 - an observable start signal for the active beat: a compact contract, first action, file touch, command, or explicit degraded-resource note
 - `STOP_COMPLETE` only when the objective is complete, validation is clean enough for the delivery contract, and a residual-beat scan finds no useful low-risk internal beat remaining; `INTERRUPT_FOR_INPUT` only when the next required action crosses a real boundary and no lower-risk internal beat remains
 
-Long-running threads, automations, and durable review lanes may mature over the first few beats. The agent must assess their fit and authorization as part of the orchestration spine; it should not treat their absence in beat one as a reason to drop Goal/Plan/Loop, beat routing, or automatic low-risk continuation. If a standing lane is clearly needed but cannot yet be created as a user-visible thread, record `lane_planned_pending_authorization_or_tooling` and continue through the manager-owned lane contract.
+Long-running threads, automations, and durable review lanes may mature over the first few beats. The agent must assess their fit, platform availability, and responsibility boundary as part of the orchestration spine; it should not treat their absence in beat one as a reason to drop Goal/Plan/Loop, beat routing, or automatic low-risk continuation. If a standing lane is clearly needed but cannot yet be created as a user-visible thread, record `manager_owned_lane_record` or `lane_planned_pending_platform_tooling` and continue through the manager-owned lane contract.
 
 `orchestration_watchdog`: resources used for clean-context execution, background work, subagents, review lanes, automations, or user-visible threads must become observable. Activation means a real tool call, thread id, handoff packet, fact-ledger packet, returned summary, file touch, or explicit unavailable/degraded note. If a resource remains active but produces no readable contract, tool action, file change, or result within a reasonable first-beat window, mark it `degraded_or_unobservable`, record the reason, and continue through another available route such as main-thread execution, same-session diagnostic review, a smaller local beat, or `INTERRUPT_FOR_INPUT` only when no safe route remains. Do not describe a planned or silent resource as completed independent review.
 
@@ -194,7 +198,7 @@ Use `agent_topology_selection_trace` when work may need main-thread execution, t
 
 `long_running_lane_vs_subagent_boundary`: long-running lanes are project responsibilities that persist across beats. Temporary subagents are short-lived workers. Do not satisfy a request for multi-threaded project construction by only mentioning a one-off subagent. For continuous projects, decide the durable lane topology first, then decide whether any lane needs a temporary worker in the current beat.
 
-`topology_auto_activation_policy`: if the confirmed prompt authorizes strong-autonomy Complex execution and the work clearly benefits from temporary subagents, parallel review, or read-only audit, activate the available low-side-effect topology instead of merely recommending it. Ask the user only for user-owned long-thread creation, unavailable tools, account/API access, external writes, or other real authorization boundaries.
+`topology_auto_activation_policy`: if the confirmed prompt asks for strong-autonomy Complex execution and the work clearly benefits from temporary subagents, parallel review, read-only audit, standing-lane records, or clean-context review packets, activate or record the available low-side-effect topology instead of merely recommending it. Ask the user only for account/API access, external writes, irreversible actions, publishing, high-risk public claims, or platform-visible persistent resource creation when that action truly becomes a user-owned side effect.
 
 `independent_review_context_separation`: same-session roleplay is diagnostic only. True independent review requires clean context, a separate reviewer/thread, read-only audit subagent, different reviewer/model where available, or a fact-ledger-only packet. Track `human_input_drift_risk` when prior conversation may bias judgment.
 

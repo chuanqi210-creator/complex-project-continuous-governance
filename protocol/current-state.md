@@ -27,7 +27,8 @@ Default decision:
 - Continuous work must be visibly auditable in the human-facing final answer: per-beat goals, Goal/protocol_goal source, router decisions, resource evidence or `not_needed/degraded`, validation after the final write, and final residual scan.
 - Reset independent review context every review beat; same-session review is diagnostic only.
 - When Complex is copied into another repository, reconcile steering words with local rules and true manual-action boundaries before judging activation success or failure.
-- Plan mode must design an orchestration contract before continuous execution: capability preflight, resource taxonomy, authorization status, manager/worker split, Beat Router, and stop conditions.
+- Plan mode must design an orchestration contract before continuous execution: capability preflight, resource taxonomy, authority/platform-boundary status, manager/worker split, Beat Router, and stop conditions.
+- Runtime topology choice belongs to AI judgment. User authorization is for responsibility-bearing boundaries such as accounts/API credentials, external writes, publishing, irreversible actions, high-risk claims, or platform-visible persistent resources that truly become user-owned side effects.
 - When another project asks to scan Complex, use the installed Complex runtime as the rule source and the target project as the fact source.
 - Keep the active repository free of historical logs and old output packages.
 

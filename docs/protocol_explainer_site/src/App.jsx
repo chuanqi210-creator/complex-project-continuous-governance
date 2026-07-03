@@ -142,16 +142,16 @@ const capabilityGroups = [
   },
   {
     title: "控制层编排",
-    summary: "连续项目先确认方向、权限、状态、拓扑、路由和停止条件，再进入局部执行。",
+    summary: "连续项目先确认方向、责任边界、状态、拓扑、路由和停止条件，再进入局部执行。",
     detail:
       "control_plane_orchestration 把长期通道放进统一控制层：manager thread、standing lanes、temporary workers、Beat Router 和 stop conditions 一起决定项目怎样持续推进。",
     icon: ArrowsSplit,
   },
   {
     title: "能力与拓扑",
-    summary: "显性判断工具、skill、API、账号、长期通道和短期 worker，但不机械打断。",
+    summary: "运行资源由 AI 自判；用户只为账号、外部写入、发布等担责边界授权。",
     detail:
-      "capability_discovery_cadence_gate 以事件触发为主；无事件时 lightweight keep。子代理是短期 worker，不等于长期线程；外部写入、账号、付款和发布仍进入授权护栏。",
+      "capability_discovery_cadence_gate 以事件触发为主；无事件时 lightweight keep。子代理是短期 worker，不等于长期线程；standing lanes、fact ledger 和 manager-owned lane record 属于运行编排判断，外部写入、账号、付款和发布才进入担责护栏。",
     icon: WarningDiamond,
   },
   {
@@ -186,13 +186,13 @@ const mechanismSteps = [
   {
     k: "03",
     title: "划清决策权",
-    text: "默认强自治+护栏：AI 处理可逆低副作用细节，目标、授权、不可逆和高风险主张回问；问人前先证明必要性。",
+    text: "默认强自治+护栏：AI 处理可逆低副作用细节和运行资源编排，主目标、账号/API、外部写入、不可逆和高风险主张回问；问人前先证明必要性。",
     output: "decision_rights_matrix",
   },
   {
     k: "04",
     title: "确认控制层",
-    text: "连续项目先确认方向、权限、状态、拓扑、路由和停止条件；单轮任务可直接抓最高杠杆问题。",
+    text: "连续项目先确认方向、责任边界、状态、拓扑、路由和停止条件；单轮任务可直接抓最高杠杆问题。",
     output: "control_plane / round_goal",
   },
   {
@@ -279,7 +279,7 @@ const scenarios = [
     id: "boundary",
     label: "高风险边界",
     icon: ShieldCheck,
-    claim: "目标、授权、外部写入、公开口径、高风险主张或现实责任发生变化。",
+    claim: "主目标、账号/API、外部写入、公开口径、高风险主张或现实责任发生变化。",
     lenses: ["decision_rights_matrix", "external_state_write_guard", "manual_action_required", "ask_user_necessity_gate"],
     outputs: ["必须回问事项", "AI 可自主事项", "人工操作边界", "回滚/降级路线"],
     downgrade: "没有授权时只能做只读分析、计划或低风险小验证，不能替用户执行外部影响动作。",
@@ -660,7 +660,7 @@ function Advantages() {
           },
           {
             title: "比全量治理更低摩擦",
-            text: "用户只需要说目标和材料，复杂字段由 AI 维护；可逆细节 AI 自行判断，授权、不可逆和高风险边界再回问。",
+            text: "用户只需要说目标和材料，复杂字段由 AI 维护；可逆细节和运行资源由 AI 自行判断，账号/API、外部写入、不可逆和高风险边界再回问。",
             icon: RocketLaunch,
           },
         ].map((item) => (

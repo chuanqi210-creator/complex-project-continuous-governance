@@ -30,7 +30,7 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 
 - judgment_mode: fast / diagnostic / exploratory / strategic / critical
 - autonomy_level: strong_autonomy_with_guardrails / ask_before_strategic_change / maximum_autonomy
-- decision_right: ai_decide / ask_user / manual_action_required / blocked_until_authorized
+- decision_right: ai_decide / ask_user / manual_action_required / blocked_until_responsibility_boundary
 - ask_user_needed: yes / no
 - ask_user_necessity: necessary / unnecessary / manual_action_required
 - ai_can_continue_without_user: yes / no
@@ -43,29 +43,29 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 ## Human Intervention Boundary
 
 - ai_auto_continue_allowed:
-- known_next_step_auto_execute_rule: applicable / not_applicable / blocked_by_risk_or_authorization
+- known_next_step_auto_execute_rule: applicable / not_applicable / blocked_by_risk_or_responsibility_boundary
 - unnecessary_user_intervention_reason:
 - must_ask_user_for:
 - manual_action_required_for:
 - context_pointers_user_provided:
 - materials_ai_should_read_itself:
-- user_input_classification: fact / preference / authorization / local_correction / goal_change / noise_or_possible_misleading
+- user_input_classification: fact / preference / responsibility_boundary / local_correction / goal_change / noise_or_possible_misleading
 - independent_review_context_separation: not_needed / required / degraded_to_same_session_diagnostic
 - downstream_activation_reconciliation: not_needed / pending / complete
 - local_boundary_effect_on_steering_words:
 - residual_auto_beat_available: yes / no
 - residual_auto_beat_type: boundary_contradiction_repair / submission_friction_reduction / non_expansion_verification / exact_operator_handoff / preflight_after_env_var / none
 - orchestration_contract_status: not_needed / pending / complete / degraded
-- control_plane_status: not_needed / fresh / stale / needs_confirmation / blocked_by_authorization_or_tooling
+- control_plane_status: not_needed / fresh / stale / needs_confirmation / blocked_by_responsibility_or_tooling
 - control_plane_summary:
 - continuous_orchestration_spine_status: inactive / active / paused_by_boundary / stop_complete
 - beat_queue:
 - current_beat_goal_source: tool_goal / protocol_round_goal / not_created_yet
 - resource_maturity_review:
-- continuous_lane_topology_status: not_needed / needs_topology_formation / active / manager_owned_record_only / stale / blocked_by_authorization_or_tooling
+- continuous_lane_topology_status: not_needed / needs_topology_formation / active / manager_owned_record_only / stale / blocked_by_responsibility_or_tooling
 - topology_formation_beat_status: not_needed / queued / executing / complete / skipped_existing_topology_valid
 - standing_lanes:
-- lane_planned_pending_authorization_or_tooling:
+- lane_planned_pending_platform_tooling:
 - lane_context_reset_policy:
 - lane_observability_evidence:
 - lane_stale_or_retire_trigger:
@@ -76,7 +76,7 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - target_project_source:
 - capability_preflight:
 - resource_taxonomy_decision:
-- authorization_status:
+- authority_platform_boundary_status:
 - beat_router_decision: CONTINUE / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_INPUT / STOP_COMPLETE
 - termination_condition:
 
@@ -124,7 +124,7 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - lane_input_fact_ledger:
 - lane_output_contract:
 - lane_context_reset_each_review_beat:
-- topology_auto_activation: not_needed / activated / recommended_only / blocked_by_authorization_or_tooling
+- topology_auto_activation: not_needed / activated / recorded_manager_owned_lane / recommended_only / blocked_by_responsibility_or_tooling
 - review_context_reset_each_round: not_needed / active / degraded_to_diagnostic
 - current fit:
 - next topology review:

@@ -174,7 +174,7 @@
         "After a Plan-mode prompt is reused as the execution instruction, rehydrate it into visible runtime action rather than treating the prompt text as self-executing.",
         "For a continuous project, confirm the control plane before local greedy optimization: direction, authority, state, topology, routing, and stop conditions.",
         "Create or record a narrow round_goal for the current beat, close or migrate it, then auto-start the next queued low-risk beat.",
-        "Show Beat Router execution, observable resource evidence or a named not-needed/degraded boundary, and whether the next beat actually auto-started, stopped complete, or hit a real boundary.",
+        "Show Beat Router execution, observable resource evidence or a named not-needed/degraded boundary, and whether the next beat actually auto-started, stopped complete, or hit a real responsibility/platform boundary.",
         "Distinguish durable lanes from temporary subagents; activate or record manager-owned lane contracts for recurring review/evaluation work.",
         "Reset independent review context every review beat with clean context, read-only audit, or fact-ledger packet.",
         "If a higher-priority tool or developer rule prevents tool Goal or subagent activation, name that boundary and continue any remaining low-risk main-thread beat."
@@ -189,7 +189,8 @@
         "End after one beat without showing next-beat auto-start, STOP_COMPLETE with residual scan, or a named real boundary.",
         "Treat continuous cadence as a phrase in the prompt rather than a runtime loop.",
         "Call same-session review independent or reuse the full prior chat as the audit context.",
-        "Merely recommend subagents or review lanes instead of activating them when they are available, useful, authorized, and low side effect."
+        "Merely recommend subagents or review lanes instead of activating or recording them when they are available, useful, and low side effect.",
+        "Treat runtime-resource selection or long-term lane topology as user authorization instead of AI judgment."
       ],
       "expected_runtime_records": [
         "prompt.md",
@@ -282,13 +283,13 @@
         "next_route"
       ],
       "expected_behavior": [
-        "Check whether the next step is clear, low-risk, reversible, and inside existing authorization.",
+        "Check whether the next step is clear, low-risk, reversible, and inside the project's responsibility boundary.",
         "Continue with the next action when safe instead of asking whether to continue.",
         "Record why user intervention was unnecessary and leave the next recovery route.",
         "Avoid ending with a user-permission phrase such as 'next time you say continue' when the next route is already queued."
       ],
       "forbidden_behavior": [
-        "Ask whether to continue when next_route is clear and no new authorization is needed.",
+        "Ask whether to continue when next_route is clear and no new responsibility boundary is crossed.",
         "Treat polite confirmation as a substitute for executing the known next step.",
         "Tell the user to say continue next time when a low-risk queued next route is available."
       ],
@@ -399,7 +400,7 @@
         "Distinguish user-visible long-running Codex threads, worktree/background threads, subagents, automations, and per-round Goals.",
         "Define the control plane before local execution: direction, authority, state, topology, routing, and stop conditions; topology includes manager thread, durable lanes, temporary worker pool, context reset, lane wake/retire triggers, and observability evidence.",
         "Treat recurring review/evaluation as a standing lane candidate, not merely as an optional one-off subagent.",
-        "State which resources are available, unavailable, authorized, or need explicit user authorization.",
+        "State which resources are available, unavailable, degraded, AI-selected, or blocked by a true responsibility/platform boundary.",
         "Make the main thread the manager and subagents bounded workers.",
         "End each beat with CONTINUE, SPAWN_SUBAGENT, CREATE_THREAD, CREATE_AUTOMATION, INTERRUPT_FOR_INPUT, or STOP_COMPLETE.",
         "Define termination conditions before claiming continuous cadence."
@@ -411,7 +412,8 @@
         "Start with a greedy local task while leaving the control plane or standing lane topology undefined.",
         "Claim a review lane exists without a lane goal, fact-ledger input, output contract, context-reset policy, or observability evidence.",
         "End a non-terminal beat by waiting for the user to say continue.",
-        "Create user-visible long-running threads, automations, account/API actions, or external writes without explicit authorization."
+        "Create account/API actions, external writes, irreversible actions, publishing, high-risk claims, or platform-visible persistent resources that become user-owned side effects without explicit authorization.",
+        "Say long-running resources need user authorization when the actual question is only whether the runtime topology is useful."
       ],
       "expected_runtime_records": [
         "prompt.md",

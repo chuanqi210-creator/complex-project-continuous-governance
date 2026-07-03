@@ -11,13 +11,13 @@ Use this file when the agent needs to decide route, depth, tools, collaboration,
 - decision to make:
 - uncertainty_level: low / medium / high
 - reversibility: reversible / partly_reversible / irreversible
-- side_effect_level: none / local_write / external_read / external_write / account_or_permission / real_world_action
+- side_effect_level: none / local_write / external_read / external_write / account_or_platform_boundary / real_world_action
 
 ## Adaptive Judgment
 
 - judgment_mode: fast / diagnostic / exploratory / strategic / critical
 - autonomy_level: strong_autonomy_with_guardrails / ask_before_strategic_change / maximum_autonomy
-- decision_right: ai_decide / ask_user / manual_action_required / blocked_until_authorized
+- decision_right: ai_decide / ask_user / manual_action_required / blocked_until_responsibility_boundary
 - ask_user_needed: yes / no
 - ask_user_necessity: necessary / unnecessary / manual_action_required
 - unnecessary_user_intervention_reason:
@@ -27,6 +27,8 @@ Use this file when the agent needs to decide route, depth, tools, collaboration,
 - user_boundary_respected:
 - continuous_runtime_activation_decision:
 - topology_auto_activation_decision:
+- runtime_resource_discretion_decision:
+- responsibility_boundary_decision:
 - review_context_reset_decision:
 - downstream_activation_reconciliation_decision:
 - residual_auto_beat_decision:
