@@ -19,6 +19,7 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - round_execution_prompt:
 - plan_alignment_to_master_prompt:
 - core_goal_plan_loop_required: yes / no
+- visible_runtime_audit_required: yes / no
 - project_nature: evidence_fill / model_discovery / mixed / execution_delivery
 - convergence_status:
 - judgment_mode: fast / diagnostic / exploratory / strategic / critical
@@ -50,6 +51,8 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - beat_queue_after:
 - stop_boundary_or_continue_reason:
 - stop_complete_basis: objective_complete / validation_clean / residual_scan_clear / not_complete
+- final_validation_after_last_write:
+- final_visible_runtime_audit:
 - unobservable_resource_route:
 - capability review due: yes / no
 - capability decision:

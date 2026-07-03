@@ -90,6 +90,8 @@ After the user confirms execution under continuous cadence, orchestration become
 
 During prompt design, Complex should choose safe recommended defaults instead of asking the user to pick internal routes. User questions are for authority, irreversible choices, public-facing direction changes, or high-risk judgment. Prompt bootstrap, source resolution, project-nature judgment, and the first orchestration contract belong to the manager thread; background threads or subagents may help after that, but they are not the only startup path. A resource is only "activated" when there is observable evidence such as a tool call, thread id, handoff packet, fact ledger, returned summary, file touch, or explicit degraded note.
 
+Final human-readable delivery for continuous work should include a compact runtime audit: the beat goals, Goal/protocol_goal use, executed Beat Router routes, resource evidence or degraded notes, validation after the final write, and the residual-beat scan that justifies stopping. This keeps Complex visible without dumping machine-board state.
+
 ## Best Project Prompt
 
 ```text

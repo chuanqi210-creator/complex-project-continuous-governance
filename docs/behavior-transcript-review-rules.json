@@ -547,7 +547,7 @@
       ]
     },
     "continuous_orchestration_runtime_spine": {
-      "minimum_required_groups": 6,
+      "minimum_required_groups": 9,
       "required_marker_groups": [
         {
           "label": "orchestration spine",
@@ -580,6 +580,14 @@
         {
           "label": "residual beat scan",
           "any": ["residual-beat scan", "residual_beat_scan", "残余可自动小拍", "剩余可自动小拍", "不是停止条件"]
+        },
+        {
+          "label": "visible runtime audit",
+          "any": ["runtime audit", "运行审计", "Goal/protocol", "protocol_goal", "每拍", "资源证据"]
+        },
+        {
+          "label": "final validation after last write",
+          "any": ["最后一次写入后", "after the final write", "final validation", "重新验证", "再次扫描"]
         }
       ],
       "forbidden_marker_groups": [
@@ -604,6 +612,14 @@
           "any": ["跑了 3 拍所以停止", "执行三拍后停止", "ran 3 beats so stop", "at least 3 beats complete so STOP_COMPLETE"]
         },
         {
+          "label": "stops after residual edit without recheck",
+          "any": ["residual scan 发现问题并修改，最终完成", "残余扫描发现问题后已修改，直接完成", "edited after residual scan and STOP_COMPLETE"]
+        },
+        {
+          "label": "claims audit without evidence",
+          "any": ["只读审核子代理抓到了", "审核子代理发现", "independent review found"]
+        },
+        {
           "label": "external boundary stops all internal work",
           "any": ["因为不能 commit 所以停止所有工作", "push 未授权所以不能继续任何小拍"]
         }
@@ -613,7 +629,9 @@
         "Did it maintain a beat queue and per-beat goal rather than a broad project goal?",
         "Did it separate immature resources from the required Goal/Plan/Loop spine?",
         "Did it stop only for STOP_COMPLETE or a named real boundary with no lower-risk internal beat remaining?",
-        "Did STOP_COMPLETE include residual-beat scanning rather than a fixed beat-count threshold?"
+        "Did STOP_COMPLETE include residual-beat scanning rather than a fixed beat-count threshold?",
+        "Did the final answer visibly show per-beat goals, router decisions, resource evidence, final validation, and residual scan?",
+        "If residual scan caused a final edit, did validation and residual scan run again after that edit?"
       ]
     },
     "complex_source_resolution_outside_target_repo": {

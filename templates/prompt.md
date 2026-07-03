@@ -126,9 +126,12 @@ Plan 模式：
 - 确认执行后，保持 beat_queue、当前 round_goal、下一拍候选、Beat Router 和 stop condition。线程、子代理、automation、长期审核通道可以在前几拍判断成熟度和授权；未成熟时记录原因，但不能因此省略本拍 Goal/Plan/Loop。
 - 干净线程、后台 worker、审核通道或 automation 必须产生可观察启动信号；若在首拍窗口内没有 contract、工具动作、文件变化或结果，标记为 degraded_or_unobservable，并切回可用的主线程/更小本地拍/同 session diagnostic review。
 - STOP_COMPLETE 条件：目标完成、验证满足交付契约、residual-beat scan 确认没有有价值的低风险可逆小拍。若只剩低价值润色，说明为什么低于本轮交付阈值。
+- 若 residual-beat scan 触发了新的写入，必须在最后一次写入之后重新运行验证和 residual-beat scan，不能直接 STOP_COMPLETE。
+- 连续工作最终人看版必须包含紧凑运行审计：每拍 round_goal/protocol_round_goal、工具 Goal 是否使用或未用原因、Beat Router 路由、是否自动进入下一拍、子代理/审核/线程/automation 的可观察证据或 degraded/not_needed_with_reason、最后一次写入后的验证、最终 residual-beat scan。
 
 协作拓扑自动启用：
 - 如果临时子代理、并行检查或只读审核能明显降低风险且不触发外部副作用：自动启用可用拓扑，而不是只建议用户以后开启。
+- 如果本轮不启用子代理/线程/审核/automation，必须给出 `not_needed_with_reason` 或真实边界；不能静默跳过用户显式要求的协作拓扑。
 - 若创建用户可见长期线程、新账号/API、外部写入或不可逆动作需要授权：记录 manual_action_required，再回问。
 - 独立评审每一轮都必须清上下文、使用事实账本/只读审核线程/独立 reviewer；同 session 自评只能标为 diagnostic self-review。
 - “已启用”必须有可观察证据：工具调用、线程/worker id、handoff/fact-ledger packet、返回摘要、文件触达，或明确 unavailable/degraded。没有证据时只能写“计划启用/不可观察已降级”，不能写成已经完成独立审核。
@@ -202,7 +205,7 @@ Loop 小循环：
 - 机器恢复记录：
 - 不应暴露的内部信息：
 
-请先解析 Complex 来源和目标项目来源：Complex 使用 `COMPLEX_HOME` 或用户提供路径，目标项目使用当前仓库或用户提供材料。请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。若请求涉及连续节拍、Goal、长期线程、子代理、automation 或独立评审，先输出 Orchestration Contract：能力预检、资源术语消歧、授权状态、总控/worker 分工、Beat Router 和 stop condition。确认执行后进入 continuous_orchestration_spine：维护 beat_queue、本拍 round_goal、下一拍候选、工具 Goal 或 protocol_round_goal、Beat Router 执行结果和停止条件。若在目标仓库中执行，先把上述 steering words 与目标仓库 AGENTS/CONTEXT/current status/stage board/manifest/no-write/manual_action_required 做激活对账，明确哪些 active_now、哪些被真实边界阻断、哪些被项目安全规则覆盖、哪些当前不需要。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。若本地项目处在真实外部输入门，先做硬边界矛盾修复、提交摩擦降低、非扩张验证或精确 operator handoff 等剩余可自动小拍；只有这些都不可用时才暂停，并给出具体文件、字段、env var 和命令。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；长期线程、automation、长期审核通道可先判断成熟度，成熟且获授权后再创建。独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。每拍必须通过 Beat Router 收口并执行非终止路由；除 INTERRUPT_FOR_INPUT 或 STOP_COMPLETE 外，不允许停在等待用户继续。STOP_COMPLETE 前必须做 residual-beat scan；不能因为已执行固定拍数就停止。
+请先解析 Complex 来源和目标项目来源：Complex 使用 `COMPLEX_HOME` 或用户提供路径，目标项目使用当前仓库或用户提供材料。请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。若请求涉及连续节拍、Goal、长期线程、子代理、automation 或独立评审，先输出 Orchestration Contract：能力预检、资源术语消歧、授权状态、总控/worker 分工、Beat Router 和 stop condition。确认执行后进入 continuous_orchestration_spine：维护 beat_queue、本拍 round_goal、下一拍候选、工具 Goal 或 protocol_round_goal、Beat Router 执行结果和停止条件。若在目标仓库中执行，先把上述 steering words 与目标仓库 AGENTS/CONTEXT/current status/stage board/manifest/no-write/manual_action_required 做激活对账，明确哪些 active_now、哪些被真实边界阻断、哪些被项目安全规则覆盖、哪些当前不需要。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。若本地项目处在真实外部输入门，先做硬边界矛盾修复、提交摩擦降低、非扩张验证或精确 operator handoff 等剩余可自动小拍；只有这些都不可用时才暂停，并给出具体文件、字段、env var 和命令。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；若不启用，写明 not_needed_with_reason 或真实边界。长期线程、automation、长期审核通道可先判断成熟度，成熟且获授权后再创建。独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。每拍必须通过 Beat Router 收口并执行非终止路由；除 INTERRUPT_FOR_INPUT 或 STOP_COMPLETE 外，不允许停在等待用户继续。STOP_COMPLETE 前必须做 residual-beat scan；不能因为已执行固定拍数就停止。若 residual scan 触发写入，最后一次写入后必须重新验证并再次扫描。最终人看版要包含紧凑运行审计，证明连续节拍、Goal/协议 Goal、协作拓扑和停止条件确实执行过。
 ```
 
 ## Execution Bridge
