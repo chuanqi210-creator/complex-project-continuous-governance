@@ -56,6 +56,8 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - residual_auto_beat_available: yes / no
 - residual_auto_beat_type: boundary_contradiction_repair / submission_friction_reduction / non_expansion_verification / exact_operator_handoff / preflight_after_env_var / none
 - orchestration_contract_status: not_needed / pending / complete / degraded
+- control_plane_status: not_needed / fresh / stale / needs_confirmation / blocked_by_authorization_or_tooling
+- control_plane_summary:
 - continuous_orchestration_spine_status: inactive / active / paused_by_boundary / stop_complete
 - beat_queue:
 - current_beat_goal_source: tool_goal / protocol_round_goal / not_created_yet

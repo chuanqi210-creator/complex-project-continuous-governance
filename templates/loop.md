@@ -12,6 +12,7 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 - goal_handoff_carrier:
 - continuous_runtime_activation_status:
 - continuous_orchestration_spine_status:
+- control_plane_status:
 - continuous_lane_topology_status:
 - topology_formation_beat:
 - standing_lane_topology:
@@ -46,7 +47,7 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 
 - topology review due: yes / no
 - topology decision:
-- topology formation decision:
+- control plane decision:
 - standing lane decision:
 - long_running_lane_vs_subagent_boundary:
 - standing review lane decision:

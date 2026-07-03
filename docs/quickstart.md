@@ -15,7 +15,7 @@ Read, in order:
 
 Remember the one-sentence model:
 
-> Complex = strong-autonomy continuous execution with standing-lane orchestration, evidence boundaries, anti-human/context-drift safeguards, and an auditable recovery chain.
+> Complex = strong-autonomy continuous execution with control-plane orchestration, evidence boundaries, anti-human/context-drift safeguards, and an auditable recovery chain.
 
 If you are inside a downstream target project, resolve two sources before planning: the installed Complex runtime (`COMPLEX_HOME` or a user-provided path) and the target project materials. Complex provides operating rules; the target project provides facts, constraints, and local boundaries.
 
@@ -26,8 +26,8 @@ Before planning, compress the project into seven actions:
 1. Restore true state.
 2. Classify project nature and convergence.
 3. Assign decision rights and ask-user necessity.
-4. Choose the control shape: continuous projects form or refresh standing lanes first; single-round work picks one highest-leverage question.
-5. Run the lightest useful validation or execution.
+4. Set the control plane, then choose the work target.
+5. Run the lightest useful validation or execution on that target.
 6. Deliver to the right audience.
 7. Leave `next_route`.
 
@@ -76,7 +76,7 @@ If the user only says "按 Complex 推进", give short defaults instead of a mod
 - autonomy boundary:
 - manual-action boundary:
 
-Then make a narrow `round_goal` and execute the lightest useful next action. For continuous projects, the first useful action is often a topology-formation beat: define the manager thread, durable lanes, temporary worker pool, context-reset policy, and stop conditions before local project edits.
+Then make a narrow `round_goal` and execute the lightest useful next action. For continuous projects, first confirm the control plane: direction, authority, state, topology, routing, and stop conditions. If it is already valid, move directly into the work-plane beat.
 
 Decision rights are two-sided:
 
@@ -92,6 +92,7 @@ When the request mentions Plan mode plus continuous cadence, Goal mode, threads,
 - Which runtime resources are available: Goal/tool goal, user-visible Codex thread, worktree/background thread, automation/heartbeat, subagent, browser/API/account tools.
 - Which resource is being used now and why.
 - Which resource is unavailable or needs explicit authorization.
+- Control plane: direction, authority, state, topology, routing, and stop conditions.
 - Standing lane topology: manager thread, recurring review/evaluation lane, evidence/data lane, implementation lane, delivery/editorial lane, or other durable lanes that fit the project.
 - Lane contract: each durable lane has a lane goal, input fact ledger, output contract, context reset rule, wake trigger, stale/retire condition, and observable evidence.
 - Resource boundary: long-running lanes are project responsibilities; temporary subagents are short-lived workers. A subagent can help a lane, but it is not a lane.
@@ -101,7 +102,7 @@ When the request mentions Plan mode plus continuous cadence, Goal mode, threads,
 
 After the user confirms continuous execution, switch from planning to the continuous orchestration spine:
 
-- Start with a topology-formation beat unless a valid standing-lane topology already exists.
+- Confirm the control plane before local execution unless current state already proves it is fresh.
 - Keep a small `beat_queue`.
 - Give every beat a narrow `round_goal`.
 - Use a per-beat tool Goal when available; otherwise record `protocol_round_goal`.
@@ -139,13 +140,13 @@ python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <res
 请先按 Complex 恢复当前状态，并用 7 步行为内核压缩本轮行动。
 Complex 来源使用 `COMPLEX_HOME` 或我提供的路径；目标项目来源使用当前仓库或我提供的材料路径。Complex 提供运行规则，目标项目提供事实材料和本地边界。
 如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成扫描、判断和计划，再进入执行。
-请先显式判断这些 steering words 是否适用，并把适用项写入本轮 prompt/plan：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；每拍窄 Goal / 自动进入下一拍 / 不等我说继续；第一拍先建长期编排拓扑 / 主控线程 / 长期审核评议线程；少问我 / 能推进就继续 / 我给目录你自己读；长期线程和临时子代理分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；目标仓库边界对账 / 真人工边界 / 剩余可自动小拍；编排预检 / Goal mode / 长期线程 / automation / Beat Router / stop condition；只要人看版。
+请先显式判断这些 steering words 是否适用，并把适用项写入本轮 prompt/plan：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；每拍窄 Goal / 自动进入下一拍 / 不等我说继续；控制层优先 / 主控线程 / 长期审核评议通道；少问我 / 能推进就继续 / 我给目录你自己读；长期线程和临时子代理分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；目标仓库边界对账 / 真人工边界 / 剩余可自动小拍；编排预检 / Goal mode / 长期线程 / automation / Beat Router / stop condition；只要人看版。
 先判断本项目是 evidence_fill、model_discovery、mixed 还是 execution_delivery。
 如果缺少我的确认，请优先采用安全推荐默认项并标注为 assumed_default；不要把内部路线选择抛给我。只有主目标、授权、外部写入、不可逆动作、公开口径或高风险判断变化才问我。不要把 AI 自己选的默认项写成“用户选择了”。
 如果下一步已由 next_route / round_goal / 可访问材料说明清楚，请直接推进并说明为什么不需要回问；如果我给了目录、文件或链接，请优先自行读取。
 不要用“下次你说继续时再推进”作为默认收尾。若下一拍已 queued 且低风险可逆，默认自动进入下一拍；若受回合或工具边界限制必须暂停，只记录 next_route，不把用户说“继续”当成许可门。不要因为已经跑了若干拍就停；停止前必须做 residual-beat scan，确认目标、验证、交付契约和可自动小拍都已经收口。若 residual scan 触发了新的写入，必须在最后一次写入之后重新验证并再次扫描，才能 STOP_COMPLETE。
 如果启用连续节拍，每一拍都要建立/记录窄 round_goal，工具 Goal 可用则只承载本拍，不可用则记录 protocol_round_goal；执行 Loop 和 Beat Router 后自动进入下一拍。线程、代理、automation 可以先判断成熟度和授权，不成熟不强开，但不能因此跳过 Goal/Plan/Loop。若需要独立评审，每一轮审核用清上下文、事实账本或只读审核线程，不把同 session 自评说成独立评审。
 如果目标仓库本地规则把某个 steering word 缩窄或阻断，请明确做边界对账：哪些 active_now，哪些 active_but_boundary_blocked，哪些 overridden_by_project_safety，哪些 not_needed_with_reason。遇到真实外部输入门时，先做剩余可自动小拍；只有确实没有低风险内部小拍时，才暂停并给出具体文件、字段、env var 和命令。
-如果请求涉及连续节拍、Goal、长期线程、子代理或 automation，先输出 Orchestration Contract：能力预检、资源术语消歧、长期通道拓扑、授权状态、总控/worker 分工、Beat Router 和 stop condition。连续项目第一拍先做 topology-formation beat：主控线程、长期审核评议线程、资料/证据通道、执行通道、交付通道或其他适配项目的 durable lanes。不要把子代理说成左侧栏长期线程；子代理只是短期 worker。若长期线程或 automation 需要授权，先建立 lane contract 和 manager-owned lane record，能继续的低风险小拍继续推进。
-连续项目先确认或建立长期通道拓扑；单轮任务再只抓一个最高杠杆问题。用最轻有效动作推进，最后给出适合交付对象的人看版，并留下 next_route。
+如果请求涉及连续节拍、Goal、长期线程、子代理或 automation，先输出 Orchestration Contract：能力预检、资源术语消歧、控制层、长期通道拓扑、授权状态、总控/worker 分工、Beat Router 和 stop condition。连续项目先确认控制层：方向、权限、状态、拓扑、路由和停止条件；其中拓扑包括主控线程、长期审核评议通道、资料/证据通道、执行通道、交付通道或其他适配项目的 durable lanes。不要把子代理说成左侧栏长期线程；子代理只是短期 worker。若长期线程或 automation 需要授权，先建立 lane contract 和 manager-owned lane record，能继续的低风险小拍继续推进。
+连续项目先确认控制层；单轮任务再只抓一个最高杠杆问题。用最轻有效动作推进，最后给出适合交付对象的人看版，并留下 next_route。
 ```

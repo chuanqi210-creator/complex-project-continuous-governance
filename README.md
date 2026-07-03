@@ -2,7 +2,7 @@
 
 Complex is a compact runtime kit for pushing complex projects forward with:
 
-**strong-autonomy continuous execution + standing-lane orchestration + evidence boundaries + anti-human/context-drift safeguards + an auditable recovery chain.**
+**strong-autonomy continuous execution + control-plane orchestration + evidence boundaries + anti-human/context-drift safeguards + an auditable recovery chain.**
 
 This repository is the current authoritative Complex Runtime Kit. Install it once as a standalone workspace, then point each target project to that installation.
 
@@ -73,20 +73,20 @@ Complex starts from seven stable behaviors, not from a long menu of gates:
 1. Restore the true current state.
 2. Classify the project nature: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
 3. Assign decision rights: AI handles reversible low-risk details; user confirmation is required for goals, authorization, irreversible actions, public voice, high-risk claims, accounts, payments, publishing, or external writes.
-4. Choose the control shape: continuous projects form or refresh standing lanes before local optimization; single-round work picks the highest-leverage question.
-5. Run the lightest useful validation or execution.
+4. Set the control plane, then choose the work target: continuous projects refresh the operating topology before local optimization; single-round work can go straight to the highest-leverage question.
+5. Run the lightest useful validation or execution on that target.
 6. Deliver to the right audience in the right form.
 7. Leave `next_route` and recovery notes.
 
 The practical default is strong autonomy with guardrails: if the next step is clear, low-risk, reversible, and within existing authorization, AI should continue instead of asking whether to continue. A queued `next_route` is an execution route, not a prompt for the user to say "continue" later. If a real turn or tool boundary stops the run, record the recovery route without making user continuation a permission gate. If the user gives directories, files, links, or material locations, AI should read accessible materials before asking for manual summaries.
 
-When `连续节拍` is selected, it means runtime activation: each beat should create or record a narrow `round_goal`, run the Loop, route the result, and automatically start the next queued low-risk beat. It is not enough to write a plan that remembers the phrase, and a fixed number of beats is not a stop condition. In continuous projects, the first beat should establish or refresh standing lanes before local execution unless a valid lane topology already exists. The runtime should continue until the objective is complete, validation is clean enough for the delivery contract, and a residual-beat scan finds no useful low-risk internal beat remaining. If temporary subagents, parallel review, or read-only audit are clearly useful and authorized, the agent should activate the available topology; independent review must use clean context or a fact-ledger packet each review beat.
+When `连续节拍` is selected, it means runtime activation: each beat should create or record a narrow `round_goal`, run the Loop, route the result, and automatically start the next queued low-risk beat. It is not enough to write a plan that remembers the phrase, and a fixed number of beats is not a stop condition. Continuous projects run from a control plane: direction, authority, state, topology, routing, and stop conditions are refreshed before local execution when they are stale or missing. The runtime should continue until the objective is complete, validation is clean enough for the delivery contract, and a residual-beat scan finds no useful low-risk internal beat remaining.
 
 When Complex is used inside another repository, local project rules can narrow steering words. The agent must reconcile requested steering words against that repo's `AGENTS.md`, `CONTEXT.md`, current state, manifests, stage boards, no-write boundaries, and manual-action records. If a true external-input boundary blocks the main route, the agent should still run allowed residual beats such as boundary contradiction repair, submission-friction reduction, non-expansion verification, or exact operator handoff before pausing.
 
-Plan mode should produce an orchestration contract before execution when the user asks for continuous cadence, Goal mode, threads, subagents, automation, or independent review. For continuous projects, the first active beat is normally topology formation: define the manager thread, standing lanes, temporary worker pool, context-reset policy, and stop conditions before picking local edits. The contract must distinguish user-visible long-running Codex threads from short-lived subagents, check whether Goal/thread/automation tools are available, define manager/worker responsibilities, and end each beat through a route such as `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, or `STOP_COMPLETE`.
+Plan mode should produce an orchestration contract before execution when the user asks for continuous cadence, Goal mode, threads, subagents, automation, or independent review. For continuous projects, the first active beat normally confirms the control plane: manager responsibility, standing lanes, temporary worker pool, context-reset policy, authorization status, Beat Router, and stop conditions. The contract must distinguish user-visible long-running Codex threads from short-lived subagents, check whether Goal/thread/automation tools are available, define manager/worker responsibilities, and end each beat through a route such as `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, or `STOP_COMPLETE`.
 
-After the user confirms execution under continuous cadence, orchestration becomes the default runtime. Each beat should carry a visible `round_goal`, use a per-beat tool Goal when available or a recorded `protocol_round_goal` when not, maintain a small beat queue, execute the Beat Router decision, and continue through queued low-risk work until a real stop condition appears. `STOP_COMPLETE` requires a residual-beat scan, not merely "I ran several beats." Standing lanes are durable responsibilities such as review/evaluation, evidence/data, implementation, external activation, or delivery/editorial. Temporary subagents are short-lived workers that may serve one beat or one lane; they are not long-running lanes. If recurring review is needed, establish a standing review lane early and reset its context with a fresh fact ledger or clean reviewer each review beat. Any background or clean-context resource must produce an observable start signal; if it remains silent, mark it degraded and continue through another safe route.
+After the user confirms execution under continuous cadence, orchestration becomes the default runtime. Each beat should carry a visible `round_goal`, use a per-beat tool Goal when available or a recorded `protocol_round_goal` when not, maintain a small beat queue, execute the Beat Router decision, and continue through queued low-risk work until a real stop condition appears. `STOP_COMPLETE` requires a residual-beat scan, not merely "I ran several beats." Standing lanes are durable control-plane responsibilities such as review/evaluation, evidence/data, implementation, external activation, or delivery/editorial. Temporary subagents are short-lived workers that may serve one beat or one lane; they are not long-running lanes. If recurring review is needed, establish a standing review lane early and reset its context with a fresh fact ledger or clean reviewer each review beat. Any background or clean-context resource must produce an observable start signal; if it remains silent, mark it degraded and continue through another safe route.
 
 During prompt design, Complex should choose safe recommended defaults instead of asking the user to pick internal routes. User questions are for authority, irreversible choices, public-facing direction changes, or high-risk judgment. Prompt bootstrap, source resolution, project-nature judgment, and the first orchestration contract belong to the manager thread; background threads or subagents may help after that, but they are not the only startup path. A resource is only "activated" when there is observable evidence such as a tool call, thread id, handoff packet, fact ledger, returned summary, file touch, or explicit degraded note.
 
@@ -106,7 +106,7 @@ Complex 来源使用 `COMPLEX_HOME` 或我提供的路径；目标项目来源�
 - 证据填充型 / 模型和指标已定
 - 连续节拍 / 总规划别丢 / 每轮 prompt 重水化
 - 每拍窄 Goal / 自动进入下一拍 / 不等我说继续
-- 第一拍先建长期编排拓扑 / 主控线程 / 长期审核评议线程
+- 控制层优先 / 主控线程 / 长期审核评议通道
 - 少问我 / 能推进就继续 / 我给目录你自己读
 - 长期线程和临时子代理分开 / 长期审核评议线程 / 每轮清上下文
 - 独立评审 / 客观审查 / 避免上下文污染
@@ -123,7 +123,7 @@ If the project should move directly:
 我希望结果达到：……
 采用强自治+护栏：可逆、低副作用的细节由 AI 自行判断；目标、授权、不可逆动作、外部写入、公开口径或高风险主张变化时再问我。
 如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成扫描、判断和计划，再进入执行。
-请显式判断这些 steering words 是否适用：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；每拍窄 Goal / 自动进入下一拍 / 不等我说继续；第一拍先建长期编排拓扑 / 主控线程 / 长期审核评议线程；少问我 / 能推进就继续 / 我给目录你自己读；长期线程和临时子代理分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
+请显式判断这些 steering words 是否适用：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；每拍窄 Goal / 自动进入下一拍 / 不等我说继续；控制层优先 / 主控线程 / 长期审核评议通道；少问我 / 能推进就继续 / 我给目录你自己读；长期线程和临时子代理分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
 如果 next_route / round_goal 已经给出清楚、低风险、可逆的下一步，不要以“下次你说继续”作为收尾；默认自动推进到下一拍。每拍都要有本拍 Goal；如果工具 Goal 可用就用于本拍，否则记录 protocol_round_goal。只有真实授权、外部写入、不可逆动作、高风险主张、回合/工具边界，或已经没有低风险内部小拍时才暂停。
 ```
 
@@ -135,7 +135,7 @@ Useful steering words:
 - `连续节拍 / 总规划别丢 / 每轮 prompt 重水化`
 - `每拍窄 Goal / 自动进入下一拍 / 不等我说继续`
 - `少问我 / 能推进就继续 / 我给目录你自己读`
-- `第一拍先建长期编排拓扑 / 主控线程 / 长期审核评议线程`
+- `控制层优先 / 主控线程 / 长期审核评议通道`
 - `长期线程和临时子代理分开 / 每轮清上下文`
 - `独立评审 / 客观审查 / 避免上下文污染`
 - `外部工具 / 账号 / API / skill`

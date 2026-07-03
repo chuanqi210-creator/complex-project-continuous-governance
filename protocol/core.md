@@ -4,7 +4,7 @@ Complex is a runtime protocol for complex projects. It is not a history log, a t
 
 Core model:
 
-> strong-autonomy continuous execution + standing-lane orchestration + evidence boundaries + anti-human/context-drift safeguards + auditable recovery.
+> strong-autonomy continuous execution + control-plane orchestration + evidence boundaries + anti-human/context-drift safeguards + auditable recovery.
 
 ## 1. Behavior Kernel
 
@@ -13,8 +13,8 @@ Core model:
 1. Restore true state: identify `current_basis`, `not_current_basis`, latest user request, current materials, and prior decisions.
 2. Classify project nature: run `project_nature_router` and choose `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
 3. Assign decision rights: run `adaptive_judgment_controller`, `decision_rights_matrix`, and `ask_user_necessity_gate`.
-4. Choose the control shape: for continuous projects, form or refresh standing lanes before local optimization; for single-round work, pick one highest-leverage question.
-5. Run the lightest useful validation or execution.
+4. Set the control plane, then choose the work-plane target: continuous projects refresh the operating topology before local optimization; single-round work can go straight to the highest-leverage question.
+5. Run the lightest useful work-plane validation or execution.
 6. Deliver to the right audience.
 7. Leave `next_route` and recovery notes.
 
@@ -105,9 +105,19 @@ Do not say the user selected a route unless the user actually selected it. Plan 
 
 `manager_owned_bootstrap`: prompt bootstrap, source resolution, project-nature judgment, first orchestration contract, and first beat queue are manager-thread responsibilities. Do not delegate these startup decisions to a background thread, subagent, or clean-context reviewer as the only route. Auxiliary resources may inspect bounded materials after the manager has a usable default route; if they stay silent, the manager continues from its own state.
 
-`continuous_lane_topology`: for continuous projects, the first active beat is a topology-formation beat unless current state already proves that a fresh topology exists. This beat is not optional ceremony. It prevents the system from jumping into a greedy local edit before the project has a durable operating shape.
+`control_plane_orchestration`: before a continuous project enters local execution, the agent must confirm the project control plane. This is the durable operating layer that keeps the project from collapsing into a greedy sequence of local edits.
 
-The topology-formation beat must define or refresh:
+The control plane contains:
+
+- direction: `active_goal_summary`, project nature, convergence state, delivery contract, and stop conditions.
+- authority: decision rights, authorization boundaries, manual-action records, and anti-human-drift rules.
+- state: `current_basis`, `not_current_basis`, open risks, beat queue, recovery route, and validation status.
+- topology: manager responsibility, standing lanes, temporary workers, automations, and their observability.
+- routing: Beat Router, route-back triggers, residual-beat scan, and recovery notes.
+
+`continuous_lane_topology` is the topology part of the control plane. For continuous projects, the first active beat confirms or refreshes this topology unless current state already proves it is fresh. This is a compact control-plane beat, not a new ceremony.
+
+The topology part must define or refresh:
 
 - the manager thread: owns `active_goal_summary`, `current_basis`, `not_current_basis`, `beat_queue`, route decisions, stop conditions, and integration.
 - standing lanes: durable responsibility channels for recurring work such as review/evaluation, evidence/data, implementation, external activation, delivery/editorial, or method discovery.
@@ -115,12 +125,13 @@ The topology-formation beat must define or refresh:
 - lane contracts: each standing lane needs `lane_goal`, scope, input fact ledger, output contract, context-reset rule, wake/event triggers, stale/retire conditions, and observability evidence.
 - authorization status: user-visible long-running Codex threads and automations need explicit authorization/tool availability; if they are unavailable, keep a manager-owned lane record and continue rather than pretending the lane exists.
 
-Standing lanes and temporary subagents are different resources. A subagent can help a lane, but it is not a long-running lane. If recurring review or evaluation will be needed across many beats, create or plan a standing review lane early and require clean context or a fresh fact ledger for each review beat.
+Standing lanes and temporary subagents are different resources inside the same control plane. A subagent can help a lane, but it is not a long-running lane. If recurring review or evaluation will be needed across many beats, create or plan a standing review lane early and require clean context or a fresh fact ledger for each review beat.
 
 The contract must include:
 
 - `capability_preflight`: check or state availability for Codex Goal/tool goals, user-visible Codex threads, worktree/background threads, automations/heartbeats, subagents, browser/API/account tools, and project-local scripts.
 - `resource_taxonomy`: distinguish user-visible long-running Codex threads from short-lived subagents/workers, automations/heartbeats, and per-round tool Goals. Do not call a subagent a long-running thread.
+- `control_plane`: direction, authority, state, topology, routing, and stop conditions.
 - `standing_lane_topology`: manager thread, durable lanes, temporary worker pool, lane context-reset policy, lane observability evidence, and stale/retire triggers.
 - `authorization_status`: user-owned long threads, automations, account/API actions, external writes, publishing, and irreversible operations need explicit authorization. Short-lived read-only subagents may be used when the user requested subagents/review and the task is low-side-effect.
 - `manager_worker_contract`: main thread is the manager; workers/subagents perform bounded work and return summaries. Workers do not complete the global goal or upgrade evidence.
@@ -130,7 +141,7 @@ The contract must include:
 `continuous_orchestration_spine`: once the user confirms execution or says to proceed under continuous cadence / orchestration protocol, the prompt-bootstrap waiting boundary is consumed for low-risk reversible work. The runtime must then maintain:
 
 - a short `beat_queue` with the current beat and at least the next plausible low-risk beat
-- a topology-formation beat or a valid existing `standing_lane_topology`
+- a fresh `control_plane`, including a valid `standing_lane_topology` when continuous responsibilities recur
 - one current `round_goal`
 - a per-beat tool Goal when available, otherwise a recorded `protocol_round_goal`
 - a `Beat Router` decision that is executed, not merely described

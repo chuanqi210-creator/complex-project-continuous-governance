@@ -8,7 +8,7 @@ Complex is in the behavior-compression and runtime-kit phase.
 
 Current narrative:
 
-> Complex = strong-autonomy continuous execution with standing-lane orchestration, evidence boundaries, anti-human/context-drift safeguards, and an auditable recovery chain.
+> Complex = strong-autonomy continuous execution with control-plane orchestration, evidence boundaries, anti-human/context-drift safeguards, and an auditable recovery chain.
 
 Current next route:
 
@@ -19,7 +19,7 @@ Default decision:
 - Do not add new core gates for one-off failures.
 - Prefer behavior cases, transcript review rules, and filled examples before expanding `protocol/core.md`.
 - Treat continuous cadence as active runtime activation: per-beat narrow goal, Loop, route, and safe auto-start of the next queued beat.
-- Treat continuous projects as orchestration-first: the first active beat forms or refreshes standing lanes unless current state already has a valid lane topology.
+- Treat continuous projects as control-plane-first: direction, authority, state, topology, routing, and stop conditions must be fresh enough before local execution.
 - Distinguish durable lanes from temporary subagents. Standing lanes own recurring project responsibilities; subagents are bounded workers and are not long-running threads.
 - For recurring review/evaluation, establish a standing review lane early and reset context with a fresh fact ledger or clean reviewer each review beat.
 - Treat continuous orchestration as the default runtime after confirmation: maintain beat queue, per-beat Goal or protocol_round_goal, Beat Router execution, and clear stop conditions.
@@ -36,7 +36,7 @@ Default decision:
 1. Restore true state.
 2. Classify project nature and convergence.
 3. Assign decision rights and ask-user necessity.
-4. Choose the control shape: continuous projects form or refresh standing lanes first; single-round work picks one highest-leverage question.
+4. Set the control plane, then choose the work target.
 5. Run the lightest useful validation or execution.
 6. Deliver to the right audience.
 7. Leave `next_route`.
