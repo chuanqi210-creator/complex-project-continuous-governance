@@ -18,7 +18,7 @@ This repository is the current authoritative Complex continuous-governance runti
 
 ## Complex Behavior
 
-- Use `complex_behavior_kernel` first: restore true state, classify project nature, assign decision rights, pick one highest-leverage question, run the lightest useful action, deliver to the right audience, and leave next-route recovery.
+- Use `complex_behavior_kernel` first: restore true state, classify project nature, assign decision rights, choose the control shape, run the lightest useful action, deliver to the right audience, and leave next-route recovery. For continuous projects, choosing the control shape means forming or refreshing standing lanes before local optimization.
 - Classify `project_nature` as `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
 - Protect model discovery when the model, metric, research frame, explanation path, or story line is unsettled.
 - Use strong autonomy with guardrails: AI may decide reversible low-side-effect project details; ask before main-goal changes, accounts/APIs/payment/publishing/external writes, irreversible actions, public-voice changes, high-risk real-world action, or strong claims without enough evidence.
@@ -28,9 +28,11 @@ This repository is the current authoritative Complex continuous-governance runti
 - In prompt-based continuous projects, use `round_prompt_rehydration_gate` before each new Plan/Loop so each round inherits the master prompt, current state, and `round_goal`.
 - Do not use one long Codex tool Goal for many continuous rounds. Store continuity in state, master prompt, and `next_route`; use narrow per-round goals when tool Goals are useful.
 - Treat selected `连续节拍` as an active runtime contract: each beat creates or records a narrow `round_goal`, runs the Loop, routes the result, and starts the next queued low-risk reversible beat until a real boundary appears.
-- If temporary subagents, parallel review, or read-only audit are clearly useful and authorized, activate the available topology rather than only recommending it. Reset context for each independent review beat with a fact ledger, clean reviewer, or read-only audit lane.
+- For continuous projects, the first active beat is normally a topology-formation beat: define the manager thread, durable lanes, temporary worker pool, context-reset policy, and stop conditions before choosing local edits. Durable lanes are project responsibilities that persist across beats; subagents are short-lived workers and must not be described as long-running threads.
+- If recurring review or evaluation is needed, create or plan a standing review/evaluation lane early. Reset context for each independent review beat with a fact ledger, clean reviewer, or read-only audit lane.
+- If temporary subagents, parallel review, or read-only audit are clearly useful and authorized, activate the available topology rather than only recommending it. If user-visible long-running threads or automations need authorization/tool availability, record a manager-owned lane contract and continue safe main-thread beats instead of silently skipping topology.
 - When applying Complex to another repository, reconcile steering words against that repository's local `AGENTS.md`, `CONTEXT.md`, current state, stage boards, manifests, no-write boundaries, and manual-action records. If a true external-input boundary blocks the main route, run allowed residual beats before pausing: boundary contradiction repair, submission-friction reduction, non-expansion verification, exact operator handoff, or preflight after the required file/env var appears.
-- When Plan mode is asked to design continuous execution, produce an orchestration contract before business execution: capability preflight, resource taxonomy, authorization status, manager/worker split, Beat Router, and stop conditions. Do not call a short-lived subagent a user-visible long-running Codex thread.
+- When Plan mode is asked to design continuous execution, produce an orchestration contract before business execution: capability preflight, resource taxonomy, standing lane topology, authorization status, manager/worker split, Beat Router, and stop conditions. Do not call a short-lived subagent a user-visible long-running Codex thread.
 
 ## Runtime Kit
 

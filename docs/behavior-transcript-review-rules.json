@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-02",
+  "version": "2026-07-03",
   "purpose": "Marker-based transcript review rules for the Complex behavior regression cases. These rules do not replace human review; they catch obvious omissions and forbidden moves in real agent responses.",
   "case_rules": {
     "setup_card_default": {
@@ -43,7 +43,7 @@
       ]
     },
     "prompt_bootstrap_first": {
-      "minimum_required_groups": 6,
+      "minimum_required_groups": 7,
       "required_marker_groups": [
         {
           "label": "protocol scan before execution",
@@ -60,6 +60,10 @@
         {
           "label": "manager-owned bootstrap",
           "any": ["manager_owned_bootstrap", "主线程负责", "manager thread", "不依赖后台线程", "不把启动判断交给"]
+        },
+        {
+          "label": "orchestration defaults",
+          "any": ["Orchestration Contract", "编排预检", "standing_lane_topology", "第一拍先建长期编排拓扑", "长期线程和临时子代理分开"]
         },
         {
           "label": "execution bridge",
@@ -192,7 +196,7 @@
       ]
     },
     "continuous_runtime_activation_after_plan": {
-      "minimum_required_groups": 5,
+      "minimum_required_groups": 10,
       "required_marker_groups": [
         {
           "label": "runtime activation",
@@ -201,6 +205,14 @@
         {
           "label": "per-beat narrow goal",
           "any": ["每拍窄 Goal", "narrow round_goal", "protocol_round_goal", "本拍窄目标"]
+        },
+        {
+          "label": "topology formation beat",
+          "any": ["topology-formation beat", "第一拍先建长期编排拓扑", "continuous_lane_topology", "standing_lane_topology", "长期通道拓扑"]
+        },
+        {
+          "label": "lane vs subagent boundary",
+          "any": ["长期线程和临时子代理分开", "long_running_lane_vs_subagent_boundary", "standing lanes", "temporary subagents", "子代理不是长期线程"]
         },
         {
           "label": "auto-start next beat",
@@ -217,6 +229,22 @@
         {
           "label": "guardrail boundary",
           "any": ["真实授权", "外部写入", "不可逆", "高风险", "manual_action_required"]
+        },
+        {
+          "label": "beat router execution",
+          "any": ["Beat Router", "Beat Router:", "路由：CONTINUE", "route: CONTINUE", "route=CONTINUE", "SPAWN_SUBAGENT", "CREATE_THREAD", "CREATE_AUTOMATION", "INTERRUPT_FOR_INPUT", "STOP_COMPLETE"]
+        },
+        {
+          "label": "observable activation evidence",
+          "any": ["工具调用", "thread id", "fact-ledger", "handoff", "返回摘要", "文件触达", "可观察证据", "resource evidence", "not_needed_with_reason", "degraded_or_unobservable"]
+        },
+        {
+          "label": "next beat outcome",
+          "any": ["已自动进入下一拍", "next beat auto-started", "下一拍已启动", "STOP_COMPLETE", "真实边界", "named boundary", "next_route 已执行"]
+        },
+        {
+          "label": "validation or residual scan",
+          "any": ["validation", "验证", "residual scan", "residual-beat scan", "残余扫描", "剩余低风险内部小拍"]
         }
       ],
       "forbidden_marker_groups": [
@@ -229,6 +257,22 @@
           "any": ["连续节拍只是提醒", "先不启动下一拍", "只记录连续节拍"]
         },
         {
+          "label": "promise-only activation without execution evidence",
+          "any": ["后续会自动进入下一拍", "后续按这个方向推进", "本轮先给出计划和建议", "之后会自动启用", "计划中将自动启动", "会在后续启动审核线程"]
+        },
+        {
+          "label": "greedy local task before topology",
+          "any": ["先做一个局部最高收益修改，之后再考虑长期线程", "先修这个小问题，长期编排后续再说", "本轮不需要先建拓扑，直接改局部"]
+        },
+        {
+          "label": "subagent substituted for long-running lane",
+          "any": ["子代理就是长期线程", "开一个子代理就等于长期通道", "临时 subagent 可以替代长期审核线程"]
+        },
+        {
+          "label": "plan mode treated as runtime activation",
+          "any": ["Plan 模式已经自动启动连续节拍", "提示词本身已经完成运行激活", "写入 prompt 就等于启动每拍 Goal", "设计完 prompt 后无需再执行 Beat Router"]
+        },
+        {
           "label": "same-session review as independent",
           "any": ["同一上下文也算独立评审", "我可以在当前 session 里独立评审", "无需清上下文"]
         }
@@ -236,7 +280,11 @@
       "human_review_questions": [
         "Did the response turn continuous cadence into active execution rather than a remembered keyword?",
         "Did it create or record a per-beat goal and start the next safe queued beat?",
-        "Did it activate available low-side-effect topology or explain a real authorization/tool boundary?"
+        "For continuous work, did it form or validate standing lanes before local greedy execution?",
+        "Did it distinguish durable lanes from temporary subagents?",
+        "Did it activate available low-side-effect topology or explain a real authorization/tool boundary?",
+        "Does the answer show Beat Router execution and observable resource evidence, rather than only promising future activation?",
+        "If Plan mode produced the prompt, did the execution turn rehydrate that prompt into actual runtime steps?"
       ]
     },
     "external_api_guardrail": {
@@ -506,6 +554,14 @@
           "any": ["resource_taxonomy", "术语消歧", "长期线程", "短生命周期", "子代理不是长期线程"]
         },
         {
+          "label": "standing lane topology",
+          "any": ["standing_lane_topology", "长期通道拓扑", "topology-formation beat", "主控线程", "长期审核评议线程", "lane_goal"]
+        },
+        {
+          "label": "lane context reset",
+          "any": ["context reset", "清上下文", "事实账本", "fact ledger", "lane_context_reset_policy"]
+        },
+        {
           "label": "authorization status",
           "any": ["authorization_status", "明确授权", "需要用户授权", "external writes", "账号/API"]
         },
@@ -532,6 +588,14 @@
           "any": ["子代理就是左侧栏长期线程", "subagent 就是长期 thread", "开了智能体就等于开了长期线程"]
         },
         {
+          "label": "greedy plan before topology",
+          "any": ["先选一个最高杠杆小问题执行，长期拓扑以后再补", "无需先建长期通道", "先局部优化，再考虑主控线程"]
+        },
+        {
+          "label": "review lane without contract",
+          "any": ["审核线程已建立但暂不需要事实账本", "长期审核线程不需要清上下文", "review lane exists without output contract"]
+        },
+        {
           "label": "waits in nonterminal route",
           "any": ["等你说继续", "下次你说继续", "请确认是否继续"]
         },
@@ -543,6 +607,7 @@
       "human_review_questions": [
         "Did the response distinguish Plan design from runtime orchestration?",
         "Did it distinguish subagents from user-visible long-running threads?",
+        "Did it define standing lanes and context-reset policy before local execution?",
         "Did it route each beat through a nonterminal or terminal route with clear stop conditions?"
       ]
     },
@@ -558,6 +623,14 @@
           "any": ["beat_queue", "拍队列", "下一拍候选", "current beat", "next plausible beat"]
         },
         {
+          "label": "topology formation beat",
+          "any": ["topology-formation beat", "第一拍先建长期编排拓扑", "continuous_lane_topology", "standing_lane_topology", "manager-owned lane"]
+        },
+        {
+          "label": "lane vs worker split",
+          "any": ["standing lanes", "durable lanes", "temporary worker", "长期线程和临时子代理分开", "子代理不是长期线程"]
+        },
+        {
           "label": "per-beat goal",
           "any": ["round_goal", "每拍 Goal", "protocol_round_goal", "per-beat tool Goal", "本拍目标"]
         },
@@ -567,7 +640,7 @@
         },
         {
           "label": "resource maturity",
-          "any": ["resource_maturity_review", "成熟度", "线程", "subagent", "automation", "review lane"]
+          "any": ["resource_maturity_review", "成熟度", "线程", "subagent", "automation", "review lane", "standing lane"]
         },
         {
           "label": "orchestration watchdog",
@@ -594,6 +667,14 @@
         {
           "label": "plan-only orchestration",
           "any": ["只给出编排建议", "先输出计划，等你确认后再执行", "orchestration as a recommendation only"]
+        },
+        {
+          "label": "skips topology formation",
+          "any": ["先直接做局部修改，不需要拓扑形成拍", "跳过长期通道拓扑", "topology can wait until later"]
+        },
+        {
+          "label": "subagent as standing lane",
+          "any": ["子代理就是长期通道", "subagent is the standing lane", "临时子代理等同长期线程"]
         },
         {
           "label": "goal missing",
@@ -626,7 +707,9 @@
       ],
       "human_review_questions": [
         "Did the response enter a real orchestration runtime after the user's execution request?",
+        "Did it run or validate a topology-formation beat before local greedy execution?",
         "Did it maintain a beat queue and per-beat goal rather than a broad project goal?",
+        "Did it distinguish standing lanes from temporary workers/subagents?",
         "Did it separate immature resources from the required Goal/Plan/Loop spine?",
         "Did it stop only for STOP_COMPLETE or a named real boundary with no lower-risk internal beat remaining?",
         "Did STOP_COMPLETE include residual-beat scanning rather than a fixed beat-count threshold?",

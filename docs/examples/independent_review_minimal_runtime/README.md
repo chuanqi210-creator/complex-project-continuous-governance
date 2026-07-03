@@ -10,6 +10,8 @@ This is not a new mandatory Runtime Kit template. It is a filled example for the
 - A clean-context review route for true independent review.
 - A same-session diagnostic route when independence is not required or no separate reviewer is available.
 - The boundary between "useful self-check" and "independent audit."
+- How a recurring review/evaluation responsibility becomes a standing lane instead of a one-off subagent.
+- A context-reset policy for each review beat.
 
 ## Files
 

@@ -60,6 +60,13 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - beat_queue:
 - current_beat_goal_source: tool_goal / protocol_round_goal / not_created_yet
 - resource_maturity_review:
+- continuous_lane_topology_status: not_needed / needs_topology_formation / active / manager_owned_record_only / stale / blocked_by_authorization_or_tooling
+- topology_formation_beat_status: not_needed / queued / executing / complete / skipped_existing_topology_valid
+- standing_lanes:
+- lane_planned_pending_authorization_or_tooling:
+- lane_context_reset_policy:
+- lane_observability_evidence:
+- lane_stale_or_retire_trigger:
 - orchestration_watchdog_status: not_needed / observing / degraded_or_unobservable / recovered
 - unobservable_resource_route: main_thread / smaller_local_beat / diagnostic_review / interrupt_for_input / none
 - complex_source_resolution_status: explicit_user_path / local_authoritative_path / sibling_repo / target_adapter_only / unavailable_need_user_path
@@ -107,7 +114,14 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 ## Collaboration Topology
 
 - main thread responsibility:
-- subagents or long-running threads:
+- standing lanes:
+- temporary subagents or workers:
+- long_running_lane_vs_subagent_boundary: clear / unclear / violated
+- standing review or evaluation lane:
+- lane_goal:
+- lane_input_fact_ledger:
+- lane_output_contract:
+- lane_context_reset_each_review_beat:
 - topology_auto_activation: not_needed / activated / recommended_only / blocked_by_authorization_or_tooling
 - review_context_reset_each_round: not_needed / active / degraded_to_diagnostic
 - current fit:

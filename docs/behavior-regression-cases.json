@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-02",
+  "version": "2026-07-03",
   "purpose": "A compact behavior regression pack for checking whether Complex documentation still covers the behaviors that matter most when a new agent uses the protocol.",
   "required_case_ids": [
     "setup_card_default",
@@ -56,6 +56,7 @@
         "complex_behavior_kernel",
         "protocol_scan_sequence",
         "complex_prompt_bootstrap_gate",
+        "orchestration_contract",
         "copy_ready_prompt",
         "execution_bridge"
       ],
@@ -64,6 +65,7 @@
         "Output a project-specific copy-ready prompt.",
         "Mark safe route choices as assumed defaults instead of asking for routine planning preferences.",
         "Keep source resolution, project-nature judgment, and first orchestration contract in the manager thread instead of delegating bootstrap as the only route.",
+        "When the copied prompt may drive continuous execution, include standing lane topology and the long-running-lane vs temporary-subagent distinction.",
         "Wait for confirmation before executing or external writes."
       ],
       "forbidden_behavior": [
@@ -161,18 +163,30 @@
       "expected_triggers": [
         "continuous_runtime_activation_contract",
         "per_round_goal_lifecycle_gate",
+        "continuous_lane_topology",
+        "long_running_lane_vs_subagent_boundary",
         "known_next_step_auto_execute_rule",
         "topology_auto_activation_policy",
         "review_context_reset_each_round"
       ],
       "expected_behavior": [
         "Treat confirmed continuous cadence as an execution contract, not a remembered keyword.",
+        "After a Plan-mode prompt is reused as the execution instruction, rehydrate it into visible runtime action rather than treating the prompt text as self-executing.",
+        "For a continuous project, run or validate a topology-formation beat before local greedy optimization: manager thread, standing lanes, temporary worker pool, context-reset policy, and stop conditions.",
         "Create or record a narrow round_goal for the current beat, close or migrate it, then auto-start the next queued low-risk beat.",
-        "Activate available low-side-effect subagent, parallel-review, or read-only audit topology when it clearly helps.",
-        "Reset independent review context every review beat with clean context, read-only audit, or fact-ledger packet."
+        "Show Beat Router execution, observable resource evidence or a named not-needed/degraded boundary, and whether the next beat actually auto-started, stopped complete, or hit a real boundary.",
+        "Distinguish durable lanes from temporary subagents; activate or record manager-owned lane contracts for recurring review/evaluation work.",
+        "Reset independent review context every review beat with clean context, read-only audit, or fact-ledger packet.",
+        "If a higher-priority tool or developer rule prevents tool Goal or subagent activation, name that boundary and continue any remaining low-risk main-thread beat."
       ],
       "forbidden_behavior": [
         "Output only a plan and wait for user authorization despite a clear low-risk next route.",
+        "Pass by repeating continuous-cadence steering words without per-beat execution evidence.",
+        "Treat Plan mode, a generated prompt, or a written orchestration contract as proof that runtime activation already happened.",
+        "Jump directly into a local highest-marginal edit before forming or validating standing lane topology.",
+        "Treat a short-lived subagent as a long-running project lane.",
+        "Skip standing review/evaluation lane planning when recurring review is clearly part of the project.",
+        "End after one beat without showing next-beat auto-start, STOP_COMPLETE with residual scan, or a named real boundary.",
         "Treat continuous cadence as a phrase in the prompt rather than a runtime loop.",
         "Call same-session review independent or reuse the full prior chat as the audit context.",
         "Merely recommend subagents or review lanes instead of activating them when they are available, useful, authorized, and low side effect."
@@ -376,12 +390,15 @@
         "orchestration_contract",
         "capability_preflight",
         "resource_taxonomy",
+        "continuous_lane_topology",
         "manager_worker_contract",
         "beat_router"
       ],
       "expected_behavior": [
         "Design runtime orchestration before business execution.",
         "Distinguish user-visible long-running Codex threads, worktree/background threads, subagents, automations, and per-round Goals.",
+        "Define standing lane topology before local execution: manager thread, durable lanes, temporary worker pool, context reset, lane wake/retire triggers, and observability evidence.",
+        "Treat recurring review/evaluation as a standing lane candidate, not merely as an optional one-off subagent.",
         "State which resources are available, unavailable, authorized, or need explicit user authorization.",
         "Make the main thread the manager and subagents bounded workers.",
         "End each beat with CONTINUE, SPAWN_SUBAGENT, CREATE_THREAD, CREATE_AUTOMATION, INTERRUPT_FOR_INPUT, or STOP_COMPLETE.",
@@ -391,6 +408,8 @@
         "Treat Plan mode as enough to run continuous execution without a runtime orchestration contract.",
         "Call a short-lived subagent a long-running Codex thread.",
         "Use subagents as a substitute for Goal mode, thread automation, or user-visible long-running threads.",
+        "Start with a greedy local task while leaving standing lane topology undefined.",
+        "Claim a review lane exists without a lane goal, fact-ledger input, output contract, context-reset policy, or observability evidence.",
         "End a non-terminal beat by waiting for the user to say continue.",
         "Create user-visible long-running threads, automations, account/API actions, or external writes without explicit authorization."
       ],
@@ -409,15 +428,19 @@
         "continuous_orchestration_spine",
         "continuous_runtime_activation_contract",
         "orchestration_contract",
+        "continuous_lane_topology",
+        "long_running_lane_vs_subagent_boundary",
         "per_round_goal_lifecycle_gate",
         "beat_router"
       ],
       "expected_behavior": [
         "Treat the user's execution request as confirmation to enter the continuous orchestration spine for low-risk reversible work.",
+        "Start with a topology-formation beat unless current state already has a valid standing lane topology.",
         "Maintain a beat_queue with the current beat and next plausible low-risk beat.",
         "Create or record a per-beat round_goal and use a tool Goal when available, otherwise protocol_round_goal.",
         "Execute the Beat Router decision before ending the beat.",
-        "Assess thread, subagent, review-lane, and automation maturity over the first beats without blocking Goal/Plan/Loop.",
+        "Assess thread, standing-lane, temporary-subagent, review-lane, and automation maturity over the first beats without blocking Goal/Plan/Loop.",
+        "Create or record a standing review/evaluation lane with a clean-context or fact-ledger reset policy when recurring review is expected.",
         "Use an orchestration watchdog so silent background or clean-context resources are degraded and rerouted instead of waited on indefinitely.",
         "Treat fixed beat counts as smoke-test floors, not completion criteria; before STOP_COMPLETE, run a residual-beat scan.",
         "Expose a compact final runtime audit: per-beat goals, Goal/protocol_goal source, Beat Router routes, resource evidence/degraded notes, validation after the final write, and residual scan.",
@@ -425,6 +448,9 @@
       ],
       "forbidden_behavior": [
         "Treat the orchestration protocol as a plan-only explanation after the user asked to proceed.",
+        "Skip topology formation and jump into a local greedy task while the continuous project lacks durable lanes.",
+        "Call a temporary subagent a long-running lane or thread.",
+        "Run review repeatedly in the same context while claiming a standing independent review lane.",
         "Skip Goal or protocol_round_goal because threads, subagents, or automation are not mature yet.",
         "End a non-terminal beat by asking the user whether to continue.",
         "Wait indefinitely for a silent clean-context thread, worker, review lane, or automation.",

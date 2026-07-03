@@ -16,8 +16,9 @@ This prompt is an execution contract for one project. It does not replace the Co
 - 证据填充型 / 模型和指标已定
 - 连续节拍 / 总规划别丢 / 每轮 prompt 重水化
 - 每拍窄 Goal / 自动进入下一拍 / 不等我说继续
+- 第一拍先建长期编排拓扑 / 主控线程 / 长期审核评议线程
 - 少问我 / 能推进就继续 / 我给目录你自己读
-- 自动启用合适子代理 / 只读审核线程 / 每轮清上下文
+- 长期线程和临时子代理分开 / 每轮清上下文
 - 独立评审 / 客观审查 / 避免上下文污染
 - 外部工具 / 账号 / API / skill
 - 目标仓库边界对账 / 真人工边界 / 剩余可自动小拍
@@ -58,6 +59,8 @@ This prompt is an execution contract for one project. It does not replace the Co
 - Cadence:
 - Continuous runtime activation:
 - Review context reset policy:
+- Standing lane topology:
+- First topology-formation beat:
 - Downstream activation reconciliation:
 - Orchestration contract:
 - Project nature and convergence preference:
@@ -104,6 +107,16 @@ Complex 来源：
 
 协作拓扑：
 
+长期通道拓扑：
+- 主控线程：
+- 长期审核/评议通道：
+- 资料/证据通道：
+- 执行通道：
+- 交付/编辑通道：
+- 临时子代理池：
+- 每个长期通道的清上下文规则：
+- 每个长期通道的唤醒/停用条件：
+
 推进节拍：
 
 Plan 模式：
@@ -112,6 +125,7 @@ Plan 模式：
 - Plan 阶段不要把内部路线选择默认抛回给用户；如果存在安全推荐项，直接按 `assumed_default` 选择并说明依据。只有主目标、授权、不可逆动作、公开口径或高风险判断变化才回问。
 - 不要把 AI 自行选择的默认项写成“用户选择了”。只有用户实际回复选择时才这样表述。
 - prompt-bootstrap、Complex/目标源解析、项目性质判断、首个 Orchestration Contract 和第一组 beat_queue 由主线程负责，不把这些启动判断唯一交给后台线程、子代理或审核通道。辅助资源静默时，主线程按已知安全路线继续。
+- 连续项目的第一拍默认是 topology-formation beat：先建立或刷新主控线程、长期职责通道、临时 worker 池、清上下文策略和 stop condition，再进入局部最高杠杆小拍。不要用一个局部文件修改或局部资料检查替代长期编排拓扑。
 
 自动推进默认：
 - 如果 next_route / round_goal / state 已经给出清楚、低风险、可逆且已授权的下一步：直接进入下一拍，不要等待用户说“继续”。
@@ -121,6 +135,7 @@ Plan 模式：
 
 连续节拍运行契约：
 - 如果选择“连续节拍”：它是执行契约，不是提示词装饰词。
+- 连续项目第一拍先做长期编排拓扑，除非 state 已经证明 standing_lane_topology 仍然有效。
 - 每一拍必须先重水化 round_execution_prompt，再建立/记录一个窄 round_goal，执行 Loop、评分路由、关闭或迁移本拍，然后自动进入下一拍 queued 的低风险可逆任务。
 - Codex 工具 Goal 如果可用，只用于当前一拍；完成后立刻创建/记录下一拍 protocol_round_goal。不要用一个长期工具 Goal 承载几十拍，也不要等用户再说继续才开启下一拍。
 - 确认执行后，保持 beat_queue、当前 round_goal、下一拍候选、Beat Router 和 stop condition。线程、子代理、automation、长期审核通道可以在前几拍判断成熟度和授权；未成熟时记录原因，但不能因此省略本拍 Goal/Plan/Loop。
@@ -131,7 +146,8 @@ Plan 模式：
 
 协作拓扑自动启用：
 - 如果临时子代理、并行检查或只读审核能明显降低风险且不触发外部副作用：自动启用可用拓扑，而不是只建议用户以后开启。
-- 如果本轮不启用子代理/线程/审核/automation，必须给出 `not_needed_with_reason` 或真实边界；不能静默跳过用户显式要求的协作拓扑。
+- 长期线程/通道和临时子代理必须分开判断：长期线程/通道用于跨多拍反复出现的责任，子代理只做短期 bounded work。
+- 如果本轮不启用子代理/线程/审核/automation，必须给出 `not_needed_with_reason` 或真实边界；不能静默跳过用户显式要求的协作拓扑。若长期通道需要但暂时不能创建用户可见线程，写入 manager-owned lane record，而不是把它降级成“以后建议”。
 - 若创建用户可见长期线程、新账号/API、外部写入或不可逆动作需要授权：记录 manual_action_required，再回问。
 - 独立评审每一轮都必须清上下文、使用事实账本/只读审核线程/独立 reviewer；同 session 自评只能标为 diagnostic self-review。
 - “已启用”必须有可观察证据：工具调用、线程/worker id、handoff/fact-ledger packet、返回摘要、文件触达，或明确 unavailable/degraded。没有证据时只能写“计划启用/不可观察已降级”，不能写成已经完成独立审核。
@@ -145,6 +161,7 @@ Plan 模式：
 运行编排协议：
 - 先做 capability_preflight：Goal/tool goal、左侧栏长期 Codex thread、worktree/background thread、automation/heartbeat、subagent、browser/API/account tools、项目本地脚本分别是否可用。
 - 先做 resource_taxonomy：Codex thread 是用户可见长期线程；subagent 是短生命周期 worker；automation/heartbeat 是定时唤醒；per-round Goal 是当前一拍目标。不要把子代理叫成长线程。
+- 先做 standing_lane_topology：主控线程、长期审核评议通道、资料/证据通道、执行通道、交付通道、临时 worker 池；每个长期通道写清 lane_goal、输入事实账本、输出契约、清上下文策略、唤醒条件、停用条件和可观察证据。
 - 明确 authorization_status：创建用户可见长期 thread、automation、账号/API、外部写入、发布或不可逆动作需要明确授权；用户已要求只读审核/子代理时，可在低副作用场景直接启用短生命周期子代理。
 - 主线程是 manager，只维护 global_goal、beat_queue、current_basis/not_current_basis、open resources、stop conditions、next beat；worker 只做 bounded work 并回传摘要。
 - 每拍结束必须执行 Beat Router：CONTINUE / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_INPUT / STOP_COMPLETE。
@@ -157,8 +174,9 @@ Steering words to preserve:
 - 证据填充型 / 模型和指标已定：
 - 连续节拍 / 总规划别丢 / 每轮 prompt 重水化：
 - 每拍窄 Goal / 自动进入下一拍 / 不等我说继续：
+- 第一拍先建长期编排拓扑 / 主控线程 / 长期审核评议线程：
 - 少问我 / 能推进就继续 / 我给目录你自己读：
-- 自动启用合适子代理 / 只读审核线程 / 每轮清上下文：
+- 长期线程和临时子代理分开 / 每轮清上下文：
 - 独立评审 / 客观审查 / 避免上下文污染：
 - 外部工具 / 账号 / API / skill：
 - 目标仓库边界对账 / 真人工边界 / 剩余可自动小拍：
@@ -205,7 +223,7 @@ Loop 小循环：
 - 机器恢复记录：
 - 不应暴露的内部信息：
 
-请先解析 Complex 来源和目标项目来源：Complex 使用 `COMPLEX_HOME` 或用户提供路径，目标项目使用当前仓库或用户提供材料。请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。若请求涉及连续节拍、Goal、长期线程、子代理、automation 或独立评审，先输出 Orchestration Contract：能力预检、资源术语消歧、授权状态、总控/worker 分工、Beat Router 和 stop condition。确认执行后进入 continuous_orchestration_spine：维护 beat_queue、本拍 round_goal、下一拍候选、工具 Goal 或 protocol_round_goal、Beat Router 执行结果和停止条件。若在目标仓库中执行，先把上述 steering words 与目标仓库 AGENTS/CONTEXT/current status/stage board/manifest/no-write/manual_action_required 做激活对账，明确哪些 active_now、哪些被真实边界阻断、哪些被项目安全规则覆盖、哪些当前不需要。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。若本地项目处在真实外部输入门，先做硬边界矛盾修复、提交摩擦降低、非扩张验证或精确 operator handoff 等剩余可自动小拍；只有这些都不可用时才暂停，并给出具体文件、字段、env var 和命令。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；若不启用，写明 not_needed_with_reason 或真实边界。长期线程、automation、长期审核通道可先判断成熟度，成熟且获授权后再创建。独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。每拍必须通过 Beat Router 收口并执行非终止路由；除 INTERRUPT_FOR_INPUT 或 STOP_COMPLETE 外，不允许停在等待用户继续。STOP_COMPLETE 前必须做 residual-beat scan；不能因为已执行固定拍数就停止。若 residual scan 触发写入，最后一次写入后必须重新验证并再次扫描。最终人看版要包含紧凑运行审计，证明连续节拍、Goal/协议 Goal、协作拓扑和停止条件确实执行过。
+请先解析 Complex 来源和目标项目来源：Complex 使用 `COMPLEX_HOME` 或用户提供路径，目标项目使用当前仓库或用户提供材料。请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。若请求涉及连续节拍、Goal、长期线程、子代理、automation 或独立评审，先输出 Orchestration Contract：能力预检、资源术语消歧、standing_lane_topology、授权状态、总控/worker 分工、Beat Router 和 stop condition。连续项目确认执行后的第一拍默认是 topology-formation beat：建立主控线程、长期审核评议通道、资料/证据通道、执行通道、交付通道和临时 worker 池；每个长期通道写清 lane_goal、输入事实账本、输出契约、清上下文策略、唤醒条件、停用条件和可观察证据。不要把临时子代理当成长期线程，也不要用局部最高边际收益的小修改替代长期编排拓扑。确认执行后进入 continuous_orchestration_spine：维护 beat_queue、本拍 round_goal、下一拍候选、工具 Goal 或 protocol_round_goal、Beat Router 执行结果和停止条件。若在目标仓库中执行，先把上述 steering words 与目标仓库 AGENTS/CONTEXT/current status/stage board/manifest/no-write/manual_action_required 做激活对账，明确哪些 active_now、哪些被真实边界阻断、哪些被项目安全规则覆盖、哪些当前不需要。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且已授权的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具或权限边界限制必须暂停，只记录 next_route 和暂停原因。若本地项目处在真实外部输入门，先做硬边界矛盾修复、提交摩擦降低、非扩张验证或精确 operator handoff 等剩余可自动小拍；只有这些都不可用时才暂停，并给出具体文件、字段、env var 和命令。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；若不启用，写明 not_needed_with_reason 或真实边界。长期线程、automation、长期审核通道可先判断成熟度，成熟且获授权后再创建；不能创建用户可见线程时，先建立 manager-owned lane record 并继续主线程低风险小拍。独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。每拍必须通过 Beat Router 收口并执行非终止路由；除 INTERRUPT_FOR_INPUT 或 STOP_COMPLETE 外，不允许停在等待用户继续。STOP_COMPLETE 前必须做 residual-beat scan；不能因为已执行固定拍数就停止。若 residual scan 触发写入，最后一次写入后必须重新验证并再次扫描。最终人看版要包含紧凑运行审计，证明连续节拍、Goal/协议 Goal、长期通道拓扑/临时 worker、协作拓扑和停止条件确实执行过。
 ```
 
 ## Execution Bridge

@@ -36,7 +36,7 @@ const pages = [
 const coreOutcomes = [
   {
     title: "强自治连续推进",
-    text: "AI 默认按 7 个行为内核持续推进：恢复状态、判断项目性质、划清决策权、抓最高杠杆问题、轻量执行、按对象交付、留下 next_route。",
+    text: "AI 默认按 7 个行为内核持续推进：恢复状态、判断项目性质、划清决策权、先建控制形态或抓关键问题、轻量执行、按对象交付、留下 next_route。",
     icon: Target,
   },
   {
@@ -109,7 +109,7 @@ const capabilityGroups = [
     title: "行为内核",
     summary: "先做 7 个稳定行为，再查具体 gate 名称。",
     detail:
-      "complex_behavior_kernel 把新项目推进压缩为：恢复真实状态、判断项目性质、划清决策权、抓最高杠杆问题、轻量验证/执行、按对象交付、留下 next_route。",
+      "complex_behavior_kernel 把新项目推进压缩为：恢复真实状态、判断项目性质、划清决策权、选择控制形态、轻量验证/执行、按对象交付、留下 next_route。",
     icon: FileMagnifyingGlass,
   },
   {
@@ -141,10 +141,17 @@ const capabilityGroups = [
     icon: CheckCircle,
   },
   {
-    title: "能力与拓扑",
-    summary: "显性判断工具、skill、API、账号、子代理和长期线程，但不机械打断。",
+    title: "长期通道编排",
+    summary: "连续项目第一拍先建主控与长期职责通道，再进入局部执行。",
     detail:
-      "capability_discovery_cadence_gate 以事件触发为主；无事件时 lightweight keep。外部写入、账号、付款和发布仍进入授权护栏。",
+      "continuous_lane_topology 要求区分 manager thread、standing lanes 和 temporary subagents。长期审核评议、证据、执行、交付等反复职责要有 lane_goal、事实账本、输出契约、清上下文策略和停用条件。",
+    icon: ArrowsSplit,
+  },
+  {
+    title: "能力与拓扑",
+    summary: "显性判断工具、skill、API、账号、长期通道和短期 worker，但不机械打断。",
+    detail:
+      "capability_discovery_cadence_gate 以事件触发为主；无事件时 lightweight keep。子代理是短期 worker，不等于长期线程；外部写入、账号、付款和发布仍进入授权护栏。",
     icon: WarningDiamond,
   },
   {
@@ -184,9 +191,9 @@ const mechanismSteps = [
   },
   {
     k: "04",
-    title: "抓最高杠杆问题",
-    text: "每轮只处理最能降低返工或推动交付的主问题，不被局部资料缺口和工具兴趣劫持。",
-    output: "round_goal",
+    title: "选择控制形态",
+    text: "连续项目先建立或刷新主控线程、长期通道和清上下文规则；单轮任务再抓最高杠杆问题。",
+    output: "standing_lane_topology / round_goal",
   },
   {
     k: "05",
@@ -360,7 +367,7 @@ function Overview({ go }) {
           <p className="eyebrow">适用于复杂项目持续推进</p>
           <h1>把复杂项目，推进成可恢复、可验证、可交付的连续行动</h1>
           <p className="hero-copy">
-            这套持续治理协议不是一串 gate 名称，而是一套行为内核：每轮先恢复真实状态，判断项目性质和决策边界，再选择一个最高杠杆问题，用最轻有效动作推进，并留下下一轮能接上的恢复线索。
+            这套持续治理协议不是一串 gate 名称，而是一套行为内核：每轮先恢复真实状态，判断项目性质和决策边界；连续项目先确认长期通道拓扑，单轮任务再选择最高杠杆问题；随后用最轻有效动作推进，并留下下一轮能接上的恢复线索。
           </p>
           <div className="hero-actions">
             <button className="primary-action" type="button" onClick={() => go("mechanism")}>

@@ -74,6 +74,32 @@ decision: no_change / update_rule / update_case / update_example / promote_candi
 notes:
 ```
 
+## Recent Real Feedback
+
+```yaml
+case_id: continuous_runtime_activation_after_plan
+transcript_location: user-reported downstream run, 2026-07-03
+marker_passed_before_change: true for a synthetic bad response that repeated continuous-cadence keywords
+marker_passed_after_change: false for the same bad response; true for a minimal response with Beat Router, resource evidence, validation, and residual scan
+human_passed: no
+user_correction_count: 1
+main_failure_if_any: Plan-mode prompt design said continuous cadence, per-beat goals, auto-start, subagents, and context-reset review were defaults, but execution still behaved like plan-only work: no visible per-beat Goal lifecycle, no next-beat auto-start evidence, no automatic low-side-effect topology activation, and no per-review context reset evidence.
+decision: update_rule
+notes: Tightened continuous_runtime_activation_after_plan to require execution evidence beyond steering-word recall: Beat Router execution, observable resource evidence or named not-needed/degraded boundary, next-beat outcome, validation/residual scan, and explicit rejection of promise-only future activation.
+```
+
+```yaml
+case_id: orchestration_preflight_contract / continuous_orchestration_runtime_spine
+transcript_location: user-reported downstream runs, 2026-07-03
+marker_passed_before_change: likely partial; responses could mention threads/subagents while still optimizing a local beat first
+marker_passed_after_change: pending real transcript review
+human_passed: no
+user_correction_count: 1
+main_failure_if_any: The agent interpreted multi-threading as optional short-lived subagents. For long-running Complex projects, the first execution beat should form a durable manager/lane topology before local greedy execution: manager thread, standing review/evaluation lane, evidence/data lane, implementation lane, delivery lane, temporary worker pool, context reset policy, and stop conditions.
+decision: update_rule
+notes: Reframed continuous orchestration around standing lanes. A subagent is a temporary worker, not a long-running project lane. Recurring review/evaluation requires a standing lane or manager-owned lane record with a clean-context/fact-ledger reset policy.
+```
+
 Use this compact record for end-to-end project samples:
 
 ```yaml

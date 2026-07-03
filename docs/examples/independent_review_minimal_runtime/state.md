@@ -24,6 +24,17 @@
 - delivery contract: separate diagnostic self-check from independent review result.
 - next-route recovery: if independence is required, dispatch clean-context review; if not, deliver diagnostic with downgrade label.
 
+## Standing Lane Topology
+
+- manager thread: owns the project goal, evidence boundary, review trigger, integration decision, and next_route.
+- standing review/evaluation lane: active when review repeats across beats or affects acceptance.
+- lane_goal: test whether claims, evidence, decisions, and delivery language are supported without inheriting same-session bias.
+- lane_input_fact_ledger: fact-ledger.md plus the artifact under review; exclude persuasion-heavy chat history by default.
+- lane_output_contract: findings, unsupported claims, evidence gaps, route-back recommendation, and confidence boundary.
+- lane_context_reset_each_review_beat: required; each beat starts from a fresh fact ledger or clean reviewer context.
+- temporary subagents: may perform one bounded audit pass, but they do not become the long-running review lane.
+- stale_or_retire_trigger: retire when review is no longer recurring or delivery acceptance no longer depends on independent judgment.
+
 ## Adaptive Judgment
 
 - judgment_mode: diagnostic

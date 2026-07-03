@@ -31,6 +31,9 @@ Use this file when the agent needs to decide route, depth, tools, collaboration,
 - downstream_activation_reconciliation_decision:
 - residual_auto_beat_decision:
 - orchestration_contract_decision:
+- continuous_lane_topology_decision:
+- standing_review_lane_decision:
+- long_running_lane_vs_subagent_boundary:
 - beat_router_decision:
 - termination_condition:
 
