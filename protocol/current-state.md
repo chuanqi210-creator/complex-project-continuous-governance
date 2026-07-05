@@ -1,34 +1,41 @@
 # Complex Current State
 
-current_version: 2026-07-03
+current_version: 2026-07-05
 
 ## Recovery Anchor
 
-Complex is in the behavior-compression and runtime-kit phase.
+Complex is in the external-calibrated Codex-native operating-organization phase.
 
 Current narrative:
 
-> Complex = strong-autonomy continuous execution with control-plane orchestration, evidence boundaries, anti-human/context-drift safeguards, and an auditable recovery chain.
+> Complex = Codex-native orchestration with strong-autonomy execution inside a responsibility boundary, portfolio control-plane organization, external calibration, evidence boundaries, clean review, and lightweight auditable recovery.
 
 Current next route:
 
-`use_real_project_transcripts_or_user_feedback_to_verify_public_onboarding_or_stop`
+`verify_external_calibrated_operating_organization_with_real_project_transcripts_or_stop`
 
 Default decision:
 
 - Do not add new core gates for one-off failures.
-- Prefer behavior cases, transcript review rules, and filled examples before expanding `protocol/core.md`.
-- Treat continuous cadence as active runtime activation: per-beat narrow goal, Loop, route, and safe auto-start of the next queued beat.
-- Treat continuous projects as control-plane-first: direction, authority, state, topology, routing, and stop conditions must be fresh enough before local execution.
-- Distinguish durable lanes from temporary subagents. Standing lanes own recurring project responsibilities; subagents are bounded workers and are not long-running threads.
+- Prefer behavior cases, transcript review rules, filled examples, and external micro-contracts before expanding `protocol/core.md`.
+- Run `codex_surface_alignment` before interpreting Plan, Goal, thread, subagent, automation, skill, AGENTS.md, or MCP terms.
+- Treat Plan mode as a user/interface surface. At complex or strategic beats, run a planning checkpoint; do not claim automatic UI activation.
+- Treat Codex Goal as `thread_goal` or `phase_goal`: persistent objective and completion criteria for a longer task, thread, or bounded phase.
+- Treat `beat_objective` as the per-beat Plan/Loop target.
+- Treat `goal_memory_summary` as recovery context, not Codex Goal.
+- Treat continuous cadence as same-run runtime activation: prompt rehydration, planning checkpoint when needed, target-function Loop, Beat Router, accepted artifact check, and next queued beat inside the responsibility boundary.
+- Map cross-turn continuation to thread heartbeat or automation only when platform tools and responsibility boundaries allow it.
+- Treat continuous projects as control-plane-first: direction, authority, state, topology, operating organization, portfolio, routing, external calibration, hallucination sentinel status, trace appraisal, and stop conditions must be fresh enough before local execution.
+- Maintain an operating organization for long projects: controller, human interface, literature/data acquisition, model/component, data-code, review/risk, and writing/delivery lanes.
+- Maintain a portfolio operating model when a project has multiple modules, sources, lanes, or deliverables: target function, module portfolio, standing lane portfolio, forward indexes, branch parking, and Hot/Warm/Cold state.
+- Do not let metadata/access/no-values/audit/reviewer/citation guardrails become the only engine of the project. Repeated guardrail-only work triggers toil/WIP review: produce a forward artifact, park the branch, route to another module, or justify the guardrail as the true dependency.
+- Accept a beat only when it creates or updates a forward artifact, passes the relevant guard, updates state/indexes, and selects the next route.
+- Keep traceability lightweight: preserve audit records by pointer, but demote stale material from Hot State to Warm Index or Cold Archive instead of carrying every historical trace in active context.
+- Before strategic or critical route/structure/model/method/evaluation/prompt/protocol changes, run or reuse external calibration from official docs, primary papers, standards, or mature production writeups. Record source, problem matched, adopted, rejected, not transferable, Complex micro-contract, and refresh trigger.
+- Run a hallucination sentinel for important claims and regular stage points: current basis, external basis, inference, unsupported claim, falsification cue.
+- Distinguish standing lanes from temporary subagents. Standing lanes own recurring project responsibilities; subagents are bounded workers and are not threads or lanes.
 - For recurring review/evaluation, establish a standing review lane early and reset context with a fresh fact ledger or clean reviewer each review beat.
-- Treat continuous orchestration as the default runtime after confirmation: maintain beat queue, per-beat Goal or protocol_round_goal, Beat Router execution, and clear stop conditions.
-- Do not treat a fixed number of beats as completion. `STOP_COMPLETE` requires objective completion, delivery-level validation, and a residual-beat scan showing no useful low-risk internal beat remains.
-- Continuous work must be visibly auditable in the human-facing final answer: per-beat goals, Goal/protocol_goal source, router decisions, resource evidence or `not_needed/degraded`, validation after the final write, and final residual scan.
-- Reset independent review context every review beat; same-session review is diagnostic only.
-- When Complex is copied into another repository, reconcile steering words with local rules and true manual-action boundaries before judging activation success or failure.
-- Plan mode must design an orchestration contract before continuous execution: capability preflight, resource taxonomy, authority/platform-boundary status, manager/worker split, Beat Router, and stop conditions.
-- Runtime topology choice belongs to AI judgment. User authorization is for responsibility-bearing boundaries such as accounts/API credentials, external writes, publishing, irreversible actions, high-risk claims, or platform-visible persistent resources that truly become user-owned side effects.
+- Runtime topology choice, Plan/Goal fit, and thread/worktree/automation fit belong to AI judgment. User authorization is for responsibility-bearing boundaries: accounts/API credentials, payment, external writes, publishing, irreversible actions, high-risk claims, main-goal/public-voice changes, or platform actions that create user-owned external commitments.
 - When another project asks to scan Complex, use the installed Complex runtime as the rule source and the target project as the fact source.
 - Keep the active repository free of historical logs and old output packages.
 
@@ -36,17 +43,20 @@ Default decision:
 
 1. Restore true state.
 2. Classify project nature and convergence.
-3. Assign decision rights and ask-user necessity.
-4. Set the control plane, then choose the work target.
-5. Run the lightest useful validation or execution.
+3. Assign decision rights through the responsibility boundary.
+4. Establish Codex surface alignment, the control plane, and the operating organization.
+5. Run the smallest meaningful target-function Loop or execution beat.
 6. Deliver to the right audience.
-7. Leave `next_route`.
+7. Leave `next_route`, accepted artifacts, and recovery pointers.
 
 ## Current Runtime Examples
 
 - `docs/examples/evidence_fill_minimal_runtime/`
 - `docs/examples/model_discovery_minimal_runtime/`
 - `docs/examples/independent_review_minimal_runtime/`
+- `docs/examples/portfolio_orchestration_minimal_runtime/`
+- `docs/examples/external_calibration_micro_contract_runtime/`
+- `docs/examples/operating_organization_multi_lane_runtime/`
 
 ## Current Checks
 

@@ -2,11 +2,16 @@
 
 ## Loop Purpose
 
-- round_goal: Run one discriminating probe across candidate frameworks.
+- beat_objective: Run one discriminating probe across candidate frameworks.
 - project_nature: model_discovery
 - convergence_status: pre_convergence
 - judgment_mode: exploratory
 - loop_type: framework_probe
+- target_function: Select a frame that creates a clear evidence path and reader-facing story.
+- module_this_beat_serves: framing.
+- standing_lane_this_beat_serves: model/component.
+- expected_forward_artifact: model_delta.
+- why_not_local_greedy: The probe compares candidate frames before committing to evidence filling.
 - candidate_framework_or_evidence_path: access / workflow / capability / governance
 - discriminating_probe: For each framework, name one evidence item that would support it and one missing item that would weaken it.
 - main_uncertainty: Which framework creates the clearest evidence path and reader-facing story?

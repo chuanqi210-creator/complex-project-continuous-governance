@@ -56,7 +56,7 @@ Human review still asks:
 - Did the response reduce user correction cost?
 - Did it choose the right depth for this project?
 - Did it preserve the main goal while handling local details?
-- Did it avoid asking the user to do low-risk work the agent could safely do itself?
+- Did it avoid asking the user to authorize project-internal work that is inside the responsibility boundary?
 - Did it avoid turning Complex into visible process burden?
 
 ## Result Record
@@ -100,6 +100,54 @@ decision: update_rule
 notes: Reframed continuous orchestration around standing lanes. A subagent is a temporary worker, not a long-running project lane. Recurring review/evaluation requires a standing lane or manager-owned lane record with a clean-context/fact-ledger reset policy.
 ```
 
+```yaml
+case_id: plan_mode_is_surface_not_runtime / codex_goal_thread_level_contract / continuous_cadence_same_turn_vs_heartbeat / subagent_explicit_trigger_boundary / standing_lane_record_not_user_thread
+transcript_location: user-reported downstream Codex App runs, 2026-07-04
+marker_passed_before_change: not applicable; behavior cases did not exist
+marker_passed_after_change: pending real transcript review
+human_passed: pending
+user_correction_count: multiple
+main_failure_if_any: Complex language was competing with Codex surfaces. Agents treated Plan mode as if it could be automatically toggled, treated Goal as both long-term continuity and per-beat state, blurred standing lanes with subagents or user-visible threads, and treated cross-turn continuation as possible without heartbeat/automation.
+decision: update_case_and_skill
+notes: Added codex_surface_alignment, a repo-scoped .agents skill, five behavior cases, and transcript rules. Complex now maps its concepts onto Codex surfaces: Plan mode is a planning surface, Codex Goal is thread_goal / phase_goal, beat_objective is the Complex Plan/Loop target, subagents are short-lived workers, standing lanes are manager-owned responsibilities, and cross-turn continuation uses heartbeat/automation only when available and allowed.
+```
+
+```yaml
+case_id: portfolio_before_local_greedy_route / audit_guardrail_not_forward_artifact / hot_warm_cold_state_lightening
+transcript_location: NEV downstream practice, 2026-07-05
+marker_passed_before_change: not applicable; behavior cases did not exist
+marker_passed_after_change: pending real transcript review
+human_passed: pending
+user_correction_count: multiple
+main_failure_if_any: The project could run compliant continuous beats while remaining trapped in a local metadata/access/reviewer route. Guardrails passed, but the work did not reliably produce model/data/parameter/writing/branch/topology forward artifacts or maintain a light current operating map.
+decision: update_case_and_core
+notes: Added portfolio_operating_model, portfolio_before_greedy_route_rule, forward_artifact_acceptance_rule, audit_guardrail_not_engine_rule, parallel_portfolio_routing_rule, and hot_warm_cold_state_rule. Complex now treats long projects as module/lane portfolios rather than a single greedy chain of local beats.
+```
+
+```yaml
+case_id: trace_appraisal_hot_warm_cold_compaction / external_calibration_before_strategic_decision
+transcript_location: user design feedback, 2026-07-05
+marker_passed_before_change: not applicable; behavior cases did not exist
+marker_passed_after_change: pending real transcript review
+human_passed: pending
+user_correction_count: 1
+main_failure_if_any: Complex had auditability and external-method mapping, but not a strong enough rule that active context must be appraised and compacted after many beats, and that strategic decisions should calibrate against mature external practice before becoming durable protocol behavior.
+decision: update_case_and_core
+notes: Added trace_appraisal_rule, external_calibration_rule, and hallucination_sentinel. Complex now separates recoverable trace from active context and requires strategic route/model/method/protocol changes to record outside reference basis, transfer limits, unsupported claims, and falsification cues.
+```
+
+```yaml
+case_id: plan_checkpoint_for_key_beats / loop_not_local_greedy / standing_lane_operating_organization / external_calibration_required_for_each_issue / responsibility_boundary_not_low_risk_wording / human_interface_lane_for_long_projects / scheduled_structure_review_continues_project
+transcript_location: user design feedback, 2026-07-05
+marker_passed_before_change: not applicable; behavior cases did not exist
+marker_passed_after_change: pending real transcript review
+human_passed: pending
+user_correction_count: multiple
+main_failure_if_any: The protocol had many correct pieces, but new agents still over-prioritized local Plan output, treated user permission as the driver for next beats, blurred Codex Goal with beat-level work, under-built durable operating lanes, and did not require external mature practice for every mechanism-level fix.
+decision: update_case_skill_examples_core
+notes: Reframed Complex around thread_goal / phase_goal, beat_objective, planning checkpoints, target-function Loop, operating organization, external calibration for every mechanism-level issue, responsibility boundary wording, human-interface lane, hallucination sentinel, and trace appraisal.
+```
+
 Use this compact record for end-to-end project samples:
 
 ```yaml
@@ -120,4 +168,5 @@ If a real transcript fails and the failure is repeated or high-impact:
 1. Add or refine a marker group in `docs/behavior-transcript-review-rules.json`.
 2. Update the matching behavior case only if expected behavior changed.
 3. Add or adjust a golden example if agents need something concrete to imitate.
-4. Promote to `protocol/core.md` only if cases, rules, and examples are not enough.
+4. Use external calibration for each mechanism-level fix and write a project micro-contract.
+5. Promote to `protocol/core.md` only if cases, rules, examples, and calibration notes are not enough.

@@ -1,7 +1,47 @@
 {
-  "version": "2026-06-30",
+  "version": "2026-07-05",
   "purpose": "Complex Runtime Kit capability candidates for project-level continuous governance. This file is a discovery aid, not proof that a skill, tool, plugin, connector, or API is callable in the current environment.",
   "capabilities": [
+    {
+      "name": "complex_runtime_repo_skill",
+      "type": "skill",
+      "status": "recommended",
+      "use_when": "A Codex agent is asked to use Complex, design a Complex prompt, run continuous cadence, align Plan or Goal mode, or govern a long-running project.",
+      "boundary": "The official repo-scoped workflow entry is .agents/skills/complex-runtime/SKILL.md. The skill summarizes workflow; protocol/core.md remains authoritative.",
+      "verification_hint": "Confirm the response mentions codex_surface_alignment, thread_goal or phase_goal, beat_objective, responsibility boundary, and next_route before business execution."
+    },
+    {
+      "name": "portfolio_control_plane_orchestration",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "A continuous project has multiple modules, standing lanes, sources, deliverables, or repeated guardrail-only beats.",
+      "boundary": "This is a manager-thread operating model, not a platform thread or automation. It should guide beat routing and platform-resource fit; actual resource creation follows current Codex surface/tool semantics.",
+      "verification_hint": "Record target_function, module_portfolio, standing_lane_portfolio, forward_indexes, branch_parking, Hot/Warm/Cold state, and forward_artifact_acceptance before local greedy execution."
+    },
+    {
+      "name": "operating_organization_multi_lane",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "A long project needs controller, expert, review, literature/data, code, writing, or human-interface responsibilities to recur across beats.",
+      "boundary": "A lane is a responsibility, not automatically a user-visible thread. AI decides whether platform resources fit; actual creation follows current Codex surface/tool semantics.",
+      "verification_hint": "Record controller, human_interface, literature_data_acquisition, model_component, data_code, review_risk, and writing_delivery lane contracts plus context-reset rules."
+    },
+    {
+      "name": "external_calibration_and_hallucination_sentinel",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "A strategic route, project operating model, model choice, evaluation rule, protocol default, or public claim is being changed or relied on for many future beats.",
+      "boundary": "Use official docs, primary papers, standards, or mature production writeups. Routine beats may reuse a fresh calibration note instead of browsing again.",
+      "verification_hint": "Record source, problem_matched, adopted, rejected, not_transferable, Complex_micro_contract, refresh_trigger, unsupported claims, and falsification cues."
+    },
+    {
+      "name": "trace_appraisal_and_state_lightening",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "A continuous project has many beats, large state files, historical artifacts, old gates, or context-pollution risk.",
+      "boundary": "Do not delete audit records by default. Demote stale material from Hot State to Warm Index or Cold Archive with recoverable pointers.",
+      "verification_hint": "Record trace_appraisal_status, retention class, hot_state_location, warm_index_locations, cold_archive_policy, and demoted pointers."
+    },
     {
       "name": "complex_protocol_onboarding",
       "type": "external_method",
@@ -30,9 +70,9 @@
       "name": "scheduled_topology_capability_review",
       "type": "external_method",
       "status": "recommended",
-      "use_when": "A project is running in continuous cadence, long-running threads, subagents, or persistent external tools.",
-      "boundary": "Default review interval is every 3 rounds, plus any phase, route, version, or evidence change.",
-      "verification_hint": "Record round_index, topology_refresh_due, capability_refresh_due, adjust_or_keep decisions, and next review trigger."
+      "use_when": "A project is running in continuous cadence, standing lanes, user-visible threads, automations, subagents, or persistent external tools.",
+      "boundary": "Use event triggers first. Three beats is only a fallback cap; no event means lightweight_keep.",
+      "verification_hint": "Record beat_index, topology_refresh_due, capability_refresh_due, adjust_or_keep decisions, and next review trigger."
     },
     {
       "name": "local_file_search",
@@ -70,17 +110,17 @@
       "name": "subagent_or_thread_coordination",
       "type": "external_method",
       "status": "environment_dependent",
-      "use_when": "Independent evidence lanes, review loops, temporary subagents, or long-running Codex threads would reduce risk or latency.",
-      "boundary": "Do not assume subagents or threads are callable; probe capability and define contracts before delegation.",
-      "verification_hint": "Record topology choice, context packet, output contract, integration responsibility, and cleanup or stop condition."
+      "use_when": "Standing lanes, temporary subagents, user-visible threads, worktrees, automations, or clean-context review would reduce risk or latency.",
+      "boundary": "Do not equate subagents with threads or standing lanes. Probe capability, respect tool semantics, and define contracts before delegation or platform-resource creation.",
+      "verification_hint": "Record topology choice, fact ledger or context packet, output contract, integration responsibility, observability evidence, and cleanup or stop condition."
     },
     {
-      "name": "goal_refresh_gate",
+      "name": "goal_lifecycle_alignment",
       "type": "external_method",
       "status": "recommended",
       "use_when": "Continuous cadence, Goal mode, versioned work, or loop engineering could create stale goals.",
-      "boundary": "Distinguish active_goal from round_goal; do not let a completed round goal stop the continuous route.",
-      "verification_hint": "Compare active_goal with current_basis, next_route, project version, and delivery object before each round."
+      "boundary": "Use Codex Goal as thread_goal or phase_goal. Keep current beat details in beat_objective and recovery continuity in goal_memory_summary and next_route.",
+      "verification_hint": "Compare thread_goal, phase_goal, goal_memory_summary, current_basis, next_route, project version, and delivery object before each beat."
     },
     {
       "name": "document_or_render_qa",

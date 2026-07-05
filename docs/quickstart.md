@@ -1,153 +1,194 @@
 # Complex Quickstart
 
-Audience: a new agent asked to use Complex on a project.
+Audience: a Codex agent asked to use Complex on a project.
 
-Goal: start useful work in five minutes without reading a historical log.
+Goal: start useful work in five minutes without reading history logs.
 
-## Minute 0-1: Read The Current Entrypoints
+## Minute 0-1: Read Current Entrypoints
 
-Read, in order:
+Read:
 
 1. `README.md`
 2. `protocol/current-state.md`
 3. this file
-4. the first part of `protocol/core.md`
+4. `protocol/core.md`
+5. the closest filled example in `docs/examples/`
 
-Remember the one-sentence model:
+Remember the model:
 
-> Complex = strong-autonomy continuous execution with control-plane orchestration, evidence boundaries, anti-human/context-drift safeguards, and an auditable recovery chain.
+> Complex = Codex-native orchestration for strong-autonomy execution inside a responsibility boundary, portfolio control-plane organization, external calibration, evidence boundaries, clean review, and lightweight auditable recovery.
 
-If you are inside a downstream target project, resolve two sources before planning: the installed Complex runtime (`COMPLEX_HOME` or a user-provided path) and the target project materials. Complex provides operating rules; the target project provides facts, constraints, and local boundaries.
+When applying Complex to another repository, resolve the Complex runtime as the rule source and the target repository as the fact source. Do this quietly and proceed; do not turn source resolution into a user-facing apology.
 
-## Minute 1-2: Use The Behavior Kernel
+## Minute 1-2: Align Codex Surfaces
 
-Before planning, compress the project into seven actions:
+Run `codex_surface_alignment`:
+
+- Plan mode: user/interface surface. At complex or strategic beats, AI decides that a planning checkpoint is required. If UI Plan mode is not active or not controllable from the current surface, output a plan-shaped checkpoint and continue within the responsibility boundary.
+- Codex Goal: persistent objective and completion criteria for a longer task, thread, or bounded phase. Use `thread_goal` / `phase_goal`; AI decides whether the Goal surface should carry the phase contract, and records the contract in state/prompt/handoff when the surface cannot be set.
+- `beat_objective`: current small target inside Plan/Loop.
+- `goal_memory_summary`: recovery summary, not Codex Goal.
+- Continuous cadence: same-run queued beats continue until `STOP_COMPLETE` or a true boundary.
+- Cross-turn continuation: use thread heartbeat or automation when available; if unavailable, record the heartbeat/automation contract and recovery route without treating it as user permission.
+- Subagent: short-lived bounded worker.
+- Standing lane: durable manager-owned responsibility.
+- User-visible thread/worktree/automation: platform resource; AI decides whether it fits the operating organization, while actual creation follows current Codex surface/tool semantics.
+
+## Minute 2-3: Use The Behavior Kernel
+
+Compress the project into seven actions:
 
 1. Restore true state.
 2. Classify project nature and convergence.
-3. Assign decision rights and ask-user necessity.
-4. Set the control plane, then choose the work target.
-5. Run the lightest useful validation or execution on that target.
+3. Assign decision rights through the responsibility boundary.
+4. Establish control plane and operating organization before local optimization.
+5. Run the smallest meaningful target-function Loop or execution beat.
 6. Deliver to the right audience.
-7. Leave `next_route`.
+7. Leave `next_route`, accepted artifacts, and recovery pointers.
 
 If a mechanism name competes with these behaviors, the behavior kernel wins.
 
-## Minute 2-3: Classify The Project
+## Minute 3: Form The Operating Organization
+
+For a continuous project, do not jump from one local task to the next. First form the operating map:
+
+- `thread_goal` or `phase_goal`: persistent objective and completion criteria.
+- `target_function`: what the project is optimizing.
+- `module_portfolio`: components that can move separately.
+- `standing_lane_portfolio`: controller, human interface, literature/data acquisition, model/component, data-code, review/risk, writing/delivery, or project-specific lanes.
+- `forward_indexes`: module status, data assets, parameter candidates, writing scaffolds, branch parking, decisions, and accepted artifacts.
+- `state_lightening`: Hot State, Warm Index, Cold Archive.
+- `external_calibration`: latest outside-pattern check or reason it is not needed for this beat.
+- `hallucination_sentinel`: current basis, external basis, inference, unsupported claim, falsification cue.
+
+Use this acceptance rule:
+
+```text
+beat accepted = forward artifact exists or is updated
+              + relevant guard passed
+              + index/state updated
+              + next route selected
+```
+
+Guardrail-only work is allowed, but repeated guardrail-only work triggers a toil/WIP review: create a forward artifact, park the branch, route to another module, or justify why the guardrail is the true target-function dependency.
+
+## Minute 3-4: Classify The Project
 
 Choose one:
 
 - `evidence_fill`: model, formula, metric, or framework is fixed; fill evidence and delivery boundary.
 - `model_discovery`: framework, explanation path, metric, or research model is unsettled; protect candidate frames.
 - `mixed`: start with model discovery, then switch to evidence fill when convergence conditions are met.
-- `execution_delivery`: the main job is implementation, packaging, or delivery.
+- `execution_delivery`: implementation, packaging, delivery, validation, and recovery.
 
-If unsure, default to `mixed` and make the uncertainty explicit.
+If unsure, default to `mixed` and state the uncertainty.
 
-## Minute 3-4: Pick A Runtime Shape
+Evidence-fill work should keep a clear claim boundary: what can be said, what cannot be said, and what source would upgrade the claim.
+
+## Minute 4: External Calibration And Hallucination Sentinel
+
+Do not change an important method, route, structure, prompt default, protocol behavior, model, or evaluation rule only from internal Complex vocabulary.
+
+For each mechanism-level issue, record:
+
+- source;
+- problem matched;
+- adopted;
+- rejected;
+- not transferable;
+- Complex micro-contract;
+- refresh trigger.
+
+Use official docs, primary papers, standards, or mature production writeups. The micro-contract must be operational: entry condition, accepted artifact, extraction form, WIP/toil limit, stop/park rule, review checklist, state-compaction rule, or refresh trigger.
+
+Run `hallucination_sentinel` at startup, every 5 accepted beats, phase switches, public delivery, model/source/prompt upgrades, external calibration, or before promoting a new protocol behavior.
+
+## Minute 4-5: Pick Runtime Shape
 
 Use filled examples before blank templates:
 
 - `docs/examples/evidence_fill_minimal_runtime/`
 - `docs/examples/model_discovery_minimal_runtime/`
 - `docs/examples/independent_review_minimal_runtime/`
+- `docs/examples/portfolio_orchestration_minimal_runtime/`
+- `docs/examples/external_calibration_micro_contract_runtime/`
+- `docs/examples/operating_organization_multi_lane_runtime/`
 
-Minimum records for a new project:
+Minimum records for a resumable project:
 
-- `state.md`: current basis, goal, decision rights, and next route.
-- `loop.md`: one small validation or explicit no-op.
+- `state.md`: current basis, goal memory, `beat_objective`, decision rights, and next route.
+- `loop.md`: target-function Loop or explicit no-op.
 - `delivery.md`: audience and output boundary.
 
-Add only what the task needs:
+For continuous work, also record:
 
-- Evidence fill: `evidence.md`, `decision.md`, `search.md`.
-- Model discovery: `framing.md`, `argument.md`, `judgment.md`.
-- Independent review: `fact-ledger.md`, `judgment.md`, `decision.md`.
-- Prompt-based continuity: `prompt.md`.
+- `beat_queue`;
+- standing lane contracts;
+- clean-review context reset policy;
+- Beat Router decision;
+- forward artifact acceptance;
+- trace appraisal and external calibration status.
 
-## Minute 4-5: Start Low-Friction Execution
+## Execution Defaults
 
-If the user only says "按 Complex 推进", give short defaults instead of a mode menu:
+Use recommended defaults instead of a mode menu:
 
-- delivery audience:
-- capability permission:
-- topology:
-- cadence:
-- autonomy boundary:
-- manual-action boundary:
+- Manager thread owns direction and integration.
+- Strong autonomy inside the responsibility boundary.
+- Read accessible files, directories, and links yourself.
+- Ask only for responsibility-bearing boundaries: main-goal change, account/API/payment/publishing/external write, irreversible action, public voice, high-risk claim, or a platform action that creates a user-owned external commitment.
+- Human-readable delivery unless the user asks for machine recovery records.
 
-Then make a narrow `round_goal` and execute the lightest useful next action. For continuous projects, first confirm the control plane: direction, authority, state, topology, routing, and stop conditions. If it is already valid, move directly into the work-plane beat.
+If the next beat is clear and inside the responsibility boundary, execute it. Do not end with "say continue next time." If a true turn/tool boundary stops the run, write `next_route` as recovery, not as permission.
 
-Decision rights are two-sided:
+## Orchestration Contract
 
-- Prevent unsafe AI overreach.
-- Prevent unnecessary human intervention.
+When the request mentions Plan mode, continuous cadence, Goal mode, threads, subagents, automation, standing review, or independent review, write the orchestration contract before business execution:
 
-If the next step is clear, low-risk, reversible, and inside the project's responsibility boundary, continue and record why the user was not asked. Do not write "next time you say continue" when `next_route` is already queued; either execute the next route now or, if a real turn/tool boundary stops the run, record the recovery route without making user continuation a permission condition. If `连续节拍` is selected, start each beat from a narrow `round_goal`, run the Loop, close or migrate the beat, then automatically enter the next queued low-risk beat until a real boundary appears. Do not stop because a fixed number of beats has run; before `STOP_COMPLETE`, scan for residual low-risk beats across the objective, current diff/state, validation gaps, consistency gaps, stale resources, and delivery contract. If the user gives paths, files, links, or material locations, read accessible materials yourself before asking for manual cleanup or summaries.
+- `capability_preflight`: Codex Goal, thread/worktree, automation/heartbeat, subagent, browser/API/account tools, project scripts.
+- `resource_taxonomy`: Plan surface, `thread_goal` / `phase_goal`, `beat_objective`, standing lane, subagent, automation.
+- `control_plane`: direction, authority, state, topology, routing, stop conditions.
+- `operating_organization`: controller, human interface, literature/data, model/component, data-code, review/risk, writing/delivery.
+- `portfolio_operating_model`: target function, modules, lanes, forward indexes, branch parking, Hot/Warm/Cold state.
+- `external_calibration`: source class used, transfer limits, micro-contract, hallucination sentinel, refresh trigger.
+- `manager_worker_contract`: manager integrates; workers do bounded work and return summaries.
+- `Beat Router`: `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, `STOP_COMPLETE`.
 
-When Complex is applied to another repository, reconcile the user's steering words with that repository's local rules before executing. Read local `AGENTS.md`, `CONTEXT.md`, current state, stage boards, manifests, no-write boundaries, and manual-action records. Mark each major steering word as active, boundary-blocked, safety-overridden, or not needed with reason. If the main route is blocked by a true external-input boundary, continue only with allowed residual beats: boundary contradiction repair, submission-friction reduction, non-expansion verification, exact operator handoff, or preflight after the required file/env var appears.
+After execution starts, the orchestration contract is not itself completion. Each beat needs a `beat_objective`, action, route, validation, accepted artifact or branch decision, and next route.
 
-When the request mentions Plan mode plus continuous cadence, Goal mode, threads, subagents, automation, or independent review, write an orchestration contract before the project plan:
+## Independent Review
 
-- Which runtime resources are available: Goal/tool goal, user-visible Codex thread, worktree/background thread, automation/heartbeat, subagent, browser/API/account tools.
-- Which resource is being used now and why.
-- Which resource is unavailable, degraded, or crosses a real responsibility/platform side-effect boundary.
-- Control plane: direction, authority, state, topology, routing, and stop conditions.
-- Standing lane topology: manager thread, recurring review/evaluation lane, evidence/data lane, implementation lane, delivery/editorial lane, or other durable lanes that fit the project.
-- Lane contract: each durable lane has a lane goal, input fact ledger, output contract, context reset rule, wake trigger, stale/retire condition, and observable evidence.
-- Resource boundary: long-running lanes are project responsibilities; temporary subagents are short-lived workers. A subagent can help a lane, but it is not a lane.
-- Authority boundary: choosing standing lanes, temporary workers, clean-context packets, or manager-owned lane records is AI runtime judgment. Ask the user only for accounts/API credentials, external writes, publishing, irreversible actions, high-risk claims, or platform-visible persistent resources that truly become user-owned side effects.
-- Manager/worker split: main thread manages, workers do bounded work.
-- Beat Router: `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, or `STOP_COMPLETE`.
-- Stop conditions.
+Same-session review is diagnostic. True independent review needs clean context, a separate reviewer/thread, read-only audit worker, or a fact-ledger packet. Reset the reviewer context every review beat.
 
-After the user confirms continuous execution, switch from planning to the continuous orchestration spine:
-
-- Confirm the control plane before local execution unless current state already proves it is fresh.
-- Keep a small `beat_queue`.
-- Give every beat a narrow `round_goal`.
-- Use a per-beat tool Goal when available; otherwise record `protocol_round_goal`.
-- Execute the Beat Router decision before ending the beat.
-- Continue through queued low-risk reversible beats until a real stop condition appears.
-- Treat a fixed number of beats as a smoke-test floor, not a completion reason; stop only after the objective, validation, and residual-beat scan support `STOP_COMPLETE`.
-- After the final write, run validation and residual-beat scan again before claiming `STOP_COMPLETE`.
-- In the human-readable final answer, include a compact runtime audit: beat goals, Goal/protocol_goal use, Beat Router routes, auto-start decisions, resource evidence or degraded notes, final validation, and residual scan.
-- Assess threads, subagents, review lanes, and automations as resources that may mature over the first few beats; do not block Goal/Plan/Loop because those resources are not ready yet. If a durable lane is needed but cannot yet be created as a visible thread or automation, keep a manager-owned lane record and continue. Do not phrase ordinary topology selection as "waiting for user authorization."
-- Watch for unobservable resources: if a clean thread, worker, review lane, or automation produces no contract, action, or result in the first beat window, mark it degraded and route to another safe path instead of waiting indefinitely.
-
-If the user asks for independent review inside the same session, do not claim roleplay is independent. Use clean context, a separate reviewer/thread, read-only audit subagent, or a fact-ledger packet when independence matters. Reset review context every independent review beat; if you stay in the same session, label it as diagnostic self-review.
-
-During prompt design, choose safe recommended defaults yourself when the user asked for strong-autonomy Complex execution. Ask only for authority, irreversible choices, public-facing direction changes, or high-risk judgment. Do not phrase an AI-selected default as something the user selected.
-
-Keep bootstrap in the manager thread. Source resolution, project-nature judgment, the first orchestration contract, and the first beat queue should not depend on a background thread or subagent returning. Auxiliary resources can help after a usable route exists; if they are silent, degrade them and continue.
+Use `review_context_reset_each_beat` when review repeats: every independent review beat starts from a fresh fact ledger or clean reviewer context.
 
 ## When Something Feels Wrong
 
 Do not immediately add a new core rule.
 
-1. Map the failure to a case in `docs/behavior-regression-cases.json`.
-2. Run transcript review:
+1. Map the failure to `docs/behavior-regression-cases.json`.
+2. Compare the issue with external mature practice and write the micro-contract.
+3. Run transcript review:
 
 ```bash
 python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <response.txt>
 ```
 
-3. Record the result in `docs/behavior-review.md`.
-4. If the failure repeats, update a transcript rule, behavior case, or golden example before promoting a new core rule.
+4. Record the result in `docs/behavior-review.md`.
+5. If the failure repeats, update a transcript rule, behavior case, or golden example before promoting a new core rule.
 
-## Best Default Prompt
+## Compact Default Prompt
 
 ```text
-请先按 Complex 恢复当前状态，并用 7 步行为内核压缩本轮行动。
-Complex 来源使用 `COMPLEX_HOME` 或我提供的路径；目标项目来源使用当前仓库或我提供的材料路径。Complex 提供运行规则，目标项目提供事实材料和本地边界。
-如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成扫描、判断和计划，再进入执行。
-请先显式判断这些 steering words 是否适用，并把适用项写入本轮 prompt/plan：开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每轮 prompt 重水化；每拍窄 Goal / 自动进入下一拍 / 不等我说继续；控制层优先 / 主控线程 / 长期审核评议通道；少问我 / 能推进就继续 / 我给目录你自己读；长期线程和临时子代理分开 / 每轮清上下文；运行资源 AI 自判 / 用户只担责授权；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；目标仓库边界对账 / 真人工边界 / 剩余可自动小拍；编排预检 / Goal mode / 长期线程 / automation / Beat Router / stop condition；只要人看版。
-先判断本项目是 evidence_fill、model_discovery、mixed 还是 execution_delivery。
-如果缺少我的确认，请优先采用安全推荐默认项并标注为 assumed_default；不要把内部路线选择抛给我。只有主目标、账号/API、外部写入、不可逆动作、公开口径或高风险判断变化才问我。不要把 AI 自己选的默认项写成“用户选择了”。
-如果下一步已由 next_route / round_goal / 可访问材料说明清楚，请直接推进并说明为什么不需要回问；如果我给了目录、文件或链接，请优先自行读取。
-不要用“下次你说继续时再推进”作为默认收尾。若下一拍已 queued 且低风险可逆，默认自动进入下一拍；若受回合或工具边界限制必须暂停，只记录 next_route，不把用户说“继续”当成许可门。不要因为已经跑了若干拍就停；停止前必须做 residual-beat scan，确认目标、验证、交付契约和可自动小拍都已经收口。若 residual scan 触发了新的写入，必须在最后一次写入之后重新验证并再次扫描，才能 STOP_COMPLETE。
-如果启用连续节拍，每一拍都要建立/记录窄 round_goal，工具 Goal 可用则只承载本拍，不可用则记录 protocol_round_goal；执行 Loop 和 Beat Router 后自动进入下一拍。线程、代理、automation 可以先判断成熟度、可用性和责任/平台边界，不成熟不强开，但不能因此跳过 Goal/Plan/Loop。若需要独立评审，每一轮审核用清上下文、事实账本或只读审核线程，不把同 session 自评说成独立评审。
-如果目标仓库本地规则把某个 steering word 缩窄或阻断，请明确做边界对账：哪些 active_now，哪些 active_but_boundary_blocked，哪些 overridden_by_project_safety，哪些 not_needed_with_reason。遇到真实外部输入门时，先做剩余可自动小拍；只有确实没有低风险内部小拍时，才暂停并给出具体文件、字段、env var 和命令。
-如果请求涉及连续节拍、Goal、长期线程、子代理或 automation，先输出 Orchestration Contract：能力预检、资源术语消歧、控制层、长期通道拓扑、责任/平台边界、总控/worker 分工、Beat Router 和 stop condition。连续项目先确认控制层：方向、责任边界、状态、拓扑、路由和停止条件；其中拓扑包括主控线程、长期审核评议通道、资料/证据通道、执行通道、交付通道或其他适配项目的 durable lanes。不要把子代理说成左侧栏长期线程；子代理只是短期 worker。长期通道是否需要、何时成熟、先用 manager-owned lane record 还是可观察线程，由 AI 自行判断；只有账号/API、外部写入、发布、不可逆动作、高风险主张或平台可见持久资源创建真正需要用户担责时才回问。
-连续项目先确认控制层；单轮任务再只抓一个最高杠杆问题。用最轻有效动作推进，最后给出适合交付对象的人看版，并留下 next_route。
+请按 Complex 推进当前项目。
+
+先恢复状态，建立 thread_goal 或 phase_goal，并做 codex_surface_alignment：Plan mode 是界面规划 surface；关键节拍必须做 planning checkpoint，但不能伪称自动开启 UI Plan mode。Codex Goal 承载长期任务/线程/阶段的 persistent objective 和完成标准，由 AI 判断是否使用 Goal surface；不能设置时写入 state/prompt/handoff，不把 Goal 选择变成用户授权。beat_objective 是每拍 Plan/Loop 里的小目标；goal_memory_summary 只是恢复摘要。subagent 是短期 worker，standing lane 是长期责任通道；thread/worktree/automation fit 由 AI 判断，实际创建服从当前 Codex surface/tool 语义。
+
+请判断 project_nature：evidence_fill / model_discovery / mixed / execution_delivery。采用强自治+担责边界：项目内部计划、读取、验证、Plan/Goal 适配、运行拓扑、standing lane 记录、thread/worktree/automation fit、临时 worker fit、状态压缩和下一拍推进由 AI 自行判断；只有主目标、账号/API、付款、外部写入、发布、不可逆动作、公开口径、高风险主张，或平台动作会造成我需要担责的外部承诺时再问我。
+
+连续项目先建立 operating organization：controller、human interface、literature/data acquisition、model/component、data-code、review/risk、writing/delivery。每拍重水化 master prompt、current_basis、target_function 和 beat_objective；运行 target-function Loop 和 Beat Router；可继续时自动进入下一拍，直到 STOP_COMPLETE 或真实担责边界。每拍验收以 forward artifact 为核心；审计、citation、QA、reviewer、metadata/no-values 是护栏，不应长期成为唯一主产物。
+
+重要路线、模型、方法、评估、prompt 默认值或协议判断前，做 external calibration：对照官方文档、原始论文、标准或成熟生产实践，说明 adopted / rejected / not transferable，并把 adopted lesson 翻译成项目 micro-contract。按阶段运行 hallucination sentinel，区分 current_basis、external_basis、inference、unsupported claim 和 falsification cue。长期项目用 Hot State / Warm Index / Cold Archive 轻量化。
+
+输出只要人看版。
 ```

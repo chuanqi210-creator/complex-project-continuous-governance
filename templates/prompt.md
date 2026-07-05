@@ -2,295 +2,197 @@
 
 Use this file when a user wants the agent to scan Complex, design a project-specific prompt, and execute only after confirmation.
 
-This prompt is an execution contract for one project. It does not replace the Complex protocol, the user's latest instruction, or authorization boundaries.
-
 ## High-Fit User Request
 
 ```text
 请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
 
-如果当前界面支持 Plan 模式，请先提醒我开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再进入执行。
-请在设计 prompt 前主动判断并显式使用这些 steering words，避免跑偏：
-- 开启 Plan 模式 / 先规划再执行
-- 模型发现型 / 先发散研究框架 / 不要早收敛
-- 证据填充型 / 模型和指标已定
-- 连续节拍 / 总规划别丢 / 每轮 prompt 重水化
-- 每拍窄 Goal / 自动进入下一拍 / 不等我说继续
-- 控制层优先 / 主控线程 / 长期审核评议通道
-- 少问我 / 能推进就继续 / 我给目录你自己读
-- 运行资源 AI 自判 / 用户只担责授权
-- 长期线程和临时子代理分开 / 每轮清上下文
-- 独立评审 / 客观审查 / 避免上下文污染
-- 外部工具 / 账号 / API / skill
-- 目标仓库边界对账 / 真人工边界 / 剩余可自动小拍
-- 编排预检 / Goal mode / 长期线程 / automation / Beat Router / stop condition
-- 只要人看版
+请显式采用这些 steering words，并按项目实际情况取舍：
+开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每拍 prompt 重水化；Codex Goal 是 thread_goal 或 phase_goal / beat_objective 属于每拍 Plan；自动进入下一拍 / 不等我说继续；模块组合 / 串并联系统 / 不要局部贪心；forward artifact / 审计只是护栏 / Hot State；外部优秀案例 / external calibration / micro-contract；定期 hallucination sentinel；少问我 / 能推进就继续 / 我给目录你自己读；运行资源 AI 自判 / 用户只担责授权；standing lane 和 subagent 分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
 ```
 
 ## Protocol Scan Summary
 
-- Complex source resolution:
+- complex_source_resolution:
+- protocol_scan_sequence:
 - complex_source files read:
 - target_project_source files read:
-- Complex files or sections read:
-- Components adopted now:
-- Components skipped now:
-- Components backlogged:
-- Manual actions or permissions needed:
-- Biggest misread risk:
+- components adopted now:
+- components skipped now:
+- components backlogged:
+- manual actions or permissions needed:
+- biggest misread risk:
 
 ## Project Intake
 
 - Project goal:
 - Existing materials:
 - User steering words:
-- Plan mode reminder status:
+- Codex surface alignment:
+- Plan mode / planning checkpoint status:
+- Codex Goal fit:
 - Current basis:
 - Known constraints:
-- High-risk or high-rework signals:
 - Project nature: evidence_fill / model_discovery / mixed / execution_delivery
 - Convergence status:
-- Candidate frameworks or known fixed model:
+- Candidate frameworks or fixed evidence model:
 
-## Startup Questions or Defaults
+## Startup Defaults
 
 - Delivery audience and format:
 - Capability permission:
-- Collaboration topology:
+- Responsibility boundary:
 - Cadence:
-- Continuous runtime activation:
-- Review context reset policy:
-- Control plane:
+- Operating organization:
 - Standing lane topology:
-- Downstream activation reconciliation:
-- Orchestration contract:
-- Project nature and convergence preference:
-- Autonomy and judgment boundary:
-- Evidence, privacy, account, publishing, or manual-action boundary:
+- Temporary worker fit:
+- Review context reset policy:
+- Portfolio operating model needed:
+- Target function:
+- Module portfolio:
+- Forward indexes:
+- State lightening:
+- External calibration needed:
+- Hallucination sentinel needed:
 
 ## Prompt Design Rationale
 
-- Why this goal needs Complex:
-- Why this project is evidence_fill / model_discovery / mixed / execution_delivery:
+- Why this project needs Complex:
+- Why this project nature fits:
 - What the agent may decide without asking:
 - What must trigger user confirmation:
-- Why these capabilities are selected or rejected:
-- Why this collaboration topology fits:
-- Why this cadence fits:
-- What the first Loop should test:
-- What prevents premature convergence:
+- Why selected capabilities fit:
+- Why rejected capabilities are deferred:
+- What the first target-function Loop should learn or advance:
+- What prevents premature convergence or unnecessary divergence:
+- What prevents local greedy optimization:
 - What would trigger route-back:
 
-## Copy-Ready Prompt
+## High-Fidelity Startup Prompt
 
 ```text
 请按 Complex 项目持续治理协议推进以下项目。
-
-Complex 来源：
-- 使用 `COMPLEX_HOME` 或用户提供路径。
-- Complex 提供运行规则；目标项目提供事实材料和本地边界。
-
-上下文分离：
-- complex_source：已安装的 Complex Runtime Kit。
-- target_project_source：目标仓库、材料目录、状态文件、manifest、stage board、代码和 outputs。
-- 下游 adapter / manifest 是目标项目事实材料，不替代 Complex 规则源。
 
 项目目标：
 
 已有材料：
 
-当前交付对象和交付形式：
+交付对象：
 
-能力边界：
-- 可用：
-- 暂不使用：
-- 需要用户担责授权或人工操作：
+第一步请恢复状态，并建立：
+1. thread_goal 或 phase_goal：长期任务/线程/阶段的顶层目标、完成标准和验收方式。
+2. goal_memory_summary：便于后续恢复的摘要，不等于 Codex Goal。
+3. beat_objective：本拍 Plan/Loop 要解决的小目标。
 
-协作拓扑：
+Codex surface map：
+- Plan mode：如果当前界面支持并可由你实际使用，请使用可用的规划 surface；如果当前界面不能由你切换，也直接输出 planning checkpoint。不要伪称已经自动开启。
+- Codex Goal：作为 thread_goal 或 phase_goal，承载 persistent objective 和完成标准；AI 判断是否使用 Goal surface。不能设置时写入 state/prompt/handoff，不把 Goal 选择变成用户授权；不要把下一步小动作塞进长期 Goal。
+- beat_objective：每拍小目标，属于 Plan/Loop。
+- continuous cadence：同一运行中自动推进 queued beats；跨回合续跑只在 heartbeat/automation 可用且担责边界允许时使用。
+- subagent：短期 bounded worker，不是 standing lane。
+- standing lane：长期责任通道，可先用 manager-owned lane record 表达。
+- user-visible thread / worktree / automation：平台资源，不默认属于担责边界；AI 判断是否适合，实际创建服从当前 Codex surface/tool 语义。若不能创建，就记录 contract 并继续总控推进。
 
-控制层：
-- 方向：
-- 权限：
-- 状态：
-- 拓扑：
-- 路由：
-- 停止条件：
-
-长期通道拓扑：
-- 主控线程：
-- 长期审核/评议通道：
-- 资料/证据通道：
-- 执行通道：
-- 交付/编辑通道：
-- 临时子代理池：
-- 每个长期通道的清上下文规则：
-- 每个长期通道的唤醒/停用条件：
-
-推进节拍：
-
-Plan 模式：
-- 如果当前界面支持 Plan 模式：先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再进入执行。
-- 如果当前界面不支持 Plan 模式：仍先输出计划和 round_execution_prompt，不直接跳到业务执行。
-- Plan 阶段不要把内部路线选择默认抛回给用户；如果存在安全推荐项，直接按 `assumed_default` 选择并说明依据。只有主目标、账号/API、外部写入、不可逆动作、公开口径或高风险判断变化才回问。
-- 不要把 AI 自行选择的默认项写成“用户选择了”。只有用户实际回复选择时才这样表述。
-- prompt-bootstrap、Complex/目标源解析、项目性质判断、首个 Orchestration Contract 和第一组 beat_queue 由主线程负责，不把这些启动判断唯一交给后台线程、子代理或审核通道。辅助资源静默时，主线程按已知安全路线继续。
-- 连续项目默认先确认控制层：方向、责任边界、状态、拓扑、路由和 stop condition 足够新，再进入局部小拍。不要用一个局部文件修改或局部资料检查替代控制层判断。
-
-自动推进默认：
-- 如果 next_route / round_goal / state 已经给出清楚、低风险、可逆且不跨越责任边界的下一步：直接进入下一拍，不要等待用户说“继续”。
-- 禁止默认收尾话术：下次你说继续时、等你说继续、你确认继续后、是否继续、要不要继续。
-- 如果受回合、工具、责任或平台边界限制必须暂停：只记录 next_route 和暂停原因，不把用户说“继续”写成许可条件。
-- 固定拍数不是停止条件。跑了 3 拍只能说明连续机制启动过，不能说明项目完成；停止前必须做 residual-beat scan。
-
-连续节拍运行契约：
-- 如果选择“连续节拍”：它是执行契约，不是提示词装饰词。
-- 连续项目先确认控制层，除非 state 已经证明控制层和 standing_lane_topology 仍然有效。
-- 每一拍必须先重水化 round_execution_prompt，再建立/记录一个窄 round_goal，执行 Loop、评分路由、关闭或迁移本拍，然后自动进入下一拍 queued 的低风险可逆任务。
-- Codex 工具 Goal 如果可用，只用于当前一拍；完成后立刻创建/记录下一拍 protocol_round_goal。不要用一个长期工具 Goal 承载几十拍，也不要等用户再说继续才开启下一拍。
-- 确认执行后，保持 beat_queue、当前 round_goal、下一拍候选、Beat Router 和 stop condition。线程、子代理、automation、长期审核通道可以在前几拍判断成熟度、可用性和责任边界；未成熟时记录原因，但不能因此省略本拍 Goal/Plan/Loop。
-- 干净线程、后台 worker、审核通道或 automation 必须产生可观察启动信号；若在首拍窗口内没有 contract、工具动作、文件变化或结果，标记为 degraded_or_unobservable，并切回可用的主线程/更小本地拍/同 session diagnostic review。
-- STOP_COMPLETE 条件：目标完成、验证满足交付契约、residual-beat scan 确认没有有价值的低风险可逆小拍。若只剩低价值润色，说明为什么低于本轮交付阈值。
-- 若 residual-beat scan 触发了新的写入，必须在最后一次写入之后重新运行验证和 residual-beat scan，不能直接 STOP_COMPLETE。
-- 连续工作最终人看版必须包含紧凑运行审计：每拍 round_goal/protocol_round_goal、工具 Goal 是否使用或未用原因、Beat Router 路由、是否自动进入下一拍、子代理/审核/线程/automation 的可观察证据或 degraded/not_needed_with_reason、最后一次写入后的验证、最终 residual-beat scan。
-
-协作拓扑自动启用：
-- 如果临时子代理、并行检查或只读审核能明显降低风险且不触发外部副作用：自动启用可用拓扑，而不是只建议用户以后开启。
-- 长期线程/通道和临时子代理必须分开判断：长期线程/通道用于跨多拍反复出现的责任，子代理只做短期 bounded work。
-- 运行资源选择默认由 AI 判断：是否需要长期通道、临时 worker、只读审核、事实账本或 manager-owned lane record，不需要用户为路线选择授权。
-- 如果本轮不启用子代理/线程/审核/automation，必须给出 `not_needed_with_reason`、`degraded_or_unobservable` 或真实责任/平台边界；不能静默跳过用户显式要求的协作拓扑。若长期通道需要但暂时不能创建用户可见线程，写入 manager-owned lane record，而不是把它降级成“以后建议”。
-- 若账号/API、外部写入、发布、不可逆动作、高风险主张或平台可见持久资源创建需要用户担责：记录 manual_action_required，再回问。
-- 独立评审每一轮都必须清上下文、使用事实账本/只读审核线程/独立 reviewer；同 session 自评只能标为 diagnostic self-review。
-- “已启用”必须有可观察证据：工具调用、线程/worker id、handoff/fact-ledger packet、返回摘要、文件触达，或明确 unavailable/degraded。没有证据时只能写“计划启用/不可观察已降级”，不能写成已经完成独立审核。
-
-目标仓库激活对账：
-- 如果该 prompt 被复制到另一个仓库：先读取目标仓库的 AGENTS.md、CONTEXT.md、当前状态、stage board、manifest、no-write boundary 和 manual_action_required 记录。
-- 对每个 steering word 标记：active_now / active_but_boundary_blocked / overridden_by_project_safety / not_needed_with_reason。
-- 如果本地项目要求真实外部输入、账号、人工标注或 no-write 边界确认：按本地边界处理，不绕过；先执行允许的剩余小拍，包括硬边界矛盾修复、提交摩擦降低、非扩张验证、精确 operator handoff，或在文件/env var 已出现后运行 preflight。
-- 只有没有可逆低风险剩余小拍时才暂停，并给出具体文件、字段、env var、命令和不能替代的原因。
-
-运行编排协议：
-- 先做 capability_preflight：Goal/tool goal、左侧栏长期 Codex thread、worktree/background thread、automation/heartbeat、subagent、browser/API/account tools、项目本地脚本分别是否可用。
-- 先做 resource_taxonomy：Codex thread 是用户可见长期线程；subagent 是短生命周期 worker；automation/heartbeat 是定时唤醒；per-round Goal 是当前一拍目标。不要把子代理叫成长线程。
-- 先做 control_plane：方向、责任边界、状态、拓扑、路由和停止条件。
-- 再做 standing_lane_topology：主控线程、长期审核评议通道、资料/证据通道、执行通道、交付通道、临时 worker 池；每个长期通道写清 lane_goal、输入事实账本、输出契约、清上下文策略、唤醒条件、停用条件和可观察证据。
-- 明确 authority/platform boundary：长期通道拓扑、临时 worker、只读审核、事实账本和 manager-owned lane record 是 AI 的运行判断；账号/API、外部写入、发布、不可逆动作、高风险主张，或平台可见持久资源创建真正形成用户担责时，才需要用户确认。
-- 主线程是 manager，只维护 global_goal、beat_queue、current_basis/not_current_basis、open resources、stop conditions、next beat；worker 只做 bounded work 并回传摘要。
-- 每拍结束必须执行 Beat Router：CONTINUE / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_INPUT / STOP_COMPLETE。
-- 只有 stop condition 可以停：目标完成且 residual-beat scan 为空、真实外部输入缺失、责任/平台/账号/API 边界、no-write/evidence boundary、预算/时间/安全限制、不可替代用户判断，或没有剩余低风险内部小拍。commit/push 等外部边界只能阻断对应动作，不能阻断其他已排队的低风险内部小拍。
-- 对后台资源执行 orchestration_watchdog：静默、无输出、无文件触达、无可读结果时，不持续等待；记录降级并选择下一个可执行路由。
-
-Steering words to preserve:
-- 开启 Plan 模式 / 先规划再执行：
-- 模型发现型 / 先发散研究框架 / 不要早收敛：
-- 证据填充型 / 模型和指标已定：
-- 连续节拍 / 总规划别丢 / 每轮 prompt 重水化：
-- 每拍窄 Goal / 自动进入下一拍 / 不等我说继续：
-- 控制层优先 / 主控线程 / 长期审核评议通道：
-- 少问我 / 能推进就继续 / 我给目录你自己读：
-- 运行资源 AI 自判 / 用户只担责授权：
-- 长期线程和临时子代理分开 / 每轮清上下文：
-- 独立评审 / 客观审查 / 避免上下文污染：
-- 外部工具 / 账号 / API / skill：
-- 目标仓库边界对账 / 真人工边界 / 剩余可自动小拍：
-- 编排预检 / Goal mode / 长期线程 / automation / Beat Router / stop condition：
-- 只要人看版：
-
-自适应判断边界：
-- autonomy_level：strong_autonomy_with_guardrails
-- AI 可自行判断：
-- 必须回问用户：
-- judgment_mode 初始默认：
-- rollback_or_recovery_route：
-
-项目性质与收敛状态：
+项目性质：
 - project_nature：
 - convergence_status：
-- 如果模型/研究框架未定：先保留候选框架、问题-观点-论据图和可区分探针，不直接进入证据填表。
-- 如果模型/表格已定：记录 divergence_noop_reason，避免形式化发散。
 
-目标与计划：
-- active_goal_summary（长期方向，写入 state/master prompt，不等同于长期工具 Goal）：
-- round_goal：
-- Codex 工具 Goal 生命周期：本拍窄目标 / 不使用 / 迁移旧目标
-- 本轮计划：
+强自治+担责边界：
+- AI 可自行判断：项目内部计划细节、读取、验证、能力取舍、Plan/Goal 适配、standing lane 记录、thread/worktree/automation fit、临时 worker fit、证据深度、发散/收敛节奏、状态压缩和下一拍推进。
+- 必须回问：主目标改变、账号/API/付款/发布/外部写入、不可逆动作、公开口径变化、高风险主张，或平台动作会造成我需要担责的外部承诺。
 
-Loop 小循环：
-- 最大不确定性：
-- 本轮 loop_type：framework_probe / evidence_check / capability_trial / execution_check
-- candidate_framework_or_evidence_path：
-- discriminating_probe：
-- 5-30 分钟验证动作：
-- 通过标准：
-- 失败后的 route-back：
+连续节拍：
+- 每拍先重水化 master prompt、current_basis、target_function 和 beat_objective。
+- 关键节拍固定做 planning checkpoint；这不是向我索要授权，而是 AI 自己按推荐方案规划。
+- 运行 target-function Loop 和 Beat Router。
+- 可继续时自动进入下一拍，不等我说继续。
+- 如果真实边界阻断，只记录 next_route、具体边界和可恢复路径。
+- STOP_COMPLETE 前必须做 residual scan；固定拍数不是停止条件。
 
-评分与动态路由：
-- 证据充分性：
-- 风险/返工：
-- 能力匹配：
-- 用户确认需求：
-- 下一步路由：
+操作组织：
+- 先建立 operating organization：controller、human interface、literature/data acquisition、model/component、data-code、review/risk、writing/delivery。
+- standing lane 是长期责任；subagent 是短期 worker。
+- 文献/数据 lane 启动时要预判学术账号、数据库、API、机构权限和用户担责事项。
+- 独立评审必须使用清上下文、事实账本、独立 reviewer/thread 或只读 audit worker；同 session 只能叫 diagnostic self-review。
 
-交付契约：
-- 人看版：
-- 机器恢复记录：
-- 不应暴露的内部信息：
+项目组合编排：
+- 连续项目先形成 portfolio operating model：target_function、module_portfolio、standing_lane_portfolio、forward_indexes、branch_parking 和 Hot/Warm/Cold state。
+- 每拍验收以 forward artifact 为核心：model_delta、data_delta、parameter_delta、writing_delta、branch_delta、calibration_delta、state_delta 或 topology_delta。
+- 审计、citation、QA、reviewer、metadata/no-values 是护栏，不应长期成为唯一主产物。
+- 重复 guardrail-only work 触发 toil/WIP review：推进 forward artifact，停放分支，转向其他模块，或说明该 guardrail 为什么是真依赖。
+- 串行只发生在同一证据链内部；不同模块、来源、写作 scaffold、审查 lane 可以并行推进时，不要让一个局部路径成为全局瓶颈。
 
-请先解析 Complex 来源和目标项目来源：Complex 使用 `COMPLEX_HOME` 或用户提供路径，目标项目使用当前仓库或用户提供材料。请先恢复或建立 state/current_basis，再判断 project_nature 和 convergence_status，并逐项判断上述 steering words 是否适用。如果当前界面支持 Plan 模式，请先提醒用户开启 Plan 模式完成协议扫描、项目判断和 prompt/plan 设计，再执行本轮 round_goal；如果不支持，也要先输出计划和 round_execution_prompt，不直接跳到业务执行。若请求涉及连续节拍、Goal、长期线程、子代理、automation 或独立评审，先输出 Orchestration Contract：能力预检、资源术语消歧、control_plane、standing_lane_topology、责任/平台边界、总控/worker 分工、Beat Router 和 stop condition。连续项目确认执行后先确认控制层：方向、责任边界、状态、拓扑、路由和停止条件；拓扑包括主控线程、长期审核评议通道、资料/证据通道、执行通道、交付通道和临时 worker 池；每个长期通道写清 lane_goal、输入事实账本、输出契约、清上下文策略、唤醒条件、停用条件和可观察证据。不要把临时子代理当成长期线程，也不要用局部最高边际收益的小修改替代控制层判断。运行资源选择默认由 AI 自判：是否需要长期通道、临时 worker、只读审核、事实账本或 manager-owned lane record，不需要用户为路线选择授权；只有账号/API、外部写入、发布、不可逆动作、高风险主张或平台可见持久资源创建真正需要用户担责时才回问。确认执行后进入 continuous_orchestration_spine：维护 beat_queue、本拍 round_goal、下一拍候选、工具 Goal 或 protocol_round_goal、Beat Router 执行结果和停止条件。若在目标仓库中执行，先把上述 steering words 与目标仓库 AGENTS/CONTEXT/current status/stage board/manifest/no-write/manual_action_required 做激活对账，明确哪些 active_now、哪些被真实边界阻断、哪些被项目安全规则覆盖、哪些当前不需要。每轮结束时留下 next_route；如果启用连续节拍，每拍使用窄 round_goal，连续性由 state、master prompt 和 next_route 承接，并在本拍完成后自动进入下一拍 queued 的低风险可逆任务。若 next_route / round_goal 已经给出清楚、低风险、可逆且不跨越责任边界的下一步，默认自动进入下一拍，不要写“下次你说继续时再推进”；若受回合、工具、平台或责任边界限制必须暂停，只记录 next_route 和暂停原因。若本地项目处在真实外部输入门，先做硬边界矛盾修复、提交摩擦降低、非扩张验证或精确 operator handoff 等剩余可自动小拍；只有这些都不可用时才暂停，并给出具体文件、字段、env var 和命令。工具、子代理/线程职责和 goal 生命周期采用事件触发优先的复查；3 轮只是兜底上限，无触发时只写 lightweight keep。若临时子代理、并行检查或只读审核对本轮有明显收益且无外部副作用，自动启用可用拓扑；若不启用，写明 not_needed_with_reason、degraded_or_unobservable 或真实责任/平台边界。长期线程、automation、长期审核通道可先判断成熟度；不能创建用户可见线程时，先建立 manager-owned lane record 并继续主线程低风险小拍。独立评审每轮必须使用清上下文/事实账本/只读审核线程，否则只能标为同 session diagnostic self-review。每拍必须通过 Beat Router 收口并执行非终止路由；除 INTERRUPT_FOR_INPUT 或 STOP_COMPLETE 外，不允许停在等待用户继续。STOP_COMPLETE 前必须做 residual-beat scan；不能因为已执行固定拍数就停止。若 residual scan 触发写入，最后一次写入后必须重新验证并再次扫描。最终人看版要包含紧凑运行审计，证明连续节拍、Goal/协议 Goal、控制层/长期通道拓扑/临时 worker、协作拓扑和停止条件确实执行过。
+外部校准与防幻觉：
+- 重要战略、结构、模型、方法、评估、prompt 默认值或协议判断前做 external calibration。
+- 每个机制级问题都要有：source、problem matched、adopted、rejected、not transferable、Complex micro-contract、refresh trigger。
+- 优先对照官方文档、原始论文、标准或成熟生产实践。
+- 定期运行 hallucination sentinel：区分 current_basis、external_basis、inference、unsupported claim 和 falsification cue。
+
+轻量恢复：
+- Hot State 保留当前地图。
+- Warm Index 保留紧凑索引和 accepted artifacts。
+- Cold Archive 保留原始 trace、旧 gate、旧搜索和旧审计指针。
+- 不把全部历史塞入每拍上下文。
+
+第一拍：
+- beat_objective：
+- target-function Loop：
+- forward artifact：
+- 验收条件：
+- 不可证明什么：
+- next_route：
+
+输出只要人看版。若必须暂停，请只说明具体文件、字段、env var、命令或担责边界，不要泛泛问我要不要继续。
 ```
 
-## Execution Bridge
+## Project Master Prompt
 
-- User confirmation status:
-- First round_goal after confirmation:
-- First Loop:
-- First verification:
-- First next_route:
+- thread_goal:
+- phase_goal:
+- completion_criteria:
+- goal_memory_summary:
+- responsibility_boundary:
+- operating_organization:
+- portfolio_operating_model:
+- external_calibration_policy:
+- hallucination_sentinel_policy:
+- trace_appraisal_policy:
+- delivery_contract:
 
-## Round Prompt Rehydration
+## Per-Beat Planning Prompt
 
-Use this section at the start of each continuous round, Plan-mode continuation, or `next_route` handoff.
+Use at the start of each continuous beat, Plan-mode continuation, or `next_route` handoff.
 
-- round_index:
+- beat_index:
 - master_prompt_location:
-- active_goal_summary:
-- codex_goal_lifecycle_mode:
-- continuous_runtime_activation_status:
-- goal_handoff_carrier:
+- goal_memory_summary:
+- thread_goal / phase_goal:
+- beat_objective:
 - latest state/current_basis:
 - project_nature:
 - convergence_status:
-- judgment_mode:
-- autonomy_level:
-- decision_right:
-- candidate_frameworks or fixed evidence model:
 - inherited master constraints:
-- previous-round status:
-- new round judgment:
+- previous-beat status:
+- new beat judgment:
 - prompt patch from user details:
-- round_execution_prompt:
-- plan_alignment_to_master_prompt:
-- next_route this prompt should preserve:
-- ask_user_needed:
-- topology_auto_activation:
-- review_context_reset_status:
-- downstream_activation_reconciliation:
-- residual_auto_beat:
-- orchestration_contract:
-- beat_queue:
-- current_beat_goal_source:
-- resource_maturity_review:
-- orchestration_watchdog:
-- unobservable_resource_route:
-- beat_router_decision:
+- target_function:
+- module served:
+- standing lane served:
+- external_calibration_status:
+- hallucination_sentinel_status:
+- Hot/Warm/Cold state status:
+- Beat Router decision:
 - termination_condition:
-- rollback_or_recovery_route:
 
 Rules:
 
 - Compress and inherit the confirmed master prompt; do not rewrite it unless the user explicitly changes the main goal.
 - Treat user detail changes as prompt patches by default.
-- Do not put the whole continuous cadence into one long Codex tool Goal; use a per-round narrow goal or protocol_round_goal.
-- If continuous cadence is selected and the next route is low-risk and reversible, start the next beat automatically rather than waiting for a user "continue".
-- If independent review is selected, reset reviewer context each review beat with a fact ledger or clean reviewer route.
-- Generate the Plan and Loop from `round_execution_prompt`, not from the local task alone.
-- If the round prompt cannot be reconstructed, route back to state recovery before execution.
+- Generate Plan and Loop from `beat_objective`, target function, and operating organization, not from the local task alone.
+- If the beat prompt cannot be reconstructed, route back to state recovery before execution.
+
+## Compact Continuation Prompt
+
+```text
+继续按 Complex 推进。先恢复 goal_memory_summary、current_basis、target_function、operating organization、external calibration status、hallucination sentinel status 和 next_route。建立本拍 beat_objective，做 planning checkpoint，运行 target-function Loop，验收 forward artifact，更新 Hot/Warm/Cold 状态，然后自动进入下一拍或说明真实担责边界。输出只要人看版。
+```

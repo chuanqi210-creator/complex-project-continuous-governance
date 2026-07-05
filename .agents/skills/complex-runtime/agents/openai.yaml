@@ -1,0 +1,4 @@
+interface:
+  display_name: "Complex Runtime"
+  short_description: "Orchestrate long-running Codex projects."
+  default_prompt: "Use $complex-runtime to set the control plane, responsibility boundary, target-function Loop, and next route for this project."

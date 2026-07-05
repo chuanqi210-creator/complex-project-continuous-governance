@@ -26,6 +26,7 @@ REQUIRED_FILES = [
     "docs/behavior-review.md",
     "docs/runtime-skill-management.md",
     "docs/external-methods.md",
+    ".agents/skills/complex-runtime/SKILL.md",
     ".codex/shared-skills.json",
     ".codex/skills/README.md",
     "tools/check_behavior_regression_pack.py",
@@ -52,6 +53,9 @@ REQUIRED_EXAMPLE_DIRS = [
     "docs/examples/evidence_fill_minimal_runtime",
     "docs/examples/model_discovery_minimal_runtime",
     "docs/examples/independent_review_minimal_runtime",
+    "docs/examples/portfolio_orchestration_minimal_runtime",
+    "docs/examples/external_calibration_micro_contract_runtime",
+    "docs/examples/operating_organization_multi_lane_runtime",
 ]
 
 FORBIDDEN_PATHS = [
@@ -88,6 +92,7 @@ REQUIRED_REFERENCES = [
     "docs/quickstart.md",
     "docs/behavior-regression-cases.json",
     "docs/behavior-transcript-review-rules.json",
+    ".agents/skills/complex-runtime/SKILL.md",
 ]
 
 
@@ -113,6 +118,7 @@ def active_text_files() -> list[Path]:
         ROOT / "templates",
         ROOT / "tools",
         ROOT / ".codex",
+        ROOT / ".agents",
     ]
     paths: list[Path] = []
     for root in roots:
@@ -167,9 +173,9 @@ def main() -> None:
     case_ids = {case.get("case_id") for case in cases if isinstance(case, dict)} if isinstance(cases, list) else set()
     required_ids = set(pack.get("required_case_ids", []))
     rule_ids = set(rules.get("case_rules", {}))
-    check(checks, "behavior_case_count_16", len(case_ids) == 16, sorted(case_ids))
-    check(checks, "required_case_count_16", len(required_ids) == 16, sorted(required_ids))
-    check(checks, "transcript_rule_count_16", len(rule_ids) == 16, sorted(rule_ids))
+    check(checks, "behavior_case_count_34", len(case_ids) == 34, sorted(case_ids))
+    check(checks, "required_case_count_34", len(required_ids) == 34, sorted(required_ids))
+    check(checks, "transcript_rule_count_34", len(rule_ids) == 34, sorted(rule_ids))
     check(checks, "behavior_cases_match_rules", case_ids == rule_ids == required_ids)
 
     active_text = "\n".join(path.read_text(encoding="utf-8", errors="ignore") for path in active_text_files())

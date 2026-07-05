@@ -5,7 +5,7 @@
 - project_nature: mixed
 - convergence_status: provisionally_converged
 - current_basis: reviewable artifacts and fact ledger are available.
-- round_goal: choose the review route.
+- beat_objective: choose the review route.
 - decision to make: same-session diagnostic or independent review.
 - uncertainty_level: medium
 - reversibility: reversible

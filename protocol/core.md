@@ -1,272 +1,285 @@
 # Complex Continuous Governance Core
 
-Complex is a runtime protocol for complex projects. It is not a history log, a template dump, or a mode menu.
+Complex is a Codex-native runtime kit for long-running complex projects. It is not a history log, a template dump, or a mode menu.
 
 Core model:
 
-> strong-autonomy continuous execution + control-plane orchestration + evidence boundaries + anti-human/context-drift safeguards + auditable recovery.
+> strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + external calibration + evidence boundaries + clean review + lightweight auditable recovery.
 
-## 1. Behavior Kernel
+## 1. Philosophy
 
-`complex_behavior_kernel` is the first execution spine. Every Complex round must do seven things:
+Complex exists to keep important projects moving without turning the user into the project scheduler. It should make the agent better at three things:
 
-1. Restore true state: identify `current_basis`, `not_current_basis`, latest user request, current materials, and prior decisions.
-2. Classify project nature: run `project_nature_router` and choose `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
-3. Assign decision rights: run `adaptive_judgment_controller`, `decision_rights_matrix`, and `ask_user_necessity_gate`.
-4. Set the control plane, then choose the work-plane target: continuous projects refresh the operating topology before local optimization; single-round work can go straight to the highest-leverage question.
-5. Run the lightest useful work-plane validation or execution.
+- holding the top-level intent while executing small beats;
+- learning from mature external practice before changing a method, model, route, or protocol;
+- preserving auditability without carrying every old trace in active context.
+
+The main failure to avoid is local greed: solving the nearest visible detail while the real project needs a better structure, a parallel lane, an external method check, a state compaction pass, or a higher-level route decision.
+
+## 2. Codex Surface Alignment
+
+`codex_surface_alignment` runs before Complex interprets Plan, Goal, thread, subagent, automation, skill, `AGENTS.md`, or MCP language. Complex must fit Codex surfaces instead of competing with them.
+
+- Plan mode is a user/interface planning surface. Complex cannot claim it has toggled UI Plan mode unless the current surface actually exposes that action. For complex or strategic beats, AI decides that a **planning checkpoint** is required; if UI Plan mode is available, use the available surface, and if not, produce a plan-shaped checkpoint and continue inside the responsibility boundary.
+- Codex Goal is the persistent objective and completion criteria for a longer task, thread, or bounded phase. Complex calls this `thread_goal` or `phase_goal`. AI decides when a Goal surface is the right carrier; if the current surface/tool can create or update it, use it, and if not, record the same contract in state, prompt, or handoff without asking the user to choose.
+- `beat_objective` is the current small execution target produced inside the Plan/Loop layer. It must not replace the thread or phase goal.
+- `goal_memory_summary` is recovery context in state or prompt memory. It is not Codex Goal.
+- Continuous cadence means same-run execution of queued beats inside the responsibility boundary until `STOP_COMPLETE` or a real boundary appears. Cross-turn continuation maps to thread heartbeat or automation when platform tools allow it; if not, record the heartbeat/automation contract and recovery route without treating it as user permission.
+- Subagents are short-lived bounded workers. They are useful for parallel read-heavy exploration, tests, log analysis, or review packets. They are not standing lanes.
+- Standing lanes are durable project responsibilities owned by the manager: controller, human interface, literature/data acquisition, model/component, data-code, review/risk, writing/delivery, or another project-specific lane.
+- User-visible Codex threads, worktrees, and automations are platform resources, not responsibility boundaries by default. AI decides whether they fit the operating organization. Actual creation follows the current Codex surface/tool semantics; if the surface cannot create them in this run, record the lane, worktree, or automation contract and continue from the manager.
+- `AGENTS.md` carries durable repository conventions. Skills carry reusable workflows. MCP/tools/connectors carry live capabilities.
+
+## 3. Behavior Kernel
+
+`complex_behavior_kernel` is the execution spine. Every Complex run compresses back to seven behaviors:
+
+1. Restore true state: current basis, not-current basis, latest user request, current materials, and prior decisions.
+2. Classify project nature with `project_nature_router`: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
+3. Assign decision rights with `adaptive_judgment_controller`, `decision_rights_matrix`, and `ask_user_necessity_gate`.
+4. Establish the control plane and portfolio operating model before local optimization.
+5. Run the smallest meaningful target-function Loop or execution beat.
 6. Deliver to the right audience.
-7. Leave `next_route` and recovery notes.
+7. Leave `next_route`, accepted artifacts, and recovery pointers.
 
-If a mechanism name conflicts with these behaviors, the behavior kernel wins.
+If a named mechanism conflicts with these behaviors, the behavior kernel wins.
 
-## 2. Project Nature
+## 4. Project Nature
 
-`project_nature_router` decides the operating profile:
+`project_nature_router` chooses the operating profile.
 
-- `evidence_fill`: the model, formula, metric, or framework is fixed. Use `evidence_matrix`, `claim_readiness_ladder`, and `delivery_contract`; record `divergence_noop_reason` when no model discovery is needed.
-- `model_discovery`: the frame is unsettled. Use `anti_premature_convergence_gate`, `ibis_argument_map_gate`, `thought_search_gate`, and `judgment_mode: exploratory`.
-- `mixed`: protect discovery until convergence conditions are met, then switch to evidence fill.
-- `execution_delivery`: focus on implementation, packaging, delivery, and recovery.
+- `evidence_fill`: the model, formula, metric, or framework is fixed. Fill evidence, validate claims, and deliver. Record why broad divergence is not needed.
+- `model_discovery`: the model, metric, explanation path, or story line is unsettled. Protect candidate frames, counterexamples, argument maps, and discriminating probes before filling evidence.
+- `mixed`: protect discovery until convergence conditions are met, then switch to evidence discipline.
+- `execution_delivery`: focus on implementation, packaging, delivery, validation, and recovery.
 
-Model discovery must keep candidate frameworks, issue / position / pro / con maps, counterexamples, convergence conditions, and discriminating probes visible. It must not let a local evidence gap become the main goal too early.
+For model discovery, `anti_premature_convergence_gate`, `ibis_argument_map_gate`, and `thought_search_gate` keep 3-5 candidate frames alive until a probe distinguishes them. For evidence fill, do not pay unnecessary divergence overhead.
 
-Evidence fill must not pay unnecessary divergence overhead. If the model is fixed, fill evidence, validate claims, and deliver.
+## 5. Responsibility Boundary
 
-## 3. Decision Rights
+Complex uses strong autonomy with a clear responsibility boundary. The question is not "is this low risk?" but "who must bear responsibility for this action?"
 
-Complex defaults to strong autonomy with guardrails.
+AI may decide and execute project-internal details:
 
-AI may decide:
+- planning details and beat sequencing;
+- source reading, summarization, and evidence-depth choices;
+- tool/capability fit and reversible local commands;
+- standing-lane records, clean-review packets, and temporary worker splits;
+- convergence pacing, target-function Loop design, and route-back choices;
+- state compaction and trace demotion by pointer.
 
-- plan details
-- Loop probes
-- evidence depth
-- tool/capability fit
-- runtime resource topology
-- standing lane design and manager-owned lane records
-- temporary subagent splits
-- minor long-thread responsibility adjustments
-- divergence/convergence pacing
-- `lightweight_keep` when no refresh event exists
+Ask the user before:
 
-AI must ask before:
+- changing the main goal or delivery/public voice;
+- using accounts, API credentials, payment, publishing, or external writes;
+- a platform action that truly requires user-owned external commitment, such as external publication, account-bound execution, payment, or irreversible shared-state change;
+- irreversible file or system actions;
+- high-risk real-world action;
+- making strong public claims without adequate evidence;
+- choosing a human value judgment that the project has not delegated to the agent.
 
-- changing the main goal
-- using accounts, APIs, payment, publishing, or external writes
-- creating platform-visible persistent resources when the environment makes them user-owned side effects
-- irreversible file or system actions
-- changing delivery/public voice
-- taking high-risk real-world action
-- making strong public claims without enough evidence
+`human_intervention_drift_guard` prevents two opposite failures: unsafe AI overreach and unnecessary human work. If the next action is already defined by state, files, links, `next_route`, or the current `beat_objective`, continue instead of asking "should I continue?" Do not classify Plan checkpoints, Goal fit, thread/worktree/automation fit, standing-lane records, or temporary-worker fit as user authorization questions unless they cross a responsibility-bearing external boundary.
 
-`manual_action_required` is for true access, permission, privacy, account, external-write, payment, publication, or real-world responsibility boundaries.
-It is not for routine runtime-resource selection. Choosing whether a standing lane, temporary worker, clean-context review packet, or manager-owned lane record is useful is an AI judgment unless it crosses a real responsibility or platform-side-effect boundary.
+`context_pointer_first_intake` means directories, files, links, exports, and material locations are work for the AI to read first. Ask for user cleanup only when access, privacy, format, or responsibility boundaries block intake.
 
-## 4. Anti-Human And Context Drift
+`user_input_classification_gate` classifies new user input as fact, preference, authorization, local correction, goal change, or noise/possible misleading. Only goal changes and authorization boundaries rewrite the mainline.
 
-`human_intervention_drift_guard` has two duties:
+## 6. Operating Organization
 
-- prevent unsafe AI overreach
-- prevent AI from offloading low-risk work back to the user
+Long projects need an operating organization, not just a list of tasks.
 
-`known_next_step_auto_execute_rule`: if `next_route`, `round_goal`, state, or accessible materials already define a clear, low-risk, reversible next step, execute or validate it instead of asking "should I continue?"
+`portfolio_control_plane` owns:
 
-Do not end a continuous-cadence response with "next time you say continue" or equivalent phrasing when the next route is already clear. If the environment or turn boundary truly prevents further work, record `next_route` as a recovery fact, not as a user-permission gate. The default is `auto_continue_until_boundary`, not `wait_for_user_continue`.
+- direction: `thread_goal` / `phase_goal`, `goal_memory_summary`, project nature, convergence state, delivery contract, and stop conditions;
+- authority: responsibility boundary, manual-action records, external-write boundaries, and anti-human-drift rules;
+- state: current basis, not-current basis, beat queue, open risks, current artifacts, and validation status;
+- topology: manager, standing lanes, temporary workers, automations/heartbeats, and their observability;
+- routing: Beat Router, route-back triggers, branch parking, residual scan, and recovery notes;
+- calibration: external reference coverage, hallucination sentinel status, and trace appraisal.
 
-`context_pointer_first_intake`: if the user provides directories, files, links, exports, or material locations, read and summarize accessible materials before asking for manual cleanup, copy-paste, or summaries. Record `resource_boundary` only when access or authorization blocks intake.
+`operating_organization` uses standing lanes when responsibilities recur:
 
-`user_input_classification_gate`: classify new user input as fact, preference, authorization, local correction, goal change, or noise/possible misleading. Only goal changes and authorization boundaries rewrite the mainline.
+- Controller lane: total direction, target function, portfolio, route, stop/park decisions.
+- Human interface lane: user communication, responsibility-bearing asks, explanation, and delivery contract.
+- Literature/data acquisition lane: papers, databases, official sources, account/permission forecasts, and source escalation.
+- Model/component lane: model structure, variables, assumptions, component interfaces, and vertical slices.
+- Data-code lane: schemas, hashes, scripts, parsers, reproducibility, and no-write boundaries.
+- Review/risk lane: clean-context review, false precision, overclaim checks, safety/public-voice risks.
+- Writing/delivery lane: claims, figures, methods, limitations, reader-facing narrative.
 
-## 5. Prompt And Continuous Cadence
+Standing lane means recurring responsibility. It does not automatically mean a user-visible thread. A lane may use temporary subagents, clean fact ledgers, background work, or ordinary manager-thread work depending on available Codex surfaces.
+
+Independent review must not be same-session roleplay. Use a clean reviewer, fact-ledger packet, separate thread, read-only audit worker, or clearly label the pass as same-session diagnostic review.
+
+## 7. Target-Function Loop
+
+Complex Loop is not "do the smallest thing nearby." It is a learning and progress loop tied to the target function.
+
+Every Loop declares:
+
+- `beat_objective`;
+- target function served;
+- module and standing lane served;
+- loop type: strategy, discovery, extraction, vertical slice, review, writing, or delivery;
+- expected forward artifact;
+- why this is not local greedy optimization;
+- guard to pass;
+- route after result.
+
+Common Loop types:
+
+- strategy loop: tests route, target function, or portfolio structure;
+- discovery loop: distinguishes candidate frames or hypotheses;
+- extraction loop: turns a source into usable evidence or a no-hit record;
+- vertical slice loop: proves a model/data/code/writing chain end to end;
+- review loop: checks claims, risks, and evidence boundaries with clean context where needed;
+- writing loop: advances the argument, figure, method, or limitation scaffold;
+- delivery loop: packages, validates, and hands off the usable artifact.
+
+`forward_artifact_acceptance_rule`: a beat is accepted only when it creates or updates a forward artifact, passes the relevant guard, updates the relevant index or state, and selects the next route.
+
+Forward artifacts include:
+
+- `model_delta`;
+- `data_delta`;
+- `parameter_delta`;
+- `writing_delta`;
+- `branch_delta`;
+- `topology_delta`;
+- `calibration_delta`;
+- `state_delta`.
+
+`audit_guardrail_not_engine_rule`: audit, citation, QA, legal/safety, reviewer, access, metadata, and no-value outputs are guardrails. When guardrail-only work repeats, run a toil/WIP review: produce a forward artifact, park the branch, route to another module, or justify why the guardrail is the true target-function dependency.
+
+## 8. External Calibration
+
+Complex decisions should not justify themselves only with Complex vocabulary.
+
+`external_calibration_rule`: before strategic route, structure, model, method, evaluation, prompt default, protocol behavior, or high-impact public claim changes, compare against mature external practice.
+
+For this repository, each mechanism-level issue needs:
+
+- source;
+- problem matched;
+- adopted;
+- rejected;
+- not transferable;
+- Complex micro-contract;
+- refresh trigger.
+
+Preferred source classes:
+
+- official Codex/OpenAI docs for Codex surfaces, skills, goals, subagents, automations, guardrails, and handoffs;
+- NIST AI RMF / GenAI Profile for governance, measurement, and confabulation risk;
+- Anthropic agent workflow writeups for routing, orchestrator-workers, and evaluator-optimizer patterns;
+- Google SRE toil practice for stopping maintenance work from consuming engineering work;
+- NASA systems engineering for gate reviews, entry/success criteria, technical baselines, and lifecycle reviews;
+- CRISP-DM for target-function iteration across business/data/model/evaluation/deployment;
+- PRISMA for transparent literature/source flow and exclusion reasons;
+- Team Topologies for durable responsibility lanes and cognitive-load reduction;
+- ADR practice for compact decision records with supersession instead of silent edits.
+
+External calibration must end in a project micro-contract such as an entry condition, accepted artifact, extraction form, WIP/toil limit, stop/park rule, review checklist, state-compaction rule, or refresh trigger. Naming a framework without transfer boundaries is not calibration.
+
+`external_calibration_required_for_each_issue`: when Complex is changed because of a user-reported failure, record the outside pattern used for that issue, the migration boundary, and the resulting micro-contract.
+
+## 9. Hallucination Sentinel
+
+Run `hallucination_sentinel` for important claims and at regular stage points:
+
+- new project startup;
+- every 5 accepted beats;
+- phase/stage switch;
+- model, parameter, source, or prompt upgrade;
+- external calibration;
+- public or human-facing delivery;
+- repeated self-referential reasoning;
+- before promoting a behavior into the core protocol.
+
+Sentinel output:
+
+- `current_basis`;
+- `external_basis`;
+- `inference`;
+- `unsupported_claim`;
+- `falsification_cue`.
+
+Unsupported claims are downgraded to hypothesis, parked, or routed to evidence acquisition.
+
+## 10. Trace Appraisal
+
+Auditability is not the same as carrying every trace in the hot context.
+
+Use:
+
+- Hot State: one-page current map, target function, active modules, active/parked branches, beat queue, prohibitions, and next route.
+- Warm Index: compact ledgers for modules, data assets, parameters, risks, writing scaffolds, lanes, decisions, and forward artifacts.
+- Cold Archive: raw traces, old audits, source notes, screenshots, command outputs, search paths, and superseded branches by pointer.
+
+`trace_appraisal_rule` triggers when:
+
+- Hot State exceeds about 80 lines;
+- a state file exceeds about 800 lines;
+- 10 accepted beats have accumulated;
+- user reports context pollution;
+- a phase handoff or reviewer handoff is due.
+
+Default action is demotion by pointer, not deletion. Important structure decisions use ADR style: Context, Decision, Consequences, Superseded by.
+
+## 11. Prompt And Cadence
 
 `complex_prompt_bootstrap_gate` applies when the user asks to scan Complex and design a project prompt before execution.
 
-`complex_source_resolution` runs before protocol scanning. Treat Complex and the target project as two sources:
+The bootstrap output has three layers:
 
-1. `complex_source`: explicit user path, `COMPLEX_HOME`, or a standard local install.
-2. `target_project_source`: the repository or material set being governed.
-3. target-repository adapters/manifests: downstream evidence that may show Complex was adopted, not the Complex rule source.
-4. if `complex_source` cannot be resolved, ask for the installed Complex path instead of reconstructing rules from memory.
+- high-fidelity startup prompt: makes a new agent understand Complex and the target project;
+- project master prompt: captures the durable `thread_goal` / `phase_goal`, responsibility boundary, operating organization, and delivery contract;
+- per-beat planning prompt: rehydrates the master prompt, current state, target function, and current `beat_objective`.
 
-Keep two contexts separate:
+`planning_checkpoint_for_key_beats`: run a plan-shaped checkpoint at project start, phase switch, structure/model/method/evaluation changes, after a user correction event, after repeated guardrail-only work, or before public delivery. This is an AI-executed planning step, not a request for user permission.
 
-- `complex_source`: the authoritative Complex Runtime Kit, normally the installed repository at `COMPLEX_HOME` or a user-provided path.
-- `target_project_source`: the repository being governed, such as its `AGENTS.md`, `CONTEXT.md`, status files, manifests, stage boards, code, and outputs.
+`prompt_rehydration_gate` runs before every continuous beat: recover master prompt, `goal_memory_summary`, current state, operating organization, current `beat_objective`, external calibration status, hallucination sentinel status, and next route. User details normally become prompt patches unless they change the goal or authorization boundary.
 
-Output:
+`continuous_cadence_contract`: after execution is confirmed, continue through queued beats inside the responsibility boundary. Do not stop because a fixed number of beats ran. `STOP_COMPLETE` requires objective completion, delivery-level validation, and a residual scan showing no useful internal beat remains.
 
-- `protocol_scan_sequence`
-- startup questions or safe defaults; if a safe recommended default exists, choose it and label it `assumed_default` instead of asking the user to pick an internal route
-- project prompt rationale
-- `copy_ready_prompt`
-- `execution_bridge`
-
-Do not execute business work before confirmation unless the user explicitly authorizes it.
-Do not say the user selected a route unless the user actually selected it. Plan mode may ask for authority, irreversible choices, or public-facing direction changes; it should self-select routine project framing, initial cadence, and first-beat defaults when the request already asks for strong-autonomy Complex execution.
-
-`orchestration_contract`: when the user asks for Plan mode, continuous cadence, Goal mode, long-running threads, subagents, automation, or clean-context review, the Plan must design the runtime orchestration before business execution. This contract is not optional wording; it decides which runtime resources should be used, which are unavailable, and what the fallback is.
-
-`manager_owned_bootstrap`: prompt bootstrap, source resolution, project-nature judgment, first orchestration contract, and first beat queue are manager-thread responsibilities. Do not delegate these startup decisions to a background thread, subagent, or clean-context reviewer as the only route. Auxiliary resources may inspect bounded materials after the manager has a usable default route; if they stay silent, the manager continues from its own state.
-
-`control_plane_orchestration`: before a continuous project enters local execution, the agent must confirm the project control plane. This is the durable operating layer that keeps the project from collapsing into a greedy sequence of local edits.
-
-The control plane contains:
-
-- direction: `active_goal_summary`, project nature, convergence state, delivery contract, and stop conditions.
-- authority: decision rights, responsibility boundaries, platform/tool side-effect boundaries, manual-action records, and anti-human-drift rules.
-- state: `current_basis`, `not_current_basis`, open risks, beat queue, recovery route, and validation status.
-- topology: manager responsibility, standing lanes, temporary workers, automations, and their observability.
-- routing: Beat Router, route-back triggers, residual-beat scan, and recovery notes.
-
-`continuous_lane_topology` is the topology part of the control plane. For continuous projects, the first active beat confirms or refreshes this topology unless current state already proves it is fresh. This is a compact control-plane beat, not a new ceremony.
-
-The topology part must define or refresh:
-
-- the manager thread: owns `active_goal_summary`, `current_basis`, `not_current_basis`, `beat_queue`, route decisions, stop conditions, and integration.
-- standing lanes: durable responsibility channels for recurring work such as review/evaluation, evidence/data, implementation, external activation, delivery/editorial, or method discovery.
-- temporary workers: bounded subagents or parallel checks that serve one beat or one lane and then return a summary.
-- lane contracts: each standing lane needs `lane_goal`, scope, input fact ledger, output contract, context-reset rule, wake/event triggers, stale/retire conditions, and observability evidence.
-- authority status: runtime topology is chosen by the agent; platform-visible persistent threads or automations are created only when tool policy and user responsibility boundaries allow them. If a visible resource is unavailable or would create a user-owned side effect, keep a manager-owned lane record and continue rather than pretending the lane exists or asking generic permission.
-
-Standing lanes and temporary subagents are different resources inside the same control plane. A subagent can help a lane, but it is not a long-running lane. If recurring review or evaluation will be needed across many beats, create or plan a standing review lane early and require clean context or a fresh fact ledger for each review beat.
-
-The contract must include:
-
-- `capability_preflight`: check or state availability for Codex Goal/tool goals, user-visible Codex threads, worktree/background threads, automations/heartbeats, subagents, browser/API/account tools, and project-local scripts.
-- `resource_taxonomy`: distinguish user-visible long-running Codex threads from short-lived subagents/workers, automations/heartbeats, and per-round tool Goals. Do not call a subagent a long-running thread.
-- `control_plane`: direction, authority, state, topology, routing, and stop conditions.
-- `standing_lane_topology`: manager thread, durable lanes, temporary worker pool, lane context-reset policy, lane observability evidence, and stale/retire triggers.
-- `authority_status`: the agent self-selects low-side-effect runtime resources such as standing-lane records, temporary workers, read-only audit packets, and manager-owned review lanes. Ask only for responsibility-bearing actions: user-owned persistent thread/automation creation when the platform requires it, account/API actions, external writes, publishing, irreversible operations, or high-risk public claims.
-- `manager_worker_contract`: main thread is the manager; workers/subagents perform bounded work and return summaries. Workers do not complete the global goal or upgrade evidence.
-- `beat_router`: every beat ends by selecting and executing or recording one route: `CONTINUE`, `SPAWN_SUBAGENT`, `CREATE_THREAD`, `CREATE_AUTOMATION`, `INTERRUPT_FOR_INPUT`, or `STOP_COMPLETE`.
-- `termination_conditions`: goal complete with residual-beat scan clear, true external input missing, permission/account/API missing, no-write/evidence boundary, budget/time/safety limit, or user-only judgment.
-
-`continuous_orchestration_spine`: once the user confirms execution or says to proceed under continuous cadence / orchestration protocol, the prompt-bootstrap waiting boundary is consumed for low-risk reversible work. The runtime must then maintain:
-
-- a short `beat_queue` with the current beat and at least the next plausible low-risk beat
-- a fresh `control_plane`, including a valid `standing_lane_topology` when continuous responsibilities recur
-- one current `round_goal`
-- a per-beat tool Goal when available, otherwise a recorded `protocol_round_goal`
-- a `Beat Router` decision that is executed, not merely described
-- an observable start signal for the active beat: a compact contract, first action, file touch, command, or explicit degraded-resource note
-- `STOP_COMPLETE` only when the objective is complete, validation is clean enough for the delivery contract, and a residual-beat scan finds no useful low-risk internal beat remaining; `INTERRUPT_FOR_INPUT` only when the next required action crosses a real boundary and no lower-risk internal beat remains
-
-Long-running threads, automations, and durable review lanes may mature over the first few beats. The agent must assess their fit, platform availability, and responsibility boundary as part of the orchestration spine; it should not treat their absence in beat one as a reason to drop Goal/Plan/Loop, beat routing, or automatic low-risk continuation. If a standing lane is clearly needed but cannot yet be created as a user-visible thread, record `manager_owned_lane_record` or `lane_planned_pending_platform_tooling` and continue through the manager-owned lane contract.
-
-`orchestration_watchdog`: resources used for clean-context execution, background work, subagents, review lanes, automations, or user-visible threads must become observable. Activation means a real tool call, thread id, handoff packet, fact-ledger packet, returned summary, file touch, or explicit unavailable/degraded note. If a resource remains active but produces no readable contract, tool action, file change, or result within a reasonable first-beat window, mark it `degraded_or_unobservable`, record the reason, and continue through another available route such as main-thread execution, same-session diagnostic review, a smaller local beat, or `INTERRUPT_FOR_INPUT` only when no safe route remains. Do not describe a planned or silent resource as completed independent review.
-
-`round_prompt_rehydration_gate` applies before each new Plan/Loop in a prompt-based or continuous project. Recover the master prompt or `active_goal_summary`, current state, and `round_goal` into `round_execution_prompt`.
-
-Each round plan must say what comes from:
-
-- master prompt
-- prior state
-- new judgment
-- AI autonomous decision
-
-`continuous_runtime_activation_contract`: when the user prompt or confirmed project prompt selects `连续节拍`, `continuous_until_stopped`, or equivalent wording, continuous cadence is an active execution contract, not a decorative steering word. Each beat must: rehydrate the round prompt, create or record a narrow `round_goal`, run the Loop, score/route, close or migrate the beat, and immediately enter the next low-risk reversible queued beat until a real boundary appears.
-
-`continuous_until_no_issue_stop_rule`: a beat count is never a completion condition. Running 3 beats can be a smoke-test floor, not a stop reason. Before `STOP_COMPLETE`, run a residual-beat scan across the objective, current diff/state, validation gaps, obvious consistency gaps, stale resources, and delivery contract. If any useful low-risk reversible beat remains, route `CONTINUE`; if only optional low-value polish remains, state why it is below the delivery threshold before stopping.
-
-`visible_continuous_runtime_audit`: when continuous cadence is active, the final human-readable answer must expose a compact runtime audit, not hidden machine-board fields. Include each beat's `round_goal` or `protocol_round_goal`, whether a tool Goal was used or why it was not, the executed Beat Router route, whether the next beat auto-started, resource evidence for any subagent/review/thread/automation, validation after the final write, and the final residual-beat scan. If a residual scan triggers another write, re-run validation and residual scan after that write before claiming `STOP_COMPLETE`.
-
-`downstream_activation_reconciliation`: when Complex is applied inside another repository, local `AGENTS.md`, `CONTEXT.md`, current state, stage boards, manifests, no-write boundaries, and manual-action records can narrow how steering words execute. Before concluding that cadence, subagents, review, or tools are active, reconcile each requested steering word with local project boundaries and mark it as `active_now`, `active_but_boundary_blocked`, `overridden_by_project_safety`, or `not_needed_with_reason`.
-
-If the local project declares a true external-input or manual-action boundary, continuous cadence does not mean inventing evidence or bypassing the boundary. It means: execute any allowed residual beat first, such as hard-boundary contradiction repair, submission-friction reduction, non-expansion verification, exact operator handoff, or preflight once the required env var/file exists. Only after those are exhausted may the agent pause, and the pause must name the exact boundary, required file/env var, command, and why no further low-risk internal beat remains.
-
-`per_round_goal_lifecycle_gate`: do not use one long tool Goal for many rounds. Use a narrow per-round goal. If an old tool Goal is stale or blocked while the project can continue, record `stale_or_blocked_tool_goal`, `goal_refresh_gate`, and `protocol_round_goal`; do not declare the whole project blocked.
-
-If a Codex tool Goal is available and the user has requested continuous Complex execution, use it only for the current beat's narrow objective. When that beat completes and the next route is clear, create or record the next `protocol_round_goal` and continue. Do not wait for a new user message merely to start the next beat.
-
-`continuous_cadence_refresh_gate`: refresh tools, topology, goals, and prompt by event trigger first. Three rounds is only a fallback cap.
-
-## 6. Capability And Topology
-
-`capability_discovery_cadence_gate` runs lightly at entry and when events justify it. Consider tools, skills, plugins, connectors, APIs, browsers, accounts, databases, and external methods.
-
-Record capability choices as:
-
-- selected
-- rejected
-- backlog
-- `manual_action_required`
-
-Use `capability_type_and_side_effect_gate` and `external_state_write_guard` for anything that can change external state.
-
-Use `agent_topology_selection_trace` when work may need main-thread execution, temporary subagents, long-running threads, or review lanes. Use `read_only_audit_subagent_contract` for evidence or conformance review.
-
-`long_running_lane_vs_subagent_boundary`: long-running lanes are project responsibilities that persist across beats. Temporary subagents are short-lived workers. Do not satisfy a request for multi-threaded project construction by only mentioning a one-off subagent. For continuous projects, decide the durable lane topology first, then decide whether any lane needs a temporary worker in the current beat.
-
-`topology_auto_activation_policy`: if the confirmed prompt asks for strong-autonomy Complex execution and the work clearly benefits from temporary subagents, parallel review, read-only audit, standing-lane records, or clean-context review packets, activate or record the available low-side-effect topology instead of merely recommending it. Ask the user only for account/API access, external writes, irreversible actions, publishing, high-risk public claims, or platform-visible persistent resource creation when that action truly becomes a user-owned side effect.
-
-`independent_review_context_separation`: same-session roleplay is diagnostic only. True independent review requires clean context, a separate reviewer/thread, read-only audit subagent, different reviewer/model where available, or a fact-ledger-only packet. Track `human_input_drift_risk` when prior conversation may bias judgment.
-
-`review_context_reset_each_round`: every independent review beat must start from a fresh fact-ledger packet or clean reviewer context. Reusing the full prior conversation is allowed only as same-session diagnostic review and must be labeled as such.
-
-## 7. Delivery Contract
+## 12. Delivery
 
 Run `deliverable_contract_gate` before output:
 
-- audience
-- purpose
-- granularity
-- tone
-- internal-information boundary
+- audience;
+- purpose;
+- granularity;
+- tone;
+- internal-information boundary.
 
-Run `reader_translation_gate` for human-facing work. If the user says `只要人看版`, keep machine fields, YAML, verifier internals, and protocol jargon out of the main deliverable.
+If the user says `只要人看版`, keep machine fields, YAML, verifier internals, and protocol jargon out of the main deliverable. Keep machine recovery notes separate or internal unless requested.
 
-Keep human-readable delivery and machine recovery notes separate.
-
-## 8. Setup Card And User-Visible Triggers
-
-`complex_setup_question_card` applies when the user only says "use Complex" or "按 Complex 推进".
-
-Ask or default only route-changing choices:
-
-- delivery audience
-- project nature
-- capability permission
-- collaboration topology
-- cadence
-- autonomy boundary
-- manual-action boundary
-
-`user_visible_trigger_guide` means steering words are visible to users, not hidden commands:
-
-- `开启 Plan 模式 / 先规划再执行`
-- `先设计提示词/prompt`
-- `模型发现型 / 先发散研究框架 / 不要早收敛`
-- `证据填充型 / 模型和指标已定`
-- `连续节拍 / 总规划别丢 / 每轮 prompt 重水化`
-- `多线程/子代理`
-- `外部工具 / 账号 / API / skill`
-- `少问我 / 能推进就继续 / 我给目录你自己读`
-- `独立评审 / 客观审查 / 避免上下文污染`
-- `只要人看版`
-
-## 9. Runtime Kit And Evaluation
+## 13. Runtime Kit And Evaluation
 
 Runtime templates are optional landing pads, not required protocol fields.
 
 Use filled examples before blank templates:
 
-- evidence fill
-- model discovery
-- independent review
+- evidence fill;
+- model discovery;
+- independent review;
+- portfolio orchestration;
+- external calibration micro-contract;
+- operating organization multi-lane.
 
 Behavior regression is the first line of protocol maintenance:
 
-- `docs/behavior-regression-cases.json`
-- `docs/behavior-transcript-review-rules.json`
-- `tools/check_behavior_regression_pack.py`
-- `tools/review_behavior_transcript.py`
+- `docs/behavior-regression-cases.json`;
+- `docs/behavior-transcript-review-rules.json`;
+- `tools/check_behavior_regression_pack.py`;
+- `tools/review_behavior_transcript.py`.
 
 Promotion rule:
 
-1. Add or refine a behavior case.
-2. Add or refine transcript review rules.
+1. Map the failure to a behavior case.
+2. Add or refine transcript review markers.
 3. Add or refine a golden example.
-4. Promote to this core protocol only when repeated/high-impact failures cannot be handled by the first three.
+4. Use external calibration for the issue.
+5. Promote to this core protocol only when repeated/high-impact failures cannot be handled by the first four.
 
 Do not add history archives, long machine-board logs, dated release packages, or one-off recovery records to the active protocol.

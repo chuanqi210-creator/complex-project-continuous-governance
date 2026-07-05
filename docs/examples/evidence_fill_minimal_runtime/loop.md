@@ -2,11 +2,16 @@
 
 ## Loop Purpose
 
-- round_goal: Validate the weakest fixed metric source path.
+- beat_objective: Validate the weakest fixed metric source path.
 - project_nature: evidence_fill
 - convergence_status: converged_model
 - judgment_mode: fast
 - loop_type: evidence_check
+- target_function: Complete a source-backed evidence table without overclaiming.
+- module_this_beat_serves: evidence table.
+- standing_lane_this_beat_serves: literature/data acquisition.
+- expected_forward_artifact: data_delta.
+- why_not_local_greedy: The representative check validates the evidence path for the remaining fixed metrics.
 - main_uncertainty: Whether Metric C has enough independent support for a third-party-facing statement.
 - what_a_small_test_can_prove: Whether the current source path is strong enough to continue filling the table.
 - what_it_cannot_prove: It cannot prove real-world impact.
@@ -22,6 +27,8 @@
 ## Result
 
 - observed_result: pending
+- forward_artifact_type: data_delta
+- guard_result: claim boundary stays within source support.
 - new_gap: source authority for Metric C still unknown.
 
 ## Route
@@ -29,4 +36,4 @@
 - continue: if primary or high-quality source confirms Metric C.
 - route_back: if only weak secondary descriptions are found.
 - ask_user: only if access requires account, payment, private database, or rubric change.
-- next_round_goal: Fill remaining metrics using the validated evidence path.
+- next_beat_objective: Fill remaining metrics using the validated evidence path.

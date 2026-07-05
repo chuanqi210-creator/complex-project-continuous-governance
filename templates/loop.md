@@ -1,79 +1,68 @@
-# Loop Template
+# Target-Function Loop Template
 
-Use this file for a 5-30 minute small loop that tests the biggest uncertainty before a larger execution.
+Use this file for a compact Loop that learns or advances the target function before larger execution. A Loop is not the smallest nearby task; it is the smallest meaningful cycle that changes the project state.
 
 ## Loop Purpose
 
-- round_index:
-- round_goal:
-- active_goal_summary link if continuous:
-- codex_goal_lifecycle_mode:
-- current_tool_goal_status:
-- goal_handoff_carrier:
-- continuous_runtime_activation_status:
-- continuous_orchestration_spine_status:
-- control_plane_status:
-- continuous_lane_topology_status:
-- topology_formation_beat:
-- standing_lane_topology:
-- current_standing_lane:
-- lane_context_reset_policy:
+- beat_index:
+- thread_goal:
+- phase_goal:
+- goal_memory_summary:
+- beat_objective:
+- planning_checkpoint_status: not_needed / due / complete
+- prompt_rehydration_status:
+- continuous_cadence_status:
 - beat_queue_before:
-- orchestration_watchdog_status:
-- next_beat_auto_start:
-- residual_beat_scan_before_stop:
-- round_execution_prompt:
-- plan_alignment_to_master_prompt:
-- core_goal_plan_loop_required: yes / no
-- visible_runtime_audit_required: yes / no
+- target_function:
+- module_this_beat_serves:
+- standing_lane_this_beat_serves:
+- local_route_still_serves_target_function: yes / no / uncertain
 - project_nature: evidence_fill / model_discovery / mixed / execution_delivery
 - convergence_status:
-- judgment_mode: fast / diagnostic / exploratory / strategic / critical
-- autonomy_level: strong_autonomy_with_guardrails / ask_before_strategic_change / maximum_autonomy
+- loop_type: strategy / discovery / extraction / vertical_slice / review / writing / delivery
+- why_not_local_greedy:
+
+## Codex Surface And Authority
+
+- codex_goal_lifecycle_mode: none / thread_goal / phase_goal / unavailable / stale
+- current_tool_goal_status:
+- responsibility_boundary_status:
 - decision_right: ai_decide / ask_user / manual_action_required / blocked_until_responsibility_boundary
 - ask_user_needed: yes / no
 - ai_decided_without_user_reason:
 - rollback_or_recovery_route:
-- loop_type: framework_probe / evidence_check / capability_trial / execution_check / delivery_check
-- candidate_framework_or_evidence_path:
-- discriminating_probe:
-- Main uncertainty:
-- Why this uncertainty matters:
-- What a small test can prove:
-- What it cannot prove:
-- What this probe can distinguish:
 
-## Refresh Gates
+## Operating Organization Check
 
-- topology review due: yes / no
-- topology decision:
-- control plane decision:
-- standing lane decision:
-- long_running_lane_vs_subagent_boundary:
-- standing review lane decision:
-- topology auto activation:
-- runtime resource discretion:
-- responsibility/platform boundary:
-- review context reset:
-- downstream activation reconciliation:
-- residual auto beat:
-- orchestration contract:
-- beat router:
-- termination condition:
-- beat_queue_after:
-- stop_boundary_or_continue_reason:
-- stop_complete_basis: objective_complete / validation_clean / residual_scan_clear / not_complete
-- final_validation_after_last_write:
-- final_visible_runtime_audit:
+- control_plane_status:
+- operating_organization_status:
+- controller_lane:
+- human_interface_lane:
+- literature_data_acquisition_lane:
+- model_component_lane:
+- data_code_lane:
+- review_risk_lane:
+- writing_delivery_lane:
+- lane_context_reset_policy:
+- temporary_worker_or_subagent_fit:
 - unobservable_resource_route:
-- capability review due: yes / no
-- capability decision:
-- capability refresh mode: event_triggered / fallback_cap / lightweight_keep
-- event trigger:
-- per-round goal lifecycle due: yes / no
-- per-round goal lifecycle decision:
-- goal refresh due: yes / no
-- goal decision:
+
+## External Calibration And Sentinel
+
+- external_calibration_due: yes / no
+- source:
+- problem_matched:
+- adopted:
+- rejected:
+- not_transferable:
+- Complex_micro_contract:
+- refresh_trigger:
+- hallucination_sentinel_due: yes / no
+- current_basis:
+- external_basis:
+- inference:
+- unsupported_claim:
+- falsification_cue:
 
 ## Micro Task
 
@@ -87,14 +76,34 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 
 - Observed result:
 - Evidence path or output:
+- Forward artifact path or index update:
+- Forward artifact type: model_delta / data_delta / parameter_delta / writing_delta / branch_delta / calibration_delta / state_delta / topology_delta / none
+- Guard result:
 - New risk:
 - New gap:
+
+## Toil / WIP Review
+
+- guardrail_only_output: yes / no
+- guardrail_only_streak_after_this_beat:
+- toil_wip_review_due: yes / no
+- selected_action: create_forward_artifact / park_branch / route_to_module / justify_true_dependency / not_needed
+- branch_parking_needed: yes / no
+- parallel_portfolio_route_available: yes / no
+
+## State And Trace
+
+- hot_warm_cold_state_update: hot_state / warm_index / cold_archive / none
+- trace_appraisal_due: yes / no
+- trace_appraisal_decision:
+- index_or_state_updated:
 
 ## Score
 
 | Dimension | Score | Note |
 | --- | --- | --- |
 | Goal clarity |  |  |
+| Target-function fit |  |  |
 | Evidence strength |  |  |
 | Problem definition quality |  |  |
 | Candidate framework diversity |  |  |
@@ -105,21 +114,13 @@ Use this file for a 5-30 minute small loop that tests the biggest uncertainty be
 
 ## Route
 
-- continue:
-- route_back:
-- deepen:
-- ask_user:
-- blocked:
-- execute:
-- route_reason:
-- selected_route:
+- selected_route: CONTINUE / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_INPUT / STOP_COMPLETE
 - rejected_routes:
+- route_reason:
 - highest_misjudgment_risk:
 - route_evaluator_reflection_needed: yes / no
-- route_evaluator_reflection_note:
 - delivery contract updated:
 - recovery record updated:
-- next round_goal:
+- next_beat_objective:
 - next beat auto-start decision:
-- tool goal close or migration note:
 - next refresh trigger:

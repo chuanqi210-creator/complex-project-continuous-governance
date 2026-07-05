@@ -2,7 +2,7 @@
 
 ## Current State
 
-- project_goal: Discover a strong explanation framework before evidence filling.
+- thread_goal: Discover a strong explanation framework before evidence filling.
 - project_nature: model_discovery
 - convergence_status: pre_convergence
 - current_basis:
@@ -18,8 +18,8 @@
 - restore true state: framework unsettled; evidence table not yet primary.
 - classify nature: model_discovery.
 - decision rights: AI may generate, merge, and reject candidate frameworks; ask before changing the project goal or delivery audience.
-- highest-leverage question: which candidate framework best explains the project's core tension?
-- lightest useful action: run a discriminating probe across candidate frameworks.
+- highest target-function question: which candidate framework best explains the project's core tension?
+- target-function Loop: run a discriminating probe across candidate frameworks.
 - delivery contract: interim human-readable explanation of options, not final proof.
 - next-route recovery: converge only when conditions are met; otherwise keep candidate pool.
 
@@ -34,6 +34,24 @@
 
 ## Goal State
 
-- active_goal_summary: Find a project framing that can later be supported by evidence.
-- round_goal: Produce 3-5 candidate frameworks and one discriminating probe.
+- goal_memory_summary: Find a project framing that can later be supported by evidence.
+- beat_objective: Produce 3-5 candidate frameworks and one discriminating probe.
 - next_route: run_probe_then_decide_converge_or_continue_discovery
+
+## External Calibration
+
+- source: Double Diamond; Tree/Graph of Thoughts; IBIS.
+- problem_matched: an unsettled frame can collapse too early into one evidence path.
+- adopted: keep candidate frameworks, issue-position-argument map, and discriminating probes visible.
+- rejected: large workshop or diagram ceremony.
+- not_transferable: assuming design-process stages map exactly to every research task.
+- Complex_micro_contract: before convergence, keep 3-5 candidates, one pro/con map, and one probe that can reject or downgrade a frame.
+- refresh_trigger: candidate pool narrows, audience changes, or evidence path becomes clear.
+
+## Hallucination Sentinel
+
+- current_basis: several plausible frames exist.
+- external_basis: divergence/convergence and thought-search methods.
+- inference: preserving candidates lowers premature convergence risk.
+- unsupported_claim: one candidate is already the correct final frame.
+- falsification_cue: the chosen frame lacks a feasible evidence path.

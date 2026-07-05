@@ -2,7 +2,7 @@
 
 ## Current State
 
-- project_goal: Review a Complex project plan without letting the prior chat steer the conclusion.
+- thread_goal: Review a Complex project plan without letting the prior chat steer the conclusion.
 - project_nature: mixed
 - convergence_status: provisionally_converged
 - current_basis:
@@ -19,8 +19,8 @@
 - restore true state: distinguish reviewable artifacts from chat momentum.
 - classify nature: mixed; review checks both reasoning frame and evidence boundary.
 - decision rights: AI may prepare a fact ledger and run same-session diagnostic; true independent review needs clean context or read-only auditor.
-- highest-leverage question: what is the smallest context packet that lets a reviewer judge the plan without inherited bias?
-- lightest useful action: build a fact ledger and choose diagnostic vs independent route.
+- highest target-function question: what is the smallest context packet that lets a reviewer judge the plan without inherited bias?
+- target-function Loop: build a fact ledger and choose diagnostic vs independent route.
 - delivery contract: separate diagnostic self-check from independent review result.
 - next-route recovery: if independence is required, dispatch clean-context review; if not, deliver diagnostic with downgrade label.
 
@@ -49,6 +49,24 @@
 
 ## Goal State
 
-- active_goal_summary: Produce a review that separates facts, claims, evidence, and unresolved risks.
-- round_goal: Build the fact ledger and decide whether this is diagnostic or independent review.
+- goal_memory_summary: Produce a review that separates facts, claims, evidence, and unresolved risks.
+- beat_objective: Build the fact ledger and decide whether this is diagnostic or independent review.
 - next_route: run_clean_context_review_or_deliver_same_session_diagnostic
+
+## External Calibration
+
+- source: Anthropic agent evals; OpenAI Subagents; OpenAI Agents SDK handoffs.
+- problem_matched: same-session self-review can inherit context pollution and false confidence.
+- adopted: evaluate behavior traces, move noisy work off the manager context, and use bounded handoff packets.
+- rejected: claiming independence without clean context.
+- not_transferable: assuming a separate model or platform thread is always available.
+- Complex_micro_contract: independent review requires a fact ledger, clean reviewer context, and an explicit downgrade label if unavailable.
+- refresh_trigger: high-stakes delivery, repeated drift, or review lane contamination.
+
+## Hallucination Sentinel
+
+- current_basis: reviewable artifacts and fact ledger are available.
+- external_basis: agent evals and subagent context-pollution guidance.
+- inference: clean context improves review independence.
+- unsupported_claim: same-session review is independent.
+- falsification_cue: reviewer output relies on chat persuasion instead of fact-ledger artifacts.

@@ -19,10 +19,28 @@ Before copying blank templates, check whether a filled golden example is closer 
 - `docs/examples/evidence_fill_minimal_runtime/` for fixed-model evidence and delivery work.
 - `docs/examples/model_discovery_minimal_runtime/` for unsettled framing and research-model discovery.
 - `docs/examples/independent_review_minimal_runtime/` for fact-ledger review, clean-context review, and same-session diagnostic boundaries.
+- `docs/examples/portfolio_orchestration_minimal_runtime/` for target-function, module, lane, and Hot/Warm/Cold recovery shape.
+- `docs/examples/external_calibration_micro_contract_runtime/` for external source transfer into a project micro-contract.
+- `docs/examples/operating_organization_multi_lane_runtime/` for controller, expert, review, data, writing, and human-interface lanes.
 
 Examples are allowed to be copied, shortened, or adapted. Their purpose is to teach shape, not to become mandatory forms.
 
 When a real agent response feels off, do not immediately add another core rule. First see whether it matches one of the canonical behavior regression cases and run `tools/review_behavior_transcript.py` against the response. If the issue is repeated, update the transcript rule or golden example before promoting a new protocol mechanism.
+
+## Codex Skill And Surface Fit
+
+Complex ships a repo-scoped Codex skill at `.agents/skills/complex-runtime/SKILL.md`. Use it as the progressive-disclosure workflow entry when a Codex agent is asked to use Complex. The skill is intentionally short; detailed behavior remains in `protocol/core.md`.
+
+Capability management must respect Codex surfaces:
+
+- Plan mode is a planning surface. For complex or strategic beats, run a planning checkpoint; use an available planning surface if the current interface exposes it, and do not claim automatic UI activation otherwise.
+- Codex Goal is a persistent objective and completion criteria for a longer task, thread, or bounded phase. Complex calls this `thread_goal` or `phase_goal`; AI decides whether the Goal surface should carry the contract, and records it in state/prompt/handoff when the surface cannot be set.
+- `beat_objective` is the current per-beat Plan/Loop target.
+- `goal_memory_summary` is recovery context, not Codex Goal.
+- Subagents are temporary workers. Use them for bounded parallel work, not as standing lanes.
+- Standing lanes are manager-owned project responsibilities. AI decides whether user-visible threads, worktrees, or automations fit the operating organization; actual creation follows current Codex surface/tool semantics.
+- Automations and thread heartbeats are the right surfaces for cross-turn follow-up when platform tools and responsibility boundaries allow them.
+- MCP/tools/connectors provide live capability; they do not replace the evidence boundary or authorization boundary.
 
 ## Startup Choice Card
 
@@ -33,9 +51,9 @@ Confirm or default these choices:
 - Delivery audience and format.
 - External capability permission: web, browser, database, account, API, skill, plugin, connector, or external method.
 - Collaboration topology: main thread, temporary subagent, long-running thread, or parallel review.
-- Cadence: one round with a next route, or continuous cadence.
+- Cadence: one beat with a next route, or continuous cadence.
 - Project nature: evidence filling, model discovery, mixed discovery-to-evidence, or execution delivery.
-- Autonomy boundary: default to strong autonomy with guardrails for reversible project details, unless the user asks for tighter confirmation.
+- Responsibility boundary: default to strong autonomy for project-internal details, Plan/Goal fit, runtime topology, and platform-resource fit; ask only for main-goal changes, accounts/API credentials, payment, publishing, external writes, irreversible actions, public voice, high-risk claims, or platform actions that create user-owned external commitments.
 - Evidence, privacy, account, payment, publishing, or manual-action boundary.
 
 This card is not a new mandatory verifier field. It is a low-friction way to avoid hidden-trigger behavior and to keep capability use tied to user intent.
@@ -48,19 +66,19 @@ The agent should:
 
 1. Scan the relevant Complex entry points before business execution.
 2. Ask or default the same startup choices: delivery, capabilities, topology, cadence, and boundaries.
-3. Produce a copy-ready project prompt that includes the selected capability policy, rejected/backlogged capabilities, manual-action boundaries, Loop, scoring route, and delivery contract.
+3. Produce a copy-ready project prompt that includes the selected capability policy, rejected/backlogged capabilities, responsibility boundaries, operating organization, target-function Loop, external calibration policy, hallucination sentinel, and delivery contract.
 4. Wait for user confirmation before executing, unless the user explicitly authorized "design and execute".
 5. Treat the prompt as a project startup contract, not a replacement for Complex or for later user corrections.
 
 This bootstrap is especially useful for new projects, new users, or handoff into another Codex thread where the receiving agent needs a compact but complete execution prompt.
 
-For continuous prompt-based projects, rehydrate the prompt each round before planning. The round prompt should inherit the confirmed master prompt, current state, capability policy, topology, and delivery contract, then add only the current `round_goal` and prompt patches. Rehydration is not new authorization to use accounts, APIs, external writes, or subagents beyond the existing boundary.
+For continuous prompt-based projects, rehydrate the prompt each beat before planning. The beat prompt should inherit the confirmed master prompt, current state, Codex surface map, capability policy, operating organization, external calibration status, hallucination sentinel status, and delivery contract, then add only the current `beat_objective` and prompt patches. Rehydration is not new authorization to use accounts, APIs, external writes, platform resources, or subagents beyond the existing boundary.
 
 ## Adaptive Judgment Boundary
 
-Capability work should not force the user to adjudicate every small tool, depth, or route choice. Complex defaults to `strong_autonomy_with_guardrails`: the agent may decide reversible, low-side-effect project details when the decision can be recovered from state.
+Capability work should not force the user to adjudicate every small tool, depth, or route choice. Complex defaults to strong autonomy inside a responsibility boundary: the agent may decide project-internal details when the decision can be recovered from state.
 
-Human intervention is also a capability boundary. Asking the user is necessary when the task needs authorization, private access, irreversible action, external write, public voice, payment, publishing, high-risk real-world judgment, or an explicit preference that cannot be inferred. It is not necessary when the agent can safely read provided materials, execute a known low-risk next route, or choose a reversible project-detail path.
+Human intervention is also a capability boundary. Asking the user is necessary when the task needs authorization, private access, irreversible action, external write, public voice, payment, publishing, high-risk real-world judgment, a strong public claim without evidence, or an explicit preference that cannot be inferred. It is not necessary when the agent can read provided materials, execute a known next route inside the responsibility boundary, or choose a recoverable project-detail path.
 
 The agent may usually decide:
 
@@ -68,7 +86,7 @@ The agent may usually decide:
 - Which candidate capability to select, reject, backlog, or try with a small smoke test.
 - Whether a temporary subagent split, read-only review, or main-thread-only path best fits the current gap.
 - Whether model-discovery work should keep diverging or begin converging based on probes and argument quality.
-- Whether to continue from a clear `next_route` / `round_goal` without asking "whether to continue."
+- Whether to continue from a clear `next_route` / `beat_objective` without asking "whether to continue."
 - Whether to read and summarize user-provided directories, files, links, exports, or material locations directly.
 
 The agent must ask or require manual action before:
@@ -82,11 +100,11 @@ For strategic or critical decisions, record a short `route_evaluator_reflection_
 
 For independent review, do not treat same-session roleplay as independent. Use clean context, a separate thread/reviewer, a read-only audit subagent, or a fact-ledger-only packet when independence matters. Same-session review is useful as diagnostic self-review only, and should be labeled that way. The minimal example in `docs/examples/independent_review_minimal_runtime/` shows the fact-ledger shape and downgrade labels.
 
-## Per-Round Goal Lifecycle
+## Goal Lifecycle
 
-Continuous cadence should not depend on one long Codex tool Goal that spans dozens of rounds. Use state, master prompt, closure routing, and `next_route` as the continuity carriers. When a tool Goal is useful, make it a narrow per-round objective that can be completed when that beat finishes.
+Continuous cadence should not put concrete next-step chores into a long Codex Goal. Use Codex Goal as `thread_goal` or `phase_goal`: the durable objective and completion criteria. Use state, master prompt, `goal_memory_summary`, closure routing, and `next_route` as continuity carriers. Use `beat_objective` for the current Plan/Loop target.
 
-If a current tool Goal is stale or blocked but the project state still shows a viable next route, treat the situation as a goal lifecycle mismatch, not a project blockage. Record a `protocol_round_goal` or `goal_migration_note`, continue from state, and only ask for manual cleanup if the tool state itself prevents the next round.
+If a current Codex Goal is stale or blocked but the project state still shows a viable next route, treat the situation as a goal lifecycle mismatch, not a project blockage. Refresh `thread_goal` / `phase_goal`, record the current `beat_objective`, continue from state, and only ask for manual cleanup if the tool state itself prevents the next beat.
 
 ## When To Reconsider Capabilities
 
@@ -95,15 +113,16 @@ Reconsider capabilities at these points:
 - A new project starts.
 - A Complex startup choice card is asked or defaulted.
 - A Complex prompt bootstrap is requested or confirmed.
-- A continuous round rehydrates the project prompt for a new Plan/Loop.
+- A continuous beat rehydrates the project prompt for a new Plan/Loop.
 - The adaptive judgment controller marks a route, depth, topology, or tool decision as strategic or critical.
 - The project changes stage or route.
 - The user names a tool, skill, API, database, account, browser, Auto Research, Complex, or external method.
 - A search, verification, render, data, or delivery task is blocked.
 - A subagent, long-running thread, or external write is being considered.
 - A final claim is about to be made.
+- A mechanism-level issue would change a project default, route algorithm, prompt pattern, or protocol behavior; this requires external calibration and a micro-contract.
 
-For continuous cadence, reconsider capabilities by event trigger first. Trigger a real refresh when the main chain, project nature, delivery audience, project version, evidence path, material type, subthread responsibility, account/API boundary, external write boundary, or repeated block changes. Three rounds is only a fallback cap: if no event has fired by then, do a lightweight fit check and deepen only when something is actually stale.
+For continuous cadence, reconsider capabilities by event trigger first. Trigger a real refresh when the main chain, project nature, delivery audience, project version, evidence path, material type, subthread responsibility, account/API boundary, external write boundary, or repeated block changes. Three beats is only a fallback cap: if no event has fired by then, do a lightweight fit check and deepen only when something is actually stale.
 
 Small local tasks may intentionally skip broad discovery, but the skip reason should be clear.
 
@@ -130,7 +149,7 @@ For each meaningful candidate, record:
 | --- | --- |
 | candidate | Skill, tool, plugin, connector, API, template, account path, or external method |
 | type | skill / tool / plugin / connector / API / browser / template / external_method / manual_action |
-| selected_now | Whether it will be used in this round |
+| selected_now | Whether it will be used in this beat |
 | rejected_now | Why it is not useful or safe now |
 | backlog | When it might be useful later |
 | manual_action_required | What only the user can do |
@@ -141,7 +160,7 @@ This can live in a project state file, decision file, machine recovery note, or 
 
 ## Event-Triggered Refresh
 
-Continuous projects need refresh because the best capability at round 1 may be wrong later. But a mechanical full review can also interrupt thinking, especially in model-discovery work. Use event triggers first and a 3-round fallback cap second.
+Continuous projects need refresh because the best capability at beat 1 may be wrong later. But a mechanical full review can also interrupt thinking, especially in model-discovery work. Use event triggers first and a 3-beat fallback cap second.
 
 At each refresh point, check:
 
@@ -153,7 +172,7 @@ At each refresh point, check:
 
 Record one of these outcomes:
 
-- keep: still fits the current round.
+- keep: still fits the current beat.
 - lightweight_keep: no trigger fired; no full review needed.
 - adjust: same capability, new role or boundary.
 - replace: old capability no longer fits; use another one.

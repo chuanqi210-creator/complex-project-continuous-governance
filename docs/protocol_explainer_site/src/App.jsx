@@ -36,7 +36,7 @@ const pages = [
 const coreOutcomes = [
   {
     title: "强自治连续推进",
-    text: "AI 默认按 7 个行为内核持续推进：恢复状态、判断项目性质、划清决策权、确认控制层、轻量执行、按对象交付、留下 next_route。",
+    text: "AI 默认按 7 个行为内核推进：恢复状态、判断项目性质、划清担责边界、建立控制层和操作组织、运行目标函数 Loop、按对象交付、留下 next_route。",
     icon: Target,
   },
   {
@@ -51,7 +51,7 @@ const coreOutcomes = [
   },
   {
     title: "可审查恢复链",
-    text: "当前状态、行为回归、transcript 审查、黄金样例和完整性验证把项目推进变成可恢复、可复核、可继续的记录，而不是一次性口头承诺。",
+    text: "Hot State、Warm Index、Cold Archive、行为回归、transcript 审查和黄金样例把项目推进变成可恢复、可复核、可继续的记录，而不是一次性口头承诺。",
     icon: UsersThree,
   },
 ];
@@ -59,7 +59,7 @@ const coreOutcomes = [
 const assets = [
   {
     name: "核心协议",
-    role: "定义行为内核、双剖面项目性质、自适应判断、Loop 小闭环、评分迭代、风险边界和恢复规则。",
+    role: "定义行为内核、Codex surface、担责边界、操作组织、目标函数 Loop、外部校准、幻觉哨兵和恢复规则。",
     file: "protocol/core.md",
   },
   {
@@ -79,7 +79,7 @@ const assets = [
   },
   {
     name: "行为回归包",
-    role: "用 16 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
+    role: "用 34 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
     file: "docs/behavior-regression-cases.json",
   },
   {
@@ -99,17 +99,24 @@ const assets = [
   },
   {
     name: "黄金样例",
-    role: "展示 evidence_fill、model_discovery 和 independent_review 三类项目的最小可用运行现场。",
+    role: "展示 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可用运行现场。",
     file: "docs/examples/",
   },
 ];
 
 const capabilityGroups = [
   {
+    title: "Codex Surface 对齐",
+    summary: "Plan、Goal、thread、subagent、automation 各归各位。",
+    detail:
+      "codex_surface_alignment 把 Complex 映射到 Codex 官方交互面：Plan mode 是规划 surface，Codex Goal 是 thread_goal 或 phase_goal，beat_objective 是每拍 Plan/Loop 目标，standing lane 是长期责任通道，subagent 是短期 worker。",
+    icon: Compass,
+  },
+  {
     title: "行为内核",
     summary: "先做 7 个稳定行为，再查具体 gate 名称。",
     detail:
-      "complex_behavior_kernel 把新项目推进压缩为：恢复真实状态、判断项目性质、划清决策权、选择控制形态、轻量验证/执行、按对象交付、留下 next_route。",
+      "complex_behavior_kernel 把新项目推进压缩为：恢复真实状态、判断项目性质、划清担责边界、建立控制层和操作组织、运行目标函数 Loop 或执行、按对象交付、留下 next_route。",
     icon: FileMagnifyingGlass,
   },
   {
@@ -123,35 +130,56 @@ const capabilityGroups = [
     title: "自适应判断",
     summary: "让 AI 自行处理可逆细节，只在真实边界处回问。",
     detail:
-      "adaptive_judgment_controller 与 decision_rights_matrix 区分 AI 可自主判断、需要用户确认、需要人工操作或必须阻塞的事项。",
+      "adaptive_judgment_controller 与 decision_rights_matrix 区分 AI 可自主判断、需要用户担责、需要人工操作或必须阻塞的事项。",
     icon: Compass,
   },
   {
     title: "抗人工漂移",
     summary: "问人前先证明必要性，能推进就继续。",
     detail:
-      "human_intervention_drift_guard、known_next_step_auto_execute_rule 和 context_pointer_first_intake 防止 AI 把低风险工作、材料整理和明确下一步甩回给用户。",
+      "human_intervention_drift_guard、known_next_step_auto_execute_rule 和 context_pointer_first_intake 防止 AI 把担责边界内工作、材料整理和明确下一步甩回给用户。",
     icon: PuzzlePiece,
   },
   {
     title: "Prompt 连续性",
     summary: "每轮先把总规划、当前状态和本轮目标重水化。",
     detail:
-      "complex_prompt_bootstrap_gate 先设计项目专用 prompt；round_prompt_rehydration_gate 确保后续 Plan 继承总规划，而不是只盯住眼前局部任务。",
+      "complex_prompt_bootstrap_gate 先设计项目专用 prompt；prompt_rehydration_gate 确保后续 Plan 继承 thread_goal / phase_goal、goal_memory_summary、当前状态、target function 和 beat_objective，而不是只盯住眼前局部任务。",
     icon: CheckCircle,
   },
   {
     title: "控制层编排",
-    summary: "连续项目先确认方向、责任边界、状态、拓扑、路由和停止条件，再进入局部执行。",
+    summary: "连续项目先确认目标函数、模块组合、责任边界、状态、拓扑、路由和停止条件，再进入局部执行。",
     detail:
-      "control_plane_orchestration 把长期通道放进统一控制层：manager thread、standing lanes、temporary workers、Beat Router 和 stop conditions 一起决定项目怎样持续推进。",
+      "control_plane_orchestration 把长期通道放进统一控制层：target function、module portfolio、standing lanes、forward indexes、temporary workers、Beat Router 和 stop conditions 一起决定项目怎样持续推进。",
     icon: ArrowsSplit,
+  },
+  {
+    title: "操作组织",
+    summary: "长期项目像一个有总控和专家部门的系统，而不是一串局部任务。",
+    detail:
+      "operating_organization 把 controller、human interface、literature/data acquisition、model/component、data-code、review/risk、writing/delivery 分成长期责任 lane；lane 是责任，subagent 是短期 worker。",
+    icon: UsersThree,
+  },
+  {
+    title: "项目组合推进",
+    summary: "每拍验收看 forward artifact，而不是只看审计是否通过。",
+    detail:
+      "portfolio_operating_model 防止长期项目陷入局部贪心：不同模块、来源、写作 scaffold 和评审 lane 可以并行推进；QA、citation、reviewer、metadata/no-values 是护栏，不应长期成为唯一主产物。",
+    icon: Graph,
+  },
+  {
+    title: "轻量化与外部校准",
+    summary: "保留审计能力，但不把全部历史塞进每拍上下文。",
+    detail:
+      "trace_appraisal_rule 把记录分成 Hot State、Warm Index 和 Cold Archive；external_calibration_required_for_each_issue 要求每个机制级问题都对照外部成熟实践，并用 hallucination_sentinel 区分依据、推断和未支持主张。",
+    icon: Database,
   },
   {
     title: "能力与拓扑",
     summary: "运行资源由 AI 自判；用户只为账号、外部写入、发布等担责边界授权。",
     detail:
-      "capability_discovery_cadence_gate 以事件触发为主；无事件时 lightweight keep。子代理是短期 worker，不等于长期线程；standing lanes、fact ledger 和 manager-owned lane record 属于运行编排判断，外部写入、账号、付款和发布才进入担责护栏。",
+      "capability_discovery_cadence_gate 以事件触发为主；无事件时 lightweight keep。subagent 是短期 worker，不等于 standing lane 或 Codex thread；standing lanes、fact ledger 和 manager-owned lane record 属于运行编排判断，外部写入、账号、付款和发布才进入担责护栏。",
     icon: WarningDiamond,
   },
   {
@@ -165,7 +193,7 @@ const capabilityGroups = [
     title: "行为回归与黄金样例",
     summary: "用用例、真实回复审查、结果记录和填好样例验证新代理能否稳定落地。",
     detail:
-      "behavior_regression_pack 覆盖 16 个高风险入口；review_behavior_transcript.py 检查真实回复；结果模板记录用户纠偏和人工评价；docs/examples 给出 evidence_fill、model_discovery 和 independent_review 的最小可恢复运行现场。",
+      "behavior_regression_pack 覆盖 34 个高风险入口；review_behavior_transcript.py 检查真实回复；docs/examples 给出 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];
@@ -185,21 +213,21 @@ const mechanismSteps = [
   },
   {
     k: "03",
-    title: "划清决策权",
-    text: "默认强自治+护栏：AI 处理可逆低副作用细节和运行资源编排，主目标、账号/API、外部写入、不可逆和高风险主张回问；问人前先证明必要性。",
+    title: "划清担责边界",
+    text: "默认强自治：AI 处理项目内部计划、读取、验证、运行资源和下一拍推进；主目标、账号/API、付款、外部写入、发布、不可逆和高风险主张回问。",
     output: "decision_rights_matrix",
   },
   {
     k: "04",
     title: "确认控制层",
-    text: "连续项目先确认方向、责任边界、状态、拓扑、路由和停止条件；单轮任务可直接抓最高杠杆问题。",
-    output: "control_plane / round_goal",
+    text: "连续项目先确认 Codex surface、方向、担责边界、状态、操作组织、路由、外部校准和停止条件；单轮任务可直接抓最高杠杆问题。",
+    output: "control_plane / beat_objective",
   },
   {
     k: "05",
-    title: "轻量验证或执行",
-    text: "按不确定性和副作用选择 no-op、小 Loop、工具烟测、只读子代理或直接执行。",
-    output: "loop / probe",
+    title: "目标函数 Loop",
+    text: "每拍说明 target function、模块、standing lane、forward artifact 和非局部贪心理由，再执行最小有意义循环。",
+    output: "target-function loop",
   },
   {
     k: "06",
@@ -219,7 +247,7 @@ const gateTypes = [
   {
     name: "always minimum",
     zh: "常驻最小",
-    examples: "current_basis、project_nature、decision_rights、round_goal、next_route",
+    examples: "current_basis、project_nature、responsibility_boundary、beat_objective、next_route",
   },
   {
     name: "nature based",
@@ -262,7 +290,7 @@ const scenarios = [
     label: "执行交付型",
     icon: BracketsCurly,
     claim: "主要任务是实现、包装、交付、验证或说明当前成果。",
-    lenses: ["round_goal", "Loop", "deliverable_contract_gate", "next_route"],
+    lenses: ["beat_objective", "Loop", "deliverable_contract_gate", "next_route"],
     outputs: ["窄目标", "最小验证", "交付边界", "下一轮恢复线索"],
     downgrade: "验证未覆盖的部分不能当作已完成；人看版和机器恢复记录要分开。",
   },
@@ -282,14 +310,14 @@ const scenarios = [
     claim: "主目标、账号/API、外部写入、公开口径、高风险主张或现实责任发生变化。",
     lenses: ["decision_rights_matrix", "external_state_write_guard", "manual_action_required", "ask_user_necessity_gate"],
     outputs: ["必须回问事项", "AI 可自主事项", "人工操作边界", "回滚/降级路线"],
-    downgrade: "没有授权时只能做只读分析、计划或低风险小验证，不能替用户执行外部影响动作。",
+    downgrade: "没有授权时只能做只读分析、计划或担责边界内小验证，不能替用户执行外部影响动作。",
   },
 ];
 
 const comparisonRows = [
   ["推进方式", "先讨论方案或直接执行", "先跑 7 步行为内核，再按项目性质推进"],
   ["项目性质", "容易把所有任务都变成证据审计", "先判断 evidence_fill / model_discovery / mixed / execution_delivery"],
-  ["人工介入", "安全起见频繁问是否继续", "问人前证明必要性；清楚低风险下一步自动推进"],
+  ["人工介入", "安全起见频繁问是否继续", "问人前证明必要性；清楚担责边界内下一步自动推进"],
   ["材料处理", "要求用户整理、搬运、摘要", "用户给路径或文件时优先自行读取和归纳"],
   ["评审独立性", "同 session 扮演评审", "区分 diagnostic 自评和清上下文 independent review"],
   ["复杂度控制", "要么过度表格化，要么完全黑箱", "行为内核给主线，模板和案例按需启用"],

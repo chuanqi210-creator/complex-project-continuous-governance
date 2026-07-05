@@ -1,18 +1,26 @@
 # Runtime State Template
 
-Use this file to make a Complex project resumable. Keep it short enough that a later agent can recover the project without rereading every artifact.
+Use this file to make a Complex project resumable. Keep Hot State short enough that a later agent can recover without rereading every artifact.
 
 ## Project Snapshot
 
 - Project:
-- Current objective:
 - Current stage:
 - Current route:
-- round_index:
-- review_interval:
+- beat_index:
 - current project version or milestone:
 - Last updated:
-- Owner or main thread:
+- Owner or manager thread:
+
+## Goal Memory
+
+- thread_goal:
+- phase_goal:
+- goal_memory_summary:
+- current_beat_objective:
+- next_route:
+- completion_criteria:
+- stop_conditions:
 
 ## Project Nature
 
@@ -26,10 +34,76 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - convergence_switch_conditions:
 - current scoring profile:
 
+## Operating Organization
+
+- operating_organization_status: not_needed / pending / active / stale / route_back
+- target_function:
+- controller_lane:
+- human_interface_lane:
+- literature_data_acquisition_lane:
+- model_component_lane:
+- data_code_lane:
+- review_risk_lane:
+- writing_delivery_lane:
+- lane_context_reset_policy:
+- lane_observability_evidence:
+- lane_stale_or_retire_trigger:
+- temporary_worker_pool:
+- user_visible_resource_status:
+
+## Portfolio Operating Model
+
+- portfolio_operating_model_status: not_needed / pending / active / stale / route_back
+- module_portfolio:
+- module_status_index:
+- standing_lane_portfolio:
+- forward_artifact_index:
+- branch_parking_ledger:
+- data_asset_or_evidence_index:
+- parameter_candidate_ledger:
+- writing_scaffold_index:
+- current_forward_artifact_types: model_delta / data_delta / parameter_delta / writing_delta / branch_delta / calibration_delta / state_delta / topology_delta / none
+- guardrail_only_streak:
+- toil_wip_review_status: healthy / due / route_to_artifact / branch_parking_needed / justified_true_dependency
+- parallel_portfolio_routing_status: not_needed / active / route_to_parallel_module / blocked
+- current_global_bottleneck_candidate:
+- bottleneck_is_true_global_dependency: yes / no / uncertain
+
+## State Lightening
+
+- hot_state_location:
+- warm_index_locations:
+- cold_archive_policy:
+- trace_appraisal_status: not_needed / due / complete / stale
+- trace_retention_classes:
+- demoted_to_cold_archive:
+- active_context_size_risk: low / medium / high
+
+## External Calibration
+
+- external_calibration_status: not_needed / fresh / due / stale / complete
+- source:
+- problem_matched:
+- adopted:
+- rejected:
+- not_transferable:
+- Complex_micro_contract:
+- refresh_trigger:
+- external_calibration_required_for_each_issue_status:
+
+## Hallucination Sentinel
+
+- hallucination_sentinel_status: not_needed / due / complete / route_back
+- current_basis:
+- external_basis:
+- inference:
+- unsupported_claim:
+- falsification_cue:
+
 ## Adaptive Judgment
 
 - judgment_mode: fast / diagnostic / exploratory / strategic / critical
-- autonomy_level: strong_autonomy_with_guardrails / ask_before_strategic_change / maximum_autonomy
+- autonomy_level: strong_autonomy_inside_responsibility_boundary / ask_before_strategic_change
 - decision_right: ai_decide / ask_user / manual_action_required / blocked_until_responsibility_boundary
 - ask_user_needed: yes / no
 - ask_user_necessity: necessary / unnecessary / manual_action_required
@@ -38,12 +112,11 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - ai_decided_without_user_reason:
 - rollback_or_recovery_route:
 - route_evaluator_reflection_status: not_needed / pending / complete
-- last_strategic_or_critical_judgment:
 
-## Human Intervention Boundary
+## Responsibility Boundary
 
 - ai_auto_continue_allowed:
-- known_next_step_auto_execute_rule: applicable / not_applicable / blocked_by_risk_or_responsibility_boundary
+- known_next_step_auto_execute_rule: applicable / not_applicable / blocked_by_responsibility_boundary
 - unnecessary_user_intervention_reason:
 - must_ask_user_for:
 - manual_action_required_for:
@@ -55,80 +128,21 @@ Use this file to make a Complex project resumable. Keep it short enough that a l
 - local_boundary_effect_on_steering_words:
 - residual_auto_beat_available: yes / no
 - residual_auto_beat_type: boundary_contradiction_repair / submission_friction_reduction / non_expansion_verification / exact_operator_handoff / preflight_after_env_var / none
-- orchestration_contract_status: not_needed / pending / complete / degraded
-- control_plane_status: not_needed / fresh / stale / needs_confirmation / blocked_by_responsibility_or_tooling
-- control_plane_summary:
-- continuous_orchestration_spine_status: inactive / active / paused_by_boundary / stop_complete
+
+## Codex Surface And Cadence
+
+- codex_surface_alignment_status: pending / complete / route_back
+- plan_mode_surface_status: user_enabled / remind_user / planning_checkpoint / not_needed
+- codex_goal_surface_status: thread_goal_fit / phase_goal_fit / not_needed / unavailable / stale
+- thread_heartbeat_or_automation_status: not_needed / planned / available / unavailable / blocked_by_responsibility_boundary
+- continuous_cadence_status: inactive / active / paused_by_boundary / stop_complete
 - beat_queue:
-- current_beat_goal_source: tool_goal / protocol_round_goal / not_created_yet
-- resource_maturity_review:
-- continuous_lane_topology_status: not_needed / needs_topology_formation / active / manager_owned_record_only / stale / blocked_by_responsibility_or_tooling
-- topology_formation_beat_status: not_needed / queued / executing / complete / skipped_existing_topology_valid
-- standing_lanes:
-- lane_planned_pending_platform_tooling:
-- lane_context_reset_policy:
-- lane_observability_evidence:
-- lane_stale_or_retire_trigger:
-- orchestration_watchdog_status: not_needed / observing / degraded_or_unobservable / recovered
-- unobservable_resource_route: main_thread / smaller_local_beat / diagnostic_review / interrupt_for_input / none
-- complex_source_resolution_status: explicit_user_path / local_authoritative_path / sibling_repo / target_adapter_only / unavailable_need_user_path
-- complex_source:
-- target_project_source:
-- capability_preflight:
-- resource_taxonomy_decision:
-- authority_platform_boundary_status:
-- beat_router_decision: CONTINUE / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_INPUT / STOP_COMPLETE
+- current_beat_objective_source: codex_goal / protocol_record / planning_checkpoint
+- planning_checkpoint_status: not_needed / due / complete
+- prompt_rehydration_status: not_needed / needs_rehydration / rehydrated / route_back_to_state_recovery
+- last_prompt_refresh_beat:
+- Beat Router decision: CONTINUE / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_INPUT / STOP_COMPLETE
 - termination_condition:
-
-## User Choices
-
-- setup_question_card_status: asked / defaulted / not_needed
-- prompt_bootstrap_status: not_requested / designing / awaiting_confirmation / confirmed / superseded
-- prompt_bootstrap_location:
-- master_prompt_location:
-- round_prompt_status: not_needed / needs_rehydration / rehydrated / route_back_to_state_recovery
-- last_prompt_refresh_round:
-- delivery audience and format:
-- capability permission: local_only / public_web_ok / browser_ok / account_required / API_ok / manual_action_required
-- collaboration choice: main_thread / temporary_subagent / long_running_threads / parallel_review / undecided
-- cadence choice: single_round_then_next_route / continuous_until_stopped
-- continuous_runtime_activation_status: inactive / active / paused_by_boundary / degraded
-- project nature preference or trigger words:
-- autonomy preference or trigger words:
-- evidence or privacy boundary:
-- user_visible_trigger_guide_shown: yes / no
-
-## Goal State
-
-- active_goal_summary:
-- round_goal:
-- core_goal_plan_loop_status:
-- codex_goal_lifecycle_mode: none / per_round_narrow_goal / long_goal_legacy / tool_unavailable
-- next_beat_auto_start: yes / no / blocked_by_boundary
-- current_tool_goal_status: not_used / active / complete / blocked / stale / unknown
-- goal_handoff_carrier: state_next_route / closure_routing / master_prompt / codex_tool_goal / mixed
-- protocol_round_goal:
-- goal_refresh_status:
-- stale_goal_check:
-- goal_migration_note:
-- manual_clear_needed:
-
-## Collaboration Topology
-
-- main thread responsibility:
-- standing lanes:
-- temporary subagents or workers:
-- long_running_lane_vs_subagent_boundary: clear / unclear / violated
-- standing review or evaluation lane:
-- lane_goal:
-- lane_input_fact_ledger:
-- lane_output_contract:
-- lane_context_reset_each_review_beat:
-- topology_auto_activation: not_needed / activated / recorded_manager_owned_lane / recommended_only / blocked_by_responsibility_or_tooling
-- review_context_reset_each_round: not_needed / active / degraded_to_diagnostic
-- current fit:
-- next topology review:
-- adjustment needed:
 
 ## Capability State
 
