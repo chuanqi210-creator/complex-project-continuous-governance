@@ -6,6 +6,7 @@ Purpose: check whether a real agent response followed the Complex behavior kerne
 
 - `docs/behavior-regression-cases.json`: canonical behavior cases.
 - `docs/behavior-transcript-review-rules.json`: marker groups and human-review questions.
+- `docs/mechanism-maturity.json`: mechanism status and promotion/demotion evidence.
 - `tools/check_behavior_regression_pack.py`: validates the case/rule structure.
 - `tools/review_behavior_transcript.py`: checks one real response or exported transcript against one case.
 
@@ -51,6 +52,8 @@ The script returns:
 
 Passing means "no obvious marker-level regression." It does not mean the response was excellent.
 
+Each case links to one or more mechanism ids. Use those links to decide whether a failure updates a rule, an example, a transcript marker, or the mechanism maturity status.
+
 Human review still asks:
 
 - Did the response reduce user correction cost?
@@ -65,14 +68,20 @@ Use this compact record for real replies:
 
 ```yaml
 case_id:
+mechanism_ids:
 transcript_location:
+source_type: real_transcript / redacted_transcript / synthetic_reproduction / end_to_end_project
 marker_passed:
 human_passed:
+auto_progressed:
+forward_artifact_created:
 user_correction_count:
 main_failure_if_any:
-decision: no_change / update_rule / update_case / update_example / promote_candidate
+decision: no_change / update_rule / update_case / update_example / update_maturity / promote_candidate / demote_mechanism
 notes:
 ```
+
+Do not record raw private transcripts by default. Prefer a redacted summary or a minimal reproduction unless the transcript is safe to publish. See `docs/evals/README.md`.
 
 ## Recent Real Feedback
 
@@ -137,6 +146,18 @@ notes: Added trace_appraisal_rule, external_calibration_rule, and hallucination_
 ```
 
 ```yaml
+case_id: minimum_viable_closure_for_research / minimum_sufficient_observability_not_overreporting
+transcript_location: user reflective practice text, 2026-07-08
+marker_passed_before_change: not applicable; behavior cases did not exist
+marker_passed_after_change: pending real transcript review
+human_passed: pending
+user_correction_count: 1
+main_failure_if_any: Complex could make long projects auditable, but it did not yet make the attention economy explicit enough: research projects could spend too long on local audits, source gathering, and protocol-compliant work before showing a thin chain from question to evidence/model/result/claim, while heavier progress reporting risked consuming the same attention needed for project movement.
+decision: update_case_skill_examples_core
+notes: Added minimum_viable_closure_rule, attention_governance, and minimum_sufficient_observability_rule. Routine beats now expose a light progress signal; heavy audit is reserved for trigger points. Research/prototype projects route back if the startup window passes without an end-to-end closure chain.
+```
+
+```yaml
 case_id: plan_checkpoint_for_key_beats / loop_not_local_greedy / standing_lane_operating_organization / external_calibration_required_for_each_issue / responsibility_boundary_not_low_risk_wording / human_interface_lane_for_long_projects / scheduled_structure_review_continues_project
 transcript_location: user design feedback, 2026-07-05
 marker_passed_before_change: not applicable; behavior cases did not exist
@@ -158,7 +179,7 @@ transcript_review_case_ids:
 user_correction_count:
 final_delivery_quality:
 remaining_gap:
-decision: no_change / update_rule / update_case / update_example / promote_candidate
+decision: no_change / update_rule / update_case / update_example / update_maturity / promote_candidate / demote_mechanism
 ```
 
 ## Promotion Rule
@@ -167,6 +188,7 @@ If a real transcript fails and the failure is repeated or high-impact:
 
 1. Add or refine a marker group in `docs/behavior-transcript-review-rules.json`.
 2. Update the matching behavior case only if expected behavior changed.
-3. Add or adjust a golden example if agents need something concrete to imitate.
+3. Add or adjust a filled example if agents need something concrete to imitate.
 4. Use external calibration for each mechanism-level fix and write a project micro-contract.
-5. Promote to `protocol/core.md` only if cases, rules, examples, and calibration notes are not enough.
+5. Update `docs/mechanism-maturity.json` with the current status and evidence.
+6. Promote to `protocol/core.md` only if cases, rules, examples, maturity records, and calibration notes are not enough.

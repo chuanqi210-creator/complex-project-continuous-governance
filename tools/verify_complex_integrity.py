@@ -24,6 +24,10 @@ REQUIRED_FILES = [
     "docs/behavior-regression-cases.json",
     "docs/behavior-transcript-review-rules.json",
     "docs/behavior-review.md",
+    "docs/mechanism-maturity.md",
+    "docs/mechanism-maturity.json",
+    "docs/evals/README.md",
+    "docs/examples/example-currentness.md",
     "docs/runtime-skill-management.md",
     "docs/external-methods.md",
     ".agents/skills/complex-runtime/SKILL.md",
@@ -31,6 +35,7 @@ REQUIRED_FILES = [
     ".codex/skills/README.md",
     "tools/check_behavior_regression_pack.py",
     "tools/review_behavior_transcript.py",
+    "tools/check_mechanism_maturity.py",
     "tools/verify_complex_integrity.py",
     "tools/test_verify_complex_integrity.py",
 ]
@@ -92,6 +97,8 @@ REQUIRED_REFERENCES = [
     "docs/quickstart.md",
     "docs/behavior-regression-cases.json",
     "docs/behavior-transcript-review-rules.json",
+    "docs/mechanism-maturity.json",
+    "docs/mechanism-maturity.md",
     ".agents/skills/complex-runtime/SKILL.md",
 ]
 
@@ -169,14 +176,38 @@ def main() -> None:
 
     pack = read_json("docs/behavior-regression-cases.json")
     rules = read_json("docs/behavior-transcript-review-rules.json")
+    maturity = read_json("docs/mechanism-maturity.json")
     cases = pack.get("cases")
     case_ids = {case.get("case_id") for case in cases if isinstance(case, dict)} if isinstance(cases, list) else set()
     required_ids = set(pack.get("required_case_ids", []))
     rule_ids = set(rules.get("case_rules", {}))
-    check(checks, "behavior_case_count_34", len(case_ids) == 34, sorted(case_ids))
-    check(checks, "required_case_count_34", len(required_ids) == 34, sorted(required_ids))
-    check(checks, "transcript_rule_count_34", len(rule_ids) == 34, sorted(rule_ids))
+    mechanisms = maturity.get("mechanisms")
+    mechanism_ids = {mechanism.get("id") for mechanism in mechanisms if isinstance(mechanism, dict)} if isinstance(mechanisms, list) else set()
+    check(checks, "behavior_case_count_36", len(case_ids) == 36, sorted(case_ids))
+    check(checks, "required_case_count_36", len(required_ids) == 36, sorted(required_ids))
+    check(checks, "transcript_rule_count_36", len(rule_ids) == 36, sorted(rule_ids))
     check(checks, "behavior_cases_match_rules", case_ids == rule_ids == required_ids)
+    check(checks, "mechanism_maturity_present", len(mechanism_ids) >= 12, sorted(mechanism_ids))
+    if isinstance(cases, list):
+        cases_without_mechanisms = sorted(
+            case.get("case_id")
+            for case in cases
+            if isinstance(case, dict) and not case.get("linked_mechanisms")
+        )
+        unknown_case_mechanisms = sorted(
+            {
+                mechanism
+                for case in cases
+                if isinstance(case, dict)
+                for mechanism in case.get("linked_mechanisms", [])
+                if mechanism not in mechanism_ids
+            }
+        )
+    else:
+        cases_without_mechanisms = ["<cases-not-list>"]
+        unknown_case_mechanisms = []
+    check(checks, "behavior_cases_link_mechanisms", not cases_without_mechanisms, cases_without_mechanisms)
+    check(checks, "behavior_case_mechanisms_known", not unknown_case_mechanisms, unknown_case_mechanisms)
 
     active_text = "\n".join(path.read_text(encoding="utf-8", errors="ignore") for path in active_text_files())
     for forbidden in FORBIDDEN_TEXT:

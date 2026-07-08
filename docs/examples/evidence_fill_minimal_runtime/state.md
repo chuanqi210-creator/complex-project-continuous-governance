@@ -38,6 +38,14 @@
 - beat_objective: Validate one weak metric and decide whether the evidence path is adequate.
 - next_route: evidence_check_then_fill_remaining_metrics
 
+## Attention Governance And Closure
+
+- minimum_viable_closure_status: partial
+- closure_chain: fixed question, fixed metric rubric, source path, evidence-row result, human-readable claim boundary, limitation, next weakest metric.
+- minimum_sufficient_observability_status: light_signal_enough
+- last_progress_signal: Metric C source path is the closure segment; this beat updates one evidence row and cannot yet prove real-world impact.
+- heavy_audit_trigger: public delivery or source contradiction.
+
 ## External Calibration
 
 - source: PRISMA source-flow discipline; NIST AI RMF evidence/risk framing.

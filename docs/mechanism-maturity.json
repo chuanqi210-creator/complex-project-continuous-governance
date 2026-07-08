@@ -1,0 +1,544 @@
+{
+  "version": "2026-07-08-mechanism-maturity",
+  "purpose": "Track whether Complex mechanisms are stable core, validated, tested, candidate, or retired so public docs do not present fresh patches as proven behavior.",
+  "allowed_statuses": [
+    "core",
+    "validated",
+    "tested",
+    "candidate",
+    "retired"
+  ],
+  "status_meanings": {
+    "core": "Stable behavior spine or boundary that every Complex run should respect.",
+    "validated": "Backed by repeated real transcripts or end-to-end project samples plus behavior cases and examples.",
+    "tested": "Covered by behavior cases, transcript rules, examples, or repeated user feedback, but not yet validated by a broad transcript set.",
+    "candidate": "Promising mechanism from recent failures or external calibration; use when relevant, but do not present as proven.",
+    "retired": "No longer active; kept only if needed to explain a replacement."
+  },
+  "promotion_requirements": {
+    "candidate_to_tested": "Has behavior case coverage, transcript rule coverage, at least one filled example or template landing point, and external calibration when mechanism-level.",
+    "tested_to_validated": "Has real transcript or end-to-end project evidence showing lower correction cost or better forward progress across at least two relevant runs.",
+    "validated_to_core": "Is broadly applicable, low-friction, repeatedly useful, and cannot be handled by cases/examples alone.",
+    "demotion": "Repeated transcript failures, high overhead, obsolete Codex surface semantics, or evidence that the mechanism causes local-greedy or governance-drag behavior."
+  },
+  "mechanisms": [
+    {
+      "id": "complex_behavior_kernel",
+      "name": "Complex behavior kernel",
+      "status": "core",
+      "summary": "Seven stable behaviors that compress every Complex run into state recovery, project nature, decision rights, control plane, target-function execution, delivery, and recovery.",
+      "external_basis": [
+        "OpenAI AGENTS.md guidance for durable repository instructions",
+        "OpenAI Skills progressive-disclosure workflow packaging",
+        "NIST AI RMF lifecycle framing"
+      ],
+      "internal_evidence": [
+        "Central in README, quickstart, protocol/core, current-state, and skill",
+        "Covered by setup_card_default and multiple orchestration cases"
+      ],
+      "linked_behavior_cases": [
+        "setup_card_default",
+        "orchestration_preflight_contract",
+        "continuous_orchestration_runtime_spine"
+      ],
+      "linked_examples": [
+        "evidence_fill_minimal_runtime",
+        "model_discovery_minimal_runtime",
+        "portfolio_orchestration_minimal_runtime"
+      ],
+      "promotion_rule": "Already core because it is the compression layer for all other mechanisms, not a narrow recent patch.",
+      "demotion_trigger": "If repeated real transcripts show agents follow mechanism names while missing the seven behaviors, simplify the kernel further.",
+      "refresh_trigger": "Any change to the public entrypoint, skill, or protocol core."
+    },
+    {
+      "id": "codex_surface_alignment",
+      "name": "Codex surface alignment",
+      "status": "tested",
+      "summary": "Maps Plan mode, Codex Goal, beat_objective, subagents, standing lanes, threads, worktrees, automations, AGENTS.md, skills, and tools to their Codex-native meanings.",
+      "external_basis": [
+        "OpenAI Codex Goals",
+        "OpenAI Codex Subagents",
+        "OpenAI Codex Skills",
+        "OpenAI AGENTS.md guide",
+        "OpenAI Codex Automations"
+      ],
+      "internal_evidence": [
+        "Behavior cases cover Plan mode, Goal semantics, subagent boundaries, standing lanes, and source resolution.",
+        "Skill and README use Codex-native terms."
+      ],
+      "linked_behavior_cases": [
+        "plan_mode_is_surface_not_runtime",
+        "codex_goal_thread_level_contract",
+        "continuous_cadence_same_turn_vs_heartbeat",
+        "subagent_explicit_trigger_boundary",
+        "standing_lane_record_not_user_thread",
+        "complex_source_resolution_outside_target_repo"
+      ],
+      "linked_examples": [
+        "operating_organization_multi_lane_runtime",
+        "portfolio_orchestration_minimal_runtime"
+      ],
+      "promotion_rule": "Promote to core only after real transcripts show fewer Plan/Goal/thread misunderstandings across at least two target projects.",
+      "demotion_trigger": "If Codex surfaces change or transcript failures show the mapping causes worse behavior.",
+      "refresh_trigger": "Codex app, Goal, subagent, automation, skill, or AGENTS.md documentation changes."
+    },
+    {
+      "id": "project_nature_router",
+      "name": "Project nature router",
+      "status": "tested",
+      "summary": "Classifies work as evidence_fill, model_discovery, mixed, or execution_delivery so evidence-heavy and discovery-heavy projects do not use the same weights.",
+      "external_basis": [
+        "Cynefin-style problem-domain separation",
+        "Double Diamond divergence/convergence rhythm",
+        "CRISP-DM business/data/model/evaluation iteration"
+      ],
+      "internal_evidence": [
+        "Covered by model_discovery and evidence_fill cases and examples."
+      ],
+      "linked_behavior_cases": [
+        "model_discovery_protect_divergence",
+        "evidence_fill_no_extra_divergence",
+        "setup_card_default"
+      ],
+      "linked_examples": [
+        "evidence_fill_minimal_runtime",
+        "model_discovery_minimal_runtime"
+      ],
+      "promotion_rule": "Promote if end-to-end project samples show fewer early-convergence and over-divergence errors.",
+      "demotion_trigger": "If agents over-label mixed projects and stall execution.",
+      "refresh_trigger": "When a new project class repeatedly does not fit the four natures."
+    },
+    {
+      "id": "prompt_bootstrap_and_rehydration",
+      "name": "Prompt bootstrap and rehydration",
+      "status": "tested",
+      "summary": "Designs a project prompt before execution and refreshes each beat from the master prompt, current state, target function, and beat_objective.",
+      "external_basis": [
+        "OpenAI Codex prompting guidance",
+        "OpenAI Skills reusable workflow packaging",
+        "DSPy-style prompt-as-optimizable-pipeline inspiration"
+      ],
+      "internal_evidence": [
+        "Covered by prompt_bootstrap_first and continuous_cadence_rehydrate."
+      ],
+      "linked_behavior_cases": [
+        "prompt_bootstrap_first",
+        "continuous_cadence_rehydrate",
+        "stale_goal_migration"
+      ],
+      "linked_examples": [
+        "portfolio_orchestration_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after real transcripts show follow-on plans preserve the master plan across multiple beats.",
+      "demotion_trigger": "If rehydration creates visible reporting burden or repeats stale goals.",
+      "refresh_trigger": "After any prompt default or Codex planning surface change."
+    },
+    {
+      "id": "continuous_cadence_contract",
+      "name": "Continuous cadence contract",
+      "status": "tested",
+      "summary": "Same-run queued beats continue inside the responsibility boundary until STOP_COMPLETE or a true boundary, not a fixed beat count.",
+      "external_basis": [
+        "OpenAI Codex Automations for cross-turn heartbeat when available",
+        "Agent workflow patterns for routing and evaluator loops"
+      ],
+      "internal_evidence": [
+        "Behavior cases cover rehydration, runtime activation after plan, same-turn vs heartbeat, and known-next-step auto execution."
+      ],
+      "linked_behavior_cases": [
+        "continuous_cadence_rehydrate",
+        "continuous_runtime_activation_after_plan",
+        "continuous_cadence_same_turn_vs_heartbeat",
+        "known_next_step_auto_execute"
+      ],
+      "linked_examples": [
+        "portfolio_orchestration_minimal_runtime",
+        "evidence_fill_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after real transcripts show sustained auto-progression without repeated user continue prompts.",
+      "demotion_trigger": "If agents run past real responsibility boundaries or produce low-value beat churn.",
+      "refresh_trigger": "When Codex automation/thread heartbeat tooling changes."
+    },
+    {
+      "id": "responsibility_boundary",
+      "name": "Responsibility boundary",
+      "status": "core",
+      "summary": "AI handles project-internal decisions; the user is asked only for responsibility-bearing boundaries such as goal changes, accounts, payment, publishing, external writes, irreversible actions, public voice, high-risk claims, or external commitments.",
+      "external_basis": [
+        "OpenAI Agents SDK guardrails and human review concepts",
+        "Codex approval/security boundaries",
+        "NIST AI RMF governance accountability framing"
+      ],
+      "internal_evidence": [
+        "Repeated user feedback identified over-asking as a major failure; cases cover API guardrails, downstream boundary reconciliation, and responsibility wording."
+      ],
+      "linked_behavior_cases": [
+        "external_api_guardrail",
+        "downstream_local_boundary_reconciliation",
+        "responsibility_boundary_not_low_risk_wording",
+        "known_next_step_auto_execute"
+      ],
+      "linked_examples": [
+        "external_calibration_micro_contract_runtime",
+        "operating_organization_multi_lane_runtime"
+      ],
+      "promotion_rule": "Already core because it defines autonomy and user authority across all Complex runs.",
+      "demotion_trigger": "If transcripts show safety overreach or under-asking for true external commitments.",
+      "refresh_trigger": "Any new tool class with external side effects or user-owned commitments."
+    },
+    {
+      "id": "human_intervention_drift_guard",
+      "name": "Human intervention drift guard",
+      "status": "tested",
+      "summary": "Prevents unnecessary user work, manual summaries, and permission-seeking when the next project-internal beat is clear.",
+      "external_basis": [
+        "Human-in-the-loop guardrail patterns",
+        "SRE toil reduction for avoiding unnecessary human labor"
+      ],
+      "internal_evidence": [
+        "Covered by known_next_step_auto_execute and context_pointer_first_intake."
+      ],
+      "linked_behavior_cases": [
+        "known_next_step_auto_execute",
+        "context_pointer_first_intake",
+        "downstream_local_boundary_reconciliation"
+      ],
+      "linked_examples": [
+        "independent_review_minimal_runtime",
+        "evidence_fill_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after real transcripts show fewer unnecessary user prompts across at least two repositories.",
+      "demotion_trigger": "If agents skip needed user authority or hide important uncertainty.",
+      "refresh_trigger": "Whenever user feedback reports over-asking or under-asking."
+    },
+    {
+      "id": "independent_review_context_separation",
+      "name": "Independent review context separation",
+      "status": "tested",
+      "summary": "Distinguishes same-session diagnostic review from true independent review using clean context, fact ledgers, separate reviewers, or read-only audit workers.",
+      "external_basis": [
+        "Anthropic agent evaluation practice",
+        "OpenAI Subagents for bounded read-only workers",
+        "Research review norms around blinded or independent review"
+      ],
+      "internal_evidence": [
+        "Covered by independent_review_context_separation and the independent_review example."
+      ],
+      "linked_behavior_cases": [
+        "independent_review_context_separation"
+      ],
+      "linked_examples": [
+        "independent_review_minimal_runtime",
+        "operating_organization_multi_lane_runtime"
+      ],
+      "promotion_rule": "Promote after real review transcripts show cleaner critique and fewer inherited-chat biases.",
+      "demotion_trigger": "If independent review overhead exceeds project value for routine beats.",
+      "refresh_trigger": "When review lane or subagent tooling changes."
+    },
+    {
+      "id": "operating_organization",
+      "name": "Operating organization",
+      "status": "candidate",
+      "summary": "Long projects establish controller, human interface, literature/data, model/component, data-code, review/risk, and writing/delivery lanes before local optimization.",
+      "external_basis": [
+        "Team Topologies responsibility and cognitive-load concepts",
+        "Anthropic orchestrator-workers pattern",
+        "OpenAI Subagents and handoff concepts"
+      ],
+      "internal_evidence": [
+        "Recent user feedback strongly supports it; behavior cases and examples exist but real transcript validation is pending."
+      ],
+      "linked_behavior_cases": [
+        "orchestration_preflight_contract",
+        "continuous_orchestration_runtime_spine",
+        "standing_lane_operating_organization",
+        "human_interface_lane_for_long_projects"
+      ],
+      "linked_examples": [
+        "operating_organization_multi_lane_runtime",
+        "portfolio_orchestration_minimal_runtime"
+      ],
+      "promotion_rule": "Promote to tested after two real projects show lane contracts reduce local-greedy drift.",
+      "demotion_trigger": "If agents build lane records instead of moving the project.",
+      "refresh_trigger": "When long-project practice reveals a recurring missing lane or excessive topology overhead."
+    },
+    {
+      "id": "portfolio_control_plane",
+      "name": "Portfolio control plane",
+      "status": "candidate",
+      "summary": "Manages target function, modules, standing lanes, forward indexes, branch parking, routing, calibration, sentinel status, and stop conditions before choosing local beats.",
+      "external_basis": [
+        "Team Topologies value stream thinking",
+        "NASA systems engineering lifecycle reviews",
+        "SRE toil/WIP control"
+      ],
+      "internal_evidence": [
+        "Covered by portfolio_before_local_greedy_route, audit guardrail, hot/warm/cold, and portfolio example; real transcript validation pending."
+      ],
+      "linked_behavior_cases": [
+        "portfolio_before_local_greedy_route",
+        "audit_guardrail_not_forward_artifact",
+        "hot_warm_cold_state_lightening",
+        "continuous_orchestration_runtime_spine"
+      ],
+      "linked_examples": [
+        "portfolio_orchestration_minimal_runtime",
+        "operating_organization_multi_lane_runtime"
+      ],
+      "promotion_rule": "Promote after end-to-end samples show multiple modules move without losing mainline.",
+      "demotion_trigger": "If portfolio bookkeeping becomes a substitute for execution.",
+      "refresh_trigger": "After repeated local-greedy failures or module/lane expansion."
+    },
+    {
+      "id": "target_function_loop",
+      "name": "Target-function Loop",
+      "status": "candidate",
+      "summary": "Replaces nearby-lightest action with the smallest meaningful learning or execution cycle serving the project target function and producing a forward artifact.",
+      "external_basis": [
+        "CRISP-DM iteration across business/data/model/evaluation",
+        "NASA entry/success criteria",
+        "Google SRE toil control"
+      ],
+      "internal_evidence": [
+        "Covered by loop_not_local_greedy and examples, but newly reframed."
+      ],
+      "linked_behavior_cases": [
+        "loop_not_local_greedy",
+        "audit_guardrail_not_forward_artifact",
+        "minimum_viable_closure_for_research"
+      ],
+      "linked_examples": [
+        "external_calibration_micro_contract_runtime",
+        "evidence_fill_minimal_runtime",
+        "model_discovery_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after real beats show fewer local-greedy loops and more forward artifacts.",
+      "demotion_trigger": "If loop paperwork slows simple execution-delivery tasks.",
+      "refresh_trigger": "When loops repeatedly fail to move a closure segment or artifact."
+    },
+    {
+      "id": "forward_artifact_acceptance",
+      "name": "Forward artifact acceptance",
+      "status": "candidate",
+      "summary": "A beat is accepted only when it creates or updates a forward artifact, passes a guard, updates state/indexes, and selects a route.",
+      "external_basis": [
+        "NASA success criteria and technical baselines",
+        "SRE toil/WIP review"
+      ],
+      "internal_evidence": [
+        "Behavior cases cover audit guardrails and portfolio routing; examples include forward artifacts."
+      ],
+      "linked_behavior_cases": [
+        "audit_guardrail_not_forward_artifact",
+        "portfolio_before_local_greedy_route",
+        "continuous_runtime_activation_after_plan"
+      ],
+      "linked_examples": [
+        "portfolio_orchestration_minimal_runtime",
+        "evidence_fill_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after real transcripts show STOP_COMPLETE and next routes are based on artifact progress rather than guardrail-only work.",
+      "demotion_trigger": "If agents force artificial artifacts for genuinely diagnostic beats.",
+      "refresh_trigger": "When accepted beats are later judged low value."
+    },
+    {
+      "id": "trace_appraisal_hot_warm_cold",
+      "name": "Trace appraisal and Hot/Warm/Cold state",
+      "status": "candidate",
+      "summary": "Keeps auditability while demoting stale trace from hot context into compact indexes or cold archives by pointer.",
+      "external_basis": [
+        "Google SRE toil reduction",
+        "ADR lightweight decision records",
+        "Knowledge management hot/warm/cold storage pattern"
+      ],
+      "internal_evidence": [
+        "Covered by hot_warm_cold_state_lightening and trace_appraisal cases."
+      ],
+      "linked_behavior_cases": [
+        "hot_warm_cold_state_lightening",
+        "trace_appraisal_hot_warm_cold_compaction"
+      ],
+      "linked_examples": [
+        "portfolio_orchestration_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after long project samples show lower context load without losing recovery.",
+      "demotion_trigger": "If compaction hides current basis or breaks handoff recovery.",
+      "refresh_trigger": "When Hot State length or user feedback indicates context pollution."
+    },
+    {
+      "id": "external_calibration_rule",
+      "name": "External calibration rule",
+      "status": "candidate",
+      "summary": "Strategic route, structure, model, method, evaluation, prompt-default, or protocol changes compare against mature external practice and become micro-contracts.",
+      "external_basis": [
+        "NIST AI RMF govern/map/measure/manage",
+        "Anthropic Building Effective Agents",
+        "OpenAI Agents guardrails/handoffs",
+        "ADR decision records"
+      ],
+      "internal_evidence": [
+        "Covered by external_calibration cases and external calibration example."
+      ],
+      "linked_behavior_cases": [
+        "external_calibration_before_strategic_decision",
+        "external_calibration_required_for_each_issue"
+      ],
+      "linked_examples": [
+        "external_calibration_micro_contract_runtime",
+        "model_discovery_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after repeated changes include external basis and avoid self-referential protocol fixes.",
+      "demotion_trigger": "If agents perform superficial framework naming without transfer boundaries.",
+      "refresh_trigger": "Every mechanism-level change or stale external basis."
+    },
+    {
+      "id": "hallucination_sentinel",
+      "name": "Hallucination sentinel",
+      "status": "candidate",
+      "summary": "Separates current basis, external basis, inference, unsupported claim, and falsification cue at startup, phase switches, public delivery, external calibration, and before core promotion.",
+      "external_basis": [
+        "NIST GenAI Profile confabulation risk",
+        "NIST AI RMF Measure/Manage"
+      ],
+      "internal_evidence": [
+        "Present in protocol, quickstart, templates, and examples; still needs real transcript outcome validation."
+      ],
+      "linked_behavior_cases": [
+        "external_calibration_before_strategic_decision",
+        "minimum_sufficient_observability_not_overreporting"
+      ],
+      "linked_examples": [
+        "external_calibration_micro_contract_runtime",
+        "model_discovery_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after review records show unsupported claims are downgraded before delivery.",
+      "demotion_trigger": "If sentinel becomes rote text with no route change.",
+      "refresh_trigger": "At public delivery, claim upgrade, external calibration, or repeated self-reference."
+    },
+    {
+      "id": "attention_governance_minimum_closure",
+      "name": "Attention governance and minimum viable closure",
+      "status": "candidate",
+      "summary": "Uses minimum sufficient observability and early thin closure to prevent audit/reporting/process work from consuming project movement.",
+      "external_basis": [
+        "Google SRE toil reduction",
+        "CRISP-DM end-to-end iteration",
+        "NASA lifecycle reviews"
+      ],
+      "internal_evidence": [
+        "Recent user feedback; behavior cases and examples exist but real end-to-end validation is pending."
+      ],
+      "linked_behavior_cases": [
+        "minimum_viable_closure_for_research",
+        "minimum_sufficient_observability_not_overreporting",
+        "loop_not_local_greedy"
+      ],
+      "linked_examples": [
+        "model_discovery_minimal_runtime",
+        "evidence_fill_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after real projects show earlier question-source/model-result-claim chains and less reporting overhead.",
+      "demotion_trigger": "If closure language causes premature convergence or fake slices.",
+      "refresh_trigger": "When many beats pass without a visible chain or when reporting burden increases."
+    },
+    {
+      "id": "delivery_contract",
+      "name": "Human-readable delivery contract",
+      "status": "core",
+      "summary": "Aligns audience, purpose, granularity, tone, and internal-information boundary; human-facing output avoids machine fields and protocol jargon unless decision-relevant.",
+      "external_basis": [
+        "OpenAI prompting guidance for clear task outputs",
+        "Technical communication practice"
+      ],
+      "internal_evidence": [
+        "Longstanding user feedback and behavior case coverage."
+      ],
+      "linked_behavior_cases": [
+        "human_readable_delivery_contract",
+        "setup_card_default"
+      ],
+      "linked_examples": [
+        "evidence_fill_minimal_runtime",
+        "model_discovery_minimal_runtime",
+        "independent_review_minimal_runtime"
+      ],
+      "promotion_rule": "Already core because every Complex run ends in an audience-specific deliverable or recovery note.",
+      "demotion_trigger": "If human outputs become too sparse for project decisions.",
+      "refresh_trigger": "Whenever user requests a new audience type or delivery style."
+    },
+    {
+      "id": "behavior_transcript_review",
+      "name": "Behavior transcript review",
+      "status": "tested",
+      "summary": "Checks real agent replies against behavior-case marker groups and human review questions, without claiming marker pass equals excellence.",
+      "external_basis": [
+        "Anthropic agent evals emphasizing trajectories and outcomes",
+        "OpenAI evaluation-oriented workflow practice"
+      ],
+      "internal_evidence": [
+        "36 cases and 36 transcript rules validate structurally; real transcript outcome dataset remains small."
+      ],
+      "linked_behavior_cases": [
+        "example_currentness_review",
+        "setup_card_default",
+        "continuous_runtime_activation_after_plan"
+      ],
+      "linked_examples": [
+        "independent_review_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after a corpus of real transcripts links marker pass to lower correction cost.",
+      "demotion_trigger": "If marker pass regularly disagrees with human judgment.",
+      "refresh_trigger": "After every real transcript review batch."
+    },
+    {
+      "id": "example_currentness",
+      "name": "Example currentness review",
+      "status": "candidate",
+      "summary": "Filled examples stay current only if they state validated mechanisms, unverified boundaries, applicable project types, and non-copy conditions.",
+      "external_basis": [
+        "OpenAI Skills examples and progressive disclosure",
+        "Anthropic agent evals",
+        "AGENTS.md practical guidance"
+      ],
+      "internal_evidence": [
+        "New review needed; current examples are filled examples, not externally certified examples."
+      ],
+      "linked_behavior_cases": [
+        "example_currentness_review"
+      ],
+      "linked_examples": [
+        "evidence_fill_minimal_runtime",
+        "model_discovery_minimal_runtime",
+        "independent_review_minimal_runtime",
+        "portfolio_orchestration_minimal_runtime",
+        "external_calibration_micro_contract_runtime",
+        "operating_organization_multi_lane_runtime"
+      ],
+      "promotion_rule": "Promote examples to certified representative cases only after real transcript or end-to-end project reuse.",
+      "demotion_trigger": "If an example teaches obsolete terms or causes agents to overfit form.",
+      "refresh_trigger": "After terminology changes, protocol promotion, or new project class."
+    },
+    {
+      "id": "source_resolution_and_runtime_install",
+      "name": "Source resolution and runtime install",
+      "status": "tested",
+      "summary": "Complex is the rule source and a target project is the fact source; missing Complex files inside the target repository is not a failure.",
+      "external_basis": [
+        "Codex AGENTS discovery model",
+        "Skills as reusable workflow packages"
+      ],
+      "internal_evidence": [
+        "Behavior case covers target repo source confusion; README provides install path."
+      ],
+      "linked_behavior_cases": [
+        "complex_source_resolution_outside_target_repo"
+      ],
+      "linked_examples": [
+        "portfolio_orchestration_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after public users apply Complex from another repo without source confusion.",
+      "demotion_trigger": "If source-resolution wording becomes noisy or defensive.",
+      "refresh_trigger": "When install model changes."
+    }
+  ]
+}

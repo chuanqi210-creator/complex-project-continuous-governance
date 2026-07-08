@@ -4,7 +4,9 @@ Complex is a Codex-native runtime kit for long-running complex projects. It is n
 
 Core model:
 
-> strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + external calibration + evidence boundaries + clean review + lightweight auditable recovery.
+> strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + attention governance + external calibration + evidence boundaries + clean review + lightweight auditable recovery.
+
+Complex uses a maturity registry so recent fixes do not masquerade as proven core behavior. Check `docs/mechanism-maturity.json` before treating a mechanism as stable.
 
 ## 1. Philosophy
 
@@ -12,9 +14,10 @@ Complex exists to keep important projects moving without turning the user into t
 
 - holding the top-level intent while executing small beats;
 - learning from mature external practice before changing a method, model, route, or protocol;
+- producing enough observable progress for human trust without making reporting the project;
 - preserving auditability without carrying every old trace in active context.
 
-The main failure to avoid is local greed: solving the nearest visible detail while the real project needs a better structure, a parallel lane, an external method check, a state compaction pass, or a higher-level route decision.
+The main failure to avoid is local greed: solving the nearest visible detail while the real project needs a better structure, a parallel lane, a vertical end-to-end closure, an external method check, a state compaction pass, or a higher-level route decision. The second failure is governance drag: asking the agent to prove progress so heavily that proof of work consumes the attention needed for the work itself.
 
 ## 2. Codex Surface Alignment
 
@@ -37,12 +40,12 @@ The main failure to avoid is local greed: solving the nearest visible detail whi
 1. Restore true state: current basis, not-current basis, latest user request, current materials, and prior decisions.
 2. Classify project nature with `project_nature_router`: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
 3. Assign decision rights with `adaptive_judgment_controller`, `decision_rights_matrix`, and `ask_user_necessity_gate`.
-4. Establish the control plane and portfolio operating model before local optimization.
-5. Run the smallest meaningful target-function Loop or execution beat.
+4. Establish the control plane, portfolio operating model, and attention budget before local optimization.
+5. Run the smallest meaningful target-function Loop, vertical closure, or execution beat.
 6. Deliver to the right audience.
 7. Leave `next_route`, accepted artifacts, and recovery pointers.
 
-If a named mechanism conflicts with these behaviors, the behavior kernel wins.
+If a named mechanism conflicts with these behaviors, the behavior kernel wins. Candidate mechanisms guide matching failure modes, but they do not outrank the core spine.
 
 ## 4. Project Nature
 
@@ -132,6 +135,7 @@ Common Loop types:
 - discovery loop: distinguishes candidate frames or hypotheses;
 - extraction loop: turns a source into usable evidence or a no-hit record;
 - vertical slice loop: proves a model/data/code/writing chain end to end;
+- closure loop: proves that the project has a minimally complete chain from question to claim or from input to usable output;
 - review loop: checks claims, risks, and evidence boundaries with clean context where needed;
 - writing loop: advances the argument, figure, method, or limitation scaffold;
 - delivery loop: packages, validates, and hands off the usable artifact.
@@ -150,6 +154,10 @@ Forward artifacts include:
 - `state_delta`.
 
 `audit_guardrail_not_engine_rule`: audit, citation, QA, legal/safety, reviewer, access, metadata, and no-value outputs are guardrails. When guardrail-only work repeats, run a toil/WIP review: produce a forward artifact, park the branch, route to another module, or justify why the guardrail is the true target-function dependency.
+
+`minimum_viable_closure_rule`: complex research, analysis, and prototype projects should produce an early thin end-to-end closure before they spend many beats perfecting local materials. For a paper-like project, the closure is: research question, source/data path, minimal model or assumption, reproducible result or calculation, figure/table sketch, claim, limitation, and next weakness. For an engineering project, the closure is: input, minimal working path, output, validation signal, limitation, and next weakness. The closure is not final delivery; it is the visible chain that lets the human and agent judge whether the project is moving in the right direction.
+
+If a project spends the configured startup window, normally 1-2 working days or several accepted beats, without any closure chain, trigger a governance review. The review must choose one of four routes: downscope the question, degrade the data/model to a provisional slice, justify prework as the true dependency, or park the branch and route to a module that can produce closure.
 
 ## 8. External Calibration
 
@@ -206,7 +214,23 @@ Sentinel output:
 
 Unsupported claims are downgraded to hypothesis, parked, or routed to evidence acquisition.
 
-## 10. Trace Appraisal
+## 10. Attention Governance
+
+`attention_governance` treats human attention, model context, and protocol overhead as scarce project resources. Complex should create enough visibility to support judgment, but not so much reporting that governance becomes the main work.
+
+`minimum_sufficient_observability_rule`: routine beats expose only the smallest useful progress signal:
+
+- which closure segment or target-function module moved;
+- what forward artifact was created or updated;
+- what uncertainty was reduced or newly exposed;
+- what cannot yet be claimed;
+- what the next beat should do.
+
+Heavier evidence packs, transcript audits, long summaries, full source tables, or formal review packets are reserved for trigger points: phase switch, public/human-facing delivery, important claim upgrade, contradiction, repeated guardrail-only work, missing closure after the startup window, external calibration, hallucination sentinel, reviewer handoff, or user-requested audit.
+
+`attention_budget_check` runs when a beat proposes more process, reporting, searching, or restructuring. It asks: will this reduce a real uncertainty, produce a forward artifact, protect a responsibility boundary, or improve recovery? If not, prefer continuing the project over expanding the protocol surface.
+
+## 11. Trace Appraisal
 
 Auditability is not the same as carrying every trace in the hot context.
 
@@ -226,7 +250,7 @@ Use:
 
 Default action is demotion by pointer, not deletion. Important structure decisions use ADR style: Context, Decision, Consequences, Superseded by.
 
-## 11. Prompt And Cadence
+## 12. Prompt And Cadence
 
 `complex_prompt_bootstrap_gate` applies when the user asks to scan Complex and design a project prompt before execution.
 
@@ -242,7 +266,7 @@ The bootstrap output has three layers:
 
 `continuous_cadence_contract`: after execution is confirmed, continue through queued beats inside the responsibility boundary. Do not stop because a fixed number of beats ran. `STOP_COMPLETE` requires objective completion, delivery-level validation, and a residual scan showing no useful internal beat remains.
 
-## 12. Delivery
+## 13. Delivery
 
 Run `deliverable_contract_gate` before output:
 
@@ -254,7 +278,7 @@ Run `deliverable_contract_gate` before output:
 
 If the user says `只要人看版`, keep machine fields, YAML, verifier internals, and protocol jargon out of the main deliverable. Keep machine recovery notes separate or internal unless requested.
 
-## 13. Runtime Kit And Evaluation
+## 14. Runtime Kit And Evaluation
 
 Runtime templates are optional landing pads, not required protocol fields.
 
@@ -267,19 +291,23 @@ Use filled examples before blank templates:
 - external calibration micro-contract;
 - operating organization multi-lane.
 
-Behavior regression is the first line of protocol maintenance:
+Mechanism maturity and behavior regression are the first line of protocol maintenance:
 
 - `docs/behavior-regression-cases.json`;
 - `docs/behavior-transcript-review-rules.json`;
+- `docs/mechanism-maturity.json`;
+- `docs/mechanism-maturity.md`;
 - `tools/check_behavior_regression_pack.py`;
+- `tools/check_mechanism_maturity.py`;
 - `tools/review_behavior_transcript.py`.
 
 Promotion rule:
 
 1. Map the failure to a behavior case.
 2. Add or refine transcript review markers.
-3. Add or refine a golden example.
+3. Add or refine a filled example.
 4. Use external calibration for the issue.
-5. Promote to this core protocol only when repeated/high-impact failures cannot be handled by the first four.
+5. Update the mechanism maturity record.
+6. Promote to this core protocol only when repeated/high-impact failures cannot be handled by the first five.
 
 Do not add history archives, long machine-board logs, dated release packages, or one-off recovery records to the active protocol.

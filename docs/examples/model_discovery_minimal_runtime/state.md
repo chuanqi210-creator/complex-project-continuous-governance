@@ -38,6 +38,14 @@
 - beat_objective: Produce 3-5 candidate frameworks and one discriminating probe.
 - next_route: run_probe_then_decide_converge_or_continue_discovery
 
+## Attention Governance And Closure
+
+- minimum_viable_closure_status: missing
+- closure_chain: candidate question exists, but source/data path, minimal model, result, claim, and limitation are not yet connected.
+- minimum_sufficient_observability_status: light_signal_enough
+- last_progress_signal: This beat should move the framing segment by producing a probe that can later connect to evidence.
+- heavy_audit_trigger: convergence decision, public-facing framework claim, or missing closure after startup window.
+
 ## External Calibration
 
 - source: Double Diamond; Tree/Graph of Thoughts; IBIS.

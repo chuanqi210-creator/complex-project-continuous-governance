@@ -6,12 +6,14 @@
 - project_nature: model_discovery
 - convergence_status: pre_convergence
 - judgment_mode: exploratory
-- loop_type: framework_probe
+- loop_type: discovery
 - target_function: Select a frame that creates a clear evidence path and reader-facing story.
 - module_this_beat_serves: framing.
 - standing_lane_this_beat_serves: model/component.
 - expected_forward_artifact: model_delta.
 - why_not_local_greedy: The probe compares candidate frames before committing to evidence filling.
+- closure_segment_served: model_assumption
+- minimum_sufficient_observability_status: light_signal_enough
 - candidate_framework_or_evidence_path: access / workflow / capability / governance
 - discriminating_probe: For each framework, name one evidence item that would support it and one missing item that would weaken it.
 - main_uncertainty: Which framework creates the clearest evidence path and reader-facing story?
@@ -24,6 +26,7 @@
 - tool_or_method: local reading and reasoning; no external search unless a concrete evidence path emerges.
 - timebox: 20 minutes.
 - stop_condition: one framework has a stronger evidence path, or two frameworks remain tied with explicit next probe.
+- attention_budget: Do not produce a full literature review yet; report candidate ranking, discriminating evidence path, unsupported claim, and next probe.
 
 ## Route
 

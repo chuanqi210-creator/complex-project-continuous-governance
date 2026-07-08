@@ -69,6 +69,25 @@ Use this file to make a Complex project resumable. Keep Hot State short enough t
 - current_global_bottleneck_candidate:
 - bottleneck_is_true_global_dependency: yes / no / uncertain
 
+## Attention Governance And Closure
+
+- attention_governance_status: healthy / under_observed / over_governed / review_due
+- minimum_viable_closure_status: not_needed / missing / partial / complete / stale
+- closure_chain:
+  - question_or_problem:
+  - source_data_or_input_path:
+  - minimal_model_or_assumption:
+  - result_or_output:
+  - figure_table_or_validation_signal:
+  - claim_or_usable_conclusion:
+  - limitation:
+  - next_weakness:
+- startup_window_status: within_window / closure_due / overdue / justified_prework
+- minimum_sufficient_observability_status: light_signal_enough / heavier_audit_due / too_much_reporting
+- last_progress_signal:
+- heavy_audit_trigger:
+- process_overhead_risk: low / medium / high
+
 ## State Lightening
 
 - hot_state_location:

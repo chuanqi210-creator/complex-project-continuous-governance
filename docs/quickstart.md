@@ -12,11 +12,12 @@ Read:
 2. `protocol/current-state.md`
 3. this file
 4. `protocol/core.md`
-5. the closest filled example in `docs/examples/`
+5. `docs/mechanism-maturity.md`
+6. the closest filled example in `docs/examples/`
 
 Remember the model:
 
-> Complex = Codex-native orchestration for strong-autonomy execution inside a responsibility boundary, portfolio control-plane organization, external calibration, evidence boundaries, clean review, and lightweight auditable recovery.
+> Complex = Codex-native orchestration for strong-autonomy execution inside a responsibility boundary, portfolio control-plane organization, attention governance, external calibration, evidence boundaries, clean review, and lightweight auditable recovery.
 
 When applying Complex to another repository, resolve the Complex runtime as the rule source and the target repository as the fact source. Do this quietly and proceed; do not turn source resolution into a user-facing apology.
 
@@ -48,6 +49,18 @@ Compress the project into seven actions:
 
 If a mechanism name competes with these behaviors, the behavior kernel wins.
 
+## Minute 2-3: Read Mechanism Maturity
+
+Use `docs/mechanism-maturity.json` to decide how strongly a mechanism should steer the run:
+
+- `core`: always respect it.
+- `validated`: use it confidently for matching project shapes.
+- `tested`: use it when its failure mode appears, but still watch for overhead.
+- `candidate`: treat it as a promising route, not a proven answer.
+- `retired`: do not use it for new work.
+
+Do not promote a candidate just because it sounds elegant. Prefer behavior cases, transcript rules, examples, and external micro-contracts before expanding the core protocol.
+
 ## Minute 3: Form The Operating Organization
 
 For a continuous project, do not jump from one local task to the next. First form the operating map:
@@ -60,6 +73,7 @@ For a continuous project, do not jump from one local task to the next. First for
 - `state_lightening`: Hot State, Warm Index, Cold Archive.
 - `external_calibration`: latest outside-pattern check or reason it is not needed for this beat.
 - `hallucination_sentinel`: current basis, external basis, inference, unsupported claim, falsification cue.
+- `attention_governance`: minimum viable closure, minimum sufficient observability, and process-overhead risk.
 
 Use this acceptance rule:
 
@@ -71,6 +85,8 @@ beat accepted = forward artifact exists or is updated
 ```
 
 Guardrail-only work is allowed, but repeated guardrail-only work triggers a toil/WIP review: create a forward artifact, park the branch, route to another module, or justify why the guardrail is the true target-function dependency.
+
+For research, analysis, or prototype projects, do not spend many beats polishing local material before an end-to-end chain exists. Aim for a minimum viable closure: question/problem, source/data or input path, minimal model/assumption, result/output, figure/table or validation signal, claim/usable conclusion, limitation, and next weakness. If the startup window passes without this chain, run a governance review and choose: downscope, use a provisional slice, justify prework as the true dependency, or park and route elsewhere.
 
 ## Minute 3-4: Classify The Project
 
@@ -114,10 +130,12 @@ Use filled examples before blank templates:
 - `docs/examples/external_calibration_micro_contract_runtime/`
 - `docs/examples/operating_organization_multi_lane_runtime/`
 
+Check `docs/examples/example-currentness.md` before treating an example as authoritative. The current examples are filled examples unless real transcript or end-to-end reuse promotes them.
+
 Minimum records for a resumable project:
 
 - `state.md`: current basis, goal memory, `beat_objective`, decision rights, and next route.
-- `loop.md`: target-function Loop or explicit no-op.
+- `loop.md`: target-function Loop, closure segment, observability decision, or explicit no-op.
 - `delivery.md`: audience and output boundary.
 
 For continuous work, also record:
@@ -140,6 +158,8 @@ Use recommended defaults instead of a mode menu:
 - Human-readable delivery unless the user asks for machine recovery records.
 
 If the next beat is clear and inside the responsibility boundary, execute it. Do not end with "say continue next time." If a true turn/tool boundary stops the run, write `next_route` as recovery, not as permission.
+
+Routine beats should not become reporting ceremonies. Use minimum sufficient observability: closure segment moved, forward artifact changed, uncertainty reduced or exposed, cannot-yet-claim boundary, and next beat. Use heavier evidence packs only for trigger points such as phase switch, public delivery, claim upgrade, contradiction, repeated guardrail-only work, missing closure, external calibration, hallucination sentinel, reviewer handoff, or user-requested audit.
 
 ## Orchestration Contract
 
@@ -175,7 +195,8 @@ python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <res
 ```
 
 4. Record the result in `docs/behavior-review.md`.
-5. If the failure repeats, update a transcript rule, behavior case, or golden example before promoting a new core rule.
+5. Check the linked mechanism status in `docs/mechanism-maturity.json`.
+6. If the failure repeats, update a transcript rule, behavior case, filled example, or mechanism status before promoting a new core rule.
 
 ## Compact Default Prompt
 
@@ -188,7 +209,7 @@ python3 tools/review_behavior_transcript.py --case-id <case_id> --text-file <res
 
 连续项目先建立 operating organization：controller、human interface、literature/data acquisition、model/component、data-code、review/risk、writing/delivery。每拍重水化 master prompt、current_basis、target_function 和 beat_objective；运行 target-function Loop 和 Beat Router；可继续时自动进入下一拍，直到 STOP_COMPLETE 或真实担责边界。每拍验收以 forward artifact 为核心；审计、citation、QA、reviewer、metadata/no-values 是护栏，不应长期成为唯一主产物。
 
-重要路线、模型、方法、评估、prompt 默认值或协议判断前，做 external calibration：对照官方文档、原始论文、标准或成熟生产实践，说明 adopted / rejected / not transferable，并把 adopted lesson 翻译成项目 micro-contract。按阶段运行 hallucination sentinel，区分 current_basis、external_basis、inference、unsupported claim 和 falsification cue。长期项目用 Hot State / Warm Index / Cold Archive 轻量化。
+重要路线、模型、方法、评估、prompt 默认值或协议判断前，做 external calibration：对照官方文档、原始论文、标准或成熟生产实践，说明 adopted / rejected / not transferable，并把 adopted lesson 翻译成项目 micro-contract。按阶段运行 hallucination sentinel，区分 current_basis、external_basis、inference、unsupported claim 和 falsification cue。长期项目用 Hot State / Warm Index / Cold Archive 轻量化。研究、分析或原型项目先追求最小可审计闭环：问题、数据/来源、最简模型或假设、结果、图表/验证信号、论断、局限和下一弱点。平时只输出最低充分可观测信号，不把汇报和审计变成项目主工作。
 
 输出只要人看版。
 ```

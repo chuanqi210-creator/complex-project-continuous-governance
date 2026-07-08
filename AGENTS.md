@@ -12,6 +12,7 @@ This repository is the current authoritative Complex continuous-governance runti
 - Put current recovery state in `protocol/current-state.md`.
 - Put Runtime Kit templates in `templates/`.
 - Put filled examples in `docs/examples/`.
+- Put mechanism maturity and promotion evidence in `docs/mechanism-maturity.json` and `docs/mechanism-maturity.md`.
 - Put lightweight docs in `docs/`.
 - Put validation helpers in `tools/`.
 - Put Codex repo-scoped reusable workflow skills in `.agents/skills/`.
@@ -43,7 +44,7 @@ This repository is the current authoritative Complex continuous-governance runti
 ## Runtime Kit
 
 - Prefer filled examples before blank templates: evidence fill, model discovery, independent review, portfolio orchestration, external calibration micro-contract, and operating organization.
-- Keep templates optional. Do not promote a new field to required status unless repeated real project failures justify it.
+- Keep templates optional. Do not promote a new field or mechanism to core unless repeated real project failures and maturity evidence justify it.
 - Keep routine judgments lightweight. Use deeper route reflection only for strategic or critical route changes.
 
 ## Delivery Defaults
@@ -58,6 +59,7 @@ After protocol, template, behavior-pack, or site edits, run:
 ```bash
 python3 tools/check_behavior_regression_pack.py
 python3 tools/review_behavior_transcript.py --validate-rules
+python3 tools/check_mechanism_maturity.py
 python3 tools/test_verify_complex_integrity.py
 python3 tools/verify_complex_integrity.py
 ```

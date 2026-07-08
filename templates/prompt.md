@@ -8,7 +8,7 @@ Use this file when a user wants the agent to scan Complex, design a project-spec
 请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
 
 请显式采用这些 steering words，并按项目实际情况取舍：
-开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每拍 prompt 重水化；Codex Goal 是 thread_goal 或 phase_goal / beat_objective 属于每拍 Plan；自动进入下一拍 / 不等我说继续；模块组合 / 串并联系统 / 不要局部贪心；forward artifact / 审计只是护栏 / Hot State；外部优秀案例 / external calibration / micro-contract；定期 hallucination sentinel；少问我 / 能推进就继续 / 我给目录你自己读；运行资源 AI 自判 / 用户只担责授权；standing lane 和 subagent 分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
+开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；最小可审计闭环 / 先串起问题-数据-模型-结果-论断；注意力治理 / 最低充分可观测性 / 不要过度汇报；连续节拍 / 总规划别丢 / 每拍 prompt 重水化；Codex Goal 是 thread_goal 或 phase_goal / beat_objective 属于每拍 Plan；自动进入下一拍 / 不等我说继续；模块组合 / 串并联系统 / 不要局部贪心；forward artifact / 审计只是护栏 / Hot State；外部优秀案例 / external calibration / micro-contract；定期 hallucination sentinel；少问我 / 能推进就继续 / 我给目录你自己读；运行资源 AI 自判 / 用户只担责授权；standing lane 和 subagent 分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
 ```
 
 ## Protocol Scan Summary
@@ -52,6 +52,9 @@ Use this file when a user wants the agent to scan Complex, design a project-spec
 - Module portfolio:
 - Forward indexes:
 - State lightening:
+- Minimum viable closure needed:
+- Minimum sufficient observability:
+- Attention budget:
 - External calibration needed:
 - Hallucination sentinel needed:
 
@@ -64,8 +67,10 @@ Use this file when a user wants the agent to scan Complex, design a project-spec
 - Why selected capabilities fit:
 - Why rejected capabilities are deferred:
 - What the first target-function Loop should learn or advance:
+- What the first minimum viable closure should show:
 - What prevents premature convergence or unnecessary divergence:
 - What prevents local greedy optimization:
+- What prevents governance/reporting from consuming attention:
 - What would trigger route-back:
 
 ## High-Fidelity Startup Prompt
@@ -122,6 +127,12 @@ Codex surface map：
 - 重复 guardrail-only work 触发 toil/WIP review：推进 forward artifact，停放分支，转向其他模块，或说明该 guardrail 为什么是真依赖。
 - 串行只发生在同一证据链内部；不同模块、来源、写作 scaffold、审查 lane 可以并行推进时，不要让一个局部路径成为全局瓶颈。
 
+注意力治理与最小闭环：
+- 研究、分析或原型项目优先跑出最小可审计闭环：问题/目标、数据/来源或输入路径、最简模型/假设、结果/输出、图表/验证信号、论断/可用结论、局限和下一弱点。
+- 最小闭环不是最终交付，而是判断项目是否真的向前的可见主链。
+- 平时只给最低充分可观测信号：本拍推进了哪个闭环环节、更新了哪个 forward artifact、减少或暴露了哪个不确定性、现在还不能证明什么、下一拍是什么。
+- 厚重证据包、完整审查报告和长总结只在阶段切换、公开交付、重要论断升级、矛盾、重复 guardrail-only、最小闭环缺失、外部校准、hallucination sentinel、评审交接或用户要求时触发。
+
 外部校准与防幻觉：
 - 重要战略、结构、模型、方法、评估、prompt 默认值或协议判断前做 external calibration。
 - 每个机制级问题都要有：source、problem matched、adopted、rejected、not transferable、Complex micro-contract、refresh trigger。
@@ -157,6 +168,8 @@ Codex surface map：
 - external_calibration_policy:
 - hallucination_sentinel_policy:
 - trace_appraisal_policy:
+- minimum_viable_closure_policy:
+- minimum_sufficient_observability_policy:
 - delivery_contract:
 
 ## Per-Beat Planning Prompt
@@ -178,6 +191,8 @@ Use at the start of each continuous beat, Plan-mode continuation, or `next_route
 - target_function:
 - module served:
 - standing lane served:
+- closure segment served:
+- observability signal:
 - external_calibration_status:
 - hallucination_sentinel_status:
 - Hot/Warm/Cold state status:

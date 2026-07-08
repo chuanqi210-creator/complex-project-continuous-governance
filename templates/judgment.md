@@ -55,6 +55,8 @@ Use this file when the agent needs to decide route, depth, tools, collaboration,
 - local_route_supports_target_function: yes / no / uncertain
 - portfolio_before_greedy_route_rule: passed / route_back / not_needed
 - global_bottleneck_claim: true_dependency / local_branch / uncertain
+- minimum_viable_closure_status: not_needed / missing / partial / complete / route_back
+- closure_gap: question / source_data / model_assumption / result_calculation / figure_table / claim / limitation / output_validation / none
 - toil_wip_review_status: healthy / due / route_to_forward_artifact / branch_parking_needed / justified_true_dependency
 - forward_artifact_needed_next: model_delta / data_delta / parameter_delta / writing_delta / branch_delta / calibration_delta / state_delta / topology_delta / none
 - parallel_portfolio_routing_decision:
@@ -74,6 +76,14 @@ Use this file when the agent needs to decide route, depth, tools, collaboration,
 - refresh_trigger:
 - hallucination_sentinel_decision:
 - unsupported_claim_downgrade:
+
+## Attention Governance
+
+- attention_budget_status: healthy / too_much_process / under_observed / needs_checkpoint
+- minimum_sufficient_observability_decision: light_signal / heavier_audit / defer_audit
+- progress_signal_needed: closure_segment / forward_artifact / uncertainty_reduction / next_beat / none
+- heavy_reporting_trigger: none / phase_switch / public_delivery / claim_upgrade / contradiction / repeated_guardrail_only / missing_closure / external_calibration / hallucination_sentinel / reviewer_handoff / user_requested_audit
+- process_to_avoid_this_beat:
 
 ## Route Choice
 

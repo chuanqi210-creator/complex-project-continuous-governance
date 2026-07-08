@@ -4,7 +4,9 @@ Complex is a Codex-native orchestration skill and runtime kit for long-running c
 
 It helps an agent keep a project moving through:
 
-**strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + external calibration + evidence boundaries + clean review + lightweight auditable recovery.**
+**strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + attention governance + external calibration + evidence boundaries + clean review + lightweight auditable recovery.**
+
+Complex is organized as a stable core plus testable extensions. Core behaviors are always respected; newer mechanisms are tracked in a maturity registry before they are treated as proven.
 
 Install Complex once, then use it from any target project through `COMPLEX_HOME` or an explicit path.
 
@@ -17,6 +19,7 @@ git clone https://github.com/chuanqi210-creator/complex-project-continuous-gover
 cd ~/Documents/complex-project-front-governance
 python3 tools/check_behavior_regression_pack.py
 python3 tools/review_behavior_transcript.py --validate-rules
+python3 tools/check_mechanism_maturity.py
 python3 tools/test_verify_complex_integrity.py
 python3 tools/verify_complex_integrity.py
 ```
@@ -43,7 +46,7 @@ Use this when you want the agent to design a project prompt before execution:
 请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
 
 请显式采用这些 steering words，并按项目实际情况取舍：
-开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；连续节拍 / 总规划别丢 / 每拍 prompt 重水化；Codex Goal 是 thread_goal 或 phase_goal / beat_objective 属于每拍 Plan；自动进入下一拍 / 不等我说继续；模块组合 / 串并联系统 / 不要局部贪心；forward artifact / 审计只是护栏 / Hot State；外部优秀案例 / external calibration / micro-contract；定期 hallucination sentinel；少问我 / 能推进就继续 / 我给目录你自己读；运行资源 AI 自判 / 用户只担责授权；standing lane 和 subagent 分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
+开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；最小可审计闭环 / 先串起问题-数据-模型-结果-论断；注意力治理 / 最低充分可观测性 / 不要过度汇报；连续节拍 / 总规划别丢 / 每拍 prompt 重水化；Codex Goal 是 thread_goal 或 phase_goal / beat_objective 属于每拍 Plan；自动进入下一拍 / 不等我说继续；模块组合 / 串并联系统 / 不要局部贪心；forward artifact / 审计只是护栏 / Hot State；外部优秀案例 / external calibration / micro-contract；定期 hallucination sentinel；少问我 / 能推进就继续 / 我给目录你自己读；运行资源 AI 自判 / 用户只担责授权；standing lane 和 subagent 分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
 
 如果当前界面支持 Plan 模式，请使用可用的规划 surface；如果当前界面不能由你实际切换，也请直接输出 planning checkpoint，不要伪称已经自动开启。关键节拍由 AI 自行做 plan-shaped planning，不把规划本身变成向我索要授权。
 ```
@@ -95,6 +98,7 @@ For continuous projects, the control plane comes before local edits:
 - topology: manager, standing lanes, temporary workers, heartbeat/automation fit;
 - routing: Beat Router, residual scan, branch parking, recovery route;
 - calibration: external reference coverage, hallucination sentinel, trace appraisal.
+- attention: minimum viable closure, minimum sufficient observability, process-overhead risk.
 
 The operating organization keeps recurring work from collapsing into a single local path:
 
@@ -108,6 +112,8 @@ The operating organization keeps recurring work from collapsing into a single lo
 
 A beat is accepted when it creates or updates a forward artifact, passes the relevant guard, updates an index or state, and chooses the next route. Audit, citation, QA, access checks, and "still closed" notes are guardrails; repeated guardrail-only work triggers a toil/WIP review instead of becoming the project engine.
 
+For research, analysis, and prototype work, Complex expects an early **minimum viable closure**: a thin but complete chain from question to data/source, minimal model or assumption, result or output, figure/table or validation signal, claim or usable conclusion, limitation, and next weakness. The closure is not final delivery; it is the visible chain that lets the human and agent judge whether the project is moving in the right direction.
+
 Important route, structure, model, method, evaluation, prompt-default, or protocol changes require external calibration. The agent compares the choice with official docs, primary papers, standards, or mature production writeups; records adopted / rejected / not transferable lessons; then turns the adopted lesson into a project micro-contract.
 
 Complex keeps traceability lightweight:
@@ -116,7 +122,23 @@ Complex keeps traceability lightweight:
 - **Warm Index**: compact ledgers and accepted artifacts.
 - **Cold Archive**: raw evidence, old gates, source notes, command output, screenshots, and superseded branches by pointer.
 
+Routine beats should use **minimum sufficient observability**: show what closure segment moved, what artifact changed, what uncertainty changed, what cannot yet be claimed, and the next beat. Heavy audit packs are reserved for trigger points.
+
 `STOP_COMPLETE` requires objective completion, delivery-level validation, and a residual scan showing no useful internal beat remains. A fixed number of beats is never enough by itself.
+
+## Mechanism Maturity
+
+Complex does not treat every rule-like idea as equally mature.
+
+- `core`: stable behavior spine or boundary used in every Complex run.
+- `validated`: repeated real transcripts or end-to-end project samples show improved behavior.
+- `tested`: covered by behavior cases, transcript rules, examples, or repeated user feedback.
+- `candidate`: promising mechanism from recent failures or external calibration; use when relevant, but do not present as proven.
+- `retired`: no longer active except when explaining a replacement.
+
+See `docs/mechanism-maturity.md` and `docs/mechanism-maturity.json`.
+
+New mechanisms should usually start as behavior cases, transcript rules, examples, or external micro-contracts. They move into `protocol/core.md` only when repeated or high-impact failures show that the stable core cannot carry the behavior by itself.
 
 ## Runtime Kit
 
@@ -130,11 +152,12 @@ Current entrypoints:
 - Behavior cases: `docs/behavior-regression-cases.json`
 - Transcript rules: `docs/behavior-transcript-review-rules.json`
 - Behavior review: `docs/behavior-review.md`
+- Mechanism maturity: `docs/mechanism-maturity.md` and `docs/mechanism-maturity.json`
 - Capability guide: `docs/runtime-skill-management.md`
 - External method mapping: `docs/external-methods.md`
 - Codex repo skill: `.agents/skills/complex-runtime/SKILL.md`
 
-Use filled examples before blank templates:
+Use filled examples before blank templates. These examples are current filled examples, not automatically certified cases:
 
 - `docs/examples/evidence_fill_minimal_runtime/`
 - `docs/examples/model_discovery_minimal_runtime/`
@@ -152,6 +175,7 @@ Run these after protocol, template, behavior-pack, skill, or site changes:
 ```bash
 python3 tools/check_behavior_regression_pack.py
 python3 tools/review_behavior_transcript.py --validate-rules
+python3 tools/check_mechanism_maturity.py
 python3 tools/test_verify_complex_integrity.py
 python3 tools/verify_complex_integrity.py
 pnpm -C docs/protocol_explainer_site build
@@ -159,7 +183,8 @@ pnpm -C docs/protocol_explainer_site build
 
 Expected baseline:
 
-- behavior pack: 34 cases and 34 transcript rules
+- behavior pack: 36 cases and 36 transcript rules
+- mechanism maturity registry: all cases link to known mechanism ids
 - integrity verifier: `failure_count: 0`
 - site build: Vite build succeeds
 

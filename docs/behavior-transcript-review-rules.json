@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-05-external-calibrated-operating-organization",
+  "version": "2026-07-08-attention-governance-closure",
   "purpose": "Marker-based transcript review rules for the Complex behavior regression cases. These rules do not replace human review; they catch obvious omissions and forbidden moves in real agent responses.",
   "case_rules": {
     "setup_card_default": {
@@ -2556,7 +2556,7 @@
         "Did it keep manager integration explicit?"
       ]
     },
-    "golden_example_currentness_review": {
+    "example_currentness_review": {
       "minimum_required_groups": 5,
       "required_marker_groups": [
         {
@@ -2571,8 +2571,8 @@
           "label": "examples path",
           "any": [
             "docs/examples",
-            "golden example",
-            "黄金样例"
+            "filled example",
+            "填好样例"
           ]
         },
         {
@@ -2599,9 +2599,9 @@
       ],
       "forbidden_marker_groups": [
         {
-          "label": "exists means golden",
+          "label": "exists means certified",
           "any": [
-            "存在所以是黄金",
+            "存在所以是代表性",
             "because it exists"
           ]
         },
@@ -2835,6 +2835,134 @@
       "human_review_questions": [
         "Did review lead to adjust/supersede/park/continue?",
         "Did it preserve movement after periodic review?"
+      ]
+    },
+    "minimum_viable_closure_for_research": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {
+          "label": "minimum viable closure",
+          "any": [
+            "minimum_viable_closure",
+            "最小可审计闭环",
+            "minimum viable closure"
+          ]
+        },
+        {
+          "label": "closure chain",
+          "any": [
+            "question",
+            "问题",
+            "source/data",
+            "数据",
+            "model",
+            "模型",
+            "claim",
+            "论断"
+          ]
+        },
+        {
+          "label": "startup window review",
+          "any": [
+            "startup window",
+            "1-2 days",
+            "启动窗口",
+            "closure_due"
+          ]
+        },
+        {
+          "label": "route if missing",
+          "any": [
+            "downscope",
+            "provisional slice",
+            "park",
+            "降级",
+            "停放"
+          ]
+        }
+      ],
+      "forbidden_marker_groups": [
+        {
+          "label": "notes as closure",
+          "any": [
+            "调研很多所以已经闭环",
+            "notes are enough",
+            "audit status is the closure"
+          ]
+        },
+        {
+          "label": "no closure segment",
+          "any": [
+            "不需要完整链条",
+            "no need for an end-to-end chain"
+          ]
+        }
+      ],
+      "human_review_questions": [
+        "Did it check the chain from question/source/model/result/claim/limitation?",
+        "Did it route missing closure to downscope, provisional slice, justified prework, or parking?"
+      ]
+    },
+    "minimum_sufficient_observability_not_overreporting": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {
+          "label": "attention governance",
+          "any": [
+            "attention_governance",
+            "注意力治理"
+          ]
+        },
+        {
+          "label": "minimum sufficient observability",
+          "any": [
+            "minimum_sufficient_observability",
+            "最低充分可观测性",
+            "minimum sufficient observability"
+          ]
+        },
+        {
+          "label": "light progress signal",
+          "any": [
+            "closure segment",
+            "forward artifact",
+            "uncertainty",
+            "不能证明",
+            "下一拍"
+          ]
+        },
+        {
+          "label": "heavy audit triggers",
+          "any": [
+            "phase switch",
+            "public delivery",
+            "claim upgrade",
+            "repeated guardrail",
+            "missing closure",
+            "trigger point"
+          ]
+        }
+      ],
+      "forbidden_marker_groups": [
+        {
+          "label": "long report every beat",
+          "any": [
+            "每一拍都输出完整报告",
+            "full audit for every beat",
+            "long proof-of-work report for every routine beat"
+          ]
+        },
+        {
+          "label": "no visibility",
+          "any": [
+            "完全不汇报",
+            "no progress signal"
+          ]
+        }
+      ],
+      "human_review_questions": [
+        "Did it provide enough progress visibility without turning reporting into the work?",
+        "Did it reserve heavy audit for real trigger points?"
       ]
     }
   }

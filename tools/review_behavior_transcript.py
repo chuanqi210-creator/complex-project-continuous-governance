@@ -17,6 +17,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "docs" / "behavior-regression-cases.json"
 RULES = ROOT / "docs" / "behavior-transcript-review-rules.json"
+MATURITY = ROOT / "docs" / "mechanism-maturity.json"
 
 
 def fail(message: str) -> None:
@@ -42,6 +43,22 @@ def known_case_ids() -> set[str]:
     if not isinstance(cases, list):
         fail("behavior pack cases must be a list")
     return {str(case.get("case_id")) for case in cases if isinstance(case, dict)}
+
+
+def cases_by_id() -> dict[str, dict[str, Any]]:
+    pack = load_json(PACK)
+    cases = pack.get("cases")
+    if not isinstance(cases, list):
+        fail("behavior pack cases must be a list")
+    return {str(case.get("case_id")): case for case in cases if isinstance(case, dict)}
+
+
+def mechanisms_by_id() -> dict[str, dict[str, Any]]:
+    maturity = load_json(MATURITY)
+    mechanisms = maturity.get("mechanisms")
+    if not isinstance(mechanisms, list):
+        fail("mechanism maturity registry mechanisms must be a list")
+    return {str(mechanism.get("id")): mechanism for mechanism in mechanisms if isinstance(mechanism, dict)}
 
 
 def extract_text_from_json(data: Any) -> str:
@@ -98,13 +115,24 @@ def review(case_id: str, transcript: str) -> dict[str, Any]:
     if not isinstance(rules_by_case, dict):
         fail("rules file must contain case_rules object")
 
-    case_ids = known_case_ids()
+    cases = cases_by_id()
+    case_ids = set(cases)
     if case_id not in case_ids:
         fail(f"unknown case_id: {case_id}")
     if case_id not in rules_by_case:
         fail(f"missing transcript review rules for case_id: {case_id}")
 
     rules = rules_by_case[case_id]
+    linked_mechanism_ids = [str(item) for item in cases[case_id].get("linked_mechanisms", [])]
+    mechanism_lookup = mechanisms_by_id()
+    linked_mechanisms = [
+        {
+            "id": mechanism_id,
+            "status": mechanism_lookup.get(mechanism_id, {}).get("status", "unknown"),
+            "name": mechanism_lookup.get(mechanism_id, {}).get("name", mechanism_id),
+        }
+        for mechanism_id in linked_mechanism_ids
+    ]
     required_groups = rules.get("required_marker_groups", [])
     forbidden_groups = rules.get("forbidden_marker_groups", [])
     minimum_required = int(rules.get("minimum_required_groups", len(required_groups)))
@@ -144,6 +172,15 @@ def review(case_id: str, transcript: str) -> dict[str, Any]:
         "required_results": required_results,
         "forbidden_results": forbidden_results,
         "human_review_questions": rules.get("human_review_questions", []),
+        "linked_mechanisms": linked_mechanisms,
+        "outcome_review_template": {
+            "human_passed": None,
+            "auto_progressed": None,
+            "forward_artifact_created": None,
+            "user_correction_count": None,
+            "main_failure_if_any": "",
+            "mechanism_maturity_change": "none / candidate_to_tested / tested_to_validated / demote / retire",
+        },
     }
 
 

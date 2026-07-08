@@ -14,7 +14,7 @@ Runtime skill management keeps capability use tied to project progress:
 4. Test risky capabilities with a small task before relying on them.
 5. Write the result back into state, evidence, decisions, loop checks, or delivery records.
 
-Before copying blank templates, check whether a filled golden example is closer to the task:
+Before copying blank templates, check whether a filled example is closer to the task:
 
 - `docs/examples/evidence_fill_minimal_runtime/` for fixed-model evidence and delivery work.
 - `docs/examples/model_discovery_minimal_runtime/` for unsettled framing and research-model discovery.
@@ -23,9 +23,9 @@ Before copying blank templates, check whether a filled golden example is closer 
 - `docs/examples/external_calibration_micro_contract_runtime/` for external source transfer into a project micro-contract.
 - `docs/examples/operating_organization_multi_lane_runtime/` for controller, expert, review, data, writing, and human-interface lanes.
 
-Examples are allowed to be copied, shortened, or adapted. Their purpose is to teach shape, not to become mandatory forms.
+Examples are allowed to be copied, shortened, or adapted. Their purpose is to teach shape, not to become mandatory forms. Check `docs/examples/example-currentness.md` before treating an example as representative.
 
-When a real agent response feels off, do not immediately add another core rule. First see whether it matches one of the canonical behavior regression cases and run `tools/review_behavior_transcript.py` against the response. If the issue is repeated, update the transcript rule or golden example before promoting a new protocol mechanism.
+When a real agent response feels off, do not immediately add another core rule. First see whether it matches one of the canonical behavior regression cases and run `tools/review_behavior_transcript.py` against the response. If the issue is repeated, update the transcript rule, filled example, or mechanism maturity record before promoting a new protocol mechanism.
 
 ## Codex Skill And Surface Fit
 
@@ -41,6 +41,7 @@ Capability management must respect Codex surfaces:
 - Standing lanes are manager-owned project responsibilities. AI decides whether user-visible threads, worktrees, or automations fit the operating organization; actual creation follows current Codex surface/tool semantics.
 - Automations and thread heartbeats are the right surfaces for cross-turn follow-up when platform tools and responsibility boundaries allow them.
 - MCP/tools/connectors provide live capability; they do not replace the evidence boundary or authorization boundary.
+- Attention governance is part of capability management: do not add tools, reports, audits, or long searches unless they reduce a real uncertainty, produce a forward artifact, protect a responsibility boundary, or improve recovery.
 
 ## Startup Choice Card
 
@@ -105,6 +106,12 @@ For independent review, do not treat same-session roleplay as independent. Use c
 Continuous cadence should not put concrete next-step chores into a long Codex Goal. Use Codex Goal as `thread_goal` or `phase_goal`: the durable objective and completion criteria. Use state, master prompt, `goal_memory_summary`, closure routing, and `next_route` as continuity carriers. Use `beat_objective` for the current Plan/Loop target.
 
 If a current Codex Goal is stale or blocked but the project state still shows a viable next route, treat the situation as a goal lifecycle mismatch, not a project blockage. Refresh `thread_goal` / `phase_goal`, record the current `beat_objective`, continue from state, and only ask for manual cleanup if the tool state itself prevents the next beat.
+
+## Minimum Closure And Observability
+
+For research, analysis, or prototype projects, capability use should help produce an early minimum viable closure: question/problem, source/data or input path, minimal model/assumption, result/output, figure/table or validation signal, claim/usable conclusion, limitation, and next weakness.
+
+Routine beats should use minimum sufficient observability. Report the closure segment, forward artifact, uncertainty changed, cannot-yet-claim boundary, and next beat. Use heavier audit packets only when a trigger point appears: phase switch, public delivery, claim upgrade, contradiction, repeated guardrail-only work, missing closure, external calibration, hallucination sentinel, reviewer handoff, or user-requested audit.
 
 ## When To Reconsider Capabilities
 

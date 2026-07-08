@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "docs" / "behavior-regression-cases.json"
 TRANSCRIPT_RULES = ROOT / "docs" / "behavior-transcript-review-rules.json"
+MECHANISM_MATURITY = ROOT / "docs" / "mechanism-maturity.json"
 
 DOC_PATHS = [
     ROOT / "README.md",
@@ -32,6 +33,7 @@ REQUIRED_CASE_FIELDS = {
     "expected_behavior",
     "forbidden_behavior",
     "expected_runtime_records",
+    "linked_mechanisms",
 }
 
 ALLOWED_PROJECT_NATURES = {
@@ -79,6 +81,7 @@ def template_or_example_exists(record: str) -> bool:
 def main() -> None:
     pack = load_json(PACK)
     transcript_rules = load_json(TRANSCRIPT_RULES)
+    maturity = load_json(MECHANISM_MATURITY)
     docs = load_docs()
 
     cases = pack.get("cases")
@@ -92,6 +95,11 @@ def main() -> None:
     transcript_case_rules = transcript_rules.get("case_rules")
     if not isinstance(transcript_case_rules, dict):
         fail("transcript rules must contain case_rules object")
+
+    mechanisms = maturity.get("mechanisms")
+    if not isinstance(mechanisms, list) or not mechanisms:
+        fail("mechanism maturity registry must contain mechanisms list")
+    mechanism_ids = {str(mechanism.get("id")) for mechanism in mechanisms if isinstance(mechanism, dict)}
 
     seen_ids: set[str] = set()
     for case in cases:
@@ -114,6 +122,13 @@ def main() -> None:
             value = case[key]
             if not isinstance(value, list) or not value:
                 fail(f"{case_id}.{key} must be a non-empty list")
+
+        linked_mechanisms = case["linked_mechanisms"]
+        if not isinstance(linked_mechanisms, list) or not linked_mechanisms:
+            fail(f"{case_id}.linked_mechanisms must be a non-empty list")
+        unknown_mechanisms = sorted(set(map(str, linked_mechanisms)) - mechanism_ids)
+        if unknown_mechanisms:
+            fail(f"{case_id} links unknown mechanisms: {unknown_mechanisms}")
 
         for trigger in case["expected_triggers"]:
             trigger_key = str(trigger).split(":", 1)[0].strip()

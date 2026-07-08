@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-05",
+  "version": "2026-07-08",
   "purpose": "Complex Runtime Kit capability candidates for project-level continuous governance. This file is a discovery aid, not proof that a skill, tool, plugin, connector, or API is callable in the current environment.",
   "capabilities": [
     {
@@ -41,6 +41,14 @@
       "use_when": "A continuous project has many beats, large state files, historical artifacts, old gates, or context-pollution risk.",
       "boundary": "Do not delete audit records by default. Demote stale material from Hot State to Warm Index or Cold Archive with recoverable pointers.",
       "verification_hint": "Record trace_appraisal_status, retention class, hot_state_location, warm_index_locations, cold_archive_policy, and demoted pointers."
+    },
+    {
+      "name": "attention_governance_minimum_closure",
+      "type": "external_method",
+      "status": "recommended",
+      "use_when": "A research, analysis, prototype, or long-running project risks spending many beats on local audits, source gathering, or reporting before showing an end-to-end chain.",
+      "boundary": "Minimum closure is a judgment signal, not final proof. Minimum observability must not hide evidence gaps, unsupported claims, or responsibility boundaries.",
+      "verification_hint": "Record minimum_viable_closure_status, closure_chain, minimum_sufficient_observability_status, last_progress_signal, and heavy_audit_trigger."
     },
     {
       "name": "complex_protocol_onboarding",

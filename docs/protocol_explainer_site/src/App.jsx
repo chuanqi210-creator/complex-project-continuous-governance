@@ -29,6 +29,7 @@ const pages = [
   { id: "overview", label: "概览", icon: HouseLine },
   { id: "capabilities", label: "能力", icon: Stack },
   { id: "mechanism", label: "机制", icon: FlowArrow },
+  { id: "maturity", label: "成熟度", icon: SealCheck },
   { id: "scenarios", label: "场景", icon: MapTrifold },
   { id: "advantages", label: "优势", icon: ChartLineUp },
 ];
@@ -51,7 +52,7 @@ const coreOutcomes = [
   },
   {
     title: "可审查恢复链",
-    text: "Hot State、Warm Index、Cold Archive、行为回归、transcript 审查和黄金样例把项目推进变成可恢复、可复核、可继续的记录，而不是一次性口头承诺。",
+    text: "Hot State、Warm Index、Cold Archive、行为回归、transcript 审查和填好样例把项目推进变成可恢复、可复核、可继续的记录，同时避免把全部历史塞进每拍上下文。",
     icon: UsersThree,
   },
 ];
@@ -59,7 +60,7 @@ const coreOutcomes = [
 const assets = [
   {
     name: "核心协议",
-    role: "定义行为内核、Codex surface、担责边界、操作组织、目标函数 Loop、外部校准、幻觉哨兵和恢复规则。",
+    role: "定义行为内核、Codex surface、担责边界、操作组织、目标函数 Loop、注意力治理、外部校准、幻觉哨兵和恢复规则。",
     file: "protocol/core.md",
   },
   {
@@ -69,7 +70,7 @@ const assets = [
   },
   {
     name: "快速入口",
-    role: "让新代理按 README、current-state、7 步行为内核和黄金样例启动。",
+    role: "让新代理按 README、current-state、7 步行为内核和填好样例启动。",
     file: "docs/quickstart.md",
   },
   {
@@ -79,7 +80,7 @@ const assets = [
   },
   {
     name: "行为回归包",
-    role: "用 34 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
+    role: "用 36 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
     file: "docs/behavior-regression-cases.json",
   },
   {
@@ -93,12 +94,17 @@ const assets = [
     file: "docs/behavior-review.md",
   },
   {
+    name: "机制成熟度",
+    role: "把机制分成 core、validated、tested、candidate、retired，避免近期修补被误读成已被证明的核心能力。",
+    file: "docs/mechanism-maturity.json",
+  },
+  {
     name: "5 分钟上手版",
     role: "让新代理先抓当前状态、7 步行为内核、项目性质和最小 Runtime Kit。",
     file: "docs/quickstart.md",
   },
   {
-    name: "黄金样例",
+    name: "填好样例",
     role: "展示 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可用运行现场。",
     file: "docs/examples/",
   },
@@ -169,6 +175,13 @@ const capabilityGroups = [
     icon: Graph,
   },
   {
+    title: "注意力治理",
+    summary: "先跑最小可审计闭环，平时只给最低充分进展信号。",
+    detail:
+      "minimum_viable_closure_rule 要求研究、分析和原型项目尽早串起问题、数据/来源、最简模型、结果、图表/验证信号、论断、局限和下一弱点；minimum_sufficient_observability_rule 防止汇报、审计和规范整理吞掉真正推进。",
+    icon: Target,
+  },
+  {
     title: "轻量化与外部校准",
     summary: "保留审计能力，但不把全部历史塞进每拍上下文。",
     detail:
@@ -190,10 +203,10 @@ const capabilityGroups = [
     icon: Package,
   },
   {
-    title: "行为回归与黄金样例",
+    title: "行为回归与填好样例",
     summary: "用用例、真实回复审查、结果记录和填好样例验证新代理能否稳定落地。",
     detail:
-      "behavior_regression_pack 覆盖 34 个高风险入口；review_behavior_transcript.py 检查真实回复；docs/examples 给出 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可恢复运行现场。",
+      "behavior_regression_pack 覆盖 36 个高风险入口；review_behavior_transcript.py 检查真实回复；docs/examples 给出 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];
@@ -322,6 +335,14 @@ const comparisonRows = [
   ["评审独立性", "同 session 扮演评审", "区分 diagnostic 自评和清上下文 independent review"],
   ["复杂度控制", "要么过度表格化，要么完全黑箱", "行为内核给主线，模板和案例按需启用"],
   ["恢复能力", "依赖聊天记忆", "用 current-state、next_route、样例和 verifier 恢复"],
+];
+
+const maturityLevels = [
+  ["core", "稳定核心", "行为内核、担责边界和交付契约这类每次都要尊重的主骨架。"],
+  ["validated", "真实验证", "经过多条真实 transcript 或端到端项目样本证明能减少纠偏或提升推进质量。"],
+  ["tested", "结构测试", "已有 behavior cases、transcript rules、填好样例或重复用户反馈支撑，但样本还不够广。"],
+  ["candidate", "候选机制", "来自近期失败模式或外部校准的好想法；匹配时可用，但不能说成已证明。"],
+  ["retired", "退役机制", "不再用于新项目，只在解释替代关系时保留。"],
 ];
 
 function useHashRoute() {
@@ -579,6 +600,77 @@ function Mechanism() {
   );
 }
 
+function Maturity() {
+  return (
+    <div className="content-page">
+      <PageTitle
+        label="机制成熟度"
+        title="不是每个好想法都直接进入核心。"
+        copy="Complex 把稳定核心、已测试机制、候选机制和真实行为验证分开记录。这样新代理知道哪些必须执行，哪些只在匹配失败模式时启用，哪些还需要真实 transcript 验证。"
+      />
+
+      <section className="mechanism-grid">
+        <article className="mechanism-panel">
+          <h2>成熟度阶梯</h2>
+          <p>
+            `docs/mechanism-maturity.json` 记录每个机制的状态、外部依据、内部证据、行为用例、样例、升级规则和降级触发。marker 通过只是第一层，不能等同于真实项目表现优良。
+          </p>
+          <div className="gate-grid">
+            {maturityLevels.map(([id, title, text]) => (
+              <div className="gate-card" key={id}>
+                <strong>{title}</strong>
+                <span>{id}</span>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article className="mechanism-panel">
+          <h2>真实行为验证</h2>
+          <p>
+            `tools/review_behavior_transcript.py` 仍是轻量 marker 审查；`docs/evals/README.md` 补上结果记录：是否自动推进、是否产出 forward artifact、是否减少用户纠偏、是否需要升级或降级机制。
+          </p>
+          <div className="ladder">
+            {[
+              "behavior case",
+              "transcript rule",
+              "filled example",
+              "redacted transcript",
+              "end-to-end project sample",
+            ].map((level, index) => (
+              <div className="ladder-row" key={level}>
+                <span>{index + 1}</span>
+                <strong>{level}</strong>
+              </div>
+            ))}
+          </div>
+        </article>
+      </section>
+
+      <section className="comparison-card">
+        <div className="comparison-header">
+          <span>对象</span>
+          <span>不能说明什么</span>
+          <span>真正说明什么</span>
+        </div>
+        {[
+          ["候选机制", "不代表已经解决真实项目问题", "说明有外部依据和可测试 micro-contract"],
+          ["填好样例", "不代表已被认证为最佳实践", "说明新代理有可模仿的最小运行现场"],
+          ["Marker 通过", "不代表回复质量优秀", "说明没有明显漏掉关键行为或触发禁忌行为"],
+          ["核心协议", "不应该容纳每次新失败的补丁", "只保留跨项目稳定、低摩擦、高价值的行为骨架"],
+        ].map(([a, b, c]) => (
+          <div className="comparison-row" key={a}>
+            <strong>{a}</strong>
+            <p>{b}</p>
+            <p>{c}</p>
+          </div>
+        ))}
+      </section>
+    </div>
+  );
+}
+
 function Scenarios() {
   const [activeId, setActiveId] = useState("software");
   const active = useMemo(() => scenarios.find((item) => item.id === activeId), [activeId]);
@@ -651,7 +743,7 @@ function Advantages() {
       <PageTitle
         label="对比优势"
         title="它比一般项目推进更稳，也比厚重流程更轻。"
-        copy="持续治理协议的优势不在于字段多，而在于它把常见误判压缩成可执行行为，并用行为回归、transcript 审查、结果记录、黄金样例和恢复链防止下一轮重新迷路。"
+        copy="持续治理协议的优势不在于字段多，而在于它把常见误判压缩成可执行行为，并用行为回归、transcript 审查、结果记录、填好样例和恢复链防止下一轮重新迷路。"
       />
 
       <section className="comparison-card">
@@ -673,7 +765,7 @@ function Advantages() {
         {[
           {
             title: "比提示词更强",
-            text: "它有当前状态、next_route、验证器和黄金样例。下一次继续时不是靠记忆，而是按 current-state 恢复。",
+            text: "它有当前状态、next_route、验证器和填好样例。下一次继续时不是靠记忆，而是按 current-state 恢复。",
             icon: Path,
           },
           {
@@ -720,6 +812,7 @@ export function App() {
     overview: <Overview go={go} />,
     capabilities: <Capabilities />,
     mechanism: <Mechanism />,
+    maturity: <Maturity />,
     scenarios: <Scenarios />,
     advantages: <Advantages />,
   }[route];

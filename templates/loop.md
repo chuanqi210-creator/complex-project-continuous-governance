@@ -19,8 +19,11 @@ Use this file for a compact Loop that learns or advances the target function bef
 - local_route_still_serves_target_function: yes / no / uncertain
 - project_nature: evidence_fill / model_discovery / mixed / execution_delivery
 - convergence_status:
-- loop_type: strategy / discovery / extraction / vertical_slice / review / writing / delivery
+- loop_type: strategy / discovery / extraction / vertical_slice / closure / review / writing / delivery
 - why_not_local_greedy:
+- closure_segment_served: question / source_data / model_assumption / result_calculation / figure_table / claim / limitation / output_validation / none
+- minimum_viable_closure_status: not_needed / missing / partial / complete / route_back
+- minimum_sufficient_observability_status: light_signal_enough / heavier_audit_triggered / too_much_process
 
 ## Codex Surface And Authority
 
@@ -71,6 +74,7 @@ Use this file for a compact Loop that learns or advances the target function bef
 - Tool or method:
 - Timebox:
 - Stop condition:
+- Attention budget: what this beat will not report, audit, or expand because it does not improve movement:
 
 ## Result
 
@@ -81,6 +85,9 @@ Use this file for a compact Loop that learns or advances the target function bef
 - Guard result:
 - New risk:
 - New gap:
+- Uncertainty reduced:
+- Cannot yet claim:
+- Minimal progress signal for human reader:
 
 ## Toil / WIP Review
 
@@ -90,6 +97,8 @@ Use this file for a compact Loop that learns or advances the target function bef
 - selected_action: create_forward_artifact / park_branch / route_to_module / justify_true_dependency / not_needed
 - branch_parking_needed: yes / no
 - parallel_portfolio_route_available: yes / no
+- missing_closure_review_due: yes / no
+- over_governance_or_over_reporting_risk: low / medium / high
 
 ## State And Trace
 

@@ -13,6 +13,7 @@ Primary entrypoints when deeper detail is needed:
 - `protocol/current-state.md`
 - `docs/quickstart.md`
 - `protocol/core.md`
+- `docs/mechanism-maturity.md`
 - `docs/examples/`
 - `templates/`
 
@@ -20,9 +21,9 @@ Primary entrypoints when deeper detail is needed:
 
 Complex optimizes for durable project progress:
 
-> strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + external calibration + evidence boundaries + clean review + lightweight auditable recovery.
+> strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + attention governance + external calibration + evidence boundaries + clean review + lightweight auditable recovery.
 
-Avoid local greed. The next nearby edit is not automatically the right next beat. For continuous work, maintain target function, modules, standing lanes, forward indexes, and state lightening before choosing local work.
+Avoid local greed. The next nearby edit is not automatically the right next beat. For continuous work, maintain target function, modules, standing lanes, forward indexes, minimum viable closure, and state lightening before choosing local work.
 
 ## Codex Surface Map
 
@@ -44,6 +45,8 @@ Avoid local greed. The next nearby edit is not automatically the right next beat
 5. Run the smallest meaningful target-function Loop or execution beat.
 6. Deliver to the requested audience.
 7. Leave `next_route`, accepted artifacts, and recovery pointers.
+
+Use mechanism maturity to choose depth. Core behaviors always apply. Tested and candidate mechanisms apply when their failure mode is present; do not present candidate mechanisms as proven outcomes.
 
 ## Responsibility Boundary
 
@@ -71,7 +74,7 @@ Independent review requires clean context, a fact-ledger packet, separate review
 
 ## Target-Function Loop
 
-A Loop is not the lightest nearby action. It is the smallest meaningful cycle that serves the target function.
+A Loop is not the lightest nearby action. It is the smallest meaningful cycle that serves the target function and, when relevant, advances the minimum viable closure.
 
 Each Loop states:
 
@@ -81,9 +84,15 @@ Each Loop states:
 - loop type: strategy, discovery, extraction, vertical slice, review, writing, or delivery
 - expected forward artifact
 - why this is not local greedy optimization
+- closure segment moved or reason closure is not needed
+- minimum sufficient observability signal
 - guard and route
 
 Accept a beat only when it creates or updates a forward artifact, passes the guard, updates state/indexes, and selects the next route. Guardrail-only repetition triggers toil/WIP review: create an artifact, park the branch, route elsewhere, or justify why the guardrail is the true dependency.
+
+For research, analysis, or prototype work, seek an early thin chain from question to source/data, minimal model or assumption, result/output, figure/table or validation signal, claim/conclusion, limitation, and next weakness. If many beats pass without that chain, downscope, use a provisional slice, justify prework as the true dependency, or route elsewhere.
+
+Routine beats should expose only the minimum useful progress signal: closure segment, forward artifact, uncertainty changed, cannot-yet-claim boundary, and next route. Heavy audit packs are for phase switches, public delivery, claim upgrades, contradictions, repeated guardrail-only work, missing closure, external calibration, hallucination sentinel, reviewer handoff, or user-requested audit.
 
 ## External Calibration And Hallucination Sentinel
 

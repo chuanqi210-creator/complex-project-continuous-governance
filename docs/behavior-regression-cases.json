@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-05-external-calibrated-operating-organization",
+  "version": "2026-07-08-attention-governance-closure",
   "purpose": "A compact behavior regression pack for checking whether Complex documentation still covers the behaviors that matter most when a new agent uses the protocol.",
   "required_case_ids": [
     "setup_card_default",
@@ -31,11 +31,13 @@
     "plan_checkpoint_for_key_beats",
     "loop_not_local_greedy",
     "standing_lane_operating_organization",
-    "golden_example_currentness_review",
+    "example_currentness_review",
     "external_calibration_required_for_each_issue",
     "responsibility_boundary_not_low_risk_wording",
     "human_interface_lane_for_long_projects",
-    "scheduled_structure_review_continues_project"
+    "scheduled_structure_review_continues_project",
+    "minimum_viable_closure_for_research",
+    "minimum_sufficient_observability_not_overreporting"
   ],
   "cases": [
     {
@@ -64,6 +66,12 @@
         "state.md",
         "question.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "behavior_transcript_review",
+        "complex_behavior_kernel",
+        "delivery_contract",
+        "project_nature_router"
       ]
     },
     {
@@ -95,6 +103,9 @@
       "expected_runtime_records": [
         "prompt.md",
         "state.md"
+      ],
+      "linked_mechanisms": [
+        "prompt_bootstrap_and_rehydration"
       ]
     },
     {
@@ -121,6 +132,9 @@
         "framing.md",
         "argument.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "project_nature_router"
       ]
     },
     {
@@ -147,6 +161,9 @@
         "evidence.md",
         "loop.md",
         "delivery.md"
+      ],
+      "linked_mechanisms": [
+        "project_nature_router"
       ]
     },
     {
@@ -172,6 +189,10 @@
         "prompt.md",
         "state.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "continuous_cadence_contract",
+        "prompt_bootstrap_and_rehydration"
       ]
     },
     {
@@ -215,6 +236,11 @@
         "state.md",
         "loop.md",
         "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "behavior_transcript_review",
+        "continuous_cadence_contract",
+        "forward_artifact_acceptance"
       ]
     },
     {
@@ -240,6 +266,9 @@
         "search.md",
         "decision.md",
         "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "responsibility_boundary"
       ]
     },
     {
@@ -264,6 +293,9 @@
       "expected_runtime_records": [
         "state.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "prompt_bootstrap_and_rehydration"
       ]
     },
     {
@@ -287,6 +319,9 @@
       ],
       "expected_runtime_records": [
         "delivery.md"
+      ],
+      "linked_mechanisms": [
+        "delivery_contract"
       ]
     },
     {
@@ -315,6 +350,11 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "continuous_cadence_contract",
+        "human_intervention_drift_guard",
+        "responsibility_boundary"
       ]
     },
     {
@@ -341,6 +381,9 @@
         "state.md",
         "search.md",
         "evidence.md"
+      ],
+      "linked_mechanisms": [
+        "human_intervention_drift_guard"
       ]
     },
     {
@@ -368,6 +411,9 @@
         "judgment.md",
         "decision.md",
         "state.md"
+      ],
+      "linked_mechanisms": [
+        "independent_review_context_separation"
       ]
     },
     {
@@ -399,6 +445,10 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "human_intervention_drift_guard",
+        "responsibility_boundary"
       ]
     },
     {
@@ -438,6 +488,10 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "operating_organization"
       ]
     },
     {
@@ -485,6 +539,11 @@
         "state.md",
         "loop.md",
         "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "operating_organization",
+        "portfolio_control_plane"
       ]
     },
     {
@@ -513,6 +572,10 @@
       "expected_runtime_records": [
         "prompt.md",
         "state.md"
+      ],
+      "linked_mechanisms": [
+        "codex_surface_alignment",
+        "source_resolution_and_runtime_install"
       ]
     },
     {
@@ -538,6 +601,9 @@
       "expected_runtime_records": [
         "prompt.md",
         "state.md"
+      ],
+      "linked_mechanisms": [
+        "codex_surface_alignment"
       ]
     },
     {
@@ -566,6 +632,9 @@
         "state.md",
         "loop.md",
         "prompt.md"
+      ],
+      "linked_mechanisms": [
+        "codex_surface_alignment"
       ]
     },
     {
@@ -594,6 +663,10 @@
         "state.md",
         "loop.md",
         "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "codex_surface_alignment",
+        "continuous_cadence_contract"
       ]
     },
     {
@@ -621,6 +694,9 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "codex_surface_alignment"
       ]
     },
     {
@@ -649,6 +725,9 @@
         "state.md",
         "decision.md",
         "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "codex_surface_alignment"
       ]
     },
     {
@@ -676,6 +755,10 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "forward_artifact_acceptance",
+        "portfolio_control_plane"
       ]
     },
     {
@@ -703,6 +786,11 @@
         "state.md",
         "loop.md",
         "decision.md"
+      ],
+      "linked_mechanisms": [
+        "forward_artifact_acceptance",
+        "portfolio_control_plane",
+        "target_function_loop"
       ]
     },
     {
@@ -729,6 +817,10 @@
       "expected_runtime_records": [
         "state.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "portfolio_control_plane",
+        "trace_appraisal_hot_warm_cold"
       ]
     },
     {
@@ -756,6 +848,9 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "trace_appraisal_hot_warm_cold"
       ]
     },
     {
@@ -785,6 +880,10 @@
         "judgment.md",
         "state.md",
         "decision.md"
+      ],
+      "linked_mechanisms": [
+        "external_calibration_rule",
+        "hallucination_sentinel"
       ]
     },
     {
@@ -810,6 +909,9 @@
         "prompt.md",
         "loop.md",
         "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -834,6 +936,10 @@
       "expected_runtime_records": [
         "loop.md",
         "state.md"
+      ],
+      "linked_mechanisms": [
+        "attention_governance_minimum_closure",
+        "target_function_loop"
       ]
     },
     {
@@ -859,14 +965,17 @@
         "state.md",
         "judgment.md",
         "loop.md"
+      ],
+      "linked_mechanisms": [
+        "operating_organization"
       ]
     },
     {
-      "case_id": "golden_example_currentness_review",
-      "user_prompt": "这些黄金样例现在还算黄金吗？请按当前 Complex 架构复查。",
+      "case_id": "example_currentness_review",
+      "user_prompt": "这些填好样例现在还算代表性吗？请按当前 Complex 架构复查。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "golden example",
+        "filled example",
         "docs/examples",
         "external_calibration"
       ],
@@ -876,7 +985,7 @@
         "Update or park examples that no longer teach current runtime behavior."
       ],
       "forbidden_behavior": [
-        "Assume an example is golden because it exists.",
+        "Assume an example is certified because it exists.",
         "Keep outdated terminology in examples as active guidance.",
         "Promote blank templates over filled examples for onboarding."
       ],
@@ -884,6 +993,10 @@
         "state.md",
         "loop.md",
         "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "behavior_transcript_review",
+        "example_currentness"
       ]
     },
     {
@@ -908,6 +1021,9 @@
       "expected_runtime_records": [
         "judgment.md",
         "state.md"
+      ],
+      "linked_mechanisms": [
+        "external_calibration_rule"
       ]
     },
     {
@@ -933,6 +1049,9 @@
         "judgment.md",
         "question.md",
         "state.md"
+      ],
+      "linked_mechanisms": [
+        "responsibility_boundary"
       ]
     },
     {
@@ -958,6 +1077,9 @@
         "state.md",
         "question.md",
         "delivery.md"
+      ],
+      "linked_mechanisms": [
+        "operating_organization"
       ]
     },
     {
@@ -983,6 +1105,67 @@
         "state.md",
         "loop.md",
         "decision.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel"
+      ]
+    },
+    {
+      "case_id": "minimum_viable_closure_for_research",
+      "user_prompt": "这个论文/研究项目已经调研和审计很久了，但我还看不到从问题、数据、模型、结果到论断的完整链条。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "minimum_viable_closure_rule",
+        "closure_chain",
+        "startup_window"
+      ],
+      "expected_behavior": [
+        "Check whether a thin end-to-end closure exists: question, source/data path, minimal model or assumption, result/output, figure/table or validation signal, claim/conclusion, limitation, and next weakness.",
+        "If closure is missing after the startup window, route to downscope, provisional data/model slice, justified prework, or branch parking.",
+        "Treat the first closure as a judgment signal, not as final proof or final delivery."
+      ],
+      "forbidden_behavior": [
+        "Keep collecting sources or polishing audits without saying which closure segment is missing.",
+        "Treat notes, review status, or process compliance as a substitute for an end-to-end chain.",
+        "Declare the project healthy only because many local tasks were completed."
+      ],
+      "expected_runtime_records": [
+        "state.md",
+        "loop.md",
+        "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "attention_governance_minimum_closure",
+        "target_function_loop"
+      ]
+    },
+    {
+      "case_id": "minimum_sufficient_observability_not_overreporting",
+      "user_prompt": "我需要知道项目有没有推进，但不要每一步都交一大堆证明材料，把注意力都花在汇报上。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "attention_governance",
+        "minimum_sufficient_observability_rule",
+        "attention_budget_check"
+      ],
+      "expected_behavior": [
+        "Use a light progress signal for routine beats: closure segment moved, forward artifact changed, uncertainty changed, cannot-yet-claim boundary, and next beat.",
+        "Reserve heavy audit packs for trigger points such as phase switch, public delivery, claim upgrade, contradiction, repeated guardrail-only work, missing closure, external calibration, hallucination sentinel, reviewer handoff, or user-requested audit.",
+        "Prefer continuing the project when extra reporting does not reduce uncertainty, protect a boundary, produce an artifact, or improve recovery."
+      ],
+      "forbidden_behavior": [
+        "Create a long proof-of-work report for every routine beat.",
+        "Skip progress visibility entirely because reporting overhead is bad.",
+        "Let governance output become the main project artifact when no trigger point exists."
+      ],
+      "expected_runtime_records": [
+        "state.md",
+        "loop.md",
+        "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "attention_governance_minimum_closure",
+        "hallucination_sentinel"
       ]
     }
   ]
