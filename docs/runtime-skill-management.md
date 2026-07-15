@@ -14,6 +14,8 @@ Runtime skill management keeps capability use tied to project progress:
 4. Test risky capabilities with a small task before relying on them.
 5. Write the result back into state, evidence, decisions, loop checks, or delivery records.
 
+Capability selection belongs to the **Runtime Harness** layer. The prompt states stable capability boundaries, the Context Working Set loads only capability evidence needed now, the Harness exposes narrow tool contracts and degraded routes, and the Progress Loop evaluates whether the capability changed the outcome. An unavailable tool is not fixed by adding more prompt wording.
+
 Before copying blank templates, check whether a filled example is closer to the task:
 
 - `docs/examples/evidence_fill_minimal_runtime/` for fixed-model evidence and delivery work.
@@ -67,13 +69,13 @@ The agent should:
 
 1. Scan the relevant Complex entry points before business execution.
 2. Ask or default the same startup choices: delivery, capabilities, topology, cadence, and boundaries.
-3. Produce a copy-ready project prompt that includes the selected capability policy, rejected/backlogged capabilities, responsibility boundaries, operating organization, target-function Loop, external calibration policy, hallucination sentinel, and delivery contract.
+3. Produce a copy-ready Project Prompt Contract with stable Goal, completion criteria, responsibility boundary, and delivery contract. Put current capability inventory in `harness.md` and changing beat facts in `context.md` instead of copying them all into the prompt.
 4. Wait for user confirmation before executing, unless the user explicitly authorized "design and execute".
 5. Treat the prompt as a project startup contract, not a replacement for Complex or for later user corrections.
 
 This bootstrap is especially useful for new projects, new users, or handoff into another Codex thread where the receiving agent needs a compact but complete execution prompt.
 
-For continuous prompt-based projects, rehydrate the prompt each beat before planning. The beat prompt should inherit the confirmed master prompt, current state, Codex surface map, capability policy, operating organization, external calibration status, hallucination sentinel status, and delivery contract, then add only the current `beat_objective` and prompt patches. Rehydration is not new authorization to use accounts, APIs, external writes, platform resources, or subagents beyond the existing boundary.
+For continuous projects, rehydrate the stable prompt each beat, assemble the current Context Working Set, and confirm the Harness status before planning. Add only the current `beat_objective`, outcome completion predicate, and route. Rehydration is not new authorization to use accounts, APIs, external writes, platform resources, or subagents beyond the existing boundary.
 
 ## Adaptive Judgment Boundary
 

@@ -12,3 +12,12 @@ It shows the smallest useful form of:
 - Hot State / Warm Index / Cold Archive
 - Beat Router
 
+This is the flagship four-layer filled example:
+
+- `prompt.md`: durable Goal, target function, completion criteria, and responsibility boundary.
+- `context.md`: active portfolio working set and explicit exclusions.
+- `harness.md`: available orchestration surfaces, mechanical checks, and recovery controls.
+- `loop.md`: outcome-based module selection and continuation.
+- `state.md`: compact recovery and portfolio map.
+
+It does not prove every project needs a multi-lane portfolio or that the candidate four-layer mechanism is validated.

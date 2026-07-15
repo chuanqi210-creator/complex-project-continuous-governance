@@ -20,3 +20,12 @@ This is not a new mandatory Runtime Kit template. It is a filled example for the
 - `judgment.md`: decision rights and review independence judgment.
 - `decision.md`: selected route, rejected routes, and downgrade rules.
 - `delivery.md`: how to present same-session diagnostic vs independent review outputs.
+
+## Four-Layer Boundary
+
+- Prompt Contract: review criteria and decision audience remain stable.
+- Context Working Set: the reviewer receives a fact ledger, not the persuasion-heavy manager transcript.
+- Runtime Harness: clean reviewer context, read-only access, and observable evidence are required for a true independent label.
+- Progress Loop: review completes from criterion-level findings and evidence, not from the reviewer saying the artifact looks good.
+
+This example does not prove that a same-session diagnostic is independent or that every review needs another model.

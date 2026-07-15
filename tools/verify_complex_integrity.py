@@ -36,16 +36,20 @@ REQUIRED_FILES = [
     "tools/check_behavior_regression_pack.py",
     "tools/review_behavior_transcript.py",
     "tools/check_mechanism_maturity.py",
+    "tools/inspect_recovery_anchor.py",
+    "tools/test_inspect_recovery_anchor.py",
     "tools/verify_complex_integrity.py",
     "tools/test_verify_complex_integrity.py",
 ]
 
 REQUIRED_TEMPLATES = [
     "argument.md",
+    "context.md",
     "decision.md",
     "delivery.md",
     "evidence.md",
     "framing.md",
+    "harness.md",
     "judgment.md",
     "loop.md",
     "prompt.md",
@@ -101,6 +105,45 @@ REQUIRED_REFERENCES = [
     "docs/mechanism-maturity.md",
     ".agents/skills/complex-runtime/SKILL.md",
 ]
+
+FOUR_LAYER_TERMS = {
+    "prompt": "Prompt Contract",
+    "context": "Context Working Set",
+    "harness": "Runtime Harness",
+    "loop": "Progress Loop",
+}
+
+FOUR_LAYER_ENTRYPOINTS = [
+    "README.md",
+    "protocol/core.md",
+    "docs/quickstart.md",
+    ".agents/skills/complex-runtime/SKILL.md",
+]
+
+FLAGSHIP_EXAMPLE_FILES = [
+    "README.md",
+    "prompt.md",
+    "context.md",
+    "harness.md",
+    "loop.md",
+    "state.md",
+]
+
+FOUR_LAYER_BEHAVIOR_CASES = {
+    "prompt_change_is_eval_driven_and_versioned",
+    "context_working_set_is_curated_and_recoverable",
+    "harness_legibility_and_mechanical_guardrails",
+    "durable_loop_uses_outcome_completion_and_recovery",
+    "cross_layer_failure_is_diagnosed_before_prompt_patch",
+}
+
+SEMANTIC_RECOVERY_LABELS = {
+    "thread_goal": "- thread_goal:",
+    "current_basis": "- current_basis:",
+    "active_module": "- active_module:",
+    "open_risks": "- open_risks:",
+    "next_route": "- next_route:",
+}
 
 
 def read_json(relative: str) -> dict:
@@ -162,6 +205,48 @@ def main() -> None:
         path = ROOT / directory
         check(checks, f"example_dir:{directory}", path.is_dir() and any(path.glob("*.md")))
 
+    flagship = ROOT / "docs/examples/portfolio_orchestration_minimal_runtime"
+    missing_flagship_files = sorted(
+        name for name in FLAGSHIP_EXAMPLE_FILES if not (flagship / name).is_file()
+    )
+    check(
+        checks,
+        "four_layer_flagship_complete",
+        not missing_flagship_files,
+        missing_flagship_files,
+    )
+
+    for relative in FOUR_LAYER_ENTRYPOINTS:
+        path = ROOT / relative
+        content = path.read_text(encoding="utf-8", errors="ignore") if path.is_file() else ""
+        missing_terms = sorted(
+            layer for layer, term in FOUR_LAYER_TERMS.items() if term not in content
+        )
+        check(
+            checks,
+            f"four_layer_entrypoint:{relative}",
+            not missing_terms,
+            missing_terms,
+        )
+
+    current_state_text = (ROOT / "protocol/current-state.md").read_text(
+        encoding="utf-8", errors="ignore"
+    )
+    missing_recovery_labels = sorted(
+        name for name, label in SEMANTIC_RECOVERY_LABELS.items()
+        if label not in current_state_text
+    )
+    authoritative_next_route_count = current_state_text.count("- next_route:")
+    check(
+        checks,
+        "current_state_semantic_recovery_contract",
+        not missing_recovery_labels and authoritative_next_route_count == 1,
+        {
+            "missing_labels": missing_recovery_labels,
+            "authoritative_next_route_count": authoritative_next_route_count,
+        },
+    )
+
     for relative in FORBIDDEN_PATHS:
         check(checks, f"forbidden_path_absent:{relative}", not (ROOT / relative).exists())
 
@@ -183,11 +268,53 @@ def main() -> None:
     rule_ids = set(rules.get("case_rules", {}))
     mechanisms = maturity.get("mechanisms")
     mechanism_ids = {mechanism.get("id") for mechanism in mechanisms if isinstance(mechanism, dict)} if isinstance(mechanisms, list) else set()
-    check(checks, "behavior_case_count_36", len(case_ids) == 36, sorted(case_ids))
-    check(checks, "required_case_count_36", len(required_ids) == 36, sorted(required_ids))
-    check(checks, "transcript_rule_count_36", len(rule_ids) == 36, sorted(rule_ids))
+    check(checks, "behavior_case_count_42", len(case_ids) == 42, sorted(case_ids))
+    check(checks, "required_case_count_42", len(required_ids) == 42, sorted(required_ids))
+    check(checks, "transcript_rule_count_42", len(rule_ids) == 42, sorted(rule_ids))
     check(checks, "behavior_cases_match_rules", case_ids == rule_ids == required_ids)
     check(checks, "mechanism_maturity_present", len(mechanism_ids) >= 12, sorted(mechanism_ids))
+
+    four_layer_mechanism = next(
+        (
+            mechanism
+            for mechanism in mechanisms
+            if isinstance(mechanism, dict)
+            and mechanism.get("id") == "four_layer_runtime_alignment"
+        ),
+        None,
+    ) if isinstance(mechanisms, list) else None
+    expected_layers = set(FOUR_LAYER_TERMS)
+    actual_layers = set(four_layer_mechanism.get("engineering_layers", [])) if four_layer_mechanism else set()
+    actual_linked_cases = set(four_layer_mechanism.get("linked_behavior_cases", [])) if four_layer_mechanism else set()
+    check(
+        checks,
+        "four_layer_mechanism_maturity_boundary",
+        bool(four_layer_mechanism)
+        and four_layer_mechanism.get("status") == "validated"
+        and actual_layers == expected_layers,
+        {
+            "status": four_layer_mechanism.get("status") if four_layer_mechanism else None,
+            "layers": sorted(actual_layers),
+        },
+    )
+    check(
+        checks,
+        "four_layer_behavior_coverage",
+        FOUR_LAYER_BEHAVIOR_CASES <= case_ids
+        and FOUR_LAYER_BEHAVIOR_CASES <= rule_ids
+        and FOUR_LAYER_BEHAVIOR_CASES <= actual_linked_cases,
+        {
+            "missing_cases": sorted(FOUR_LAYER_BEHAVIOR_CASES - case_ids),
+            "missing_rules": sorted(FOUR_LAYER_BEHAVIOR_CASES - rule_ids),
+            "missing_maturity_links": sorted(FOUR_LAYER_BEHAVIOR_CASES - actual_linked_cases),
+        },
+    )
+    missing_layer_maps = sorted(
+        mechanism.get("id")
+        for mechanism in mechanisms
+        if isinstance(mechanism, dict) and not mechanism.get("engineering_layers")
+    ) if isinstance(mechanisms, list) else ["<mechanisms-not-list>"]
+    check(checks, "mechanisms_map_engineering_layers", not missing_layer_maps, missing_layer_maps)
     if isinstance(cases, list):
         cases_without_mechanisms = sorted(
             case.get("case_id")

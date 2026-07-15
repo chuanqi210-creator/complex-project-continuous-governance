@@ -14,3 +14,12 @@ Files:
 - `evidence.md`: evidence levels and claim boundaries.
 - `loop.md`: a short evidence-check loop.
 - `delivery.md`: human-readable delivery contract.
+
+## Four-Layer Boundary
+
+- Prompt Contract: fixed model, metric, claim boundary, and evidence-ready completion criteria.
+- Context Working Set: current sources and claim gaps; broad framing alternatives are excluded.
+- Runtime Harness: source access, extraction tools, citation checks, and reproducible evidence paths are assumed inspectable.
+- Progress Loop: completes when the selected claim has attributable evidence or an explicit no-hit boundary, not when a search query finishes.
+
+This example does not prove the sources are externally validated or that every evidence task should avoid model discovery.

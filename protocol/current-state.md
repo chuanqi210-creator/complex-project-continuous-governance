@@ -1,82 +1,72 @@
 # Complex Current State
 
-current_version: 2026-07-08
+current_version: 2026-07-15
 
 ## Recovery Anchor
 
-Complex is in the attention-governed, external-calibrated Codex-native operating-organization phase, with mechanism maturity now tracked separately from the core protocol.
+Complex now uses a stable seven-behavior execution spine supported by four coupled engineering layers:
 
-Current narrative:
+- Prompt Contract;
+- Context Working Set;
+- Runtime Harness;
+- Progress Loop.
 
-> Complex = Codex-native orchestration with strong-autonomy execution inside a responsibility boundary, portfolio control-plane organization, attention governance, external calibration, evidence boundaries, clean review, and lightweight auditable recovery.
+The four layers are operating planes, not stages or new gates. The active candidate mechanism is `four_layer_runtime_alignment`; external production precedent grounds it, but cross-project end-to-end validation is still pending.
 
-Current next route:
+## Active Decisions
 
-`verify_mechanism_maturity_with_real_project_transcripts_or_stop`
-
-Default decision:
-
-- Do not add new core gates for one-off failures.
-- Prefer behavior cases, transcript review rules, filled examples, mechanism maturity updates, and external micro-contracts before expanding `protocol/core.md`.
-- Use `docs/mechanism-maturity.json` to distinguish `core`, `validated`, `tested`, `candidate`, and `retired` mechanisms.
-- Run `codex_surface_alignment` before interpreting Plan, Goal, thread, subagent, automation, skill, AGENTS.md, or MCP terms.
-- Treat Plan mode as a user/interface surface. At complex or strategic beats, run a planning checkpoint; do not claim automatic UI activation.
-- Treat Codex Goal as `thread_goal` or `phase_goal`: persistent objective and completion criteria for a longer task, thread, or bounded phase.
-- Treat `beat_objective` as the per-beat Plan/Loop target.
-- Treat `goal_memory_summary` as recovery context, not Codex Goal.
-- Treat continuous cadence as same-run runtime activation: prompt rehydration, planning checkpoint when needed, target-function Loop, Beat Router, accepted artifact check, and next queued beat inside the responsibility boundary.
-- Map cross-turn continuation to thread heartbeat or automation only when platform tools and responsibility boundaries allow it.
-- Treat continuous projects as control-plane-first: direction, authority, state, topology, operating organization, portfolio, routing, external calibration, hallucination sentinel status, trace appraisal, and stop conditions must be fresh enough before local execution.
-- Maintain an operating organization for long projects: controller, human interface, literature/data acquisition, model/component, data-code, review/risk, and writing/delivery lanes.
-- Maintain a portfolio operating model when a project has multiple modules, sources, lanes, or deliverables: target function, module portfolio, standing lane portfolio, forward indexes, branch parking, and Hot/Warm/Cold state.
-- Do not let metadata/access/no-values/audit/reviewer/citation guardrails become the only engine of the project. Repeated guardrail-only work triggers toil/WIP review: produce a forward artifact, park the branch, route to another module, or justify the guardrail as the true dependency.
-- Accept a beat only when it creates or updates a forward artifact, passes the relevant guard, updates state/indexes, and selects the next route.
-- For research, analysis, and prototype projects, seek an early minimum viable closure: question/problem, source/data or input path, minimal model/assumption, result/output, figure/table or validation signal, claim/usable conclusion, limitation, and next weakness.
-- Use minimum sufficient observability for routine beats: closure segment moved, forward artifact changed, uncertainty changed, cannot-yet-claim boundary, and next route. Reserve heavy reporting for trigger points.
-- Keep traceability lightweight: preserve audit records by pointer, but demote stale material from Hot State to Warm Index or Cold Archive instead of carrying every historical trace in active context.
-- Before strategic or critical route/structure/model/method/evaluation/prompt/protocol changes, run or reuse external calibration from official docs, primary papers, standards, or mature production writeups. Record source, problem matched, adopted, rejected, not transferable, Complex micro-contract, and refresh trigger.
-- Run a hallucination sentinel for important claims and regular stage points: current basis, external basis, inference, unsupported claim, falsification cue.
-- Distinguish standing lanes from temporary subagents. Standing lanes own recurring project responsibilities; subagents are bounded workers and are not threads or lanes.
-- For recurring review/evaluation, establish a standing review lane early and reset context with a fresh fact ledger or clean reviewer each review beat.
-- Runtime topology choice, Plan/Goal fit, and thread/worktree/automation fit belong to AI judgment. User authorization is for responsibility-bearing boundaries: accounts/API credentials, payment, external writes, publishing, irreversible actions, high-risk claims, main-goal/public-voice changes, or platform actions that create user-owned external commitments.
-- When another project asks to scan Complex, use the installed Complex runtime as the rule source and the target project as the fact source.
-- Keep the active repository free of historical logs and old output packages.
+- Diagnose `prompt_failure`, `context_failure`, `harness_failure`, `loop_failure`, or `model_limitation` before repairing defaults.
+- Keep Project Prompt Contract stable; place changing beat facts in Context Working Set.
+- Verify semantic recovery after compaction or handoff: Goal, current basis, active module, open risks, and next route.
+- Make tools, state, validation, side effects, logs, and recovery controls agent-legible.
+- Use outcome completion predicates, bounded retry, checkpoints, idempotency/compensation, and residual scan for important Loops.
+- Preserve Codex surface alignment: Goal carries thread/phase objective; `beat_objective` carries the current beat.
+- Maintain strong autonomy inside the responsibility boundary.
+- Keep operating organization, early closure, external calibration, hallucination sentinel, and Hot/Warm/Cold trace appraisal available without forcing every candidate mechanism into every beat.
+- External precedent is design evidence, not proof that Complex behavior improved.
+- Keep the repository free of historical logs and generated machine-board archives.
 
 ## Active Behavior Spine
 
-1. Restore true state.
+1. Restore true state and assemble Context Working Set.
 2. Classify project nature and convergence.
-3. Assign decision rights through the responsibility boundary.
-4. Establish Codex surface alignment, the control plane, and the operating organization.
-5. Run the smallest meaningful target-function Loop, minimum viable closure beat, or execution beat.
-6. Deliver to the right audience.
-7. Leave `next_route`, accepted artifacts, and recovery pointers.
+3. Assign decision rights.
+4. Establish control plane, operating organization, and Runtime Harness.
+5. Run a target-function Progress Loop.
+6. Deliver and evaluate the outcome.
+7. Leave accepted artifacts, layer diagnosis, recovery pointers, and `next_route`.
 
-## Current Runtime Examples
+## Runtime Assets
 
-- `docs/examples/evidence_fill_minimal_runtime/`
-- `docs/examples/model_discovery_minimal_runtime/`
-- `docs/examples/independent_review_minimal_runtime/`
-- `docs/examples/portfolio_orchestration_minimal_runtime/`
-- `docs/examples/external_calibration_micro_contract_runtime/`
-- `docs/examples/operating_organization_multi_lane_runtime/`
-- `docs/examples/example-currentness.md`
+- Core: `protocol/core.md`
+- Prompt: `templates/prompt.md`
+- Context: `templates/context.md`
+- Harness: `templates/harness.md`
+- Loop: `templates/loop.md`
+- Flagship filled example: `docs/examples/portfolio_orchestration_minimal_runtime/`
+- Maturity: `docs/mechanism-maturity.json`
+- Behavior evaluation: 42 cases and 42 transcript rules
 
-## Current Checks
+## Previous Accepted Artifact
 
-- `tools/check_behavior_regression_pack.py`
-- `tools/review_behavior_transcript.py`
-- `tools/check_mechanism_maturity.py`
-- `tools/verify_complex_integrity.py`
+- artifact: the integrity harness protects four public entrypoints, six flagship files, candidate maturity, five behavior links, and the semantic recovery contract.
+- outcome: behavior, maturity, integrity, static, and site checks passed.
+- limitation: structural protection does not prove cross-project execution quality.
+
+## Active Continuous Optimization Runtime
+
+- thread_goal: Continuously pressure-test and improve Complex until the current candidate is validated, retired, genuinely blocked, or residual scan finds no high-value internal work.
+- current_basis: the heartbeat resumed this Goal twice without user continuation; same-repository, missing-anchor, and oversized/conflicting-anchor recovery paths passed; full checks and independent re-review passed; the automation tool changed the heartbeat from ACTIVE to PAUSED after the outcome predicate and residual scan passed.
+- active_module: STOP_COMPLETE for this self-optimization Goal.
+- open_risks: source-resolution public-user breadth remains limited; the low-cost target still needs its own state-compaction beat; these remain future evidence routes rather than unfinished work in this Goal.
+- observed_real_failure: the previous accepted beat left a useful `next_route` but completed its narrow Goal without activating cross-turn continuation, requiring one user restart.
+- failure_layer: `loop_failure` plus `harness_failure`.
+- same_run_contract: continue queued beats while the Goal-level completion predicate is false.
+- cross_turn_resource: 30-minute Codex thread heartbeat created and stopped through the current automation tool.
+- resource_evidence: automation id `complex`, kind `heartbeat`, final status `PAUSED`.
+- validation_status: two autonomous wakes, three recovery shapes, bounded content-minimized extraction, clean evaluation, unit/integrity/site checks, independent review/re-review, residual scan, and heartbeat self-disable verified; continuous cadence and four-layer runtime promoted to validated.
+- next_route: STOP_COMPLETE; reopen only for new real transcript, public-user evidence, Codex surface change, or regression failure.
 
 ## Stop Rule
 
-Continue improving Complex only when one of these appears:
-
-- a real Complex project transcript
-- a user correction event
-- a verifier failure
-- a public explanation/onboarding failure
-- a high-value example gap
-
-Otherwise, keep the current protocol stable and use it on projects.
+Change the protocol only when a real transcript, end-to-end project, verifier failure, user correction, or public onboarding failure exposes a repeated/high-impact gap. Otherwise keep the protocol stable and pressure-test the current candidate mechanism.

@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-08-mechanism-maturity",
+  "version": "2026-07-15-four-layer-runtime",
   "purpose": "Track whether Complex mechanisms are stable core, validated, tested, candidate, or retired so public docs do not present fresh patches as proven behavior.",
   "allowed_statuses": [
     "core",
@@ -26,6 +26,7 @@
       "id": "complex_behavior_kernel",
       "name": "Complex behavior kernel",
       "status": "core",
+      "engineering_layers": ["prompt", "context", "harness", "loop"],
       "summary": "Seven stable behaviors that compress every Complex run into state recovery, project nature, decision rights, control plane, target-function execution, delivery, and recovery.",
       "external_basis": [
         "OpenAI AGENTS.md guidance for durable repository instructions",
@@ -54,6 +55,7 @@
       "id": "codex_surface_alignment",
       "name": "Codex surface alignment",
       "status": "tested",
+      "engineering_layers": ["harness"],
       "summary": "Maps Plan mode, Codex Goal, beat_objective, subagents, standing lanes, threads, worktrees, automations, AGENTS.md, skills, and tools to their Codex-native meanings.",
       "external_basis": [
         "OpenAI Codex Goals",
@@ -86,6 +88,7 @@
       "id": "project_nature_router",
       "name": "Project nature router",
       "status": "tested",
+      "engineering_layers": ["prompt", "context", "loop"],
       "summary": "Classifies work as evidence_fill, model_discovery, mixed, or execution_delivery so evidence-heavy and discovery-heavy projects do not use the same weights.",
       "external_basis": [
         "Cynefin-style problem-domain separation",
@@ -112,6 +115,7 @@
       "id": "prompt_bootstrap_and_rehydration",
       "name": "Prompt bootstrap and rehydration",
       "status": "tested",
+      "engineering_layers": ["prompt", "context"],
       "summary": "Designs a project prompt before execution and refreshes each beat from the master prompt, current state, target function, and beat_objective.",
       "external_basis": [
         "OpenAI Codex prompting guidance",
@@ -136,14 +140,16 @@
     {
       "id": "continuous_cadence_contract",
       "name": "Continuous cadence contract",
-      "status": "tested",
+      "status": "validated",
+      "engineering_layers": ["prompt", "context", "harness", "loop"],
       "summary": "Same-run queued beats continue inside the responsibility boundary until STOP_COMPLETE or a true boundary, not a fixed beat count.",
       "external_basis": [
         "OpenAI Codex Automations for cross-turn heartbeat when available",
         "Agent workflow patterns for routing and evaluator loops"
       ],
       "internal_evidence": [
-        "Behavior cases cover rehydration, runtime activation after plan, same-turn vs heartbeat, and known-next-step auto execution."
+        "Behavior cases cover rehydration, runtime activation after plan, same-turn vs heartbeat, and known-next-step auto execution.",
+        "A 2026-07-15 self-optimization run exposed a real gap: one accepted Goal ended with a useful next_route but no heartbeat, so the user had to restart it. The repaired run created an ACTIVE thread heartbeat through the current Codex automation tool, resumed the same Goal twice without a user continue message, executed the recorded next routes, and changed the heartbeat to PAUSED only after the outcome predicate, full verification, independent review, and residual scan passed."
       ],
       "linked_behavior_cases": [
         "continuous_cadence_rehydrate",
@@ -163,6 +169,7 @@
       "id": "responsibility_boundary",
       "name": "Responsibility boundary",
       "status": "core",
+      "engineering_layers": ["prompt", "harness"],
       "summary": "AI handles project-internal decisions; the user is asked only for responsibility-bearing boundaries such as goal changes, accounts, payment, publishing, external writes, irreversible actions, public voice, high-risk claims, or external commitments.",
       "external_basis": [
         "OpenAI Agents SDK guardrails and human review concepts",
@@ -174,6 +181,7 @@
       ],
       "linked_behavior_cases": [
         "external_api_guardrail",
+        "interrupt_resume_side_effect_safety",
         "downstream_local_boundary_reconciliation",
         "responsibility_boundary_not_low_risk_wording",
         "known_next_step_auto_execute"
@@ -187,9 +195,34 @@
       "refresh_trigger": "Any new tool class with external side effects or user-owned commitments."
     },
     {
+      "id": "interrupt_resume_safety",
+      "name": "Interrupt and resume side-effect safety",
+      "status": "candidate",
+      "engineering_layers": ["harness", "loop"],
+      "summary": "When a beat must pause for user authorization or external input, non-idempotent side effects happen after the interrupt or carry checkpoint, idempotency, rollback, or compensation evidence before resume/retry.",
+      "external_basis": [
+        "LangGraph interrupt rules: checkpointed interrupts resume from saved state and side effects before interrupt should be idempotent or moved after the interrupt",
+        "Temporal Activity guidance: retryable Activities should be idempotent, use stable identifiers, and define timeouts/retry policy because an Activity can execute more than once",
+        "Anthropic agent guidance: agents should use environment feedback, checkpoints, blockers, and clear tool interfaces during long-running work"
+      ],
+      "internal_evidence": [
+        "New behavior case and transcript rule added on 2026-07-15; no real Complex transcript has yet proven the mechanism."
+      ],
+      "linked_behavior_cases": [
+        "interrupt_resume_side_effect_safety"
+      ],
+      "linked_examples": [
+        "portfolio_orchestration_minimal_runtime"
+      ],
+      "promotion_rule": "Promote after real transcripts or end-to-end projects show external-write pauses/resumes without duplicate records, missing approval payloads, or unsafe retries.",
+      "demotion_trigger": "Retire or merge if responsibility_boundary plus durable_loop cases already catch the failures in real transcript review.",
+      "refresh_trigger": "Any new platform surface for approval, interrupt, external writes, retries, background workers, or resumable automation."
+    },
+    {
       "id": "human_intervention_drift_guard",
       "name": "Human intervention drift guard",
       "status": "tested",
+      "engineering_layers": ["prompt", "harness", "loop"],
       "summary": "Prevents unnecessary user work, manual summaries, and permission-seeking when the next project-internal beat is clear.",
       "external_basis": [
         "Human-in-the-loop guardrail patterns",
@@ -215,6 +248,7 @@
       "id": "independent_review_context_separation",
       "name": "Independent review context separation",
       "status": "tested",
+      "engineering_layers": ["context", "harness", "loop"],
       "summary": "Distinguishes same-session diagnostic review from true independent review using clean context, fact ledgers, separate reviewers, or read-only audit workers.",
       "external_basis": [
         "Anthropic agent evaluation practice",
@@ -239,6 +273,7 @@
       "id": "operating_organization",
       "name": "Operating organization",
       "status": "candidate",
+      "engineering_layers": ["context", "harness", "loop"],
       "summary": "Long projects establish controller, human interface, literature/data, model/component, data-code, review/risk, and writing/delivery lanes before local optimization.",
       "external_basis": [
         "Team Topologies responsibility and cognitive-load concepts",
@@ -266,6 +301,7 @@
       "id": "portfolio_control_plane",
       "name": "Portfolio control plane",
       "status": "candidate",
+      "engineering_layers": ["context", "harness", "loop"],
       "summary": "Manages target function, modules, standing lanes, forward indexes, branch parking, routing, calibration, sentinel status, and stop conditions before choosing local beats.",
       "external_basis": [
         "Team Topologies value stream thinking",
@@ -293,6 +329,7 @@
       "id": "target_function_loop",
       "name": "Target-function Loop",
       "status": "candidate",
+      "engineering_layers": ["context", "loop"],
       "summary": "Replaces nearby-lightest action with the smallest meaningful learning or execution cycle serving the project target function and producing a forward artifact.",
       "external_basis": [
         "CRISP-DM iteration across business/data/model/evaluation",
@@ -320,6 +357,7 @@
       "id": "forward_artifact_acceptance",
       "name": "Forward artifact acceptance",
       "status": "candidate",
+      "engineering_layers": ["harness", "loop"],
       "summary": "A beat is accepted only when it creates or updates a forward artifact, passes a guard, updates state/indexes, and selects a route.",
       "external_basis": [
         "NASA success criteria and technical baselines",
@@ -345,6 +383,7 @@
       "id": "trace_appraisal_hot_warm_cold",
       "name": "Trace appraisal and Hot/Warm/Cold state",
       "status": "candidate",
+      "engineering_layers": ["context", "harness"],
       "summary": "Keeps auditability while demoting stale trace from hot context into compact indexes or cold archives by pointer.",
       "external_basis": [
         "Google SRE toil reduction",
@@ -369,6 +408,7 @@
       "id": "external_calibration_rule",
       "name": "External calibration rule",
       "status": "candidate",
+      "engineering_layers": ["prompt", "context"],
       "summary": "Strategic route, structure, model, method, evaluation, prompt-default, or protocol changes compare against mature external practice and become micro-contracts.",
       "external_basis": [
         "NIST AI RMF govern/map/measure/manage",
@@ -395,6 +435,7 @@
       "id": "hallucination_sentinel",
       "name": "Hallucination sentinel",
       "status": "candidate",
+      "engineering_layers": ["context", "loop"],
       "summary": "Separates current basis, external basis, inference, unsupported claim, and falsification cue at startup, phase switches, public delivery, external calibration, and before core promotion.",
       "external_basis": [
         "NIST GenAI Profile confabulation risk",
@@ -419,6 +460,7 @@
       "id": "attention_governance_minimum_closure",
       "name": "Attention governance and minimum viable closure",
       "status": "candidate",
+      "engineering_layers": ["context", "loop"],
       "summary": "Uses minimum sufficient observability and early thin closure to prevent audit/reporting/process work from consuming project movement.",
       "external_basis": [
         "Google SRE toil reduction",
@@ -445,6 +487,7 @@
       "id": "delivery_contract",
       "name": "Human-readable delivery contract",
       "status": "core",
+      "engineering_layers": ["prompt", "loop"],
       "summary": "Aligns audience, purpose, granularity, tone, and internal-information boundary; human-facing output avoids machine fields and protocol jargon unless decision-relevant.",
       "external_basis": [
         "OpenAI prompting guidance for clear task outputs",
@@ -470,13 +513,14 @@
       "id": "behavior_transcript_review",
       "name": "Behavior transcript review",
       "status": "tested",
+      "engineering_layers": ["harness", "loop"],
       "summary": "Checks real agent replies against behavior-case marker groups and human review questions, without claiming marker pass equals excellence.",
       "external_basis": [
         "Anthropic agent evals emphasizing trajectories and outcomes",
         "OpenAI evaluation-oriented workflow practice"
       ],
       "internal_evidence": [
-        "36 cases and 36 transcript rules validate structurally; real transcript outcome dataset remains small."
+        "42 cases and 42 transcript rules validate structurally; real transcript outcome dataset remains small."
       ],
       "linked_behavior_cases": [
         "example_currentness_review",
@@ -494,6 +538,7 @@
       "id": "example_currentness",
       "name": "Example currentness review",
       "status": "candidate",
+      "engineering_layers": ["prompt", "context", "harness", "loop"],
       "summary": "Filled examples stay current only if they state validated mechanisms, unverified boundaries, applicable project types, and non-copy conditions.",
       "external_basis": [
         "OpenAI Skills examples and progressive disclosure",
@@ -522,13 +567,20 @@
       "id": "source_resolution_and_runtime_install",
       "name": "Source resolution and runtime install",
       "status": "tested",
+      "engineering_layers": ["context", "harness"],
       "summary": "Complex is the rule source and a target project is the fact source; missing Complex files inside the target repository is not a failure.",
       "external_basis": [
         "Codex AGENTS discovery model",
         "Skills as reusable workflow packages"
       ],
       "internal_evidence": [
-        "Behavior case covers target repo source confusion; README provides install path."
+        "Behavior case covers target repo source confusion; README provides install path.",
+        "A 2026-07-15 clean-context NEV pressure test found no project-native recovery anchor. The initial broad audit stalled on a repository with hundreds of thread returns; after bounded rerouting it correctly reported all five recovery fields missing and refused to promote a dated implementation plan into current state.",
+        "A second clean-context attempt avoided target-output scanning but spent its budget resolving Complex and cited Complex's own current-state before inspecting target facts. The runtime now uses skill-first progressive disclosure, inspects the target recovery anchor before deeper Complex references, and excludes Complex maintenance state from target current_basis.",
+        "A clean-context low-cost water-loop audit found recovery anchors but spent over three minutes on an oversized status file and a manifest with more than 1,600 top-level fields, then found conflicting next routes. Target entry now validates anchor authority, freshness, boundedness, and route uniqueness before business execution.",
+        "The first anchor-quality rerun selected bounded state reconciliation instead of the newest business route, but a broad term filter still emitted thousands of matches and caused tool truncation and latency. Bounded inspection now has an explicit scale-first match/output/time envelope and treats overflow as a stop signal.",
+        "A deterministic rerun on the same low-cost project reduced a 372,720-byte status file and 1,635-key manifest to an 8,237-byte fact ledger in 0.014 seconds, reported both overflows, opened no manifest values, and enabled a clean evaluator to choose state reconciliation without target-file access.",
+        "Independent review found that the first extractor could leak raw snippets, exceed an unsatisfiable output limit, continue scanning after overflow, and overstate overflow as an authority verdict. The repaired extractor emits a content-minimized ledger without source snippets, raw key names, absolute paths, project identifiers, or content fingerprints; it stops status scanning after 11 matches, keeps hard-output fallback tested, and treats overflow as a working-set mismatch. Follow-up review found no remaining P1/P2 issue in this feature."
       ],
       "linked_behavior_cases": [
         "complex_source_resolution_outside_target_repo"
@@ -539,6 +591,41 @@
       "promotion_rule": "Promote after public users apply Complex from another repo without source confusion.",
       "demotion_trigger": "If source-resolution wording becomes noisy or defensive.",
       "refresh_trigger": "When install model changes."
+    },
+    {
+      "id": "four_layer_runtime_alignment",
+      "name": "Four-layer runtime alignment",
+      "status": "validated",
+      "engineering_layers": ["prompt", "context", "harness", "loop"],
+      "summary": "Keeps durable intent, the current working set, execution infrastructure, and outcome-based continuation distinct but coupled, and diagnoses the failed layer before repair.",
+      "external_basis": [
+        "OpenAI Harness Engineering and Symphony orchestration",
+        "Anthropic Context Engineering and long-running harness guidance",
+        "Microsoft Agent Framework Harness and LoopEvaluator",
+        "Temporal durable execution",
+        "SWE-agent agent-computer interface research"
+      ],
+      "internal_evidence": [
+        "Implemented in the core protocol, four runtime templates, five behavior cases, transcript rules, and updated filled examples. The integrity harness now checks all four public entrypoints, flagship example completeness, current maturity status, behavior coverage, and the five-field semantic recovery contract.",
+        "The first 2026-07-15 Codex heartbeat autonomously resumed the active Goal and exposed that active_module and open_risks were only inferable from prose. After explicit Hot State fields and verifier coverage were added, a second heartbeat resumed without user input and a clean-context read-only reviewer recovered all five fields explicitly.",
+        "Cross-project pressure tests then separated Context and Harness failures from Prompt failures: NEV correctly routed missing-anchor recovery without broad scanning, and the low-cost water-loop project routed oversized/conflicting state to bounded reconciliation through a deterministic content-minimized fact ledger. The same run completed with independent review, full checks, residual scan, and an actual ACTIVE-to-PAUSED heartbeat transition."
+      ],
+      "linked_behavior_cases": [
+        "prompt_change_is_eval_driven_and_versioned",
+        "context_working_set_is_curated_and_recoverable",
+        "harness_legibility_and_mechanical_guardrails",
+        "durable_loop_uses_outcome_completion_and_recovery",
+        "cross_layer_failure_is_diagnosed_before_prompt_patch"
+      ],
+      "linked_examples": [
+        "portfolio_orchestration_minimal_runtime",
+        "evidence_fill_minimal_runtime",
+        "model_discovery_minimal_runtime",
+        "independent_review_minimal_runtime"
+      ],
+      "promotion_rule": "Promote only after real transcripts and end-to-end projects show fewer misdiagnosed prompt patches, successful semantic recovery, and outcome-based continuation across different project natures.",
+      "demotion_trigger": "Demote or split the mechanism if the four-layer vocabulary adds ceremony without improving diagnosis, recovery, or project outcomes.",
+      "refresh_trigger": "After each real transcript batch, major Codex surface change, or repeated cross-layer misdiagnosis."
     }
   ]
 }

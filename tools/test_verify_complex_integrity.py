@@ -30,6 +30,22 @@ def main() -> None:
         print(result.stdout)
         raise SystemExit(1)
 
+    check_names = {item.get("name") for item in data.get("checks", [])}
+    required_four_layer_checks = {
+        "four_layer_flagship_complete",
+        "four_layer_entrypoint:README.md",
+        "four_layer_entrypoint:protocol/core.md",
+        "four_layer_entrypoint:docs/quickstart.md",
+        "four_layer_entrypoint:.agents/skills/complex-runtime/SKILL.md",
+        "four_layer_mechanism_maturity_boundary",
+        "four_layer_behavior_coverage",
+        "current_state_semantic_recovery_contract",
+    }
+    missing = sorted(required_four_layer_checks - check_names)
+    if missing:
+        print(json.dumps({"missing_four_layer_checks": missing}, indent=2))
+        raise SystemExit(1)
+
     print("ok")
 
 

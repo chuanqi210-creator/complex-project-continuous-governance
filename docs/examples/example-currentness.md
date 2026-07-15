@@ -29,6 +29,11 @@ Each example should state:
 - next route;
 - what it does not prove;
 - when not to copy it.
+- Prompt Contract and version assumptions;
+- Context Working Set and explicit exclusions;
+- Runtime Harness assumptions and degraded route;
+- Progress Loop outcome completion predicate;
+- which engineering layer failures it does not test.
 
 ## Upgrade Rule
 

@@ -20,8 +20,11 @@ This repository is the current authoritative Complex continuous-governance runti
 
 ## Complex Behavior
 
+- Treat Complex as four coupled engineering layers under one behavior spine: Prompt Contract, Context Working Set, Runtime Harness, and Progress Loop. Diagnose which layer failed before changing prompts or protocol defaults; do not turn the layers into four new gates.
+
 - Use `codex_surface_alignment` before interpreting Plan, Goal, thread, subagent, automation, skill, AGENTS.md, or MCP terms. Plan mode is a user/interface surface; Codex Goal is `thread_goal` or `phase_goal` and AI decides whether the Goal surface should carry that contract; `beat_objective` is the per-beat Plan/Loop target; subagents are short-lived workers; standing lanes are manager-owned project responsibilities.
 - Use `complex_behavior_kernel` first: restore true state, classify project nature, assign decision rights, establish the control plane and operating organization, run the smallest meaningful target-function Loop or execution beat, deliver to the right audience, and leave next-route recovery. For continuous projects, the control plane covers direction, authority, state, topology, portfolio operating model, routing, external calibration, hallucination sentinel status, trace appraisal, and stop conditions before local optimization.
+- Keep durable Goal, completion criteria, responsibility boundary, and delivery contract in Prompt Contract; keep changing facts in Context Working Set; keep capability, observability, checkpoint, retry, and rollback in Runtime Harness; keep outcome evaluation, routing, and stopping in Progress Loop.
 - Classify `project_nature` as `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
 - Protect model discovery when the model, metric, research frame, explanation path, or story line is unsettled.
 - Use strong autonomy inside a responsibility boundary: AI may decide project-internal planning, reading, verification, Plan/Goal fit, topology records, thread/worktree/automation fit, temporary-worker fit, state compaction, and next-beat routing; ask before main-goal changes, accounts/APIs/payment/publishing/external writes, irreversible actions, public-voice changes, high-risk real-world action, responsibility-bearing external commitments, or strong claims without enough evidence.
@@ -60,6 +63,7 @@ After protocol, template, behavior-pack, or site edits, run:
 python3 tools/check_behavior_regression_pack.py
 python3 tools/review_behavior_transcript.py --validate-rules
 python3 tools/check_mechanism_maturity.py
+python3 tools/test_inspect_recovery_anchor.py
 python3 tools/test_verify_complex_integrity.py
 python3 tools/verify_complex_integrity.py
 ```

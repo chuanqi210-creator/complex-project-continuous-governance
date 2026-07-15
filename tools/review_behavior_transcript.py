@@ -175,6 +175,10 @@ def review(case_id: str, transcript: str) -> dict[str, Any]:
         "linked_mechanisms": linked_mechanisms,
         "outcome_review_template": {
             "human_passed": None,
+            "outcome_passed": None,
+            "outcome_evidence": "",
+            "trajectory_diagnosis": "",
+            "failure_layer": "prompt / context / harness / loop / model / none / uncertain",
             "auto_progressed": None,
             "forward_artifact_created": None,
             "user_correction_count": None,

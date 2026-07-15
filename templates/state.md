@@ -22,6 +22,19 @@ Use this file to make a Complex project resumable. Keep Hot State short enough t
 - completion_criteria:
 - stop_conditions:
 
+## Four-Layer Runtime Snapshot
+
+- prompt_contract_version:
+- prompt_contract_location:
+- context_working_set_location:
+- context_fidelity_status: pass / fail / route_back / not_checked
+- context_exclusions:
+- runtime_harness_location:
+- harness_status: ready / degraded / blocked / not_needed
+- progress_loop_location:
+- current_failure_layer: prompt / context / harness / loop / model / none / uncertain
+- four_layer_runtime_alignment_status: pending / active / reviewed / route_back
+
 ## Project Nature
 
 - project_nature: evidence_fill / model_discovery / mixed / execution_delivery

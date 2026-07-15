@@ -1,127 +1,104 @@
 ---
 name: complex-runtime
-description: Apply Complex to long-running Codex projects. Use when asked to scan or use Complex, design a project prompt, run continuous cadence, align Plan/Goal/thread/subagent/automation surfaces, set a portfolio control plane, use external calibration, prevent hallucination/context drift, or govern evidence/model-discovery/execution projects with strong autonomy inside responsibility boundaries.
+description: Apply Complex to long-running Codex projects. Use when asked to scan or use Complex, design a project prompt, run continuous cadence, align Plan/Goal/thread/subagent/automation surfaces, diagnose prompt/context/harness/loop failures, or govern evidence/model-discovery/execution projects with strong autonomy inside responsibility boundaries.
 ---
 
 # Complex Runtime
 
-Use Complex as a Codex-native orchestration workflow, not as a competing mode system. First map the project to Codex surfaces, then establish the control plane and operating organization before local execution.
+Complex is a Codex-native project runtime. Use its seven-behavior spine with four coupled engineering layers:
 
-Primary entrypoints when deeper detail is needed:
+- **Prompt Contract**: durable Goal, completion criteria, responsibility boundary, and output contract.
+- **Context Working Set**: current, attributable, minimal-sufficient facts for the next judgment.
+- **Runtime Harness**: tools, environment, policies, observability, checkpoints, and recovery.
+- **Progress Loop**: act, observe, evaluate, route, retry, rollback, or stop from outcomes.
 
-- `README.md`
-- `protocol/current-state.md`
-- `docs/quickstart.md`
+The four layers are not stages or new gates. Use them together and diagnose the failed layer before changing the system.
+
+Primary references when deeper detail is needed:
+
 - `protocol/core.md`
+- `docs/quickstart.md`
 - `docs/mechanism-maturity.md`
 - `docs/examples/`
 - `templates/`
 
-## Project View
-
-Complex optimizes for durable project progress:
-
-> strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + attention governance + external calibration + evidence boundaries + clean review + lightweight auditable recovery.
-
-Avoid local greed. The next nearby edit is not automatically the right next beat. For continuous work, maintain target function, modules, standing lanes, forward indexes, minimum viable closure, and state lightening before choosing local work.
+When applying Complex to a target project, this skill is the first-pass rule index. Inspect the target recovery anchor before opening deeper Complex references. Use `protocol/current-state.md` only when maintaining Complex itself; never mix Complex's maintenance state into a target project's facts.
 
 ## Codex Surface Map
 
-- Plan mode is a user/interface planning surface. Do not claim it was toggled automatically unless the current surface actually enabled it. At complex or strategic beats, AI decides that a planning checkpoint is required; use the available surface if possible, otherwise produce a plan-shaped checkpoint and continue inside the responsibility boundary.
-- Codex Goal is the persistent objective and completion criteria for a longer task, thread, or bounded phase. Call it `thread_goal` or `phase_goal`. AI decides whether the Goal surface should carry the phase contract; if it cannot be set from the current surface, record the same contract in state, prompt, or handoff and continue.
-- `beat_objective` is the current small target inside the Plan/Loop layer.
-- `goal_memory_summary` is recovery context, not Codex Goal.
-- Continuous cadence means same-run execution of queued beats until `STOP_COMPLETE` or a real boundary.
-- Subagents are short-lived bounded workers. They are not standing lanes.
-- Standing lanes are durable project responsibilities owned by the manager.
-- User-visible threads, worktrees, and automations are platform resources, not responsibility boundaries by default. AI decides whether they fit the operating organization. Actual creation follows current Codex surface/tool semantics; if unavailable, record lane, worktree, or automation contracts and keep working.
+- Plan mode is a planning surface. Use it when available at complex or strategic checkpoints; otherwise produce a plan-shaped checkpoint without claiming the UI changed.
+- Codex Goal carries `thread_goal` or `phase_goal`, not changing beat chores.
+- `beat_objective` is the current Plan/Loop target. `goal_memory_summary` is recovery context.
+- Continuous cadence advances queued beats in the same run until completion or a real responsibility/tool boundary. If cross-turn continuation was selected and a callable heartbeat/automation tool exists, activate it during harness setup and retain the resource evidence; do not merely recommend it. An accepted beat does not complete the Codex Goal while useful queued work remains.
+- Subagents are bounded workers. Standing lanes are durable manager-owned responsibilities.
+- Threads, worktrees, and automations are platform resources selected according to task and tool fit.
 
 ## Runtime Spine
 
-1. Restore true state: current basis, not-current basis, current materials, latest user request, and decisions.
-2. Classify project nature: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
+1. Restore true state and assemble the Context Working Set.
+2. Classify `project_nature`: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
 3. Assign decision rights through the responsibility boundary.
-4. Establish control plane and operating organization.
-5. Run the smallest meaningful target-function Loop or execution beat.
-6. Deliver to the requested audience.
-7. Leave `next_route`, accepted artifacts, and recovery pointers.
+4. Establish the control plane, operating organization, and Runtime Harness.
+5. Run the smallest meaningful target-function Progress Loop.
+6. Deliver to the right audience and evaluate the outcome.
+7. Leave `next_route`, accepted artifacts, recovery pointers, and layer diagnosis.
 
-Use mechanism maturity to choose depth. Core behaviors always apply. Tested and candidate mechanisms apply when their failure mode is present; do not present candidate mechanisms as proven outcomes.
+## Four-Layer Contract
 
-## Responsibility Boundary
+### Prompt
 
-AI decides project-internal details: planning sequence, reading, verification depth, reversible local commands, standing-lane records, clean-review packets, temporary worker fit, convergence pacing, route-back, state compaction, and next beat.
+Keep the project prompt stable and project-specific. Include Goal, target function, completion criteria, responsibility boundary, delivery contract, and evaluation. Put changing facts in context, not the master prompt. Patch a prompt only after an observed instruction-level failure or changed Goal.
 
-Ask the user only for responsibility-bearing boundaries: main-goal change, account/API credentials, payment, external write, publishing, irreversible action, public voice change, high-risk real-world action, strong public claim without evidence, or a platform action that creates a user-owned external commitment.
+### Context
 
-If the next beat is already defined and inside the responsibility boundary, continue. Do not ask "should I continue?" as a default.
+Assemble in this order:
 
-## Operating Organization
+`durable instructions -> current state -> active module -> just-in-time retrieval -> provenance/freshness -> trim/compact -> exclusions`
 
-For long projects, form lane contracts early:
+After compaction or handoff, verify recovery of Goal, current basis, active module, open risks, and next route. Do not equate file presence with context recovery.
 
-- Controller: target function, portfolio, routing, stop/park decisions.
-- Human interface: responsibility-bearing asks, concise explanations, delivery contract.
-- Literature/data acquisition: papers, databases, official sources, account/permission forecasts, source escalation.
-- Model/component: model structure, variables, assumptions, component interfaces, vertical slices.
-- Data-code: schema, scripts, hashes, reproducibility, no-write boundaries.
-- Review/risk: clean-context review, overclaim control, false precision, safety/public-voice risks.
-- Writing/delivery: claims, figures, methods, limitations, reader-facing output.
+On a new target repository, find durable instructions and one authoritative five-field recovery anchor before broad scanning. If none exists, diagnose `context_failure`; inspect only bounded root facts and explicitly accepted pointers, then create the smallest project-native anchor when writable or return the missing fields and bootstrap route when read-only. Never promote a dated plan, candidate output, or thread return into current state merely because it is the newest visible file.
 
-A lane is a responsibility. It may use manager-thread work, temporary subagents, clean fact ledgers, or real platform threads/automations depending on tools and authorization.
+Treat an existing anchor as valid only if authority, freshness, bounded size, and one next route are clear. Oversized or conflicting anchors trigger a state-reconciliation beat, not deeper business execution: query route/status keys selectively, retain the contradiction, compact one Hot State, and keep large manifests or ledgers warm by pointer.
 
-Independent review requires clean context, a fact-ledger packet, separate reviewer/thread, or read-only audit worker. Same-session review is diagnostic only.
+Make bounded inspection measurable. Check scale first; classify local key names/types before values; cap the first pass at 50 matched names or 80 text lines, 32 KiB of output, and 30 seconds per source unless a project-specific budget is justified. If a query truncates, times out, or exceeds the match budget, stop: the source does not fit the current working-set envelope, although authority still requires separate judgment. Do not broaden the query. Prefer `tools/inspect_recovery_anchor.py` or an equivalent deterministic extractor for repeated large-anchor audits, then pass only its content-minimized ledger to a clean evaluator. Do not cross the review boundary with source snippets, raw key names, absolute paths, or identifiers. The manager enforces hard worker timeout with the available harness/watchdog.
 
-## Target-Function Loop
+### Harness
 
-A Loop is not the lightest nearby action. It is the smallest meaningful cycle that serves the target function and, when relevant, advances the minimum viable closure.
+Make tools, environment, side effects, logs, validation, checkpoints, retries, idempotency, rollback, and degraded routes legible. Discover capabilities just in time. Prefer mechanical checks when a repeated textual rule can be enforced by tests, schemas, hooks, or verifiers.
 
-Each Loop states:
+### Loop
 
-- `beat_objective`
-- target function served
-- module and standing lane served
-- loop type: strategy, discovery, extraction, vertical slice, review, writing, or delivery
-- expected forward artifact
-- why this is not local greedy optimization
-- closure segment moved or reason closure is not needed
-- minimum sufficient observability signal
-- guard and route
+Use:
 
-Accept a beat only when it creates or updates a forward artifact, passes the guard, updates state/indexes, and selects the next route. Guardrail-only repetition triggers toil/WIP review: create an artifact, park the branch, route elsewhere, or justify why the guardrail is the true dependency.
+`restore -> select -> act -> observe -> evaluate -> route/retry/rollback/stop`
 
-For research, analysis, or prototype work, seek an early thin chain from question to source/data, minimal model or assumption, result/output, figure/table or validation signal, claim/conclusion, limitation, and next weakness. If many beats pass without that chain, downscope, use a provisional slice, justify prework as the true dependency, or route elsewhere.
+Define an outcome completion predicate and forward artifact. For important work, separate executor and evaluator. A fixed beat count or agent self-report is not completion.
 
-Routine beats should expose only the minimum useful progress signal: closure segment, forward artifact, uncertainty changed, cannot-yet-claim boundary, and next route. Heavy audit packs are for phase switches, public delivery, claim upgrades, contradictions, repeated guardrail-only work, missing closure, external calibration, hallucination sentinel, reviewer handoff, or user-requested audit.
+## Cross-Layer Diagnosis
 
-## External Calibration And Hallucination Sentinel
+Before adding prompt text, classify the failure:
 
-Before strategic route, structure, model, method, evaluation, prompt default, protocol behavior, or high-impact public claim changes, compare against mature external practice. Prefer official docs, primary papers, standards, and production writeups.
+- `prompt_failure`: instruction, constraint, output, or completion contract is wrong;
+- `context_failure`: required facts are absent, stale, polluted, or badly prioritized;
+- `harness_failure`: tool, environment, interface, policy, observability, or recovery failed;
+- `loop_failure`: stopping, evaluation, retry, continuation, or routing failed;
+- `model_limitation`: the first four layers are adequate and performance remains insufficient.
 
-Record:
+Repair the failed layer. Add the observed outcome to evaluation before changing defaults.
 
-- source
-- problem matched
-- adopted
-- rejected
-- not transferable
-- Complex micro-contract
-- refresh trigger
+## Responsibility And Organization
 
-Run a hallucination sentinel at startup, every 5 accepted beats, phase switches, model/source/prompt upgrades, external calibration, public delivery, or before promoting a behavior into core rules:
+AI decides project-internal planning, reading, verification, topology fit, context compaction, reversible local commands, and next-beat routing. Ask only for Goal/public-voice changes, credentials, payment, publishing, external writes, irreversible shared-state changes, high-impact external commitments, or undelegated human value judgments.
 
-- current basis
-- external basis
-- inference
-- unsupported claim
-- falsification cue
+For recurring work, establish controller, human interface, literature/data, model/component, data-code, review/risk, and writing/delivery lanes. A lane is responsibility, not automatically a thread. Independent review uses clean context, a fact ledger, or a separate reviewer; same-session review is diagnostic.
 
-## State Lightening
+## External Calibration And Evidence
 
-Keep Hot State short. Use Warm Index for compact ledgers and Cold Archive for raw trace by pointer. Demote stale traces before adding another long log. Use ADR-style decision records for important structure changes: Context, Decision, Consequences, Superseded by.
+Before mechanism-level changes, compare official docs, primary papers, standards, or mature production practice. Record source, problem matched, adopted, rejected, not transferable, micro-contract, and refresh trigger. External precedent grounds a design but does not validate Complex.
 
-## Output
+Use a hallucination sentinel for important transitions and claims: current basis, external basis, inference, unsupported claim, and falsification cue.
 
-For human-readable output, avoid machine-board fields, YAML, verifier internals, and protocol jargon unless they affect the reader's decision.
+## State And Output
 
-When continuous cadence is active, expose a compact runtime audit: `thread_goal` / `phase_goal`, current `beat_objective`, router decision, forward artifact, guard result, next route, resource evidence or degraded note, and residual scan.
+Keep Hot State short, Warm Index compact, and raw traces in Cold Archive by pointer. Routine human output shows only what moved, what artifact changed, what uncertainty changed, what cannot yet be claimed, and the next route.

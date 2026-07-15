@@ -1,74 +1,129 @@
-# External Methods Mapped To Complex
+# External Production Methods Mapped To Complex
 
-Complex borrows method shapes, not dependencies. External methods are useful only when they become project micro-contracts.
+Complex transfers production patterns, not brand names or dependencies. Every mechanism-level change records source, production problem, adopted pattern, rejected pattern, non-transferable boundary, Complex micro-contract, and refresh trigger.
 
-## Calibration Rule
+The WeChat article "Prompt 到 Loop 进化" is a useful vocabulary and discovery source. It is not treated as proof that a production pattern works. The evidence anchors below are official documentation, primary research, standards, or mature engineering writeups.
 
-For every mechanism-level issue, record:
+## Prompt Contract
 
-- source;
-- problem matched;
-- adopted;
-- rejected;
-- not transferable;
-- Complex micro-contract;
-- refresh trigger.
+### Versioned, evaluation-driven prompts
 
-Do not name-drop a framework. A reference is useful only when it changes how the project starts, routes, validates, reviews, compacts, or stops.
+- **Sources:** [OpenAI prompt management](https://help.openai.com/en/articles/9824968), [Anthropic prompt engineering overview](https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/overview), [DSPy](https://dspy.ai/), [Vertex prompt optimizer](https://cloud.google.com/blog/products/ai-machine-learning/announcing-vertex-ai-prompt-optimizer).
+- **Production problem:** teams patch prompt wording without a success criterion, evaluation set, version, or rollback path.
+- **Adopted:** stable prompt identifiers/versions, explicit variables, linked evaluation cases, observed-failure-driven patches, rollback.
+- **Rejected:** optimizing wording before defining success; treating every runtime failure as a prompt defect.
+- **Not transferable:** Complex does not require a hosted prompt-management service or automated prompt optimizer.
+- **Complex micro-contract:** every prompt patch names the observed instruction failure, linked evaluation, expected behavior change, and rollback condition.
+- **Refresh trigger:** a Goal, model surface, output contract, or repeated instruction-level failure changes.
 
-External calibration is not proof that a Complex mechanism works. It only proves that the mechanism is grounded in a mature outside pattern and has a transfer boundary. Use `docs/mechanism-maturity.json` to track whether the mechanism is still a candidate, is tested by cases/examples, or has been validated by real transcripts.
+### Static contract, dynamic suffix
 
-## Full Benchmark Matrix
+- **Sources:** [Anthropic prompt caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), [tool use with prompt caching](https://platform.claude.com/docs/en/agents-and-tools/tool-use/tool-use-with-prompt-caching).
+- **Production problem:** stable instructions are repeatedly mixed with changing state and large tool definitions.
+- **Adopted:** stable project contract first, dynamic beat packet later, tools discovered on demand.
+- **Rejected:** cache-oriented ordering as a correctness rule.
+- **Not transferable:** cache behavior differs by model and platform.
+- **Complex micro-contract:** Project Prompt Contract remains stable; changing facts enter Context Working Set and Beat Planning Packet.
+- **Refresh trigger:** platform cache semantics or prompt/tool boundaries change.
 
-| Issue | External source | Transfer boundary | Complex micro-contract |
-| --- | --- | --- | --- |
-| Key problems should first look outside | NIST AI RMF govern/map/measure/manage; Anthropic Building Effective Agents; OpenAI Agents SDK guardrails/handoffs | External frameworks do not replace local project facts or Codex surface rules. | Before strategic route, method, model, evaluation, prompt-default, or protocol changes, create `external_calibration`: source, problem matched, adopted, rejected, not transferable, micro-contract, refresh trigger. |
-| Periodic hallucination control | NIST AI RMF GenAI Profile / AI 600-1 confabulation risk; NIST Measure/Manage | NIST gives risk structure, not project truth. | Run `hallucination_sentinel` at startup, every 5 accepted beats, phase switch, public delivery, model/source/prompt upgrade, external calibration, or before promoting a rule. |
-| Filled examples must remain current | OpenAI Skills progressive disclosure; Codex AGENTS.md practical guidance; Anthropic agent evals | Examples should teach shape, not become required forms. | Each filled example needs currentness review: current terminology, Goal/Plan/Loop relation, operating organization, external calibration, hallucination sentinel, trace appraisal, forward artifact, and unverified boundary. |
-| Loop can become local greedy work | CRISP-DM business/data/model/evaluation iteration; NASA lifecycle/gate reviews; Google SRE toil control | Do not import heavy stage gates for small beats. | Replace "lightest action" with target-function Loop: every Loop names target function, module, lane, forward artifact, and why it is not local greedy optimization. |
-| Plan mode cannot be auto-enabled but planning is mandatory at key beats | OpenAI Codex manual: Plan mode gathers context and builds stronger plans before implementation | Complex cannot toggle UI Plan mode. | `planning_checkpoint_for_key_beats`: at project start, phase switch, strategic/method changes, user correction, repeated guardrail-only work, or public delivery, output a plan-shaped checkpoint and continue inside the responsibility boundary. |
-| Goal semantics drift | OpenAI Codex Goal mode: persistent objective and completion criteria across longer tasks | Codex Goal should not carry concrete next-step chores across many beats. | Use `thread_goal` / `phase_goal` for durable objective and completion criteria; use `beat_objective` for per-beat Plan/Loop. |
-| Historical aliases pollute active docs | Codex AGENTS.md guidance: concise, practical, based on repeated mistakes; OpenAI Skills trigger clarity | Migration compatibility is handled by Git history, not active public docs. | Active docs use only current terms: `thread_goal`, `phase_goal`, `beat_objective`, `goal_memory_summary`. |
-| User authorization boundary is overbroad | OpenAI Agents SDK guardrails/human review; Codex approval/security model | "Low risk" is too vague for project governance, and platform-resource fit is an orchestration decision before it is an authorization question. | Ask only for responsibility-bearing boundaries: main-goal/public-voice change, accounts/API/payment, external write, publishing, irreversible action, high-risk claim/action, or platform actions that create user-owned external commitments. |
-| Skill should be a reusable experience template | OpenAI Agent Skills progressive disclosure and concise descriptions | Skill should not duplicate all protocol details. | `.agents/skills/complex-runtime/SKILL.md` carries the project view, Codex surface map, operating organization, target-function Loop, external calibration, hallucination sentinel, trace appraisal, and output defaults. |
-| Guardrail-only beats can become mechanical | Google SRE toil; NASA entry/success criteria | Do not force a single next action mechanically. | Repeated guardrail-only work triggers toil/WIP review: create a forward artifact, park the branch, route to another module, or justify true dependency. |
-| Long-term thread design needs organization | Team Topologies; OpenAI Subagents; Codex Automations; Agents SDK handoffs | Subagents are bounded workers; platform threads/automations are user-visible resources. | Build `operating_organization`: controller, human interface, literature/data, model/component, data-code, review/risk, writing/delivery. Lanes are responsibilities; workers are optional execution resources. |
-| Prose and structure must remain unified | Codex AGENTS.md short guidance; ADR lightweight decisions; Skills progressive disclosure | Do not hide complexity by deleting necessary recovery surfaces. | Core protocol keeps philosophy/surface/organization/flow/evaluation; details live in templates/examples; important structural changes use ADR-style Context/Decision/Consequences/Superseded by. |
-| Reading flow must be precise | Codex AGENTS discovery; Skills progressive disclosure; NIST governance lifecycle | Do not read every artifact for every beat. | Runtime read order: resolve rule source, read active entrypoints, recover Hot State, read target facts, form operating organization, run planning checkpoint, execute current beat; use Warm/Cold only by pointer when needed. |
-| Default prompt must carry real architecture | Codex prompting and Plan mode guidance; Skills default prompts; AGENTS durable guidance | A prompt is not a replacement for protocol or current facts. | Provide high-fidelity startup prompt, project master prompt, per-beat planning prompt, and compact continuation prompt. |
-| Scheduled retrospectives should continue the project | NIST Measure/Manage; Google SRE toil review; ADR superseding decision | Review should not become a pause ritual. | Every 5 accepted beats or phase switch: structure review + hallucination sentinel + trace appraisal; then either adjust, supersede, park, or continue through Beat Router. |
-| Literature/source acquisition should be planned early | PRISMA transparent source flow and exclusion records; research data-management practice | PRISMA is too heavy for every source lookup. | Literature/data lane forecasts database/account needs early, records source flow, exclusion/no-hit reasons, and exact user responsibility asks when access is required. |
-| Research/prototype projects need visible early closure | CRISP-DM iterative business/data/model/evaluation loop; NASA technical baseline/review discipline; vertical-slice engineering practice | The first closure is not final proof or production readiness. | `minimum_viable_closure_rule`: within the startup window, produce a thin chain from question/problem to source/data/input, minimal model/assumption, result/output, figure/table or validation signal, claim/conclusion, limitation, and next weakness. |
-| Governance can consume attention | Google SRE toil control; Codex prompt/skill progressive disclosure; NIST Measure/Manage | Less reporting must not hide risk or unsupported claims. | `minimum_sufficient_observability_rule`: routine beats expose closure segment, forward artifact, uncertainty change, cannot-yet-claim boundary, and next beat; heavy audit only at trigger points. |
+## Context Working Set
 
-## Reference Anchors
+### Minimal sufficient context and just-in-time retrieval
 
-- OpenAI Codex Goals: https://developers.openai.com/cookbook/examples/codex/using_goals_in_codex
-- OpenAI Codex Subagents: https://developers.openai.com/codex/subagents
-- OpenAI Codex Skills: https://developers.openai.com/codex/skills
-- OpenAI AGENTS.md: https://developers.openai.com/codex/guides/agents-md
-- OpenAI Codex Automations: https://developers.openai.com/codex/app/automations
-- OpenAI Agents SDK Guardrails: https://openai.github.io/openai-agents-python/guardrails/
-- OpenAI Agents SDK Handoffs: https://openai.github.io/openai-agents-python/handoffs/
-- Anthropic Building Effective Agents: https://www.anthropic.com/research/building-effective-agents
-- Anthropic agent evals: https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents
-- NIST AI RMF Core: https://airc.nist.gov/airmf-resources/airmf/5-sec-core/
-- NIST GenAI Profile: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf
-- Google SRE Eliminating Toil: https://sre.google/sre-book/eliminating-toil/
-- NASA Systems Engineering Handbook: https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf
-- IBM CRISP-DM Guide: https://www.ibm.com/docs/it/SS3RA7_18.3.0/pdf/ModelerCRISPDM.pdf
-- PRISMA Statement: https://www.prisma-statement.org/
-- Team Topologies key concepts: https://teamtopologies.com/key-concepts
-- Architecture Decision Records: https://adr.github.io/
+- **Sources:** [Anthropic context engineering](https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents), [OpenAI Codex Skills](https://developers.openai.com/codex/skills), [Lost in the Middle](https://arxiv.org/abs/2307.03172), [LangChain context engineering](https://docs.langchain.com/oss/python/langchain/context-engineering).
+- **Production problem:** larger context windows invite context rot, weak prioritization, stale facts, and hidden contradictions.
+- **Adopted:** skill-first progressive disclosure, minimal sufficient system instructions, just-in-time retrieval, structured notes, bounded source discovery, tool-result clearing, and explicit exclusions.
+- **Rejected:** loading every potentially relevant artifact into each inference.
+- **Not transferable:** a universal token threshold or one retrieval policy for all project types.
+- **Complex micro-contract:** use the loaded skill as the rule index, resolve target durable instructions and an authoritative recovery anchor before deeper protocol or broad target scanning, exclude Complex maintenance state from target facts, then assemble Hot State, active module, JIT evidence, freshness/provenance, compaction, and exclusions. Bound source inspection mechanically: measure scale first, classify names/types before values, cap matches/output/time, and treat truncation or overflow as a working-set stop signal rather than an authority verdict or an invitation to broaden the search. Repeated large-anchor audits use a deterministic extractor to produce a small content-minimized ledger without source snippets or raw key names; clean-context evaluation consumes the ledger, and the manager enforces hard timeout.
+- **Refresh trigger:** project nature, active module, source freshness, or context-window behavior changes.
 
-## How To Use This Document
+### Compaction and semantic recovery
 
-Use this document when:
+- **Sources:** [OpenAI Responses API computer environment](https://openai.com/index/equip-responses-api-computer-environment/), [Anthropic long-running agent harnesses](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), [OpenHands SDK](https://docs.openhands.dev/sdk/index).
+- **Production problem:** compaction saves tokens but may erase intent, open risks, or recovery-critical facts.
+- **Adopted:** structured recovery digest, accepted-state pointers, clean handoff, semantic recovery test.
+- **Rejected:** treating compaction or file existence as proof of recovery.
+- **Not transferable:** a single compaction algorithm across models.
+- **Complex micro-contract:** after compaction or handoff, recover Goal, current basis, active module, open risks, and next route before execution.
+- **Refresh trigger:** context pollution, reviewer reset, phase handoff, or failed recovery.
 
-- a strategic or structural Complex rule is being changed;
-- a user reports a repeated project-execution failure;
-- a prompt default or behavior case is being promoted;
-- a project route could become local greedy optimization;
-- a long project needs state compaction, review independence, or operating-organization design.
+## Runtime Harness
 
-Routine beats can reuse a fresh calibration note. Refresh when project nature changes, the method is novel, the prior map is stale, or the decision will guide many future beats.
+### Agent-legible repositories and mechanical invariants
+
+- **Sources:** [OpenAI harness engineering](https://openai.com/index/harness-engineering/), [SWE-agent ACI](https://arxiv.org/abs/2405.15793), [OpenAI running Codex safely](https://openai.com/index/running-codex-safely/).
+- **Production problem:** agents cannot inspect the same state, application behavior, logs, metrics, or architectural rules that humans use.
+- **Adopted:** repository-legible state, direct observability, narrow tools, worktree isolation, structural tests, lints, and policy checks.
+- **Rejected:** relying on long instruction prose when a mechanical check is possible.
+- **Not transferable:** repository-specific lint architecture and internal OpenAI infrastructure.
+- **Complex micro-contract:** execution and validation facts must be inspectable; repeated enforceable rules become checks before they become more prose.
+- **Refresh trigger:** a repeated rule violation, hidden state, or new execution surface appears.
+
+### Durable orchestration and reconciliation
+
+- **Sources:** [OpenAI Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/), [Microsoft Agent Framework Harness](https://learn.microsoft.com/en-us/agent-framework/agents/harness), [Temporal](https://temporal.io/).
+- **Production problem:** long-running workers exit, tools fail transiently, state drifts, or duplicate side effects occur.
+- **Adopted:** single authoritative orchestration state, isolated workspaces, bounded concurrency, checkpoints, stable identifiers, retry/backoff, idempotency, reconciliation, and observability.
+- **Rejected:** assuming a worker exit means the task is complete; unlimited retry; concurrency without ownership.
+- **Not transferable:** Complex does not require a daemon, Temporal server, or Microsoft runtime.
+- **Complex micro-contract:** important harnesses declare checkpoint, retry class, backoff, idempotency/compensation, bounded concurrency, and degraded route.
+- **Refresh trigger:** transient failures repeat, duplicate work occurs, or cross-turn continuation is added.
+
+### Interrupt and resume side-effect safety
+
+- **Sources:** [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts), [Temporal Activity Definition](https://docs.temporal.io/activity-definition).
+- **Production problem:** human approval, external input, or retry can resume a workflow after partial work; if non-idempotent side effects happened before the pause, resume can duplicate records, overwrite state, or charge twice.
+- **Adopted:** pause before non-idempotent external writes; keep pre-approval work read-only, local, draft, idempotent, reversible, or compensatable; record checkpoint, idempotency key or stable identifier, approval payload, and resume route.
+- **Rejected:** importing LangGraph or Temporal as a required runtime; treating every user question as a durable interrupt; adding heavy transaction ceremony to read-only beats.
+- **Not transferable:** Complex cannot guarantee platform-level exactly-once execution without a supporting runtime; it can only require agent-visible contracts and safe sequencing.
+- **Complex micro-contract:** `interrupt_resume_safety` applies when a beat must pause for authorization or external input: non-idempotent side effects move after approval, or the beat records idempotency/rollback/compensation evidence before it can retry or resume.
+- **Refresh trigger:** new approval surfaces, external-write tools, retryable background work, or duplicate side-effect failures.
+
+### Explicit multi-agent organization
+
+- **Sources:** [OpenAI Codex subagents](https://developers.openai.com/codex/subagents), [OpenAI Agents SDK handoffs](https://openai.github.io/openai-agents-python/handoffs/), [Microsoft orchestration patterns](https://learn.microsoft.com/en-us/agent-framework/workflows/orchestrations/), [Team Topologies](https://teamtopologies.com/key-concepts).
+- **Production problem:** threads, workers, and durable responsibilities are conflated, creating unclear ownership and polluted review.
+- **Adopted:** manager ownership, bounded worker contracts, durable responsibility lanes, clean-context evaluators, explicit handoff packets.
+- **Rejected:** creating agents for every small task or calling a subagent a standing lane.
+- **Not transferable:** organization design must fit project scale and available Codex surfaces.
+- **Complex micro-contract:** controller owns integration; standing lanes own recurring responsibility; workers return bounded artifacts and summaries.
+- **Refresh trigger:** recurring responsibility, reviewer contamination, or topology drift appears.
+
+## Progress Loop
+
+### Outcome-based completion and evaluator separation
+
+- **Sources:** [Anthropic harness design for long-running apps](https://www.anthropic.com/engineering/harness-design-long-running-apps), [Anthropic agent evals](https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents), [Microsoft Agent Framework LoopEvaluator](https://learn.microsoft.com/en-us/agent-framework/agents/harness).
+- **Production problem:** agents stop because they produced text, completed a fixed number of turns, or self-reported success.
+- **Adopted:** negotiate completion before execution, evaluate the actual environment or artifact, separate evaluator for important work, outcome-first grading.
+- **Rejected:** exact trajectory matching as the primary definition of success.
+- **Not transferable:** every small beat does not need an independent model evaluator.
+- **Complex micro-contract:** every important Loop has an outcome predicate, evaluator, accepted artifact, and next route from observed results.
+- **Refresh trigger:** false completion, evaluator disagreement, or path overfitting appears.
+
+### Target-function iteration instead of local greed
+
+- **Sources:** [CRISP-DM](https://www.ibm.com/docs/it/SS3RA7_18.3.0/pdf/ModelerCRISPDM.pdf), [NASA Systems Engineering Handbook](https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf), [Google SRE eliminating toil](https://sre.google/sre-book/eliminating-toil/).
+- **Production problem:** repeated local checks, audits, or evidence collection consume work without closing the project chain.
+- **Adopted:** target-function feedback, entry/success criteria, early end-to-end slice, toil/WIP review, branch parking.
+- **Rejected:** heavyweight stage ceremonies for every small beat.
+- **Not transferable:** fixed review cadence regardless of project events.
+- **Complex micro-contract:** each Loop names target function, module, lane, forward artifact, completion predicate, and non-greedy rationale.
+- **Refresh trigger:** guardrail-only repetition, missing early closure, or module bottleneck changes.
+
+## Cross-Layer Diagnosis
+
+The central transfer rule is diagnostic:
+
+1. capture the failed outcome and relevant trajectory;
+2. classify Prompt, Context, Harness, Loop, or model limitation;
+3. repair the failed layer;
+4. add an evaluation case;
+5. update prompt defaults only for instruction-level failures.
+
+This prevents context omissions, unavailable tools, poor recovery, and incorrect stopping logic from turning into an ever-longer prompt.
+
+## Evidence Boundary
+
+External production sources show that a pattern has precedent and clarify its transfer boundary. They do not prove the Complex implementation improves user outcomes. `docs/mechanism-maturity.json` records that distinction, and real transcript or end-to-end project evidence is required for promotion.

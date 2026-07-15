@@ -1,36 +1,32 @@
 # complex-project-continuous-governance
 
-Complex is a Codex-native orchestration skill and runtime kit for long-running complex projects.
+Complex is a Codex-native runtime for long-running complex projects.
 
-It helps an agent keep a project moving through:
+It combines a stable seven-behavior execution spine with four coupled engineering layers:
 
-**strong-autonomy execution inside a responsibility boundary + Codex surface alignment + portfolio control-plane orchestration + attention governance + external calibration + evidence boundaries + clean review + lightweight auditable recovery.**
+| Layer | Contract |
+| --- | --- |
+| Prompt Contract | Goal, completion criteria, responsibility boundary, and output contract |
+| Context Working Set | the smallest sufficient, current, attributable context for the next judgment |
+| Runtime Harness | tools, environment, policies, observability, checkpoints, and recovery |
+| Progress Loop | act, observe, evaluate, route, retry, rollback, or stop from outcomes |
 
-Complex is organized as a stable core plus testable extensions. Core behaviors are always respected; newer mechanisms are tracked in a maturity registry before they are treated as proven.
+The layers are not a linear sequence and not four new gates. Complex diagnoses which layer failed before changing prompts, context, tools, or continuation logic.
 
-Install Complex once, then use it from any target project through `COMPLEX_HOME` or an explicit path.
+Complex is organized as a stable core plus testable extensions. External precedent grounds new mechanisms; real transcripts and end-to-end outcomes are required before they are called validated.
 
-## 30-Second Install
+## Install
 
 ```bash
 mkdir -p ~/Documents
 git clone https://github.com/chuanqi210-creator/complex-project-continuous-governance.git \
   ~/Documents/complex-project-front-governance
-cd ~/Documents/complex-project-front-governance
-python3 tools/check_behavior_regression_pack.py
-python3 tools/review_behavior_transcript.py --validate-rules
-python3 tools/check_mechanism_maturity.py
-python3 tools/test_verify_complex_integrity.py
+export COMPLEX_HOME="$HOME/Documents/complex-project-front-governance"
+cd "$COMPLEX_HOME"
 python3 tools/verify_complex_integrity.py
 ```
 
-Optional shell setup:
-
-```bash
-export COMPLEX_HOME="$HOME/Documents/complex-project-front-governance"
-```
-
-Update:
+Update with:
 
 ```bash
 cd "${COMPLEX_HOME:-$HOME/Documents/complex-project-front-governance}"
@@ -38,144 +34,91 @@ git pull --ff-only
 python3 tools/verify_complex_integrity.py
 ```
 
+Complex remains a standalone runtime. A target repository does not need its own `Complex` directory.
+
 ## Start A Project
 
-Use this when you want the agent to design a project prompt before execution:
+Copy-ready high-fit request:
 
 ```text
-请帮我扫描 Complex，并对我们的项目设计提示词。之后给出一个可复制的 prompt；我确认后，再根据这个 prompt 结合 Complex 推进项目。
+请先读取已安装的 Complex，并结合当前项目建立 Project Prompt Contract。请区分稳定目标与动态上下文，判断项目性质，明确担责边界、完成标准、评价方法和交付对象。
 
-请显式采用这些 steering words，并按项目实际情况取舍：
-开启 Plan 模式 / 先规划再执行；模型发现型 / 先发散研究框架 / 不要早收敛；证据填充型 / 模型和指标已定；最小可审计闭环 / 先串起问题-数据-模型-结果-论断；注意力治理 / 最低充分可观测性 / 不要过度汇报；连续节拍 / 总规划别丢 / 每拍 prompt 重水化；Codex Goal 是 thread_goal 或 phase_goal / beat_objective 属于每拍 Plan；自动进入下一拍 / 不等我说继续；模块组合 / 串并联系统 / 不要局部贪心；forward artifact / 审计只是护栏 / Hot State；外部优秀案例 / external calibration / micro-contract；定期 hallucination sentinel；少问我 / 能推进就继续 / 我给目录你自己读；运行资源 AI 自判 / 用户只担责授权；standing lane 和 subagent 分开 / 每轮清上下文；独立评审 / 客观审查 / 避免上下文污染；外部工具 / 账号 / API / skill；只要人看版。
+随后按四层运行：每拍重水化 Prompt Contract；组装最小充分、可溯源的 Context Working Set；确认 Runtime Harness 的工具、环境、检查点和降级路线；运行以真实结果为完成条件的 Progress Loop。能在担责边界内继续时自动进入下一拍，不等我说继续。
 
-如果当前界面支持 Plan 模式，请使用可用的规划 surface；如果当前界面不能由你实际切换，也请直接输出 planning checkpoint，不要伪称已经自动开启。关键节拍由 AI 自行做 plan-shaped planning，不把规划本身变成向我索要授权。
+请先诊断问题属于 prompt、context、harness、loop 还是 model limitation，再修改对应层。不要把上下文遗漏、工具故障或停止逻辑问题都修成更长的提示词。重要评审使用清上下文；重要机制判断做外部校准；输出只要人看版。
 ```
 
-Use this when you want execution to begin after the plan is clear:
+If you want prompt design before execution:
 
 ```text
-这个项目按 Complex 推进。
-目标是：……
-已有材料在：……
-交付对象是：……
-
-采用强自治+担责边界：项目内部的计划细节、读取、验证、运行拓扑、Plan/Goal 适配、standing lane 记录、thread/worktree/automation fit、临时 worker fit、状态压缩和下一拍推进由 AI 自行判断；只有主目标、账号/API、付款、外部写入、发布、不可逆动作、公开口径、高风险主张，或平台动作会造成我需要担责的外部承诺时再问我。
-
-先建立 thread_goal 或 phase_goal，再用每拍 beat_objective 执行。连续节拍启动后，每拍做 prompt 重水化、planning checkpoint、target-function Loop、Beat Router、forward artifact 验收和 next_route；可继续时自动进入下一拍，直到 STOP_COMPLETE 或真实担责边界。
+请先扫描 Complex 和当前项目，只设计 Project Prompt Contract、Context Working Set、Runtime Harness 与 Progress Loop 方案，不执行项目。给出可复制 prompt 和第一拍的 planning checkpoint；我确认项目目标后再执行。
 ```
 
-## Codex Surface Map
+## How Complex Runs
 
-Complex deliberately maps its rules onto Codex surfaces:
+The seven stable behaviors are:
 
-- **Plan mode** is a user/interface planning surface. Complex cannot claim it automatically enabled Plan mode unless the current surface actually exposes that action. For complex or strategic beats, AI decides that a **planning checkpoint** is required and continues within the responsibility boundary.
-- **Codex Goal** is a persistent objective and completion criteria for a longer task, thread, or bounded phase. Complex names this `thread_goal` or `phase_goal`. AI decides whether the Goal surface should carry the phase contract; if it cannot be set from the current surface, record the same contract in state, prompt, or handoff and continue.
-- **`beat_objective`** is the current small execution target inside the Plan/Loop layer.
-- **`goal_memory_summary`** is recovery context, not Codex Goal.
-- **Continuous cadence** means same-run execution of queued beats inside the responsibility boundary until `STOP_COMPLETE` or a true boundary.
-- **Subagents** are short-lived workers for bounded parallel work. They are not standing lanes.
-- **Standing lanes** are durable manager-owned responsibilities: controller, human interface, literature/data acquisition, model/component, data-code, review/risk, writing/delivery.
-- **User-visible threads, worktrees, and automations** are platform resources, not responsibility boundaries by default. AI decides whether they fit the operating organization; actual creation follows the current Codex surface/tool semantics. If the surface cannot create them in this run, record the contract and continue.
-- **AGENTS.md** carries durable repo conventions. **Skills** carry reusable workflows. **MCP/tools/connectors** carry live capabilities.
-
-## How Complex Works
-
-Complex starts from seven stable behaviors:
-
-1. Restore the true current state.
+1. Restore true state and assemble the current working context.
 2. Classify project nature: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
 3. Assign decision rights through a responsibility boundary.
-4. Establish the control plane and operating organization before local optimization.
-5. Run the smallest meaningful target-function Loop or execution beat.
-6. Deliver to the right audience.
-7. Leave `next_route`, accepted artifacts, and recovery pointers.
+4. Establish the control plane, operating organization, and runtime harness.
+5. Run the smallest meaningful target-function Progress Loop.
+6. Deliver to the right audience and evaluate the outcome.
+7. Leave `next_route`, accepted artifacts, recovery pointers, and layer diagnosis.
 
-For continuous projects, the control plane comes before local edits:
+### Codex surface map
 
-- direction: `thread_goal` / `phase_goal`, `goal_memory_summary`, project nature, convergence, delivery contract, stop condition;
-- authority: responsibility boundary, manual-action records, external-write boundaries;
-- state: current basis, not-current basis, beat queue, risks, validation status;
-- topology: manager, standing lanes, temporary workers, heartbeat/automation fit;
-- routing: Beat Router, residual scan, branch parking, recovery route;
-- calibration: external reference coverage, hallucination sentinel, trace appraisal.
-- attention: minimum viable closure, minimum sufficient observability, process-overhead risk.
+- Plan mode is a planning surface. Complex uses it when available at key checkpoints and never claims an unavailable UI action occurred.
+- Codex Goal carries a durable `thread_goal` or `phase_goal`; `beat_objective` belongs to the current Plan/Loop.
+- Subagents are bounded workers. Standing lanes are recurring responsibilities. Threads, worktrees, and automations are selected according to platform and task fit.
+- Continuous cadence advances queued beats until objective completion or a real responsibility/tool boundary. When cross-turn continuation is selected and the current Codex surface exposes heartbeat/automation tooling, Complex activates it and records the resource instead of waiting for another user message. A completed beat does not complete the longer Codex Goal while useful queued work remains.
 
-The operating organization keeps recurring work from collapsing into a single local path:
+### Responsibility boundary
 
-- Controller lane: project direction and route.
-- Human interface lane: responsibility-bearing asks and explanations.
-- Literature/data acquisition lane: papers, official sources, databases, account forecasts.
-- Model/component lane: model structure, variables, component interfaces.
-- Data-code lane: schema, scripts, hashes, reproducibility.
-- Review/risk lane: clean-context review and overclaim control.
-- Writing/delivery lane: claims, figures, methods, reader-facing output.
+AI decides project-internal planning, reading, verification, reversible commands, topology fit, context compaction, and next-beat routing. The user is asked for Goal/public-voice changes, credentials, payment, publishing, external writes, irreversible shared-state changes, high-impact commitments, or undelegated value judgments.
 
-A beat is accepted when it creates or updates a forward artifact, passes the relevant guard, updates an index or state, and chooses the next route. Audit, citation, QA, access checks, and "still closed" notes are guardrails; repeated guardrail-only work triggers a toil/WIP review instead of becoming the project engine.
+### Completion
 
-For research, analysis, and prototype work, Complex expects an early **minimum viable closure**: a thin but complete chain from question to data/source, minimal model or assumption, result or output, figure/table or validation signal, claim or usable conclusion, limitation, and next weakness. The closure is not final delivery; it is the visible chain that lets the human and agent judge whether the project is moving in the right direction.
+A beat is accepted when it creates or updates a forward artifact, passes the relevant guard/evaluator, updates state or indexes, and selects the next route from observed results. A fixed beat count or agent self-report is not completion.
 
-Important route, structure, model, method, evaluation, prompt-default, or protocol changes require external calibration. The agent compares the choice with official docs, primary papers, standards, or mature production writeups; records adopted / rejected / not transferable lessons; then turns the adopted lesson into a project micro-contract.
+## Diagnose Before Patching
 
-Complex keeps traceability lightweight:
-
-- **Hot State**: one-page current map.
-- **Warm Index**: compact ledgers and accepted artifacts.
-- **Cold Archive**: raw evidence, old gates, source notes, command output, screenshots, and superseded branches by pointer.
-
-Routine beats should use **minimum sufficient observability**: show what closure segment moved, what artifact changed, what uncertainty changed, what cannot yet be claimed, and the next beat. Heavy audit packs are reserved for trigger points.
-
-`STOP_COMPLETE` requires objective completion, delivery-level validation, and a residual scan showing no useful internal beat remains. A fixed number of beats is never enough by itself.
-
-## Mechanism Maturity
-
-Complex does not treat every rule-like idea as equally mature.
-
-- `core`: stable behavior spine or boundary used in every Complex run.
-- `validated`: repeated real transcripts or end-to-end project samples show improved behavior.
-- `tested`: covered by behavior cases, transcript rules, examples, or repeated user feedback.
-- `candidate`: promising mechanism from recent failures or external calibration; use when relevant, but do not present as proven.
-- `retired`: no longer active except when explaining a replacement.
-
-See `docs/mechanism-maturity.md` and `docs/mechanism-maturity.json`.
-
-New mechanisms should usually start as behavior cases, transcript rules, examples, or external micro-contracts. They move into `protocol/core.md` only when repeated or high-impact failures show that the stable core cannot carry the behavior by itself.
+| Failure class | Typical symptom | Repair target |
+| --- | --- | --- |
+| Prompt | Goal, constraint, output, or completion contract is ambiguous | prompt contract and eval case |
+| Context | required facts are absent, stale, or polluted | context assembly, retrieval, compaction |
+| Harness | tools, environment, policy, observability, or recovery fail | runtime interface and mechanical controls |
+| Loop | retry, route, evaluation, continuation, or stop logic is wrong | completion predicate and progress controller |
+| Model | the first four layers are adequate but performance remains weak | model choice, decomposition, or escalation |
 
 ## Runtime Kit
 
-Current entrypoints:
-
 - Core protocol: `protocol/core.md`
-- Current state: `protocol/current-state.md`
+- Complex self-maintenance state: `protocol/current-state.md` (not target-project context)
 - Quickstart: `docs/quickstart.md`
-- Runtime templates: `templates/`
+- Templates: `templates/`
 - Filled examples: `docs/examples/`
-- Behavior cases: `docs/behavior-regression-cases.json`
-- Transcript rules: `docs/behavior-transcript-review-rules.json`
-- Behavior review: `docs/behavior-review.md`
+- External production mapping: `docs/external-methods.md`
 - Mechanism maturity: `docs/mechanism-maturity.md` and `docs/mechanism-maturity.json`
-- Capability guide: `docs/runtime-skill-management.md`
-- External method mapping: `docs/external-methods.md`
+- Behavior cases and transcript rules: `docs/behavior-regression-cases.json`, `docs/behavior-transcript-review-rules.json`
 - Codex repo skill: `.agents/skills/complex-runtime/SKILL.md`
 
-Use filled examples before blank templates. These examples are current filled examples, not automatically certified cases:
+The four primary runtime templates are:
 
-- `docs/examples/evidence_fill_minimal_runtime/`
-- `docs/examples/model_discovery_minimal_runtime/`
-- `docs/examples/independent_review_minimal_runtime/`
-- `docs/examples/portfolio_orchestration_minimal_runtime/`
-- `docs/examples/external_calibration_micro_contract_runtime/`
-- `docs/examples/operating_organization_multi_lane_runtime/`
+- `templates/prompt.md`
+- `templates/context.md`
+- `templates/harness.md`
+- `templates/loop.md`
 
-Templates are optional landing pads, not mandatory machine fields.
+Templates are optional landing pads, not mandatory machine fields. Current examples are filled examples, not certified representative cases.
 
 ## Verification
-
-Run these after protocol, template, behavior-pack, skill, or site changes:
 
 ```bash
 python3 tools/check_behavior_regression_pack.py
 python3 tools/review_behavior_transcript.py --validate-rules
 python3 tools/check_mechanism_maturity.py
+python3 tools/test_inspect_recovery_anchor.py
 python3 tools/test_verify_complex_integrity.py
 python3 tools/verify_complex_integrity.py
 pnpm -C docs/protocol_explainer_site build
@@ -183,18 +126,9 @@ pnpm -C docs/protocol_explainer_site build
 
 Expected baseline:
 
-- behavior pack: 36 cases and 36 transcript rules
-- mechanism maturity registry: all cases link to known mechanism ids
-- integrity verifier: `failure_count: 0`
-- site build: Vite build succeeds
+- 42 behavior cases and 42 transcript rules;
+- every case links to a known mechanism;
+- integrity verifier reports `failure_count: 0`;
+- the explainer site builds successfully.
 
-## Repository Shape
-
-- `protocol/`: current protocol and state only.
-- `docs/`: quickstart, examples, behavior review, external method mapping, and explainer site source.
-- `templates/`: optional runtime records for downstream projects.
-- `.agents/skills/`: Codex repo-scoped skills.
-- `.codex/`: capability candidates and Complex repository metadata.
-- `tools/`: lightweight structural and behavior-review checks.
-
-Do not add history archives, migration records, rendered outputs, or long machine-board logs back into the active tree. If old context is needed, use Git history.
+Keep this repository current and small. Do not add history archives, migration logs, rendered output packages, or long machine-board records to the active tree.

@@ -57,6 +57,29 @@ const coreOutcomes = [
   },
 ];
 
+const engineeringLayers = [
+  {
+    title: "Prompt Contract",
+    text: "保存跨多拍稳定的 Goal、完成标准、担责边界和交付契约；动态事实不塞进 master prompt。",
+    signal: "intent contract",
+  },
+  {
+    title: "Context Working Set",
+    text: "按当前判断装配最小充分、可溯源的事实，记录新鲜度、排除项和压缩后的语义恢复。",
+    signal: "attention allocation",
+  },
+  {
+    title: "Runtime Harness",
+    text: "让工具、环境、副作用、日志、检查点、重试和降级路线可以被 agent 直接检查和执行。",
+    signal: "execution infrastructure",
+  },
+  {
+    title: "Progress Loop",
+    text: "根据环境结果评价、路由、重试、回滚或停止；固定拍数和 agent 自述都不是完成证明。",
+    signal: "outcome control",
+  },
+];
+
 const assets = [
   {
     name: "核心协议",
@@ -80,7 +103,7 @@ const assets = [
   },
   {
     name: "行为回归包",
-    role: "用 36 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
+    role: "用 41 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
     file: "docs/behavior-regression-cases.json",
   },
   {
@@ -111,6 +134,13 @@ const assets = [
 ];
 
 const capabilityGroups = [
+  {
+    title: "四层运行架构",
+    summary: "Prompt、Context、Harness、Loop 分工明确，但在每拍共同运行。",
+    detail:
+      "Prompt Contract 保存稳定意图；Context Working Set 分配当前注意力；Runtime Harness 提供可执行环境和恢复控制；Progress Loop 从真实结果判断继续、重试、回滚或停止。发生问题时先诊断失效层，不把所有故障都修成更长的提示词。",
+    icon: Stack,
+  },
   {
     title: "Codex Surface 对齐",
     summary: "Plan、Goal、thread、subagent、automation 各归各位。",
@@ -206,7 +236,7 @@ const capabilityGroups = [
     title: "行为回归与填好样例",
     summary: "用用例、真实回复审查、结果记录和填好样例验证新代理能否稳定落地。",
     detail:
-      "behavior_regression_pack 覆盖 36 个高风险入口；review_behavior_transcript.py 检查真实回复；docs/examples 给出 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可恢复运行现场。",
+      "behavior_regression_pack 覆盖 41 个高风险入口；review_behavior_transcript.py 检查真实回复；docs/examples 给出 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可恢复运行现场。",
     icon: ClipboardText,
   },
 ];
@@ -414,9 +444,9 @@ function Overview({ go }) {
         <img className="hero-image" src={blueprintImage} alt="项目治理蓝图视觉图，展示证据地图、风险边界和持续治理流程" />
         <div className="hero-overlay">
           <p className="eyebrow">适用于复杂项目持续推进</p>
-          <h1>把复杂项目，推进成可恢复、可验证、可交付的连续行动</h1>
+          <h1>让复杂项目在正确上下文和运行环境里持续完成</h1>
           <p className="hero-copy">
-            这套持续治理协议不是一串 gate 名称，而是一套行为内核：每轮先恢复真实状态，判断项目性质和决策边界；连续项目先确认控制层，单轮任务再选择最高杠杆问题；随后用最轻有效动作推进，并留下下一轮能接上的恢复线索。
+            Complex 用七步行为内核组织项目，同时让 Prompt Contract、Context Working Set、Runtime Harness 和 Progress Loop 在每拍共同工作。它先诊断失效层，再修改指令、上下文、工具环境或循环控制，而不是把所有问题都塞回提示词。
           </p>
           <div className="hero-actions">
             <button className="primary-action" type="button" onClick={() => go("mechanism")}>
@@ -445,6 +475,22 @@ function Overview({ go }) {
                 <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="deliverables-section">
+        <div className="section-heading">
+          <p className="section-kicker">四层不是四个阶段</p>
+          <h2>稳定意图、当前注意力、执行基础和结果控制同时存在。</h2>
+        </div>
+        <div className="deliverable-grid">
+          {engineeringLayers.map((layer) => (
+            <article className="deliverable-card" key={layer.title}>
+              <code>{layer.signal}</code>
+              <h3>{layer.title}</h3>
+              <p>{layer.text}</p>
             </article>
           ))}
         </div>
@@ -545,9 +591,19 @@ function Mechanism() {
     <div className="content-page">
       <PageTitle
         label="实现方法"
-        title="先行为内核，再按需调用路由器和 guard。"
-        copy="它先把本轮压缩成一个可执行主线，再选择必要的证据、模型发现、能力发现、小题验证和风险边界。核心不是多填表，而是防止项目在错误层级上推进。"
+        title="七步主轴负责推进，四层工程负责把推进做对。"
+        copy="行为内核决定项目怎样前进；Prompt、Context、Harness 和 Loop 分别管理稳定意图、当前工作集、可执行基础和结果控制。先定位失效层，再修对应接口。"
       />
+
+      <section className="deliverable-grid">
+        {engineeringLayers.map((layer) => (
+          <article className="deliverable-card" key={layer.title}>
+            <code>{layer.signal}</code>
+            <h3>{layer.title}</h3>
+            <p>{layer.text}</p>
+          </article>
+        ))}
+      </section>
 
       <section className="timeline">
         {mechanismSteps.map((step) => (
@@ -566,7 +622,7 @@ function Mechanism() {
         <article className="mechanism-panel">
           <h2>动态激活，而不是全量硬跑</h2>
           <p>
-            `complex_behavior_kernel` 是第一层。先确定本轮行为，再把规则分成常驻最小、风险触发、连续推进和当前状态验证，避免普通推进变成流程负担。
+            `complex_behavior_kernel` 是执行主轴，不是四层中的第一层。四层共同支持每个行为；候选机制只在匹配失败模式时启用，避免普通推进变成流程负担。
           </p>
           <div className="gate-grid">
             {gateTypes.map((gate) => (
@@ -613,7 +669,7 @@ function Maturity() {
         <article className="mechanism-panel">
           <h2>成熟度阶梯</h2>
           <p>
-            `docs/mechanism-maturity.json` 记录每个机制的状态、外部依据、内部证据、行为用例、样例、升级规则和降级触发。marker 通过只是第一层，不能等同于真实项目表现优良。
+            `docs/mechanism-maturity.json` 记录每个机制的状态、所属工程层、外部依据、内部证据、行为用例、样例、升级规则和降级触发。marker 通过只是第一层，不能等同于真实项目表现优良。
           </p>
           <div className="gate-grid">
             {maturityLevels.map(([id, title, text]) => (

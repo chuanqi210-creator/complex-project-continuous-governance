@@ -16,10 +16,12 @@ RULES = ROOT / "docs" / "behavior-transcript-review-rules.json"
 EXAMPLES = ROOT / "docs" / "examples"
 
 ALLOWED_STATUSES = {"core", "validated", "tested", "candidate", "retired"}
+ALLOWED_ENGINEERING_LAYERS = {"prompt", "context", "harness", "loop"}
 REQUIRED_MECHANISM_FIELDS = {
     "id",
     "name",
     "status",
+    "engineering_layers",
     "summary",
     "external_basis",
     "internal_evidence",
@@ -88,6 +90,14 @@ def main() -> None:
         if status not in ALLOWED_STATUSES:
             fail(f"{mechanism_id} has invalid status: {status}")
         status_counts[status] += 1
+
+        layers = mechanism["engineering_layers"]
+        require_non_empty_list(layers, f"{mechanism_id}.engineering_layers")
+        unknown_layers = sorted(set(map(str, layers)) - ALLOWED_ENGINEERING_LAYERS)
+        if unknown_layers:
+            fail(f"{mechanism_id} has invalid engineering layers: {unknown_layers}")
+        if len(layers) != len(set(map(str, layers))):
+            fail(f"{mechanism_id}.engineering_layers contains duplicates")
 
         for key in ["external_basis", "internal_evidence", "linked_behavior_cases", "linked_examples"]:
             require_non_empty_list(mechanism[key], f"{mechanism_id}.{key}")

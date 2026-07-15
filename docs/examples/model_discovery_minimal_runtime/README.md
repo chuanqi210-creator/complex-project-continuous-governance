@@ -15,3 +15,12 @@ Files:
 - `argument.md`: issue-position-argument map.
 - `loop.md`: discriminating probe.
 - `delivery.md`: human-readable interim delivery contract.
+
+## Four-Layer Boundary
+
+- Prompt Contract: protect multiple candidate frames and define convergence conditions rather than a final model.
+- Context Working Set: candidate assumptions, counterexamples, argument map, and discriminating evidence receive priority.
+- Runtime Harness: comparison tools and clean evaluation are useful, but no specific platform is assumed.
+- Progress Loop: completes when a probe changes the candidate ranking or exposes an unresolved distinction, not when one framework receives supporting material.
+
+This example does not prove a candidate is correct or that divergence should remain open indefinitely.

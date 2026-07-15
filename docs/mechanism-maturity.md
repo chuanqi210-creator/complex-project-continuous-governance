@@ -6,6 +6,8 @@ This matters because many Complex improvements come from real project friction. 
 
 Machine-readable registry: `docs/mechanism-maturity.json`
 
+Each mechanism also declares `engineering_layers`: `prompt`, `context`, `harness`, and/or `loop`. These tags locate the mechanism in the runtime; they are not maturity levels.
+
 ## Statuses
 
 | Status | Meaning |
@@ -23,10 +25,10 @@ New projects should execute the core behavior first:
 1. Restore true state.
 2. Classify project nature.
 3. Assign decision rights.
-4. Establish the control plane and operating organization.
-5. Run a target-function beat.
-6. Deliver to the right audience.
-7. Leave recovery pointers.
+4. Establish the control plane, operating organization, and runtime harness.
+5. Run a target-function Progress Loop.
+6. Deliver to the right audience and evaluate the outcome.
+7. Leave recovery pointers and a layer-level diagnosis.
 
 Then use tested and candidate mechanisms only when their failure mode appears. For example, use `operating_organization` when a long project risks local greedy work, and use `trace_appraisal_hot_warm_cold` when the hot context is becoming too large.
 
@@ -49,7 +51,10 @@ Demotion is just as important. A mechanism should be downgraded or retired if it
 The current Complex repository has:
 
 - stable core behaviors and responsibility boundaries;
-- tested Codex-surface and prompt-continuity rules;
-- candidate operating-organization, portfolio, external-calibration, hallucination-sentinel, attention-governance, and example-currentness mechanisms that still need real transcript evidence.
+- validated continuous-cadence and four-layer runtime-alignment mechanisms backed by autonomous wakes, cross-project recovery tests, independent review, and outcome-based heartbeat shutdown;
+- tested Codex-surface, prompt-continuity, source-resolution, and intervention-boundary rules;
+- candidate operating-organization, portfolio, interrupt/resume side-effect safety, external-calibration, hallucination-sentinel, attention-governance, and example-currentness mechanisms that still need broader real transcript evidence.
+
+The four-layer runtime distinguishes Prompt Contract, Context Working Set, Runtime Harness, and Progress Loop. Its validated status means repeated local transcripts and end-to-end target-project samples improved diagnosis, semantic recovery, continuation, and stopping. It does not prove every project class or public installation is covered; demotion remains available if later evidence shows ceremony without outcome improvement.
 
 This is intentional. Complex should be honest about what is proven, what is promising, and what still needs pressure testing.

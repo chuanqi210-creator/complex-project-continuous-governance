@@ -1,135 +1,91 @@
-# Target-Function Loop Template
+# Progress Loop Template
 
-Use this file for a compact Loop that learns or advances the target function before larger execution. A Loop is not the smallest nearby task; it is the smallest meaningful cycle that changes the project state.
+Use this template for a meaningful cycle that changes project state. The Loop serves the target function; it is not merely the lightest nearby action.
 
-## Loop Purpose
+## Loop Contract
 
 - beat_index:
-- thread_goal:
-- phase_goal:
+- thread_goal_or_phase_goal:
 - goal_memory_summary:
 - beat_objective:
-- planning_checkpoint_status: not_needed / due / complete
-- prompt_rehydration_status:
-- continuous_cadence_status:
-- beat_queue_before:
 - target_function:
-- module_this_beat_serves:
-- standing_lane_this_beat_serves:
-- local_route_still_serves_target_function: yes / no / uncertain
+- active_module:
+- standing_lane:
 - project_nature: evidence_fill / model_discovery / mixed / execution_delivery
-- convergence_status:
 - loop_type: strategy / discovery / extraction / vertical_slice / closure / review / writing / delivery
 - why_not_local_greedy:
-- closure_segment_served: question / source_data / model_assumption / result_calculation / figure_table / claim / limitation / output_validation / none
-- minimum_viable_closure_status: not_needed / missing / partial / complete / route_back
-- minimum_sufficient_observability_status: light_signal_enough / heavier_audit_triggered / too_much_process
+- expected_forward_artifact:
+- outcome_completion_predicate:
+- relevant_guard:
+- executor:
+- evaluator:
+- evaluator_independence: not_needed / clean_context / fact_ledger / separate_worker / degraded_diagnostic
 
-## Codex Surface And Authority
+## Four-Layer Preflight
 
-- codex_goal_lifecycle_mode: none / thread_goal / phase_goal / unavailable / stale
-- current_tool_goal_status:
-- responsibility_boundary_status:
-- decision_right: ai_decide / ask_user / manual_action_required / blocked_until_responsibility_boundary
-- ask_user_needed: yes / no
-- ai_decided_without_user_reason:
-- rollback_or_recovery_route:
+- prompt_contract_version:
+- prompt_rehydration_status:
+- context_working_set_status:
+- context_fidelity_status:
+- runtime_harness_status:
+- degraded_capability_route:
+- failure_layer_before_execution: none / prompt / context / harness / loop / model / uncertain
 
-## Operating Organization Check
+## Budget And Durability
 
-- control_plane_status:
-- operating_organization_status:
-- controller_lane:
-- human_interface_lane:
-- literature_data_acquisition_lane:
-- model_component_lane:
-- data_code_lane:
-- review_risk_lane:
-- writing_delivery_lane:
-- lane_context_reset_policy:
-- temporary_worker_or_subagent_fit:
-- unobservable_resource_route:
+- time_budget:
+- token_or_attention_budget:
+- tool_call_budget:
+- wip_or_concurrency_limit:
+- checkpoint:
+- retryable_failure_classes:
+- retry_limit_and_backoff:
+- idempotency_or_stable_id:
+- interrupt_resume_safety:
+- rollback_or_compensation:
+- watchdog_or_stall_signal:
 
-## External Calibration And Sentinel
+## Execute And Observe
 
-- external_calibration_due: yes / no
-- source:
-- problem_matched:
-- adopted:
-- rejected:
-- not_transferable:
-- Complex_micro_contract:
-- refresh_trigger:
-- hallucination_sentinel_due: yes / no
-- current_basis:
-- external_basis:
-- inference:
-- unsupported_claim:
-- falsification_cue:
+- action:
+- inputs:
+- tool_or_method:
+- observed_environment_result:
+- evidence_or_output_path:
+- forward_artifact_type: model_delta / data_delta / parameter_delta / writing_delta / branch_delta / topology_delta / calibration_delta / prompt_delta / context_delta / harness_delta / state_delta / none
+- forward_artifact_path:
+- guard_result:
+- evaluator_result:
+- completion_predicate_result: passed / failed / partial / indeterminate
 
-## Micro Task
+## Diagnose
 
-- Task:
-- Inputs:
-- Tool or method:
-- Timebox:
-- Stop condition:
-- Attention budget: what this beat will not report, audit, or expand because it does not improve movement:
+- outcome_gap:
+- trajectory_note:
+- failure_layer: prompt / context / harness / loop / model / none / uncertain
+- diagnosis_evidence:
+- prompt_patch_needed: yes / no
+- context_reassembly_needed: yes / no
+- harness_repair_or_degrade_needed: yes / no
+- loop_route_or_stop_repair_needed: yes / no
+- model_limitation_evidence:
 
-## Result
+## Learn And Route
 
-- Observed result:
-- Evidence path or output:
-- Forward artifact path or index update:
-- Forward artifact type: model_delta / data_delta / parameter_delta / writing_delta / branch_delta / calibration_delta / state_delta / topology_delta / none
-- Guard result:
-- New risk:
-- New gap:
-- Uncertainty reduced:
-- Cannot yet claim:
-- Minimal progress signal for human reader:
-
-## Toil / WIP Review
-
-- guardrail_only_output: yes / no
-- guardrail_only_streak_after_this_beat:
-- toil_wip_review_due: yes / no
-- selected_action: create_forward_artifact / park_branch / route_to_module / justify_true_dependency / not_needed
-- branch_parking_needed: yes / no
-- parallel_portfolio_route_available: yes / no
-- missing_closure_review_due: yes / no
-- over_governance_or_over_reporting_risk: low / medium / high
-
-## State And Trace
-
-- hot_warm_cold_state_update: hot_state / warm_index / cold_archive / none
-- trace_appraisal_due: yes / no
-- trace_appraisal_decision:
-- index_or_state_updated:
-
-## Score
-
-| Dimension | Score | Note |
-| --- | --- | --- |
-| Goal clarity |  |  |
-| Target-function fit |  |  |
-| Evidence strength |  |  |
-| Problem definition quality |  |  |
-| Candidate framework diversity |  |  |
-| Discriminating probe quality |  |  |
-| Capability fit |  |  |
-| Rework risk |  |  |
-| Delivery readiness |  |  |
-
-## Route
-
-- selected_route: CONTINUE / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_INPUT / STOP_COMPLETE
-- rejected_routes:
+- uncertainty_reduced_or_exposed:
+- cannot_yet_claim:
+- new_risk:
+- state_or_index_update:
+- selected_route: CONTINUE / RETRY / ROUTE_BACK / ROLLBACK / SPAWN_SUBAGENT / CREATE_THREAD / CREATE_AUTOMATION / INTERRUPT_FOR_RESPONSIBILITY / PARK_BRANCH / STOP_COMPLETE
 - route_reason:
-- highest_misjudgment_risk:
-- route_evaluator_reflection_needed: yes / no
-- delivery contract updated:
-- recovery record updated:
 - next_beat_objective:
-- next beat auto-start decision:
-- next refresh trigger:
+- next_route:
+- residual_scan:
+- minimum_progress_signal_for_human:
+
+## Acceptance
+
+A beat is accepted only when the forward artifact or explicit branch decision exists, the guard and evaluator are satisfied at the required level, state/indexes are updated, and the next route follows from observed results.
+
+- beat_acceptance: accepted / rejected / partial / parked
+- acceptance_evidence:
