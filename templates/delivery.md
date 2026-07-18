@@ -8,6 +8,7 @@ Use this file before final or stage delivery. The same work may need different f
 - Secondary reader:
 - Reader background:
 - What the reader needs to decide or do:
+- Reader task success test:
 
 ## Deliverable Type
 
@@ -30,11 +31,20 @@ Use this file before final or stage delivery. The same work may need different f
 
 - This deliverable should include:
 - This deliverable should not include:
-- If uncertain, ask:
+- Evidence and claim ceiling:
+- Sensitive or private information boundary:
+- Machine recovery and observability kept separately:
+- If a responsibility-bearing boundary is uncertain, ask:
 
 ## Completion Check
 
+- Project-native artifact path and schema preserved:
+- Requested facts and quantities preserved:
+- Contract concepts used for selection, not exported as headings without reader value:
 - Audience fit:
+- Reader task completed:
 - Claim/evidence fit:
+- Claim ceiling respected:
+- Sensitive-information boundary respected:
 - No machine-board dump in human-facing output:
 - Recovery record updated separately if needed:

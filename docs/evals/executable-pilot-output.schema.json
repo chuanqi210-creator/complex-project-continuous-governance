@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["decision", "next_route", "summary", "evidence_refs"],
+  "properties": {
+    "decision": {"type": "string"},
+    "next_route": {"type": "string"},
+    "summary": {"type": "string"},
+    "evidence_refs": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  },
+  "additionalProperties": false
+}

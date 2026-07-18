@@ -1,0 +1,213 @@
+{
+  "schema_version": "1.0",
+  "status": "compared",
+  "eval_case": {
+    "id": "independent_review_context",
+    "version": "1.0",
+    "mechanism_ids": [
+      "independent_review_context_separation",
+      "behavior_transcript_review"
+    ],
+    "project_nature": "mixed",
+    "task": "Does a clean reviewer supplied with a neutral fact ledger detect seeded defects more reliably than a reviewer exposed to the implementer's persuasive narrative?",
+    "sample_ids": [
+      "unit_conversion_bug",
+      "stale_citation_bug",
+      "no_seeded_defect_control"
+    ],
+    "sample_origin": "fixture",
+    "project_snapshot": "docs/evals/bounded-experiment-fixtures.json@sha256:cbdebdf19be0cedb48f3b0cd318ffac0ff7366976d531df6d8c618ffc6b33312",
+    "responsibility_boundary": "Read-only local fixture evaluation; no external writes or user-owned commitments.",
+    "completion_predicate": "The harness instantiates an actual same-session implementer/reviewer baseline and a separate clean-session reviewer, both arms run three trials against a frozen oracle including a no-defect control, and blind human preference is resolved.",
+    "scorer_id": "independent_review_context_deterministic",
+    "limits": {
+      "trials_per_arm": 3,
+      "command_timeout_seconds": 240,
+      "max_command_attempts": 2
+    },
+    "privacy": "public"
+  },
+  "runs": [
+    {
+      "id": "independent_review_context-baseline-3x",
+      "role": "baseline",
+      "artifact_revision": "sha256:67ba8977405174e907ab73bf83ed75ffb4773411189a078b6fe956a321722fda",
+      "prompt_version": "sha256:ff9aecb3c617cb713579a7cec3f03792efce61fe50b7931e208277adcf29b858",
+      "skill_revision": "sha256:6cb1b3ba1d480266b9943413f4dcdd6e9cecd231b6678cbab5fc07e118c08cf9",
+      "surface": "codex exec isolated fixture",
+      "model_or_agent": "gpt-5.3-codex-spark",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.144.5",
+        "reasoning_effort": "low",
+        "sandbox": "read-only",
+        "ignore_user_config": true,
+        "trials_per_arm": 3,
+        "structured_output_schema": "docs/evals/bounded-experiment-output.schema.json"
+      },
+      "attempts": 3,
+      "changed_variable": "review context independence",
+      "result_pointer": "docs/evals/results/bounded-experiments-20260717.json#independent_review_context/baseline",
+      "error_summary": ""
+    },
+    {
+      "id": "independent_review_context-candidate-3x",
+      "role": "candidate",
+      "artifact_revision": "sha256:67ba8977405174e907ab73bf83ed75ffb4773411189a078b6fe956a321722fda",
+      "prompt_version": "sha256:6c406f4ef1e59319e8ae92531c45d794c4b87a616aa5585e492532072177607c",
+      "skill_revision": "sha256:6cb1b3ba1d480266b9943413f4dcdd6e9cecd231b6678cbab5fc07e118c08cf9",
+      "surface": "codex exec isolated fixture",
+      "model_or_agent": "gpt-5.3-codex-spark",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.144.5",
+        "reasoning_effort": "low",
+        "sandbox": "read-only",
+        "ignore_user_config": true,
+        "trials_per_arm": 3,
+        "structured_output_schema": "docs/evals/bounded-experiment-output.schema.json"
+      },
+      "attempts": 3,
+      "changed_variable": "review context independence",
+      "result_pointer": "docs/evals/results/bounded-experiments-20260717.json#independent_review_context/candidate",
+      "error_summary": ""
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "independent_review_context-baseline-3x",
+      "scorer_id": "independent_review_context_deterministic",
+      "scorer_version": "1.0",
+      "per_sample": [
+        {
+          "sample_id": "unit_conversion_bug",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "defect_recall": 1.0,
+            "precision": 1.0,
+            "false_positive_rate": 0.0,
+            "unsupported_claim_rate": 0.0
+          }
+        },
+        {
+          "sample_id": "stale_citation_bug",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "defect_recall": 1.0,
+            "precision": 1.0,
+            "false_positive_rate": 0.0,
+            "unsupported_claim_rate": 0.0
+          }
+        },
+        {
+          "sample_id": "no_seeded_defect_control",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "defect_recall": 1.0,
+            "precision": 1.0,
+            "false_positive_rate": 0.0,
+            "unsupported_claim_rate": 0.0
+          }
+        }
+      ],
+      "aggregate": {
+        "valid_trials": 3,
+        "expected_trials": 3,
+        "decision_accuracy": 1.0,
+        "working_set_chars": 706,
+        "defect_recall": 1.0,
+        "precision": 1.0,
+        "false_positive_rate": 0.0,
+        "unsupported_claim_rate": 0.0,
+        "output_contract_violation_rate": 0.0
+      },
+      "human_review": "pending"
+    },
+    {
+      "run_id": "independent_review_context-candidate-3x",
+      "scorer_id": "independent_review_context_deterministic",
+      "scorer_version": "1.0",
+      "per_sample": [
+        {
+          "sample_id": "unit_conversion_bug",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "defect_recall": 1.0,
+            "precision": 1.0,
+            "false_positive_rate": 0.0,
+            "unsupported_claim_rate": 0.0
+          }
+        },
+        {
+          "sample_id": "stale_citation_bug",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "defect_recall": 1.0,
+            "precision": 1.0,
+            "false_positive_rate": 0.0,
+            "unsupported_claim_rate": 0.0
+          }
+        },
+        {
+          "sample_id": "no_seeded_defect_control",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "defect_recall": 1.0,
+            "precision": 1.0,
+            "false_positive_rate": 0.0,
+            "unsupported_claim_rate": 0.0
+          }
+        }
+      ],
+      "aggregate": {
+        "valid_trials": 3,
+        "expected_trials": 3,
+        "decision_accuracy": 1.0,
+        "working_set_chars": 706,
+        "defect_recall": 1.0,
+        "precision": 1.0,
+        "false_positive_rate": 0.0,
+        "unsupported_claim_rate": 0.0,
+        "output_contract_violation_rate": 0.0
+      },
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": "independent_review_context-baseline-3x",
+    "candidate_run_id": "independent_review_context-candidate-3x",
+    "changed_variable": "review context independence",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "revise_and_repeat",
+    "human_preference": "pending",
+    "limitations": [
+      "Synthetic fixtures test discrimination, not production effectiveness.",
+      "The model evaluator subject and deterministic scorer do not replace blind human review.",
+      "Automated signal: invalid_context_separation_fixture; human preference remains pending, so no transfer_candidate decision is issued.",
+      "The independent-review fixture tests persuasive framing in isolated runs; it does not instantiate same-session versus clean-session context separation."
+    ],
+    "next_validation": "Repeat with a redacted real code or research review and blind human adjudication."
+  }
+}

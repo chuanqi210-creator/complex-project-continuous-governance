@@ -1,0 +1,93 @@
+{
+  "version": "1.0",
+  "kind": "independent_clean_context_model_review",
+  "reviewer_identity": "separate read-only Codex subagent with no parent conversation context",
+  "human_review": false,
+  "blind_human_review": "pending",
+  "trajectory_review": "pending_full_trajectory_capture",
+  "reviewed_results": [
+    "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json",
+    "docs/evals/results/executable-pilots-20260717T171657Z-a091c06076-rescore.json",
+    "docs/evals/results/scorer-repair-external-calibration-20260718.json"
+  ],
+  "run_health": {
+    "valid_trials": 84,
+    "expected_trials": 84,
+    "terminal_errors": 0,
+    "recovered_retry_events": 4,
+    "classification": "healthy_environment_execution"
+  },
+  "global_findings": [
+    "All seven experiments instantiate writable environment contracts, but the tasks disclose much of the desired route, fields, or answer and therefore saturate the scorer.",
+    "Environment success does not establish trajectory quality, human preference, or real-project benefit.",
+    "The stored trajectory_summary is operational telemetry, not a reviewable full trajectory.",
+    "The append-only scorer repair is semantically justified and changes exactly one false failure, but remains post-hoc oracle repair rather than mechanism evidence.",
+    "The provider model name is an alias rather than an immutable model revision."
+  ],
+  "mechanism_decisions": [
+    {
+      "id": "complex_behavior_kernel",
+      "normative_role": "core",
+      "evidence_status": "tested",
+      "decision": "retain",
+      "claim_ceiling": "Short synthetic contracts execute; no baseline advantage was measured."
+    },
+    {
+      "id": "responsibility_boundary",
+      "normative_role": "core",
+      "evidence_status": "tested",
+      "decision": "retain",
+      "claim_ceiling": "Local execution and pending-authority artifacts execute; reduced over-asking or under-asking was not measured."
+    },
+    {
+      "id": "delivery_contract",
+      "normative_role": "core",
+      "evidence_status": "tested",
+      "decision": "retain",
+      "claim_ceiling": "Requested human and machine artifacts execute; reader benefit was not blind-reviewed."
+    },
+    {
+      "id": "operating_organization",
+      "normative_role": "conditional_extension",
+      "evidence_status": "screened",
+      "decision": "retain_conditional_and_revise_experiment",
+      "claim_ceiling": "Lane artifacts execute; throughput, review independence, and coordination value are unproven."
+    },
+    {
+      "id": "portfolio_control_plane",
+      "normative_role": "conditional_extension",
+      "evidence_status": "screened",
+      "decision": "retain_conditional_and_revise_experiment",
+      "claim_ceiling": "Route artifacts execute; false-stop reduction in real multi-module work is unproven."
+    },
+    {
+      "id": "trace_appraisal_hot_warm_cold",
+      "normative_role": "conditional_extension",
+      "evidence_status": "screened",
+      "decision": "retain_conditional_and_revise_experiment",
+      "claim_ceiling": "Fixture fields recover; context cost, latency, and long-project recovery benefit are unproven."
+    },
+    {
+      "id": "external_calibration_rule",
+      "normative_role": "conditional_extension",
+      "evidence_status": "screened",
+      "decision": "retain_conditional_and_revise_experiment",
+      "claim_ceiling": "Synthetic transfer decisions execute; improved real transfer decisions are unproven."
+    }
+  ],
+  "next_validation": [
+    "Use paired tasks with hidden answers and identical initial working sets; vary only the mechanism contract.",
+    "Capture a redacted full trajectory and grade it independently from environment outcome.",
+    "Run randomized arm-redacted human review for reader and decision tasks.",
+    "Repeat on at least two distinct real or redacted-real projects with locked correction cost, lead time, stop/authorization violation, and outcome measures."
+  ],
+  "prohibited_public_claims": [
+    "Any mechanism is more effective than native baseline.",
+    "Responsibility boundary reduces over-asking or prevents under-asking.",
+    "Delivery contract improves reader experience.",
+    "Operating organization or portfolio control improves throughput.",
+    "Trace appraisal lowers context cost.",
+    "External calibration improves real transfer decisions.",
+    "Any active mechanism is validated."
+  ]
+}

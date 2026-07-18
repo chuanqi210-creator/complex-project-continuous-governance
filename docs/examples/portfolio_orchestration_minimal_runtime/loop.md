@@ -6,8 +6,8 @@
 - active_module: model chain or data source chain.
 - standing_lane: controller.
 - loop_type: strategy.
-- expected_forward_artifact: accepted portfolio route and updated branch parking ledger.
-- outcome_completion_predicate: one module is selected from current evidence, its first executable beat starts, and the non-selected branch is explicitly kept or parked.
+- expected_forward_artifact: accepted portfolio route, updated branch parking ledger, and the first domain artifact or observed domain action from the selected module.
+- outcome_completion_predicate: one module is selected from current evidence, its first executable beat changes the domain environment, and the non-selected branch is explicitly kept or parked. Topology or routing metadata alone is not business completion.
 - evaluator: controller checks target-function fit; important route changes receive clean review.
 - why_not_local_greedy: the Loop compares portfolio routes before choosing a local edit.
 
@@ -21,9 +21,9 @@
 ## Observe And Evaluate
 
 - observed_environment_result: metadata is a guardrail, not the global bottleneck; model/data closure can advance.
-- forward_artifact_type: topology_delta.
-- forward_artifact_path: portfolio map and branch parking ledger.
-- completion_predicate_result: passed when the selected vertical-slice beat starts.
+- forward_artifact_type: route_delta plus first selected-module domain delta.
+- forward_artifact_path: portfolio map, branch parking ledger, and selected-module artifact pointer.
+- completion_predicate_result: passed only when the selected vertical-slice beat produces an observed domain change; a lane map alone is insufficient.
 
 ## Route
 

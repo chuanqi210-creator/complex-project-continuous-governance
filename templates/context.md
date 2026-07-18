@@ -46,6 +46,18 @@ Use this template to assemble the smallest sufficient context for the next judgm
 - claim_boundary:
 - retrieval_reason:
 
+## Reference Implementation Packet
+
+Use only for a mechanism-level external calibration.
+
+- reference_id_and_pinned_revision:
+- original_goal_and_non_goals:
+- state_and_control_path:
+- inspected_code_configuration_tests_evaluations:
+- upstream_validation_and_limit:
+- operating_constraints_and_failure_boundaries:
+- excluded_readme_or_popularity_claims:
+
 ## Exclusions
 
 - stale_or_superseded_material:

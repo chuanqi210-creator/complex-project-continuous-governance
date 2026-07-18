@@ -6,7 +6,7 @@ Use this file to keep claims honest. The goal is not to collect everything, but 
 
 | Claim | Current readiness | Evidence status | Gap action |
 | --- | --- | --- | --- |
-|  | idea_or_candidate / source_backed / locally_verified / small_loop_validated / pilot_ready / production_or_public_claim_ready |  |  |
+|  | idea_or_candidate / source_backed / locally_verified / bounded_result_observed / pilot_ready / production_or_public_claim_ready |  |  |
 
 ## Evidence Layers
 

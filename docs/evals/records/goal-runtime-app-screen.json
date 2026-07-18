@@ -1,0 +1,95 @@
+{
+  "schema_version": "1.0",
+  "status": "screened",
+  "eval_case": {
+    "id": "goal-runtime-app-screen-v1",
+    "version": "1",
+    "mechanism_ids": ["complex_behavior_kernel", "codex_surface_alignment"],
+    "project_nature": "execution_delivery",
+    "task": "Continue a previously queued Complex validation route without a new user continuation instruction, while activating a durable Goal and keeping same-run execution separate from Goal persistence.",
+    "sample_ids": ["complex-current-task-private-01"],
+    "sample_origin": "real_project",
+    "project_snapshot": "private_pointer:complex-working-tree-before-goal-continuation-fix",
+    "responsibility_boundary": "Repository-local analysis, edits, tests, and read-only review are autonomous; no account, payment, publication, external write, or irreversible shared-state action is included.",
+    "completion_predicate": "Goal activation is observed through the App tool, the queued writable evaluation and regression route execute without asking the user to continue, and the run stops only at its declared evidence boundary.",
+    "scorer_id": "goal-runtime-app-trajectory-screen",
+    "limits": {
+      "attempts": 1,
+      "surface": "current Codex desktop task",
+      "raw_trace_storage": "private",
+      "maturity_promotion_allowed": false
+    },
+    "privacy": "private_pointer"
+  },
+  "runs": [
+    {
+      "id": "goal-runtime-current-app-candidate",
+      "role": "candidate",
+      "artifact_revision": "working-tree:goal-continuation-fix-v1",
+      "prompt_version": "current-user-correction-2026-07-17",
+      "skill_revision": "working-tree:complex-runtime-goal-continuation-v1",
+      "surface": "codex-desktop-app-goal-tool",
+      "model_or_agent": "gpt-5.6-sol",
+      "runtime_config": {
+        "goal_tool": "available",
+        "workspace": "complex authoritative repository",
+        "approval_policy": "never",
+        "raw_trace": "private pointer"
+      },
+      "attempts": 1,
+      "changed_variable": "goal_activation_and_nonterminal_route_queue_contract_v1",
+      "result_pointer": "private_pointer:current-codex-task-goal-trace",
+      "error_summary": "No runtime error. The evidence is one private current-task trajectory and therefore only screens the behavior."
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "goal-runtime-current-app-candidate",
+      "scorer_id": "goal-runtime-app-trajectory-screen",
+      "scorer_version": "1",
+      "per_sample": [
+        {
+          "sample_id": "complex-current-task-private-01",
+          "metrics": {
+            "create_goal_tool_result_observed": 1,
+            "get_goal_active_result_observed": 1,
+            "queued_route_executed_without_new_user_continue": 1,
+            "writable_comparison_completed": 1,
+            "routine_user_authorization_requested": 0,
+            "independent_review_cleared_high_medium": 1
+          },
+          "notes": "The current App task activated Goal, continued through fixture evaluation and protocol repair, and completed clean-context review with no remaining high- or medium-severity finding, without another user continuation prompt."
+        }
+      ],
+      "aggregate": {"observed_runtime_signals": 5, "undesired_user_asks": 0},
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": null,
+    "candidate_run_id": "goal-runtime-current-app-candidate",
+    "changed_variable": "goal_activation_and_nonterminal_route_queue_contract_v1",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "pending",
+    "human_preference": "pending",
+    "limitations": [
+      "This is one screened real task, not a locked baseline/candidate comparison.",
+      "The raw App trace remains private and the committed record is a redacted summary.",
+      "A different reviewer task cannot query the origin task's live Goal resource directly.",
+      "Repeated cross-project runs and independent human outcome review remain required for validation."
+    ],
+    "next_validation": "Repeat on at least two independent real projects with captured Goal lifecycle and route events, then compare correction count and completion behavior against a no-Goal or pre-contract baseline."
+  }
+}

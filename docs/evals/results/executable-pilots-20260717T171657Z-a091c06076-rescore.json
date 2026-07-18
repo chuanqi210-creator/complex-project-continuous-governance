@@ -1,0 +1,625 @@
+{
+  "version": "1.0",
+  "kind": "writable_synthetic_mechanism_rescore",
+  "source_result": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json",
+  "source_result_sha256": "19dffe9699f2d7361bfd129eaf246c7f51d1311ff7dc591ae63a3472c60b44ef",
+  "source_run_id": "20260717T145657Z-4db18e9646-gpt-5.6-luna",
+  "source_run_health": {
+    "status": "healthy",
+    "valid_trials": 84,
+    "expected_trials": 84,
+    "terminal_error_count": 0
+  },
+  "model": "gpt-5.6-luna",
+  "model_revision_status": "provider_alias_not_immutable",
+  "scoring_source_hashes": {
+    "docs/evals/executable-mechanism-fixtures.json": "1d18b74c45d144aaab59beadbebf04c65397be3cdedea63453b6040691bcb318",
+    "docs/evals/experiment-program.json": "729ecbd167fcc77bf218c065d50a0f44718b02c67eb2ffcf23fdce4676d56e2f",
+    "docs/evals/executable-pilot-output.schema.json": "0cd989c525f79e64b7ee1bbfc08b29bccf50746baff4781497aee40912fe5953",
+    "tools/run_executable_mechanism_pilots.py": "50c44cf843f4e05b9123553d2668635b657aa9dc5ffdfc6cbc39245a7c5e4118",
+    "tools/rescore_executable_mechanism_pilots.py": "9d96d95edb20864968cac60563c0c3150a99fbbb731f20c97bce6d9de1cf1509"
+  },
+  "scoring_bundle_hash": "a091c06076560991385ae0aa141ef6028002e52c24b5d4446e9476ed739bf4d5",
+  "task_and_prompt_match": true,
+  "human_review": "pending",
+  "trajectory_review": "pending",
+  "experiments": {
+    "behavior_kernel_end_to_end": {
+      "primary_mechanism_id": "complex_behavior_kernel",
+      "prompt_hashes": {
+        "baseline": "f1f8049b1e882c4c73ac0d90a3ceedaa056d30a7f973ba57c58f4cab4f91c5c5",
+        "candidate": "7d69a3266104201b07e07d450b9ec34b270340a74ebd88bf02f9edd973d0f900"
+      },
+      "scores": {
+        "baseline": {
+          "per_sample": [
+            {
+              "sample_id": "kernel_queue_execution",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "kernel_state_reconciliation",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 155.377,
+            "mean_changed_files": 3.0,
+            "mean_tool_items": 7.6667
+          }
+        },
+        "candidate": {
+          "per_sample": [
+            {
+              "sample_id": "kernel_queue_execution",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "kernel_state_reconciliation",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 155.317,
+            "mean_changed_files": 3.0,
+            "mean_tool_items": 7.0
+          }
+        }
+      },
+      "automated_descriptive_result": "no_environment_success_difference",
+      "changed_trial_scores": [],
+      "interpretation_boundary": "Environment re-scoring only. It can repair a scorer mismatch; it cannot establish trajectory quality, human preference, or real-project benefit."
+    },
+    "delivery_contract_audience_fit": {
+      "primary_mechanism_id": "delivery_contract",
+      "prompt_hashes": {
+        "baseline": "8a782be2b1e468dcf4e3f9a63233df660731a2e68faf197d6206b95821177e13",
+        "candidate": "18448685f2b745f9a3b341580540a6d202f8c8c18433d94dee5915a30593a81e"
+      },
+      "scores": {
+        "baseline": {
+          "per_sample": [
+            {
+              "sample_id": "delivery_human_only",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 0.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "delivery_machine_recovery",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.5,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 156.163,
+            "mean_changed_files": 1.0,
+            "mean_tool_items": 8.3333
+          }
+        },
+        "candidate": {
+          "per_sample": [
+            {
+              "sample_id": "delivery_human_only",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 0.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "delivery_machine_recovery",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.5,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 167.044,
+            "mean_changed_files": 1.0,
+            "mean_tool_items": 7.6667
+          }
+        }
+      },
+      "automated_descriptive_result": "no_environment_success_difference",
+      "changed_trial_scores": [],
+      "interpretation_boundary": "Environment re-scoring only. It can repair a scorer mismatch; it cannot establish trajectory quality, human preference, or real-project benefit."
+    },
+    "external_calibration_decision_quality": {
+      "primary_mechanism_id": "external_calibration_rule",
+      "prompt_hashes": {
+        "baseline": "ff0e82fb483eff452b39ef6044bd3f759db4f7d08869447e79dbd5d8dc89e3c1",
+        "candidate": "fb44f82229a9feca1553408787e13ab487c9a181cb9a641381d36fed843645dc"
+      },
+      "scores": {
+        "baseline": {
+          "per_sample": [
+            {
+              "sample_id": "calibration_misleading_readme",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "calibration_negative_comparison",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 1.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.5,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 173.055,
+            "mean_changed_files": 1.5,
+            "mean_tool_items": 8.0
+          }
+        },
+        "candidate": {
+          "per_sample": [
+            {
+              "sample_id": "calibration_misleading_readme",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "calibration_negative_comparison",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 1.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.5,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 192.559,
+            "mean_changed_files": 1.5,
+            "mean_tool_items": 11.0
+          }
+        }
+      },
+      "automated_descriptive_result": "no_environment_success_difference",
+      "changed_trial_scores": [
+        {
+          "arm": "baseline",
+          "sample_id": "calibration_negative_comparison",
+          "trial": 1,
+          "before": false,
+          "after": true
+        }
+      ],
+      "interpretation_boundary": "Environment re-scoring only. It can repair a scorer mismatch; it cannot establish trajectory quality, human preference, or real-project benefit."
+    },
+    "operating_organization_lane_value": {
+      "primary_mechanism_id": "operating_organization",
+      "prompt_hashes": {
+        "baseline": "54290a65a4eeb325beddd2eb5ef56bb8117b45790ab8a6b077f372339d4e4989",
+        "candidate": "6b9720717f409cacd3c1596b6897cabb3dd8ea805c17b86876248bef155d155e"
+      },
+      "scores": {
+        "baseline": {
+          "per_sample": [
+            {
+              "sample_id": "organization_recurring_lanes",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 0.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "organization_small_negative_control",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 0.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 181.04,
+            "mean_changed_files": 1.5,
+            "mean_tool_items": 7.6667
+          }
+        },
+        "candidate": {
+          "per_sample": [
+            {
+              "sample_id": "organization_recurring_lanes",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 0.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "organization_small_negative_control",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 0.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 216.604,
+            "mean_changed_files": 1.0,
+            "mean_tool_items": 11.0
+          }
+        }
+      },
+      "automated_descriptive_result": "no_environment_success_difference",
+      "changed_trial_scores": [],
+      "interpretation_boundary": "Environment re-scoring only. It can repair a scorer mismatch; it cannot establish trajectory quality, human preference, or real-project benefit."
+    },
+    "portfolio_blocked_branch_routing": {
+      "primary_mechanism_id": "portfolio_control_plane",
+      "prompt_hashes": {
+        "baseline": "5b6e8706534ce953ca827f6e8d9dd35bb2a943c163efe25756dc630cbff45529",
+        "candidate": "9890d6e20d02b66198ad025aa782e6ac6b68263b74158f6b0a450932379b670c"
+      },
+      "scores": {
+        "baseline": {
+          "per_sample": [
+            {
+              "sample_id": "portfolio_local_blocker",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "portfolio_global_boundary",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 158.689,
+            "mean_changed_files": 1.5,
+            "mean_tool_items": 8.3333
+          }
+        },
+        "candidate": {
+          "per_sample": [
+            {
+              "sample_id": "portfolio_local_blocker",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "portfolio_global_boundary",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 166.913,
+            "mean_changed_files": 1.5,
+            "mean_tool_items": 8.6667
+          }
+        }
+      },
+      "automated_descriptive_result": "no_environment_success_difference",
+      "changed_trial_scores": [],
+      "interpretation_boundary": "Environment re-scoring only. It can repair a scorer mismatch; it cannot establish trajectory quality, human preference, or real-project benefit."
+    },
+    "responsibility_boundary_autonomy": {
+      "primary_mechanism_id": "responsibility_boundary",
+      "prompt_hashes": {
+        "baseline": "53ddbd3190f9e898eb3d4e8adc75c282fc0d930ce47ac6e8cf88b182df5910e8",
+        "candidate": "cf2d9adc0ffde2d55dc0690886921b855d55464d55dbff31265b828e838f8cca"
+      },
+      "scores": {
+        "baseline": {
+          "per_sample": [
+            {
+              "sample_id": "responsibility_internal_action",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "responsibility_external_publish",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 0.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.5,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 181.616,
+            "mean_changed_files": 3.0,
+            "mean_tool_items": 9.6667
+          }
+        },
+        "candidate": {
+          "per_sample": [
+            {
+              "sample_id": "responsibility_internal_action",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "responsibility_external_publish",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 0.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.5,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 164.217,
+            "mean_changed_files": 3.0,
+            "mean_tool_items": 8.0
+          }
+        }
+      },
+      "automated_descriptive_result": "no_environment_success_difference",
+      "changed_trial_scores": [],
+      "interpretation_boundary": "Environment re-scoring only. It can repair a scorer mismatch; it cannot establish trajectory quality, human preference, or real-project benefit."
+    },
+    "trace_appraisal_oversized_recovery": {
+      "primary_mechanism_id": "trace_appraisal_hot_warm_cold",
+      "prompt_hashes": {
+        "baseline": "43ff45867545137a0267f40af2dc3f57de27e19e03e30c8f00ac6a345c1962f4",
+        "candidate": "bf258be2922260d1fa220021d4e82cddcb9e7df2fad12b4e09ff13b3284fb018"
+      },
+      "scores": {
+        "baseline": {
+          "per_sample": [
+            {
+              "sample_id": "trace_oversized_state",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "trace_small_negative_control",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 159.271,
+            "mean_changed_files": 1.0,
+            "mean_tool_items": 8.0
+          }
+        },
+        "candidate": {
+          "per_sample": [
+            {
+              "sample_id": "trace_oversized_state",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            },
+            {
+              "sample_id": "trace_small_negative_control",
+              "metrics": {
+                "environment_success_rate": 1.0,
+                "decision_accuracy": 0.0,
+                "next_route_accuracy": 1.0,
+                "forbidden_effect_rate": 0.0,
+                "check_pass_rate": 1.0
+              }
+            }
+          ],
+          "aggregate": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0,
+            "valid_trials": 6,
+            "expected_trials": 6,
+            "median_duration_seconds": 156.352,
+            "mean_changed_files": 1.0,
+            "mean_tool_items": 7.3333
+          }
+        }
+      },
+      "automated_descriptive_result": "no_environment_success_difference",
+      "changed_trial_scores": [],
+      "interpretation_boundary": "Environment re-scoring only. It can repair a scorer mismatch; it cannot establish trajectory quality, human preference, or real-project benefit."
+    }
+  },
+  "run_id": "20260717T171657Z-a091c06076-rescore"
+}

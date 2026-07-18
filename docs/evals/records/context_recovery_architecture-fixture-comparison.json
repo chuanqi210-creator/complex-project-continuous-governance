@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.0",
+  "status": "compared",
+  "eval_case": {
+    "id": "context_recovery_architecture",
+    "version": "1.0",
+    "mechanism_ids": [
+      "trace_appraisal_hot_warm_cold",
+      "complex_behavior_kernel"
+    ],
+    "project_nature": "mixed",
+    "task": "Does one compact authoritative anchor plus indexed history improve recovery and reduce stale-state contamination compared with a monolithic append-only state file?",
+    "sample_ids": [
+      "superseded_route",
+      "conflicting_version",
+      "missing_optional_history"
+    ],
+    "sample_origin": "fixture",
+    "project_snapshot": "docs/evals/bounded-experiment-fixtures.json@sha256:cbdebdf19be0cedb48f3b0cd318ffac0ff7366976d531df6d8c618ffc6b33312",
+    "responsibility_boundary": "Read-only local fixture evaluation; no external writes or user-owned commitments.",
+    "completion_predicate": "Both arms run three trials on frozen opaque-ID fixtures, deterministic scoring and clean-context trajectory review are recorded, and blind human preference is resolved before a transfer decision.",
+    "scorer_id": "context_recovery_architecture_deterministic",
+    "limits": {
+      "trials_per_arm": 3,
+      "command_timeout_seconds": 240,
+      "max_command_attempts": 2
+    },
+    "privacy": "public"
+  },
+  "runs": [
+    {
+      "id": "context_recovery_architecture-baseline-3x",
+      "role": "baseline",
+      "artifact_revision": "sha256:67ba8977405174e907ab73bf83ed75ffb4773411189a078b6fe956a321722fda",
+      "prompt_version": "sha256:037783d216afe3c710df2f987007b453fb3d57243172ae807dbe75a50bb05982",
+      "skill_revision": "sha256:6cb1b3ba1d480266b9943413f4dcdd6e9cecd231b6678cbab5fc07e118c08cf9",
+      "surface": "codex exec isolated fixture",
+      "model_or_agent": "gpt-5.3-codex-spark",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.144.5",
+        "reasoning_effort": "low",
+        "sandbox": "read-only",
+        "ignore_user_config": true,
+        "trials_per_arm": 3,
+        "structured_output_schema": "docs/evals/bounded-experiment-output.schema.json"
+      },
+      "attempts": 3,
+      "changed_variable": "context recovery architecture",
+      "result_pointer": "docs/evals/results/bounded-experiments-20260717.json#context_recovery_architecture/baseline",
+      "error_summary": ""
+    },
+    {
+      "id": "context_recovery_architecture-candidate-3x",
+      "role": "candidate",
+      "artifact_revision": "sha256:67ba8977405174e907ab73bf83ed75ffb4773411189a078b6fe956a321722fda",
+      "prompt_version": "sha256:bb4c37d9a8ca24ebbeb63886c3c07f023525882c528b95680ba870cf3843c925",
+      "skill_revision": "sha256:6cb1b3ba1d480266b9943413f4dcdd6e9cecd231b6678cbab5fc07e118c08cf9",
+      "surface": "codex exec isolated fixture",
+      "model_or_agent": "gpt-5.3-codex-spark",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.144.5",
+        "reasoning_effort": "low",
+        "sandbox": "read-only",
+        "ignore_user_config": true,
+        "trials_per_arm": 3,
+        "structured_output_schema": "docs/evals/bounded-experiment-output.schema.json"
+      },
+      "attempts": 3,
+      "changed_variable": "context recovery architecture",
+      "result_pointer": "docs/evals/results/bounded-experiments-20260717.json#context_recovery_architecture/candidate",
+      "error_summary": ""
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "context_recovery_architecture-baseline-3x",
+      "scorer_id": "context_recovery_architecture_deterministic",
+      "scorer_version": "1.0",
+      "per_sample": [
+        {
+          "sample_id": "superseded_route",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "stale_route_rate": 0.0
+          }
+        },
+        {
+          "sample_id": "conflicting_version",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 1.0,
+            "stale_route_rate": 0.0
+          }
+        },
+        {
+          "sample_id": "missing_optional_history",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "stale_route_rate": 0.0
+          }
+        }
+      ],
+      "aggregate": {
+        "valid_trials": 3,
+        "expected_trials": 3,
+        "decision_accuracy": 1.0,
+        "working_set_chars": 706,
+        "stale_route_rate": 0.0,
+        "output_contract_violation_rate": 0.3333
+      },
+      "human_review": "pending"
+    },
+    {
+      "run_id": "context_recovery_architecture-candidate-3x",
+      "scorer_id": "context_recovery_architecture_deterministic",
+      "scorer_version": "1.0",
+      "per_sample": [
+        {
+          "sample_id": "superseded_route",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "stale_route_rate": 0.0
+          }
+        },
+        {
+          "sample_id": "conflicting_version",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.3333,
+            "stale_route_rate": 0.0
+          }
+        },
+        {
+          "sample_id": "missing_optional_history",
+          "metrics": {
+            "valid_trials": 3,
+            "decision_accuracy": 1.0,
+            "output_contract_violation_rate": 0.0,
+            "stale_route_rate": 0.0
+          }
+        }
+      ],
+      "aggregate": {
+        "valid_trials": 3,
+        "expected_trials": 3,
+        "decision_accuracy": 1.0,
+        "working_set_chars": 911,
+        "stale_route_rate": 0.0,
+        "output_contract_violation_rate": 0.1111
+      },
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": "context_recovery_architecture-baseline-3x",
+    "candidate_run_id": "context_recovery_architecture-candidate-3x",
+    "changed_variable": "context recovery architecture",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "insufficient_evidence",
+    "human_preference": "pending",
+    "limitations": [
+      "Synthetic fixtures test discrimination, not production effectiveness.",
+      "The model evaluator subject and deterministic scorer do not replace blind human review.",
+      "Automated signal: no_discriminating_signal; human preference remains pending, so no transfer_candidate decision is issued.",
+      "The independent-review fixture tests persuasive framing in isolated runs; it does not instantiate same-session versus clean-session context separation."
+    ],
+    "next_validation": "After the fixture run, repeat on a redacted oversized real-project state."
+  }
+}

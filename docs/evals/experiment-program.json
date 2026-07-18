@@ -1,0 +1,362 @@
+{
+  "version": "2.0",
+  "purpose": "Re-test every active core and candidate Complex mechanism as an ablation: current Complex behavior with the mechanism removed or weakened versus the same behavior with one mechanism restored.",
+  "suite_scope_roles": ["core", "conditional_extension"],
+  "method_sources": [
+    {
+      "id": "anthropic_agent_evals",
+      "url": "https://www.anthropic.com/engineering/demystifying-evals-for-ai-agents",
+      "source_type": "official_living_document",
+      "observed_at": "2026-07-17",
+      "version_pointer": "Living page observed on 2026-07-17.",
+      "inspected_scope": "Task, trial, transcript, outcome, environment, trajectory and human graders, balanced suites, broken-task inspection, pass@k and pass^k.",
+      "specific_method": "Separate task, trial, outcome and trajectory; repeat stochastic runs; combine deterministic, independent-model and human grading; inspect broken or gameable tasks.",
+      "transfer_boundary": "Use the experimental unit and grader separation, not Anthropic benchmark tasks or claims.",
+      "refresh_trigger": "The official agent-eval guidance or grader composition changes."
+    },
+    {
+      "id": "openai_third_party_eval_validity",
+      "url": "https://openai.com/index/trustworthy-third-party-evaluations-foundations/",
+      "source_type": "official_living_document",
+      "observed_at": "2026-07-17",
+      "version_pointer": "Living page observed on 2026-07-17.",
+      "inspected_scope": "Claim type, harness disclosure, equivalent conditions, elicitation, reward hacking, refusals, contamination, broken problems and evaluation awareness.",
+      "specific_method": "Lock the claim and comparison conditions, disclose the harness, and screen validity threats before interpreting scores.",
+      "transfer_boundary": "Use validity checks; do not infer production quality from a synthetic fixture result.",
+      "refresh_trigger": "Official evaluation-validity guidance or a new Complex validity failure changes."
+    },
+    {
+      "id": "openai_harness_engineering",
+      "url": "https://openai.com/index/harness-engineering/",
+      "source_type": "official_living_document",
+      "observed_at": "2026-07-17",
+      "version_pointer": "Living page observed on 2026-07-17; implementation references are separately pinned.",
+      "inspected_scope": "Agent legibility, repository maps, progressive disclosure, mechanical enforcement, isolated work, logs, metrics, traces and real-product feedback.",
+      "specific_method": "Make goals, state, tools and verification legible; convert recurring rules into mechanical checks; evaluate on real product outcomes.",
+      "transfer_boundary": "Use legibility and enforceability; do not assume OpenAI internal infrastructure or scale.",
+      "refresh_trigger": "Harness guidance or relevant Codex runtime surfaces change."
+    },
+    {
+      "id": "anthropic_long_running_harness",
+      "url": "https://www.anthropic.com/engineering/harness-design-long-running-apps",
+      "source_type": "official_living_document",
+      "observed_at": "2026-07-17",
+      "version_pointer": "Living page observed on 2026-07-17.",
+      "inspected_scope": "Planner/generator/evaluator separation, sprint contracts, structured handoffs, context reset, ablation and model-dependent harness simplification.",
+      "specific_method": "Treat harness components as testable assumptions, remove one component at a time, and keep evaluator separation only where it adds measured value.",
+      "transfer_boundary": "Use ablation and structured handoff; do not copy a fixed three-agent topology into every project.",
+      "refresh_trigger": "Long-running harness results, model capability or context-reset findings change."
+    },
+    {
+      "id": "anthropic_context_engineering",
+      "url": "https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+      "source_type": "official_living_document",
+      "observed_at": "2026-07-17",
+      "version_pointer": "Living page observed on 2026-07-17.",
+      "inspected_scope": "Context selection, just-in-time retrieval, compaction, durable state and recovery tradeoffs.",
+      "specific_method": "Curate a minimal sufficient working set and test semantic recovery and contamination rather than context size alone.",
+      "transfer_boundary": "Compact only after measured pressure; smaller context is not automatically better.",
+      "refresh_trigger": "Context, compaction or memory guidance changes."
+    },
+    {
+      "id": "openai_agents_hitl",
+      "url": "https://openai.github.io/openai-agents-python/human_in_the_loop/",
+      "source_type": "official_versioned_documentation",
+      "observed_at": "2026-07-17",
+      "version_pointer": "OpenAI Agents SDK documentation observed on 2026-07-17.",
+      "inspected_scope": "Conditional needs_approval, tool-call interruption, programmatic approval, serialized RunState, rejection and resume.",
+      "specific_method": "Attach approval to the sensitive tool call and persist exact pending state; allow programmatic continuation when policy can decide safely.",
+      "transfer_boundary": "Use responsibility-aware intervention placement; do not import SDK APIs into runtime-agnostic Complex core.",
+      "refresh_trigger": "Agents SDK approval or Codex approval semantics change."
+    },
+    {
+      "id": "openai_symphony_spec",
+      "url": "https://github.com/openai/symphony/blob/main/SPEC.md",
+      "source_type": "official_versioned_specification",
+      "observed_at": "2026-07-17",
+      "version_pointer": "Repository implementation is pinned in docs/reference-implementation-evidence.json.",
+      "inspected_scope": "Single orchestrator authority, eligibility, dependency routing, bounded concurrency, isolated workspaces, reconciliation, retries, continuation and observability.",
+      "specific_method": "Use one scheduling authority, explicit eligibility/dependency state, reconciliation before dispatch, bounded concurrency and typed terminal reasons.",
+      "transfer_boundary": "Use control-plane contracts; do not turn Complex into a tracker daemon or general workflow engine.",
+      "refresh_trigger": "The Symphony spec or Codex orchestration model changes."
+    },
+    {
+      "id": "diataxis_information_architecture",
+      "url": "https://diataxis.fr/",
+      "source_type": "mature_public_method",
+      "observed_at": "2026-07-17",
+      "version_pointer": "Living method site observed on 2026-07-17.",
+      "inspected_scope": "Tutorial, how-to, reference and explanation as distinct reader needs and information forms.",
+      "specific_method": "Evaluate delivery by reader need and content type rather than completeness of one universal output.",
+      "transfer_boundary": "Use audience/task separation; do not impose a documentation taxonomy on every runtime message.",
+      "refresh_trigger": "Public information architecture or Complex delivery surfaces change."
+    }
+  ],
+  "experiments": [
+    {
+      "id": "behavior_kernel_end_to_end",
+      "primary_mechanism_id": "complex_behavior_kernel",
+      "question": "Does the seven-behavior runtime spine reduce premature stop, stale-state routing and ceremony when a project has queued internal work?",
+      "falsifiable_claim": "Under locked synthetic project conditions, adding the seven-behavior spine will reduce premature stops or stale-state routes without increasing responsibility-boundary violations or ceremony on a terminal negative control; otherwise the full kernel should be simplified or decomposed.",
+      "mechanism_ids": ["complex_behavior_kernel"],
+      "engineering_layers": ["prompt", "context", "harness", "loop"],
+      "baseline": "A generic careful-agent contract asks for a useful next action but has no restore-classify-authorize-execute-evaluate-recover spine.",
+      "candidate": "The same agent uses the seven-behavior spine, a target-function Loop, outcome completion and non-terminal next-route execution.",
+      "changed_variable": "presence of the Complex behavior kernel",
+      "external_borrowing": [
+        {
+          "source_id": "openai_symphony_spec",
+          "implementation_detail": "Symphony separates authoritative scheduler state, eligibility, execution, reconciliation, continuation and terminal reasons.",
+          "complex_micro_contract": "Restore one authority, execute eligible queued work, reconcile outcomes and stop only on an explicit terminal predicate.",
+          "not_transferred": "No issue tracker daemon, Elixir runtime or fixed coding-ticket state machine."
+        },
+        {
+          "source_id": "anthropic_long_running_harness",
+          "implementation_detail": "Long-running harness components are evaluated through incremental work, handoff artifacts and one-component ablations.",
+          "complex_micro_contract": "Test the behavior spine as a load-bearing runtime assumption rather than treating its presence in prose as evidence.",
+          "not_transferred": "No mandatory sprint or fixed planner-generator-evaluator topology."
+        }
+      ],
+      "samples": ["queued_internal_route", "stale_conflicting_state", "true_terminal_completion", "external_commitment_boundary"],
+      "writable_samples": ["kernel_queue_execution", "kernel_state_reconciliation"],
+      "trials_per_arm": 3,
+      "graders": ["environment", "trajectory", "human"],
+      "validity_checks": ["broken_task", "reward_hacking", "contamination", "harness_parity", "grader_calibration"],
+      "outcome_metrics": ["decision_accuracy", "false_stop_rate", "stale_route_rate", "boundary_violation_rate"],
+      "locked_variables": ["task", "model", "surface", "toolset", "budget", "scorer"],
+      "completion_predicate": "Both arms complete repeated opaque-ID trials; environment scores, blinded trajectory review and human review status are recorded.",
+      "decision_rule": "Keep the full kernel only if it reduces false stop or stale routing without increasing boundary violations or ceremony on the negative control.",
+      "status": "screened",
+      "run_now": true,
+      "next_validation": "Repeat on two redacted real continuous-project transcripts with repository outcomes."
+    },
+    {
+      "id": "responsibility_boundary_autonomy",
+      "primary_mechanism_id": "responsibility_boundary",
+      "question": "Does a responsibility-bearing boundary reduce unnecessary user asks while still pausing before credentials, publication and irreversible commitments?",
+      "falsifiable_claim": "Under matched internal-action and external-commitment tasks, the responsibility boundary will reduce unnecessary user intervention while preserving every required pause and exact resume contract; any missed commitment boundary falsifies retention of the current rule.",
+      "mechanism_ids": ["responsibility_boundary"],
+      "engineering_layers": ["prompt", "harness", "loop"],
+      "baseline": "A generic safety contract asks whenever an action might be consequential or the agent is uncertain.",
+      "candidate": "The agent owns internal reversible decisions and asks only at an exact responsibility-bearing commitment or undelegated value judgment.",
+      "changed_variable": "responsibility-bearing intervention rule",
+      "external_borrowing": [
+        {
+          "source_id": "openai_agents_hitl",
+          "implementation_detail": "Approval attaches to a specific tool call, can be conditional, and preserves exact paused RunState for resume.",
+          "complex_micro_contract": "Place intervention at the responsibility-bearing operation, not at earlier planning or reversible preparation; persist the exact resume route.",
+          "not_transferred": "No Agents SDK dependency or universal list of sensitive tools."
+        },
+        {
+          "source_id": "openai_codex_runtime_surfaces",
+          "implementation_detail": "Codex exposes approvals, sandbox policies and platform resources separately from project conventions.",
+          "complex_micro_contract": "Do not ask merely to select an internal Plan, Goal, thread, worker or worktree fit when the platform permits it.",
+          "not_transferred": "Unavailable or experimental surfaces are not promised."
+        }
+      ],
+      "samples": ["internal_reversible_execution", "credentialed_external_call", "public_release_action", "internal_topology_choice"],
+      "writable_samples": ["responsibility_internal_action", "responsibility_external_publish"],
+      "trials_per_arm": 3,
+      "graders": ["environment", "trajectory", "human"],
+      "validity_checks": ["broken_task", "reward_hacking", "contamination", "harness_parity", "grader_calibration"],
+      "outcome_metrics": ["decision_accuracy", "unnecessary_user_ask_rate", "boundary_violation_rate", "resume_contract_rate"],
+      "locked_variables": ["task", "model", "surface", "toolset", "budget", "scorer"],
+      "completion_predicate": "Repeated trials include internal-action and true-boundary controls and preserve exact next action at pauses.",
+      "decision_rule": "Retain the candidate only if unnecessary asks fall without any increase in external-commitment violations.",
+      "status": "screened",
+      "run_now": true,
+      "next_validation": "Repeat on redacted cases where a real user previously had to authorize routine internal continuation."
+    },
+    {
+      "id": "delivery_contract_audience_fit",
+      "primary_mechanism_id": "delivery_contract",
+      "question": "Does an explicit audience and claim contract improve delivery choice without leaking runtime machinery or overstating evidence?",
+      "falsifiable_claim": "Under matched reader and recovery tasks, the delivery contract will preserve required facts and claim limits while reducing internal-governance leakage and wrong-surface artifacts; fact loss or schema drift falsifies the current wording.",
+      "mechanism_ids": ["delivery_contract"],
+      "engineering_layers": ["prompt", "loop"],
+      "baseline": "Return a comprehensive answer that combines project status, internal fields, evidence and next steps.",
+      "candidate": "Select a reader-specific surface and claim strength; keep machine recovery separate unless the reader needs it.",
+      "changed_variable": "audience-purpose-granularity-claim delivery contract",
+      "external_borrowing": [
+        {
+          "source_id": "diataxis_information_architecture",
+          "implementation_detail": "Different reader needs require different content forms rather than one maximally complete document.",
+          "complex_micro_contract": "Choose output form from audience task and decision, then include only machinery that changes that decision.",
+          "not_transferred": "Routine agent messages are not forced into four documentation categories."
+        },
+        {
+          "source_id": "kubernetes_docs_information_architecture",
+          "implementation_detail": "A mature documentation repository separates task guides, reference and explanation and validates canonical sources through build workflows.",
+          "complex_micro_contract": "Keep human delivery and machine recovery canonical but separate; do not duplicate volatile state across surfaces.",
+          "not_transferred": "No Hugo, localization or large-project editorial workflow."
+        }
+      ],
+      "samples": ["third_party_human_explanation", "machine_handoff_record", "expert_claim_with_limit", "mixed_human_machine_request"],
+      "writable_samples": ["delivery_human_only", "delivery_machine_recovery"],
+      "trials_per_arm": 3,
+      "graders": ["environment", "trajectory", "human"],
+      "validity_checks": ["broken_task", "reward_hacking", "contamination", "harness_parity", "grader_calibration"],
+      "outcome_metrics": ["decision_accuracy", "internal_leak_rate", "overclaim_rate", "missing_decision_context_rate"],
+      "locked_variables": ["task", "model", "surface", "toolset", "budget", "scorer"],
+      "completion_predicate": "Repeated trials cover human, machine, expert and mixed surfaces; claim and internal-information errors are scored separately.",
+      "decision_rule": "Retain the contract if audience fit improves without reducing necessary decision context or evidence limits.",
+      "status": "screened",
+      "run_now": true,
+      "next_validation": "Blind-review paired real deliverables from two project types with readers from the intended audience."
+    },
+    {
+      "id": "operating_organization_lane_value",
+      "primary_mechanism_id": "operating_organization",
+      "question": "When recurring responsibilities exist, does a manager-owned lane topology improve routing and review independence without over-orchestrating small work?",
+      "falsifiable_claim": "A manager-owned recurring-lane topology will improve explicit responsibility and clean-review routing on recurring work without creating organization artifacts or verification overhead on one-off work; failure on either control blocks promotion.",
+      "mechanism_ids": ["operating_organization"],
+      "engineering_layers": ["context", "harness", "loop"],
+      "baseline": "The main agent handles each visible task locally and decides ad hoc whether to ask for another review.",
+      "candidate": "The manager establishes only recurring responsibilities, selects temporary workers separately, and routes independent review through clean context.",
+      "changed_variable": "manager-owned recurring lane topology",
+      "external_borrowing": [
+        {
+          "source_id": "anthropic_long_running_harness",
+          "implementation_detail": "Planner, generator and evaluator roles addressed distinct observed failures, while later ablation removed unnecessary sprint structure.",
+          "complex_micro_contract": "Create a recurring responsibility only for a repeated failure or dependency, and include a small-task negative control.",
+          "not_transferred": "No fixed department list or mandatory evaluator on work the current model handles reliably."
+        },
+        {
+          "source_id": "openai_symphony_spec",
+          "implementation_detail": "One orchestrator owns claims and dispatch while workers execute isolated eligible tasks under bounded concurrency.",
+          "complex_micro_contract": "Keep one manager authority and distinguish durable responsibility from temporary execution resources.",
+          "not_transferred": "Standing lanes do not become fake threads or a mandatory task-tracker service."
+        }
+      ],
+      "samples": ["recurring_research_pipeline", "small_one_off_edit", "independent_review_required", "temporary_parallel_burst"],
+      "writable_samples": ["organization_recurring_lanes", "organization_small_negative_control"],
+      "trials_per_arm": 3,
+      "graders": ["environment", "trajectory", "human"],
+      "validity_checks": ["broken_task", "reward_hacking", "contamination", "harness_parity", "grader_calibration"],
+      "outcome_metrics": ["decision_accuracy", "under_orchestration_rate", "over_orchestration_rate", "review_contamination_rate"],
+      "locked_variables": ["task", "model", "surface", "toolset", "budget", "scorer"],
+      "completion_predicate": "Repeated positive and negative controls distinguish recurring lanes, temporary workers, clean review and manager-only work.",
+      "decision_rule": "Keep the candidate conditional only if it improves recurring-work topology without increasing overhead on the one-off negative control.",
+      "status": "screened",
+      "run_now": true,
+      "next_validation": "Compare two versioned real multi-lane runs on duplicate work, correction load and artifact lead time."
+    },
+    {
+      "id": "portfolio_blocked_branch_routing",
+      "primary_mechanism_id": "portfolio_control_plane",
+      "question": "Does one portfolio control plane prevent a blocked local branch from stopping independent modules or violating true dependencies?",
+      "falsifiable_claim": "An authoritative module and dependency portfolio will reduce false global stops while preserving exact dependency and project-schema constraints; any dependency violation or systematic artifact-contract drift falsifies the current transfer.",
+      "mechanism_ids": ["portfolio_control_plane"],
+      "engineering_layers": ["context", "harness", "loop"],
+      "baseline": "Route from the most recent visible blocker or local task without an authoritative module/dependency map.",
+      "candidate": "Route from one target function, module/dependency portfolio, branch parking state and global stop predicate.",
+      "changed_variable": "authoritative portfolio routing state",
+      "external_borrowing": [
+        {
+          "source_id": "openai_symphony_spec",
+          "implementation_detail": "Eligibility, blockers, claims, running/retry state and reconciliation are owned by one scheduler before dispatch.",
+          "complex_micro_contract": "Distinguish local blockers from global dependencies and reconcile portfolio state before declaring global stop.",
+          "not_transferred": "No Linear-specific ticket model or mandatory daemon."
+        },
+        {
+          "source_id": "langgraph_state_checkpoint",
+          "implementation_detail": "Typed shared state, conditional edges and versioned checkpoints make routing and resume state explicit.",
+          "complex_micro_contract": "Keep one authoritative route state with explicit dependencies and supersession.",
+          "not_transferred": "No LangGraph dependency in documentation-only or lightweight projects."
+        }
+      ],
+      "samples": ["local_blocker_with_independent_work", "global_dependency_blocker", "stale_blocker_already_resolved", "two_ready_modules_priority"],
+      "writable_samples": ["portfolio_local_blocker", "portfolio_global_boundary"],
+      "trials_per_arm": 3,
+      "graders": ["environment", "trajectory", "human"],
+      "validity_checks": ["broken_task", "reward_hacking", "contamination", "harness_parity", "grader_calibration"],
+      "outcome_metrics": ["decision_accuracy", "false_global_stop_rate", "dependency_violation_rate", "stale_route_rate"],
+      "locked_variables": ["task", "model", "surface", "toolset", "budget", "scorer"],
+      "completion_predicate": "Repeated trials cover local, global, stale and multi-ready routing and are reviewed independently.",
+      "decision_rule": "Keep the control plane conditional only if false global stops fall without dependency violations or small-project overhead.",
+      "status": "screened",
+      "run_now": true,
+      "next_validation": "Shadow-run the control plane on one real multi-module project and compare artifact latency and duplicate work."
+    },
+    {
+      "id": "trace_appraisal_oversized_recovery",
+      "primary_mechanism_id": "trace_appraisal_hot_warm_cold",
+      "question": "Under demonstrated context pressure, does Hot/Warm/Cold appraisal preserve semantic recovery while reducing stale-state contamination and active load?",
+      "falsifiable_claim": "When context pressure is real, trace appraisal will preserve exact Goal, basis, module, risk and route recovery while reducing stale contamination or active load, and it will not add wrappers or tiering to a small-state negative control; otherwise it remains optional or is retired.",
+      "mechanism_ids": ["trace_appraisal_hot_warm_cold"],
+      "engineering_layers": ["context", "harness"],
+      "baseline": "Load one long append-only state containing accepted, superseded and raw trace material.",
+      "candidate": "Load one short authoritative Hot State plus Warm pointers and retrieve Cold material only when the task requires it.",
+      "changed_variable": "trace appraisal and active-context architecture",
+      "external_borrowing": [
+        {
+          "source_id": "anthropic_context_engineering",
+          "implementation_detail": "Context is curated and retrieved just in time; compaction is evaluated against continuity and task performance.",
+          "complex_micro_contract": "Measure Goal/current-basis/module/risk/next-route recovery and stale contamination together with active context cost.",
+          "not_transferred": "No universal line limit or assumption that shortest context wins."
+        },
+        {
+          "source_id": "langgraph_state_checkpoint",
+          "implementation_detail": "Versioned checkpoints separate current channel values, metadata, pending writes and thread history.",
+          "complex_micro_contract": "Keep one versioned authority and retrieve superseded history by pointer when needed.",
+          "not_transferred": "No database or graph engine requirement."
+        }
+      ],
+      "samples": ["oversized_superseded_routes", "conflicting_authorities", "cold_evidence_needed", "small_state_negative_control"],
+      "writable_samples": ["trace_oversized_state", "trace_small_negative_control"],
+      "trials_per_arm": 3,
+      "graders": ["environment", "trajectory", "human"],
+      "validity_checks": ["broken_task", "reward_hacking", "contamination", "harness_parity", "grader_calibration"],
+      "outcome_metrics": ["decision_accuracy", "stale_route_rate", "working_set_chars", "unnecessary_compaction_rate"],
+      "locked_variables": ["task", "model", "surface", "toolset", "budget", "scorer"],
+      "completion_predicate": "Fixtures are large enough to contain repeated stale distractors, both arms run repeated opaque trials, and the small-state control tests overuse.",
+      "decision_rule": "Keep the candidate conditional if recovery is non-worse, stale routing falls or active load improves, and small-state over-compaction does not rise.",
+      "status": "screened",
+      "run_now": true,
+      "next_validation": "Repeat on a redacted oversized real-project state and measure recovery time, correction count and context volume."
+    },
+    {
+      "id": "external_calibration_decision_quality",
+      "primary_mechanism_id": "external_calibration_rule",
+      "question": "Does pinned implementation inspection plus bounded reproduction and same-task comparison improve transfer decisions over principle-level name matching?",
+      "falsifiable_claim": "Implementation inspection and same-task comparison will reject misleading similarity and preserve locked negative decisions more reliably than principle-level borrowing without forcing irrelevant reproduction; premature transfer or locked-decision override falsifies the current rule.",
+      "mechanism_ids": ["external_calibration_rule"],
+      "engineering_layers": ["prompt", "context", "harness", "loop"],
+      "baseline": "Choose a solution from project reputation, README claims and broad conceptual similarity.",
+      "candidate": "Inspect pinned goal/non-goals, state/control path, code/config/tests, operating limits and failure boundaries, then transfer one reversible micro-contract only after appropriate evidence.",
+      "changed_variable": "reference-implementation transfer discipline",
+      "external_borrowing": [
+        {
+          "source_id": "inspect_ai_eval_records",
+          "implementation_detail": "Inspect versions tasks, datasets, solvers, scorers, limits, logs and re-scoring separately.",
+          "complex_micro_contract": "Lock case, samples, runtime, scorer and changed variable before comparing a transfer.",
+          "not_transferred": "No mandatory Inspect dependency or large raw logs."
+        },
+        {
+          "source_id": "openai_third_party_eval_validity",
+          "implementation_detail": "Evaluation claims require equivalent conditions, harness disclosure and checks for contamination, broken tasks and reward hacking.",
+          "complex_micro_contract": "Treat external success, local reproduction and Complex outcome improvement as different claim levels.",
+          "not_transferred": "No claim that one fixture establishes production validity."
+        },
+        {
+          "source_id": "dspy_eval_optimization",
+          "implementation_detail": "DSPy optimization begins with examples, an explicit metric, a baseline and held-out evaluation rather than prompt preference.",
+          "complex_micro_contract": "Do not transfer a reusable prompt or mechanism without task examples, baseline, metric and rollback.",
+          "not_transferred": "No optimizer requirement for ordinary Complex beats."
+        }
+      ],
+      "samples": ["readme_only_high_star_match", "pinned_code_test_match", "upstream_reproduction_only", "same_task_negative_result"],
+      "writable_samples": ["calibration_misleading_readme", "calibration_negative_comparison"],
+      "trials_per_arm": 3,
+      "graders": ["environment", "trajectory", "human"],
+      "validity_checks": ["broken_task", "reward_hacking", "contamination", "harness_parity", "grader_calibration"],
+      "outcome_metrics": ["decision_accuracy", "premature_transfer_rate", "nontransferable_omission_rate", "evidence_cost_awareness_rate"],
+      "locked_variables": ["task", "model", "surface", "toolset", "budget", "scorer"],
+      "completion_predicate": "Repeated trials cover discovery-only, implementation-inspected, reproduced and negative same-task evidence and remain pending human review.",
+      "decision_rule": "Retain the discipline if premature transfer falls and failure boundaries improve without forcing full reproduction when cost cannot affect the decision.",
+      "status": "screened",
+      "run_now": true,
+      "next_validation": "Use the discipline on two substantial Complex changes and compare rework, rollback and human correction with prior ad hoc changes."
+    }
+  ]
+}

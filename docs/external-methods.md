@@ -1,8 +1,53 @@
 # External Production Methods Mapped To Complex
 
-Complex transfers production patterns, not brand names or dependencies. Every mechanism-level change records source, production problem, adopted pattern, rejected pattern, non-transferable boundary, Complex micro-contract, and refresh trigger.
+Complex transfers bounded reference implementations, not brand names or dependencies. Every mechanism-level change moves through discovery, pinned implementation inspection, bounded reproduction, same-task comparison, reversible transfer, and Complex-side validation. It records the original goal/non-goals, code/configuration/tests/evaluation evidence, upstream limits, production problem, adopted pattern, rejected pattern, non-transferable boundary, Complex micro-contract, rollback, next validation, and refresh trigger.
 
 The WeChat article "Prompt 到 Loop 进化" is a useful vocabulary and discovery source. It is not treated as proof that a production pattern works. The evidence anchors below are official documentation, primary research, standards, or mature engineering writeups.
+
+## Reference Implementation Transfer Standard
+
+Popularity is a candidate-discovery signal only. A source becomes implementation evidence only after a fixed revision and concrete operating path have been inspected. Before same-task comparison, it may inform only a reversible provisional experiment with explicit rollback; it is not yet a transferred mechanism. A transfer becomes Complex evidence only after bounded reproduction or a justified unreproduced record, same-task comparison, and Complex-side testing.
+
+| Status | Evidence required | What may be claimed |
+| --- | --- | --- |
+| `discovered` | relevant project or paper found | candidate exists |
+| `implementation_inspected` | pinned revision plus code/config/tests/evals/control/state inspection | mechanism and limits are understood |
+| `reproduced` | local fixture, command, and result | bounded upstream behavior ran locally |
+| `comparatively_evaluated` | candidate and Complex baseline on the same input and measures | relative behavior on that task |
+| `transferred` | bounded Complex change, rollback, and evaluation evidence | mechanism is implemented in Complex |
+| `validated_in_complex` | repeated real transcripts or end-to-end project improvement | transfer improves Complex within the observed scope |
+
+The machine-readable evidence is in `docs/reference-implementation-evidence.json`; its fixtures live in `docs/evals/`. Daily project beats reuse fresh records and do not repeat this research mechanically.
+
+## Pinned Implementation Portfolio
+
+| Layer | Reference implementation | Concrete mechanism inspected | Transfer boundary |
+| --- | --- | --- | --- |
+| Prompt/Loop | DSPy | development set, metric, baseline, optimizer compile/search | no optimizer without task data, metric, and model-call budget |
+| Prompt/Harness/Loop | promptfoo | declarative provider/test/assertion matrix and logged-output evaluation | marker assertions do not prove project quality |
+| Context/Harness | Mem0 | pinned OSS add path is additive with exact-hash dedup; update/delete are explicit APIs | memory lifecycle does not resolve project evidence authority, contradiction, or supersession |
+| Context/Harness/Loop | LangGraph | typed state transitions and executable checkpoint conformance | no mandatory workflow-engine dependency |
+| Harness/Loop | OpenAI Symphony | one controller state, reconcile-before-dispatch, continuation check, bounded backoff, snapshots | tracker-centric coding workflow is not a universal project model |
+| Context/Loop | Ralph | fresh process per iteration with durable file/Git state | self-reported completion and fixed-iteration stop are rejected |
+| Harness/Loop | SWE-agent | explicit tool/history/environment/trajectory/retry/reviewer contracts | benchmark-specific tools and patch assumptions do not generalize |
+| Prompt/Harness/Loop | OpenAI Codex | thread/turn/item, persisted Goal, approvals, skills, sandbox and runtime capabilities | experimental RPCs and Complex conventions are not universal Codex primitives |
+| Harness | OpenAI Agents SDK HITL | approval is attached to the exact tool call, serialized in run state, then resumed | framework approval objects do not create authority or exactly-once semantics outside that runtime |
+| Prompt/Context | Kubernetes website | reader-oriented content types, canonical source, style/build/review discipline | Hugo, localization and SIG governance are not imported |
+| Prompt/Harness/Loop | Rust RFCs | substantial-change threshold, alternatives, drawbacks, compatibility and disposition | no RFC ceremony for routine edits and no active-tree archive |
+| Context/Harness/Loop | Inspect AI | task, run, scorer, limits, logs, retries and re-scoring as separate contracts | no framework dependency and no automated-score supremacy |
+
+Two bounded mechanisms are currently reproduced locally: promptfoo's zero-cost logged-output provider/assertion smoke and LangGraph's five required checkpoint capabilities. The promptfoo smoke is not a same-input baseline-versus-candidate matrix. Neither reproduction validates a Complex outcome. The other ten references remain `implementation_inspected` until their next validation is economically and semantically justified.
+
+## Repository-wide Re-baseline
+
+The 2026-07-17 re-baseline applies these implementations to four objects rather than adding four more runtime gates:
+
+- runtime architecture: Codex, Symphony, LangGraph, Ralph and SWE-agent;
+- public language: Kubernetes documentation and Codex skills;
+- change governance: Rust RFCs;
+- evaluation system: Inspect AI and promptfoo.
+
+The resulting keep/merge/demote decisions and next validations are machine-readable in `docs/active-architecture-rebaseline.json`.
 
 ## Prompt Contract
 
@@ -42,10 +87,10 @@ The WeChat article "Prompt 到 Loop 进化" is a useful vocabulary and discovery
 
 - **Sources:** [OpenAI Responses API computer environment](https://openai.com/index/equip-responses-api-computer-environment/), [Anthropic long-running agent harnesses](https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents), [OpenHands SDK](https://docs.openhands.dev/sdk/index).
 - **Production problem:** compaction saves tokens but may erase intent, open risks, or recovery-critical facts.
-- **Adopted:** structured recovery digest, accepted-state pointers, clean handoff, semantic recovery test.
+- **Adopted:** versioned authoritative recovery digest, accepted-state and supersession pointers, clean handoff, semantic recovery test, and an explicit degraded route for broken pointers.
 - **Rejected:** treating compaction or file existence as proof of recovery.
 - **Not transferable:** a single compaction algorithm across models.
-- **Complex micro-contract:** after compaction or handoff, recover Goal, current basis, active module, open risks, and next route before execution.
+- **Complex micro-contract:** after compaction or handoff, recover Goal, current basis, active module, open risks, and next route before execution; if an accepted pointer is broken or contradictory, route to reconciliation instead of guessing.
 - **Refresh trigger:** context pollution, reviewer reset, phase handoff, or failed recovery.
 
 ## Runtime Harness
@@ -70,24 +115,24 @@ The WeChat article "Prompt 到 Loop 进化" is a useful vocabulary and discovery
 - **Complex micro-contract:** important harnesses declare checkpoint, retry class, backoff, idempotency/compensation, bounded concurrency, and degraded route.
 - **Refresh trigger:** transient failures repeat, duplicate work occurs, or cross-turn continuation is added.
 
-### Interrupt and resume side-effect safety
+### Decision ownership, exact approval, and resume safety
 
-- **Sources:** [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts), [Temporal Activity Definition](https://docs.temporal.io/activity-definition).
+- **Sources:** [OpenAI Agents SDK human-in-the-loop](https://openai.github.io/openai-agents-python/human_in_the_loop/), [LangGraph interrupts](https://docs.langchain.com/oss/python/langgraph/interrupts), [Temporal Activity Definition](https://docs.temporal.io/activity-definition).
 - **Production problem:** human approval, external input, or retry can resume a workflow after partial work; if non-idempotent side effects happened before the pause, resume can duplicate records, overwrite state, or charge twice.
-- **Adopted:** pause before non-idempotent external writes; keep pre-approval work read-only, local, draft, idempotent, reversible, or compensatable; record checkpoint, idempotency key or stable identifier, approval payload, and resume route.
+- **Adopted:** classify decision ownership separately from side-effect class; approve the exact tool call or operation rather than the whole project; keep pre-approval work read-only, local, draft, idempotent, reversible, or compensatable; record scope/version, action ID, payload hash, checkpoint, and resume route.
 - **Rejected:** importing LangGraph or Temporal as a required runtime; treating every user question as a durable interrupt; adding heavy transaction ceremony to read-only beats.
 - **Not transferable:** Complex cannot guarantee platform-level exactly-once execution without a supporting runtime; it can only require agent-visible contracts and safe sequencing.
-- **Complex micro-contract:** `interrupt_resume_safety` applies when a beat must pause for authorization or external input: non-idempotent side effects move after approval, or the beat records idempotency/rollback/compensation evidence before it can retry or resume.
+- **Complex micro-contract:** AI owns internal orchestration. When a specific external or irreversible operation needs authority, approval binds to that operation's payload and stable action ID; retry, idempotency, rollback, and compensation remain Harness responsibilities.
 - **Refresh trigger:** new approval surfaces, external-write tools, retryable background work, or duplicate side-effect failures.
 
 ### Explicit multi-agent organization
 
 - **Sources:** [OpenAI Codex subagents](https://developers.openai.com/codex/subagents), [OpenAI Agents SDK handoffs](https://openai.github.io/openai-agents-python/handoffs/), [Microsoft orchestration patterns](https://learn.microsoft.com/en-us/agent-framework/workflows/orchestrations/), [Team Topologies](https://teamtopologies.com/key-concepts).
 - **Production problem:** threads, workers, and durable responsibilities are conflated, creating unclear ownership and polluted review.
-- **Adopted:** manager ownership, bounded worker contracts, durable responsibility lanes, clean-context evaluators, explicit handoff packets.
+- **Adopted:** manager ownership, bounded worker contracts, durable responsibility lanes with wake/retire conditions, clean-context evaluators, explicit handoff packets, and observed resource IDs/status when platform resources are actually created.
 - **Rejected:** creating agents for every small task or calling a subagent a standing lane.
 - **Not transferable:** organization design must fit project scale and available Codex surfaces.
-- **Complex micro-contract:** controller owns integration; standing lanes own recurring responsibility; workers return bounded artifacts and summaries.
+- **Complex micro-contract:** controller owns integration and acceptance; each standing lane declares accepted input/output, wake trigger, context policy, manager acceptance, retirement condition, and resource evidence; workers return bounded artifacts and summaries.
 - **Refresh trigger:** recurring responsibility, reviewer contamination, or topology drift appears.
 
 ## Progress Loop
@@ -99,7 +144,7 @@ The WeChat article "Prompt 到 Loop 进化" is a useful vocabulary and discovery
 - **Adopted:** negotiate completion before execution, evaluate the actual environment or artifact, separate evaluator for important work, outcome-first grading.
 - **Rejected:** exact trajectory matching as the primary definition of success.
 - **Not transferable:** every small beat does not need an independent model evaluator.
-- **Complex micro-contract:** every important Loop has an outcome predicate, evaluator, accepted artifact, and next route from observed results.
+- **Complex micro-contract:** every important Loop has an outcome predicate, evaluator, declared outcome (execution artifact or diagnostic decision), and next route from observed results.
 - **Refresh trigger:** false completion, evaluator disagreement, or path overfitting appears.
 
 ### Target-function iteration instead of local greed
@@ -109,7 +154,17 @@ The WeChat article "Prompt 到 Loop 进化" is a useful vocabulary and discovery
 - **Adopted:** target-function feedback, entry/success criteria, early end-to-end slice, toil/WIP review, branch parking.
 - **Rejected:** heavyweight stage ceremonies for every small beat.
 - **Not transferable:** fixed review cadence regardless of project events.
-- **Complex micro-contract:** each Loop names target function, module, lane, forward artifact, completion predicate, and non-greedy rationale.
+- **Complex micro-contract:** each Loop names target function, module, completion predicate, and non-greedy rationale; add a lane only when recurring organization is active, use a forward artifact for execution, and use a route/falsification/blocker/parking result for diagnosis.
+
+### Agent-facing governance, project-native artifacts
+
+- **Sources:** OpenAI Harness Engineering, SWE-agent's agent-computer interface, and schema-checked agent evaluation harnesses.
+- **Production problem:** a richer agent instruction can accidentally leak its own vocabulary into files, rename machine fields, add wrappers, or replace requested evidence with process explanation.
+- **Adopted:** keep the agent interface narrow and mechanically checkable; treat repository paths, schemas, types, and verifiers as the executable contract; keep governance language in the decision layer.
+- **Rejected:** requiring every target project to emit Complex-shaped YAML/JSON or expose protocol headings to human readers.
+- **Not transferable:** no single artifact schema is universal across projects.
+- **Complex micro-contract:** local completion and artifact contracts outrank mechanism vocabulary. Complex may select and justify the route, but it may not change the required artifact shape or suppress requested facts without an explicit project-level change.
+- **Refresh trigger:** a candidate mechanism passes its semantic test but fails a local verifier, renames a field, wraps a flat state, or creates governance-heavy reader output.
 - **Refresh trigger:** guardrail-only repetition, missing early closure, or module bottleneck changes.
 
 ## Cross-Layer Diagnosis

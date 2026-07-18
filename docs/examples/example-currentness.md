@@ -6,13 +6,13 @@ An example becomes a certified representative case only after it is reused in a 
 
 ## Current Examples
 
-| Example | Status | Best For | Validates | Does Not Prove |
+| Example | Status | Best For | Illustrates | Does Not Prove |
 | --- | --- | --- | --- | --- |
 | `evidence_fill_minimal_runtime` | `current_filled_example` | Fixed rubric, fixed metric, source-backed claim filling | evidence boundaries, beat objective, representative evidence path | that all sources are externally validated |
 | `model_discovery_minimal_runtime` | `current_filled_example` | Unsettled explanation frame or research model | candidate frameworks, discriminating probe, anti-early-convergence | that the chosen framework is final |
 | `independent_review_minimal_runtime` | `current_filled_example` | Review where prior chat may bias judgment | fact ledger, diagnostic vs independent review, context separation | that same-session roleplay is independent |
 | `portfolio_orchestration_minimal_runtime` | `current_filled_example` | Multi-module continuous projects | control plane, lane portfolio, forward indexes | that every project needs heavy topology |
-| `external_calibration_micro_contract_runtime` | `current_filled_example` | Mechanism-level method or protocol change | external source, adopted/rejected/not-transferable, micro-contract | that naming a framework is enough |
+| `external_calibration_micro_contract_runtime` | `current_filled_example` | Mechanism-level method or protocol change | pinned implementation, reproduction status, transfer boundary, rollback, same-task next validation | that local reproduction or an upstream benchmark validates Complex |
 | `operating_organization_multi_lane_runtime` | `current_filled_example` | Long projects with recurring responsibilities | standing lanes, manager responsibility, review lane | that lanes must become user-visible threads |
 
 ## Currentness Checklist
@@ -24,7 +24,7 @@ Each example should state:
 - beat objective;
 - target function;
 - linked mechanisms;
-- forward artifact;
+- declared outcome: forward artifact for execution, or route/falsification/blocker/parking decision for diagnosis;
 - guard or review condition;
 - next route;
 - what it does not prove;
@@ -32,6 +32,7 @@ Each example should state:
 - Prompt Contract and version assumptions;
 - Context Working Set and explicit exclusions;
 - Runtime Harness assumptions and degraded route;
+- project-native completion predicate, artifact path, schema, and verifier that Complex language may not reshape;
 - Progress Loop outcome completion predicate;
 - which engineering layer failures it does not test.
 

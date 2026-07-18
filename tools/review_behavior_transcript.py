@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Review a real agent transcript against Complex behavior-case rules.
 
-This tool is intentionally modest. It checks required/forbidden marker groups
-and emits human-review questions. It does not claim to be a full LLM judge.
+This tool is intentionally modest. It checks required/forbidden marker groups,
+optionally requires normalized structured runtime events, and emits human-review
+questions. It does not claim to be a full LLM judge or authenticate event origin.
 """
 
 from __future__ import annotations
@@ -18,6 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PACK = ROOT / "docs" / "behavior-regression-cases.json"
 RULES = ROOT / "docs" / "behavior-transcript-review-rules.json"
 MATURITY = ROOT / "docs" / "mechanism-maturity.json"
+EVENT_PREFIX = "COMPLEX_EVENT "
 
 
 def fail(message: str) -> None:
@@ -109,6 +111,54 @@ def marker_group_hit(text: str, group: dict[str, Any]) -> tuple[bool, list[str]]
     return bool(hits), hits
 
 
+def extract_structured_events(text: str) -> tuple[list[dict[str, Any]], list[str]]:
+    events: list[dict[str, Any]] = []
+    errors: list[str] = []
+    for line_number, line in enumerate(text.splitlines(), start=1):
+        stripped = line.strip()
+        if not stripped.startswith(EVENT_PREFIX):
+            continue
+        payload = stripped.removeprefix(EVENT_PREFIX)
+        try:
+            event = json.loads(payload)
+        except json.JSONDecodeError as exc:
+            errors.append(f"line {line_number}: {exc.msg}")
+            continue
+        if not isinstance(event, dict):
+            errors.append(f"line {line_number}: event must be an object")
+            continue
+        events.append(event)
+    return events, errors
+
+
+def event_matches(event: dict[str, Any], expected: dict[str, Any]) -> bool:
+    for key, value in expected.items():
+        if key.endswith("_required"):
+            event_key = key.removesuffix("_required")
+            if value and not event.get(event_key):
+                return False
+            continue
+        actual = event.get(key)
+        if isinstance(value, str):
+            if str(actual).lower() != value.lower():
+                return False
+        elif actual != value:
+            return False
+    return True
+
+
+def event_group_hit(events: list[dict[str, Any]], group: dict[str, Any]) -> tuple[bool, list[dict[str, Any]]]:
+    alternatives = group.get("any")
+    if not isinstance(alternatives, list) or not alternatives:
+        fail(f"event group missing non-empty any list: {group}")
+    hits = [
+        event
+        for event in events
+        if any(isinstance(expected, dict) and event_matches(event, expected) for expected in alternatives)
+    ]
+    return bool(hits), hits
+
+
 def review(case_id: str, transcript: str) -> dict[str, Any]:
     rules_doc = load_json(RULES)
     rules_by_case = rules_doc.get("case_rules")
@@ -136,6 +186,11 @@ def review(case_id: str, transcript: str) -> dict[str, Any]:
     required_groups = rules.get("required_marker_groups", [])
     forbidden_groups = rules.get("forbidden_marker_groups", [])
     minimum_required = int(rules.get("minimum_required_groups", len(required_groups)))
+    mandatory_required_labels = {
+        str(label) for label in rules.get("mandatory_required_labels", [])
+    }
+    structured_events, event_parse_errors = extract_structured_events(transcript)
+    required_event_groups = rules.get("required_event_groups", [])
 
     required_results = []
     for group in required_groups:
@@ -159,9 +214,31 @@ def review(case_id: str, transcript: str) -> dict[str, Any]:
             }
         )
 
+    required_event_results = []
+    for group in required_event_groups:
+        hit, hits = event_group_hit(structured_events, group)
+        required_event_results.append(
+            {
+                "label": group.get("label", ""),
+                "passed": hit,
+                "hits": hits,
+            }
+        )
+
     required_passed = sum(1 for item in required_results if item["passed"])
+    missing_mandatory_labels = sorted(
+        item["label"]
+        for item in required_results
+        if item["label"] in mandatory_required_labels and not item["passed"]
+    )
     forbidden_failed = [item for item in forbidden_results if item["failed"]]
-    passed = required_passed >= minimum_required and not forbidden_failed
+    passed = (
+        required_passed >= minimum_required
+        and not missing_mandatory_labels
+        and not forbidden_failed
+        and all(item["passed"] for item in required_event_results)
+        and not event_parse_errors
+    )
 
     return {
         "case_id": case_id,
@@ -169,7 +246,12 @@ def review(case_id: str, transcript: str) -> dict[str, Any]:
         "required_passed": required_passed,
         "required_total": len(required_results),
         "minimum_required_groups": minimum_required,
+        "mandatory_required_labels": sorted(mandatory_required_labels),
+        "missing_mandatory_labels": missing_mandatory_labels,
         "required_results": required_results,
+        "structured_event_count": len(structured_events),
+        "event_parse_errors": event_parse_errors,
+        "required_event_results": required_event_results,
         "forbidden_results": forbidden_results,
         "human_review_questions": rules.get("human_review_questions", []),
         "linked_mechanisms": linked_mechanisms,
@@ -211,6 +293,32 @@ def validate_rules() -> dict[str, Any]:
             fail(f"{case_id}.minimum_required_groups must be a positive integer")
         if minimum_required > len(rules["required_marker_groups"]):
             fail(f"{case_id}.minimum_required_groups exceeds required_marker_groups length")
+        mandatory_required_labels = rules.get("mandatory_required_labels", [])
+        if not isinstance(mandatory_required_labels, list):
+            fail(f"{case_id}.mandatory_required_labels must be a list when present")
+        available_labels = {
+            str(group.get("label", "")) for group in rules["required_marker_groups"]
+        }
+        unknown_mandatory_labels = sorted(
+            str(label) for label in mandatory_required_labels
+            if str(label) not in available_labels
+        )
+        if unknown_mandatory_labels:
+            fail(
+                f"{case_id}.mandatory_required_labels contains unknown labels: "
+                f"{unknown_mandatory_labels}"
+            )
+        required_event_groups = rules.get("required_event_groups", [])
+        if not isinstance(required_event_groups, list):
+            fail(f"{case_id}.required_event_groups must be a list when present")
+        for group in required_event_groups:
+            if not isinstance(group, dict) or not str(group.get("label", "")).strip():
+                fail(f"{case_id}.required_event_groups entries need a label")
+            alternatives = group.get("any")
+            if not isinstance(alternatives, list) or not alternatives:
+                fail(f"{case_id}.required_event_groups entries need a non-empty any list")
+            if not all(isinstance(expected, dict) and expected for expected in alternatives):
+                fail(f"{case_id}.required_event_groups alternatives must be non-empty objects")
 
     return {
         "passed": True,

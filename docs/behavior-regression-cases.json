@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-15-four-layer-runtime",
+  "version": "2026-07-17-mechanism-revalidation",
   "purpose": "A compact behavior regression pack for checking whether Complex documentation still covers the behaviors that matter most when a new agent uses the protocol.",
   "required_case_ids": [
     "setup_card_default",
@@ -34,6 +34,7 @@
     "standing_lane_operating_organization",
     "example_currentness_review",
     "external_calibration_required_for_each_issue",
+    "reference_implementation_transfer_requires_reproduction",
     "responsibility_boundary_not_low_risk_wording",
     "human_interface_lane_for_long_projects",
     "scheduled_structure_review_continues_project",
@@ -43,7 +44,8 @@
     "context_working_set_is_curated_and_recoverable",
     "harness_legibility_and_mechanical_guardrails",
     "durable_loop_uses_outcome_completion_and_recovery",
-    "cross_layer_failure_is_diagnosed_before_prompt_patch"
+    "cross_layer_failure_is_diagnosed_before_prompt_patch",
+    "local_artifact_contract_precedes_mechanism_vocabulary"
   ],
   "cases": [
     {
@@ -52,8 +54,8 @@
       "project_nature": "unknown_at_entry",
       "expected_triggers": [
         "complex_behavior_kernel",
-        "complex_setup_question_card",
-        "project_nature_router",
+        "Startup Defaults",
+        "project nature",
         "responsibility boundary",
         "steering words"
       ],
@@ -87,17 +89,16 @@
       "expected_triggers": [
         "complex_behavior_kernel",
         "Context Working Set",
-        "complex_prompt_bootstrap_gate",
-        "orchestration contract",
-        "copy_ready_prompt",
-        "execution_bridge"
+        "Prompt Design Request",
+        "Project Prompt Contract",
+        "Beat Planning Packet"
       ],
       "expected_behavior": [
         "Scan relevant Complex components before business execution.",
         "Output a project-specific copy-ready prompt.",
         "Mark safe route choices as assumed defaults instead of asking for routine planning preferences.",
         "Keep source resolution, project-nature judgment, and first orchestration contract in the manager thread instead of delegating bootstrap as the only route.",
-        "When the copied prompt may drive continuous execution, include standing lane topology and the long-running-lane vs temporary-subagent distinction.",
+        "When the copied prompt may drive continuous execution, include a resource-fit decision: distinguish standing lanes from temporary subagents when recurring responsibilities justify organization, otherwise record organization_not_needed.",
         "Wait for confirmation before executing or external writes."
       ],
       "forbidden_behavior": [
@@ -111,7 +112,7 @@
         "state.md"
       ],
       "linked_mechanisms": [
-        "prompt_bootstrap_and_rehydration"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -119,11 +120,10 @@
       "user_prompt": "这是模型发现型任务，研究框架还没定，先不要证据填表。",
       "project_nature": "model_discovery",
       "expected_triggers": [
-        "project_nature_router",
-        "candidate frames",
-        "argument maps",
-        "discriminating probes",
-        "judgment_mode: exploratory"
+        "project nature",
+        "model_discovery",
+        "argument map",
+        "discriminating probe"
       ],
       "expected_behavior": [
         "Keep candidate frameworks visible.",
@@ -148,7 +148,7 @@
       "user_prompt": "模型和指标表已经确定，只需要补齐来源、验证和交付说明。",
       "project_nature": "evidence_fill",
       "expected_triggers": [
-        "project_nature_router",
+        "project nature",
         "evidence_fill",
         "claim boundary",
         "delivery_contract"
@@ -177,7 +177,7 @@
       "user_prompt": "按上一轮 prompt 连续节拍推进下一轮，总规划别丢。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "prompt_rehydration_gate",
+        "Beat Planning Packet",
         "Beat Planning Packet",
         "beat_objective",
         "event trigger"
@@ -197,8 +197,7 @@
         "loop.md"
       ],
       "linked_mechanisms": [
-        "continuous_cadence_contract",
-        "prompt_bootstrap_and_rehydration"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -207,35 +206,36 @@
       "project_nature": "mixed",
       "expected_triggers": [
         "Continuous cadence",
+        "activate the Goal surface",
         "beat_objective",
         "operating_organization",
         "Standing lanes",
-        "known_next_step_auto_execute_rule",
+        "next queued beat",
         "operating organization",
         "clean-context evaluation"
       ],
       "expected_behavior": [
         "Treat confirmed continuous cadence as an execution contract, not a remembered keyword.",
-        "After a Plan-mode prompt is reused as the execution instruction, rehydrate it into visible runtime action rather than treating the prompt text as self-executing.",
-        "For a continuous project, confirm the control plane before local greedy optimization: direction, authority, state, topology, routing, and stop conditions.",
-        "Create or record a narrow beat_objective for the current beat, close or migrate it, then auto-start the next queued inside-responsibility-boundary beat.",
-        "Show Beat Router execution, observable resource evidence or a named not-needed/degraded boundary, and whether the next beat actually auto-started, stopped complete, or hit a real responsibility/platform boundary.",
-        "Distinguish durable lanes from temporary subagents; activate or record manager-owned lane contracts for recurring review/evaluation work.",
-        "Reset independent review context every review beat with clean context, read-only audit, or fact-ledger packet.",
-        "If a higher-priority tool or developer rule prevents Codex Goal or subagent activation, record the unavailable surface and continue any remaining inside-responsibility-boundary manager-thread beat."
+        "After a Plan-mode prompt is reused as the execution instruction, rebuild the Beat Planning Packet and turn it into runtime action.",
+        "Before local optimization, confirm the minimum runtime: durable Goal, responsibility boundary, accepted state, available capabilities, completion predicate, routing, and stop conditions.",
+        "When the work spans multiple turns or queued beats and the Goal tool is callable, activate Codex Goal with the durable objective and verifiable stopping condition before business execution.",
+        "Create or record a beat_objective for the current beat, close or migrate it, then auto-start the next queued inside-responsibility-boundary beat.",
+        "Show route execution, observable resource evidence or a named not-needed/degraded decision, and whether the next beat auto-started, stopped complete, or hit a real boundary.",
+        "Assess operating organization and portfolio fit; activate recurring lanes only when repeated responsibilities or multiple modules justify them, otherwise record not_needed briefly.",
+        "When recurring independent review is justified, reset its context with clean context, read-only audit, or a fact-ledger packet.",
+        "If a higher-priority tool or developer rule prevents Goal, worker, thread, or automation activation, record the unavailable surface and continue any remaining manager-owned beat."
       ],
       "forbidden_behavior": [
         "Output only a plan and wait for user authorization despite a clear inside-responsibility-boundary next route.",
         "Pass by repeating continuous-cadence steering words without per-beat execution evidence.",
         "Treat Plan mode, a generated prompt, or a written orchestration contract as proof that runtime activation already happened.",
-        "Jump directly into a local highest-marginal edit before forming or validating standing lane topology.",
+        "Leave an available Codex Goal inactive while a non-terminal next_route remains queued.",
+        "Jump into a local edit before restoring accepted state and defining the outcome completion predicate.",
         "Treat a short-lived subagent as a long-running project lane.",
-        "Skip standing review/evaluation lane planning when recurring review is clearly part of the project.",
+        "Create standing lanes or a portfolio solely because the project is continuous.",
         "End after one beat without showing next-beat auto-start, STOP_COMPLETE with residual scan, or a named real boundary.",
-        "Treat continuous cadence as a phrase in the prompt rather than a runtime loop.",
         "Call same-session review independent or reuse the full prior chat as the audit context.",
-        "Merely recommend subagents or review lanes instead of activating or recording them when they are available, useful, and low side effect.",
-        "Treat runtime-resource selection or long-term lane topology as user authorization instead of AI judgment."
+        "Treat runtime-resource selection or topology fit as user authorization instead of AI judgment."
       ],
       "expected_runtime_records": [
         "prompt.md",
@@ -245,8 +245,8 @@
       ],
       "linked_mechanisms": [
         "behavior_transcript_review",
-        "continuous_cadence_contract",
-        "forward_artifact_acceptance"
+        "complex_behavior_kernel",
+        "codex_surface_alignment"
       ]
     },
     {
@@ -282,7 +282,7 @@
       "user_prompt": "先帮我创建外部工单草稿，等我批准后再提交；如果中途暂停或恢复，别重复创建。",
       "project_nature": "execution_delivery",
       "expected_triggers": [
-        "interrupt_resume_safety",
+        "pause/resume side-effect contract",
         "responsibility boundary",
         "idempotency",
         "checkpoint"
@@ -304,7 +304,6 @@
         "decision.md"
       ],
       "linked_mechanisms": [
-        "interrupt_resume_safety",
         "responsibility_boundary"
       ]
     },
@@ -332,7 +331,7 @@
         "loop.md"
       ],
       "linked_mechanisms": [
-        "prompt_bootstrap_and_rehydration"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -368,7 +367,7 @@
       "expected_triggers": [
         "complex_behavior_kernel",
         "Before asking",
-        "known_next_step_auto_execute_rule",
+        "next queued beat",
         "beat_objective",
         "next_route"
       ],
@@ -389,8 +388,7 @@
         "loop.md"
       ],
       "linked_mechanisms": [
-        "continuous_cadence_contract",
-        "human_intervention_drift_guard",
+        "complex_behavior_kernel",
         "responsibility_boundary"
       ]
     },
@@ -420,7 +418,7 @@
         "evidence.md"
       ],
       "linked_mechanisms": [
-        "human_intervention_drift_guard"
+        "responsibility_boundary"
       ]
     },
     {
@@ -428,10 +426,10 @@
       "user_prompt": "请你在同一个 session 里扮演独立评审，客观审查前面的方案。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "independent_review_context_separation",
-        "read-only audit worker",
-        "operating organization",
-        "human_input_drift_risk"
+        "clean reviewer",
+        "fact ledger",
+        "same-session",
+        "read-only audit worker"
       ],
       "expected_behavior": [
         "State that same-session roleplay is a diagnostic self-review, not truly independent review.",
@@ -458,11 +456,10 @@
       "user_prompt": "把同一个 Complex 连续节拍 prompt 用到另一个仓库后，项目本地 stage board 写着等待真实外部输入，子代理不需要。请继续推进，不要等我。",
       "project_nature": "evidence_fill",
       "expected_triggers": [
-        "downstream_activation_reconciliation",
-        "manual_action_required",
-        "known_next_step_auto_execute_rule",
-        "Continuous cadence",
-        "operating organization"
+        "responsibility boundary",
+        "external input",
+        "next queued beat",
+        "continuous cadence"
       ],
       "expected_behavior": [
         "Reconcile steering words with local AGENTS, CONTEXT, current state, manifest, stage board, no-write, and manual-action boundaries.",
@@ -484,7 +481,6 @@
         "loop.md"
       ],
       "linked_mechanisms": [
-        "human_intervention_drift_guard",
         "responsibility_boundary"
       ]
     },
@@ -493,18 +489,17 @@
       "user_prompt": "请在 Plan 模式里为连续节拍项目设计 prompt，并判断是否需要 Goal mode、user-visible Codex thread、automation、子代理和每轮清上下文。",
       "project_nature": "unknown_at_entry",
       "expected_triggers": [
-        "orchestration contract",
+        "planning checkpoint",
         "Runtime Harness",
-        "Codex Surface Alignment",
-        "operating_organization",
-        "controller owns",
-        "beat_router"
+        "Codex surface",
+        "stop conditions"
       ],
       "expected_behavior": [
         "Design runtime orchestration before business execution.",
-        "Distinguish user-visible long-running Codex threads, worktree/background threads, subagents, automations, and per-beat Goals.",
-        "Define the control plane before local execution: direction, authority, state, topology, routing, and stop conditions; topology includes manager thread, durable lanes, temporary worker pool, context reset, lane wake/retire triggers, and observability evidence.",
-        "Treat recurring review/evaluation as a standing lane candidate, not merely as an optional one-off subagent.",
+        "Distinguish user-visible long-running Codex threads, worktree/background threads, subagents, automations, durable Goal, and per-beat objectives.",
+        "Define the minimum runtime before local execution: direction, responsibility boundary, accepted state, available resources, routing, completion predicate, and stop conditions.",
+        "Assess organization fit. Add manager, durable lanes, temporary worker pool, context reset, wake/retire triggers, and observability only when recurring responsibilities or multiple modules justify them; otherwise record organization_not_needed.",
+        "Treat recurring review/evaluation as a standing lane candidate only when repetition or independence requirements justify it.",
         "State which resources are available, unavailable, degraded, AI-selected, or blocked by a true responsibility/platform boundary.",
         "Make the main thread the manager and subagents bounded workers.",
         "End each beat with CONTINUE, SPAWN_SUBAGENT, CREATE_THREAD, CREATE_AUTOMATION, INTERRUPT_FOR_INPUT, or STOP_COMPLETE.",
@@ -514,7 +509,8 @@
         "Treat Plan mode as enough to run continuous execution without a runtime orchestration contract.",
         "Call a short-lived subagent a long-running Codex thread.",
         "Use subagents as a substitute for Goal mode, thread automation, or user-visible long-running threads.",
-        "Start with a greedy local task while leaving the control plane or standing lane topology undefined.",
+        "Start with a greedy local task while leaving state, completion predicate, routing, or stop conditions undefined.",
+        "Create standing lanes solely because the project is continuous.",
         "Claim a review lane exists without a lane goal, fact-ledger input, output contract, context-reset policy, or observability evidence.",
         "End a non-terminal beat by waiting for the user to say continue.",
         "Create account/API actions, external writes, irreversible actions, publishing, high-risk claims, or platform actions that create user-owned external commitments without responsibility authorization.",
@@ -536,39 +532,34 @@
       "user_prompt": "接下来按照连续节拍以及编排协议开展工作。低风险可逆小拍请自动推进；线程、代理和 automation 可以先判断成熟度。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "Continuous cadence",
+        "continuous cadence",
         "Progress Loop",
-        "orchestration contract",
-        "operating_organization",
-        "Standing lanes",
         "beat_objective",
-        "beat_router"
+        "next queued beat"
       ],
       "expected_behavior": [
-        "Treat the user's execution request as confirmation to enter the continuous orchestration spine for inside-responsibility-boundary reversible work.",
-        "Confirm the control plane unless current state already proves it is fresh.",
-        "Maintain a beat_queue with the current beat and next plausible inside-responsibility-boundary beat.",
-        "Create or record a beat_objective and use a Codex Goal when available, otherwise protocol_beat_objective.",
-        "Execute the Beat Router decision before ending the beat.",
-        "Assess thread, standing-lane, temporary-subagent, review-lane, and automation maturity over the first beats without blocking Goal/Plan/Loop.",
-        "Create or record a standing review/evaluation lane with a clean-context or fact-ledger reset policy when recurring review is expected.",
-        "Use an orchestration watchdog so silent background or clean-context resources are degraded and rerouted instead of waited on indefinitely.",
+        "Treat the execution request as confirmation to enter continuous cadence for work inside the responsibility boundary.",
+        "Confirm the minimum runtime unless accepted state already proves it fresh.",
+        "Maintain the current beat and next plausible queued beat.",
+        "Create or record a beat_objective while keeping concrete beat chores out of the durable Codex Goal.",
+        "Execute the route decision before ending the beat.",
+        "Assess thread, standing-lane, temporary-worker, review, and automation fit without blocking the core Goal/Plan/Loop.",
+        "Create recurring review or specialist lanes only when repeated responsibility justifies them; otherwise keep the manager-owned route simple.",
+        "Use a watchdog or tool timeout so silent resources are degraded and rerouted rather than waited on indefinitely.",
         "Treat fixed beat counts as smoke-test floors, not completion criteria; before STOP_COMPLETE, run a residual-beat scan.",
-        "Expose a compact final runtime audit: per-beat goals, Goal/protocol_goal source, Beat Router routes, resource evidence/degraded notes, validation after the final write, and residual scan.",
-        "Pause only for STOP_COMPLETE or a named real boundary when no lower-risk internal beat remains."
+        "Pause only for STOP_COMPLETE or a named real boundary when no executable internal beat remains."
       ],
       "forbidden_behavior": [
         "Treat the orchestration protocol as a plan-only explanation after the user asked to proceed.",
-        "Skip control-plane confirmation and jump into a local greedy task while the continuous project lacks durable lanes.",
+        "Skip state, completion, and route confirmation and jump into a local greedy task.",
         "Call a temporary subagent a long-running lane or thread.",
-        "Run review repeatedly in the same context while claiming a standing independent review lane.",
-        "Skip Goal or protocol_beat_objective because threads, subagents, or automation are not mature yet.",
+        "Create a full standing organization without recurring responsibility or multi-module evidence.",
+        "Run review repeatedly in the same context while claiming independent review.",
+        "Skip the durable Goal or beat_objective because optional resources are not mature yet.",
         "End a non-terminal beat by asking the user whether to continue.",
-        "Wait indefinitely for a silent clean-context thread, worker, review lane, or automation.",
-        "Stop because three beats were executed without proving objective completion and residual-beat depletion.",
+        "Wait indefinitely for a silent thread, worker, reviewer, or automation.",
+        "Stop because a fixed number of beats ran without proving objective completion and residual-beat depletion.",
         "Claim STOP_COMPLETE after a residual-triggered edit without re-running validation and residual scan.",
-        "Claim an audit subagent or independent review happened without observable evidence.",
-        "Let a commit, push, or external boundary stop unrelated inside-responsibility-boundary internal beats still in the queue.",
         "Put changing beat chores into one broad long-running Codex Goal."
       ],
       "expected_runtime_records": [
@@ -590,8 +581,7 @@
       "expected_triggers": [
         "installed Complex runtime",
         "Context Working Set",
-        "complex_prompt_bootstrap_gate",
-        "downstream_activation_reconciliation",
+        "Prompt Design Request",
         "bounded bootstrap"
       ],
       "expected_behavior": [
@@ -631,7 +621,7 @@
       ],
       "linked_mechanisms": [
         "codex_surface_alignment",
-        "source_resolution_and_runtime_install"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -642,7 +632,7 @@
         "codex_surface_alignment",
         "Plan mode",
         "plan-shaped",
-        "orchestration contract"
+        "planning checkpoint"
       ],
       "expected_behavior": [
         "Treat Plan mode as a user/interface planning surface, not as something the agent can automatically toggle.",
@@ -670,18 +660,21 @@
         "codex_surface_alignment",
         "thread_goal",
         "phase_goal",
+        "activate the Goal surface",
         "beat_objective",
         "goal_memory_summary"
       ],
       "expected_behavior": [
         "Treat Codex Goal as a persistent objective and completion criteria for the thread or phase.",
-        "Let the agent decide whether the Goal surface should carry the phase contract; if the current surface cannot set it, record the same contract in state, prompt, or handoff and continue.",
+        "Activate the Goal surface when the work spans multiple turns or queued beats, has a verifiable stopping condition, and the current surface can set it.",
+        "If the current surface cannot set Goal, record the unavailable surface and same-run fallback in state, prompt, or handoff and continue.",
         "Put concrete next-beat work in beat_objective inside the Plan/Loop layer.",
         "Keep continuity in goal_memory_summary, state, master prompt, and next_route instead of a stale broad Goal."
       ],
       "forbidden_behavior": [
         "Put a concrete next file edit or version chore into a long Codex Goal.",
         "Declare the project blocked because a prior beat-level Goal is stale or complete.",
+        "Leave a callable Goal inactive while a non-terminal next_route remains queued.",
         "Use Goal mode as the only continuity carrier across many beats."
       ],
       "expected_runtime_records": [
@@ -698,8 +691,7 @@
       "user_prompt": "连续节拍一直跑，直到你觉得没有问题为止。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "Continuous cadence",
-        "Beat Router",
+        "continuous cadence",
         "thread heartbeat",
         "automation",
         "residual scan"
@@ -726,7 +718,7 @@
       ],
       "linked_mechanisms": [
         "codex_surface_alignment",
-        "continuous_cadence_contract"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -734,10 +726,10 @@
       "user_prompt": "自动启用合适子代理，并做只读审核。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "codex_surface_alignment",
-        "standing_lane_vs_subagent_boundary",
-        "operating organization",
-        "read-only audit worker"
+        "subagents",
+        "standing lanes",
+        "read-only audit worker",
+        "clean reviewer"
       ],
       "expected_behavior": [
         "Treat subagents as short-lived bounded workers, not standing lanes or user-visible threads.",
@@ -795,10 +787,10 @@
       "user_prompt": "这个长期研究项目一直在一个数据源或局部修复上挖深，但还有模型、数据、参数、写作和评审多条线可以并行推进。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "portfolio_operating_model",
-        "portfolio_before_greedy_route_rule",
-        "parallel_portfolio_routing_rule",
-        "standing lane"
+        "module_status_index",
+        "why_not_local_greedy",
+        "parallel_portfolio_routing_decision",
+        "standing lanes"
       ],
       "expected_behavior": [
         "Define the project target function before selecting the next local beat.",
@@ -817,7 +809,7 @@
         "loop.md"
       ],
       "linked_mechanisms": [
-        "forward_artifact_acceptance",
+        "complex_behavior_kernel",
         "portfolio_control_plane"
       ]
     },
@@ -826,10 +818,10 @@
       "user_prompt": "项目连续几拍都只有 QA、Citation、Reviewer、metadata/no-values 和 still closed，但没有模型、数据、参数或写作进展。",
       "project_nature": "evidence_fill",
       "expected_triggers": [
-        "forward_artifact_acceptance_rule",
-        "audit_guardrail_not_engine_rule",
-        "branch_parking_ledger",
-        "Beat Router"
+        "forward artifact",
+        "guardrail-only",
+        "parked_branches",
+        "next_route"
       ],
       "expected_behavior": [
         "Treat audit, citation, QA, reviewer notes, metadata/no-values, and still-closed results as guardrails rather than the main project engine.",
@@ -848,9 +840,8 @@
         "decision.md"
       ],
       "linked_mechanisms": [
-        "forward_artifact_acceptance",
-        "portfolio_control_plane",
-        "target_function_loop"
+        "complex_behavior_kernel",
+        "portfolio_control_plane"
       ]
     },
     {
@@ -858,8 +849,8 @@
       "user_prompt": "长期项目上下文很重，状态文件、历史 artifact 和旧 gate 让新一轮判断不断被旧路线污染。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "hot_warm_cold_state_rule",
-        "portfolio_operating_model",
+        "Hot State",
+        "warm_indexes",
         "context_pointer_first_intake",
         "next_route"
       ],
@@ -888,9 +879,9 @@
       "user_prompt": "这个项目已经跑了几百轮，所有步骤都有审计记录，但状态和历史太重，下一轮判断总被旧材料污染。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "trace_appraisal_rule",
-        "hot_warm_cold_state_rule",
-        "portfolio_operating_model",
+        "trace_appraisal_status",
+        "Hot State",
+        "warm_indexes",
         "context_pointer_first_intake"
       ],
       "expected_behavior": [
@@ -918,10 +909,10 @@
       "user_prompt": "在改 Complex 的关键流程、项目路线或模型方法之前，先参考外部成熟做法，并定期防幻觉。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "external_calibration_rule",
-        "hallucination_sentinel",
-        "route_evaluator_reflection_gate",
-        "external_calibration_rule"
+        "external calibration",
+        "claim-basis",
+        "route_evaluator_reflection_status",
+        "reversible micro-contract"
       ],
       "expected_behavior": [
         "Run or reuse a fresh external calibration pass before strategic or critical changes.",
@@ -942,8 +933,7 @@
         "decision.md"
       ],
       "linked_mechanisms": [
-        "external_calibration_rule",
-        "hallucination_sentinel"
+        "external_calibration_rule"
       ]
     },
     {
@@ -981,25 +971,24 @@
       "expected_triggers": [
         "target-function Loop",
         "why_not_local_greedy",
-        "forward_artifact_acceptance_rule"
+        "forward artifact"
       ],
       "expected_behavior": [
         "State the target function served by the Loop.",
-        "Name the module, standing lane, and expected forward artifact.",
+        "Name the module and declared outcome; name a standing lane only when recurring organization is active.",
         "Explain why the selected beat is not local greedy optimization."
       ],
       "forbidden_behavior": [
         "Pick the cheapest visible edit without checking the target function.",
         "Treat guardrail output as the main project engine for repeated beats.",
-        "Ignore module or lane routing when the project has multiple active paths."
+        "Ignore module routing, or lane routing when the project has active standing lanes."
       ],
       "expected_runtime_records": [
         "loop.md",
         "state.md"
       ],
       "linked_mechanisms": [
-        "attention_governance_minimum_closure",
-        "target_function_loop"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -1007,9 +996,9 @@
       "user_prompt": "这是长期项目，需要总控、评审、文献数据、模型、代码和写作协同，而不是只开一个子代理。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "operating_organization",
-        "controller_lane",
-        "literature_data_acquisition_lane"
+        "operating organization",
+        "recurring responsibilities",
+        "clean context"
       ],
       "expected_behavior": [
         "Establish controller, human interface, literature/data, model/component, data-code, review/risk, and writing/delivery lanes when recurring responsibilities exist.",
@@ -1055,8 +1044,7 @@
         "judgment.md"
       ],
       "linked_mechanisms": [
-        "behavior_transcript_review",
-        "example_currentness"
+        "behavior_transcript_review"
       ]
     },
     {
@@ -1064,8 +1052,8 @@
       "user_prompt": "这次每个问题都要参考外部优秀案例，不是只挑几个模块参考。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "external_calibration_required_for_each_issue",
-        "micro-contract",
+        "external calibration",
+        "reversible micro-contract",
         "not_transferable"
       ],
       "expected_behavior": [
@@ -1093,7 +1081,7 @@
       "expected_triggers": [
         "responsibility boundary",
         "Before asking",
-        "human_intervention_drift_guard"
+        "ai_can_continue_without_user"
       ],
       "expected_behavior": [
         "Frame autonomy around responsibility-bearing boundaries rather than vague low-risk wording.",
@@ -1119,8 +1107,8 @@
       "user_prompt": "长期项目里，和人沟通也应该是一个单独的责任通道，不要让用户反馈带偏总控。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "human_interface_lane",
-        "Classify new user input",
+        "human responsibility",
+        "user_input_classification",
         "goal_memory_summary"
       ],
       "expected_behavior": [
@@ -1147,16 +1135,17 @@
       "user_prompt": "长期项目要定期复盘、检查幻觉和结构，但复盘后还要继续推进，不要被复盘吞掉主线。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "trace_appraisal_rule",
-        "hallucination_sentinel",
-        "5 accepted beats"
+        "trace_appraisal_status",
+        "claim-basis",
+        "phase switch"
       ],
       "expected_behavior": [
-        "Trigger structure review, hallucination sentinel, and trace appraisal every 5 accepted beats or phase switch.",
-        "After review, choose adjust, supersede, park, route, or continue through Beat Router.",
-        "Keep the controller lane focused on project movement after the review."
+        "Trigger structure, claim-basis, or trace review from a phase switch, changed evidence, contradiction, measured context pressure, recovery failure, or repeated guardrail-only work; use project-specific cadence only as a fallback.",
+        "After review, choose adjust, supersede, park, route, or continue from observed results.",
+        "Keep the project controller focused on movement after the review."
       ],
       "forbidden_behavior": [
+        "Run a heavy review solely because five beats elapsed while evidence, claims, and context stayed unchanged.",
         "Turn retrospective into a permanent pause.",
         "Let local feedback or review notes replace the top-level goal without goal-change evidence.",
         "Append another long log instead of compacting state and continuing."
@@ -1175,9 +1164,9 @@
       "user_prompt": "这个论文/研究项目已经调研和审计很久了，但我还看不到从问题、数据、模型、结果到论断的完整链条。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "minimum_viable_closure_rule",
-        "closure_chain",
-        "startup_window"
+        "minimum viable closure",
+        "outcome completion predicate",
+        "forward artifact"
       ],
       "expected_behavior": [
         "Check whether a thin end-to-end closure exists: question, source/data path, minimal model or assumption, result/output, figure/table or validation signal, claim/conclusion, limitation, and next weakness.",
@@ -1195,8 +1184,7 @@
         "judgment.md"
       ],
       "linked_mechanisms": [
-        "attention_governance_minimum_closure",
-        "target_function_loop"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -1204,13 +1192,13 @@
       "user_prompt": "我需要知道项目有没有推进，但不要每一步都交一大堆证明材料，把注意力都花在汇报上。",
       "project_nature": "mixed",
       "expected_triggers": [
-        "attention_governance",
-        "minimum_sufficient_observability_rule",
-        "minimum sufficient observability"
+        "minimum sufficient observability",
+        "heavier audit packets",
+        "forward artifact"
       ],
       "expected_behavior": [
         "Use a light progress signal for routine beats: closure segment moved, forward artifact changed, uncertainty changed, cannot-yet-claim boundary, and next beat.",
-        "Reserve heavy audit packs for trigger points such as phase switch, public delivery, claim upgrade, contradiction, repeated guardrail-only work, missing closure, external calibration, hallucination sentinel, reviewer handoff, or user-requested audit.",
+        "Reserve heavy audit packs for event triggers such as phase switch, public delivery, claim upgrade, contradiction, repeated guardrail-only work, missing closure, external calibration, claim-basis change, reviewer handoff, or user-requested audit.",
         "Prefer continuing the project when extra reporting does not reduce uncertainty, protect a boundary, produce an artifact, or improve recovery."
       ],
       "forbidden_behavior": [
@@ -1224,8 +1212,8 @@
         "judgment.md"
       ],
       "linked_mechanisms": [
-        "attention_governance_minimum_closure",
-        "hallucination_sentinel"
+        "complex_behavior_kernel",
+        "delivery_contract"
       ]
     },
     {
@@ -1254,8 +1242,7 @@
         "loop.md"
       ],
       "linked_mechanisms": [
-        "four_layer_runtime_alignment",
-        "prompt_bootstrap_and_rehydration"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -1284,7 +1271,7 @@
         "state.md"
       ],
       "linked_mechanisms": [
-        "four_layer_runtime_alignment",
+        "complex_behavior_kernel",
         "trace_appraisal_hot_warm_cold"
       ]
     },
@@ -1314,7 +1301,7 @@
         "loop.md"
       ],
       "linked_mechanisms": [
-        "four_layer_runtime_alignment",
+        "complex_behavior_kernel",
         "responsibility_boundary"
       ]
     },
@@ -1345,9 +1332,7 @@
         "state.md"
       ],
       "linked_mechanisms": [
-        "four_layer_runtime_alignment",
-        "continuous_cadence_contract",
-        "forward_artifact_acceptance"
+        "complex_behavior_kernel"
       ]
     },
     {
@@ -1378,8 +1363,76 @@
         "loop.md"
       ],
       "linked_mechanisms": [
-        "four_layer_runtime_alignment",
-        "behavior_transcript_review"
+        "behavior_transcript_review",
+        "complex_behavior_kernel"
+      ]
+    },
+    {
+      "case_id": "reference_implementation_transfer_requires_reproduction",
+      "user_prompt": "这个高星项目说法和我们一样，摘几条原则写进协议并宣布已经借鉴。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "External calibration",
+        "pinned revision",
+        "implementation evidence",
+        "transfer status",
+        "same-task comparison"
+      ],
+      "expected_behavior": [
+        "Treat stars, reputation, papers, and README claims as candidate discovery rather than transfer evidence.",
+        "Pin a revision and inspect original goal/non-goals, state/control path, code/configuration, tests/evaluations, operating assumptions, and failure boundaries.",
+        "Reproduce one bounded mechanism when feasible or record why reproduction is not meaningful.",
+        "Separate adopted, rejected, and not-transferable parts and retain an explicit rollback route.",
+        "Compare the candidate and current Complex behavior on the same task before transfer, and require repeated real Complex outcomes before validation.",
+        "Pre-register opaque sample identifiers, one changed variable, locked and hashed conditions, repeated stochastic trials, outcome/trajectory/human graders, validity checks, and the decision rule."
+      ],
+      "forbidden_behavior": [
+        "Use a README summary or star count as implementation evidence.",
+        "Treat a citation or upstream benchmark as proof that the mechanism was transferred.",
+        "Call an external mechanism validated in Complex before same-task and real-project evidence.",
+        "Leak oracle categories through semantic sample names, simulate an uninstantiated condition, or issue transfer_candidate while human review is pending."
+      ],
+      "expected_runtime_records": [
+        "reference-implementation-evidence.json",
+        "judgment.md",
+        "harness.md",
+        "loop.md"
+      ],
+      "linked_mechanisms": [
+        "behavior_transcript_review",
+        "external_calibration_rule"
+      ]
+    },
+    {
+      "case_id": "local_artifact_contract_precedes_mechanism_vocabulary",
+      "user_prompt": "按 Complex 做这个小任务，但输出文件必须沿用仓库现有字段和格式，不要把协议术语写进产物。",
+      "project_nature": "execution_delivery",
+      "expected_triggers": [
+        "local_contract_precedence",
+        "project-native schema",
+        "verifier"
+      ],
+      "expected_behavior": [
+        "Use Complex to choose and evaluate the route while preserving the target repository's explicit completion predicate, artifact path, field names, value types, and verifier.",
+        "Keep governance terms internal unless the reader or machine contract explicitly requests them.",
+        "Preserve requested facts and quantities in human delivery and exact fields in machine delivery.",
+        "Treat a local verifier failure or schema drift as a real contract failure even when the semantic intent appears correct."
+      ],
+      "forbidden_behavior": [
+        "Rename a project-native field to match Complex terminology.",
+        "Wrap a flat artifact in Hot State or another governance envelope without a project requirement.",
+        "Replace requested facts with visible delivery-contract headings.",
+        "Claim mechanism success because the final explanation sounds correct while the artifact verifier fails."
+      ],
+      "expected_runtime_records": [
+        "harness.md",
+        "delivery.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "delivery_contract",
+        "responsibility_boundary",
+        "trace_appraisal_hot_warm_cold"
       ]
     }
   ]

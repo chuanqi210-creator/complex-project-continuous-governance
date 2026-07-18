@@ -2,13 +2,13 @@
 
 Use this example when a strategic route, method, model, prompt default, evaluation rule, or protocol behavior is about to change.
 
-It shows how external references become project micro-contracts instead of framework name-dropping.
+It shows how a pinned external implementation becomes a project micro-contract instead of framework name-dropping. The example distinguishes implementation inspection, local reproduction, same-task comparison, transfer, and Complex-side validation.
 
 ## Four-Layer Boundary
 
 - Prompt Contract: states which strategic decision needs calibration and what would change it.
-- Context Working Set: includes current project evidence and the relevant external production pattern with transfer limits.
-- Runtime Harness: official-source retrieval and attributable records must be available or explicitly degraded.
-- Progress Loop: completes when adopted and rejected patterns become a falsifiable project micro-contract.
+- Context Working Set: includes current project evidence, pinned revision, inspected code/config/tests/evals, upstream limits, and excluded assumptions.
+- Runtime Harness: attributable retrieval, a bounded reproduction fixture, command, result, and degraded route must be available or explicitly marked unavailable.
+- Progress Loop: completes when a bounded mechanism has an explicit transfer status, proposed/rejected parts, rollback, same-task comparison route, and falsifiable project micro-contract.
 
-This example grounds a decision; it does not validate the resulting Complex mechanism.
+This example grounds and reproduces a reference mechanism; it does not validate the resulting Complex mechanism.

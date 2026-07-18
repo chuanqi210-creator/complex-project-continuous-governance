@@ -22,7 +22,7 @@ Before copying blank templates, check whether a filled example is closer to the 
 - `docs/examples/model_discovery_minimal_runtime/` for unsettled framing and research-model discovery.
 - `docs/examples/independent_review_minimal_runtime/` for fact-ledger review, clean-context review, and same-session diagnostic boundaries.
 - `docs/examples/portfolio_orchestration_minimal_runtime/` for target-function, module, lane, and Hot/Warm/Cold recovery shape.
-- `docs/examples/external_calibration_micro_contract_runtime/` for external source transfer into a project micro-contract.
+- `docs/examples/external_calibration_micro_contract_runtime/` for pinned implementation inspection, bounded reproduction, and transfer into a project micro-contract.
 - `docs/examples/operating_organization_multi_lane_runtime/` for controller, expert, review, data, writing, and human-interface lanes.
 
 Examples are allowed to be copied, shortened, or adapted. Their purpose is to teach shape, not to become mandatory forms. Check `docs/examples/example-currentness.md` before treating an example as representative.
@@ -35,8 +35,8 @@ Complex ships a repo-scoped Codex skill at `.agents/skills/complex-runtime/SKILL
 
 Capability management must respect Codex surfaces:
 
-- Plan mode is a planning surface. For complex or strategic beats, run a planning checkpoint; use an available planning surface if the current interface exposes it, and do not claim automatic UI activation otherwise.
-- Codex Goal is a persistent objective and completion criteria for a longer task, thread, or bounded phase. Complex calls this `thread_goal` or `phase_goal`; AI decides whether the Goal surface should carry the contract, and records it in state/prompt/handoff when the surface cannot be set.
+- Plan mode is a planning surface. Use it when the desired outcome, constraints, or strategic route is unclear; otherwise use a lightweight plan-shaped checkpoint and do not claim an unavailable UI transition.
+- Codex Goal is a persistent objective and completion criteria for a longer task, thread, or bounded phase. Complex calls this `thread_goal` or `phase_goal`. When work spans multiple turns or queued beats and has a verifiable stopping condition, activate the available Goal surface before business execution; if the surface is unavailable, record that capability result and continue the same-run queue where possible.
 - `beat_objective` is the current per-beat Plan/Loop target.
 - `goal_memory_summary` is recovery context, not Codex Goal.
 - Subagents are temporary workers. Use them for bounded parallel work, not as standing lanes.
@@ -47,7 +47,7 @@ Capability management must respect Codex surfaces:
 
 ## Startup Choice Card
 
-When a user starts a project by saying "use Complex", "按 Complex 推进", or similar, do not wait for the user to know hidden trigger words. Use the `complex_setup_question_card` from `templates/question.md`, or state safe defaults if the task is low risk.
+When a user starts a project by saying "use Complex", "按 Complex 推进", or similar, do not wait for the user to know hidden trigger words. Apply the startup defaults from `templates/question.md`, and ask only for a real responsibility boundary or high-leverage ambiguity.
 
 Confirm or default these choices:
 
@@ -63,7 +63,7 @@ This card is not a new mandatory verifier field. It is a low-friction way to avo
 
 ## Prompt Bootstrap
 
-When a user wants to give a short but high-fit instruction such as "scan Complex and design a prompt for this project", use `complex_prompt_bootstrap_gate` and `templates/prompt.md`.
+When a user wants to give a short but high-fit instruction such as "scan Complex and design a prompt for this project", use the Prompt Design Request in `templates/question.md` with `templates/prompt.md`.
 
 The agent should:
 
@@ -113,7 +113,7 @@ If a current Codex Goal is stale or blocked but the project state still shows a 
 
 For research, analysis, or prototype projects, capability use should help produce an early minimum viable closure: question/problem, source/data or input path, minimal model/assumption, result/output, figure/table or validation signal, claim/usable conclusion, limitation, and next weakness.
 
-Routine beats should use minimum sufficient observability. Report the closure segment, forward artifact, uncertainty changed, cannot-yet-claim boundary, and next beat. Use heavier audit packets only when a trigger point appears: phase switch, public delivery, claim upgrade, contradiction, repeated guardrail-only work, missing closure, external calibration, hallucination sentinel, reviewer handoff, or user-requested audit.
+Routine beats should use minimum sufficient observability. Report the closure segment, forward artifact, uncertainty changed, cannot-yet-claim boundary, and next beat. Use heavier audit packets only when a trigger point appears: phase switch, public delivery, claim upgrade, contradiction, repeated guardrail-only work, missing closure, external calibration, claim-basis change, reviewer handoff, or user-requested audit.
 
 ## When To Reconsider Capabilities
 
@@ -129,7 +129,7 @@ Reconsider capabilities at these points:
 - A search, verification, render, data, or delivery task is blocked.
 - A subagent, long-running thread, or external write is being considered.
 - A final claim is about to be made.
-- A mechanism-level issue would change a project default, route algorithm, prompt pattern, or protocol behavior; this requires external calibration and a micro-contract.
+- A mechanism-level issue would change a project default, route algorithm, prompt pattern, or protocol behavior; this requires pinned implementation evidence, explicit transfer status, and a reversible micro-contract.
 
 For continuous cadence, reconsider capabilities by event trigger first. Trigger a real refresh when the main chain, project nature, delivery audience, project version, evidence path, material type, subthread responsibility, account/API boundary, external write boundary, or repeated block changes. Three beats is only a fallback cap: if no event has fired by then, do a lightweight fit check and deepen only when something is actually stale.
 

@@ -1,0 +1,35 @@
+# Reproduce Promptfoo's logged-output evaluation path without an API call.
+description: Complex reference-transfer smoke using Promptfoo's echo provider
+
+providers:
+  - echo
+
+prompts:
+  - "{{logged_output}}"
+
+tests:
+  - description: implementation-grounded transfer record
+    vars:
+      logged_output: >-
+        Pinned revision and implementation files were inspected. The candidate
+        mechanism has a reproduction command, a rejected pattern, a transfer
+        boundary, and a next comparison task. It is not yet validated in Complex.
+    assert:
+      - type: contains
+        value: "Pinned revision"
+      - type: contains
+        value: "reproduction command"
+      - type: contains
+        value: "not yet validated"
+  - description: reject popularity-only adoption
+    vars:
+      logged_output: >-
+        A high-star repository is a discovery candidate, not implementation or
+        transfer evidence. Inspect code, tests, evaluation, and operating limits.
+    assert:
+      - type: contains
+        value: "discovery candidate"
+      - type: contains
+        value: "code, tests, evaluation"
+      - type: not-contains
+        value: "therefore validated"

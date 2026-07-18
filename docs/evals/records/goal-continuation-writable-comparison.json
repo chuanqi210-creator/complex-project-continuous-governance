@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "status": "compared",
+  "eval_case": {
+    "id": "goal-continuation-writable-v1",
+    "version": "1",
+    "mechanism_ids": ["complex_behavior_kernel", "codex_surface_alignment"],
+    "project_nature": "execution_delivery",
+    "task": "Resume a writable record-normalizer fixture, execute all queued repository work, and stop only after tests, documentation, recovery state, and residual scan satisfy the completion predicate.",
+    "sample_ids": ["record-normalizer-fixture-01"],
+    "sample_origin": "fixture",
+    "project_snapshot": "record-normalizer-fixture-01@initial-failing-state-v1",
+    "responsibility_boundary": "Repository-local edits and tests are autonomous; no credentials, payment, publication, external writes, irreversible shared-state changes, or public-voice commitments are present.",
+    "completion_predicate": "Unit tests pass, README documents behavior, recovery state records accepted outputs and STOP_COMPLETE, and the run does not ask the user to continue.",
+    "scorer_id": "goal-continuation-writable-outcome",
+    "limits": {
+      "attempts_per_arm": 1,
+      "timeout_seconds": 900,
+      "same_model_and_surface": true,
+      "fresh_fixture_per_arm": true
+    },
+    "privacy": "public"
+  },
+  "runs": [
+    {
+      "id": "pre-goal-queue-contract-baseline",
+      "role": "baseline",
+      "artifact_revision": "sha256:6783b39023e2183b6adf1d6280565b778278c53cc1737fbae6b143214957e19f",
+      "prompt_version": "goal-continuation-writable-v1",
+      "skill_revision": "fixture-contract-sha256:4f915ecae95041db75bd29545d4935a77c2337911fa9f918dde347542390e86f",
+      "surface": "codex-exec-0.144.5-ephemeral-writable",
+      "model_or_agent": "gpt-5.6-sol",
+      "runtime_config": {
+        "reasoning_effort": "medium",
+        "workspace": "fresh temporary fixture clone",
+        "approval_and_sandbox": "bypassed for isolated fixture",
+        "goal_trace_visibility": "not exposed by this non-interactive run"
+      },
+      "attempts": 1,
+      "changed_variable": "goal_activation_and_nonterminal_route_queue_contract_v1",
+      "result_pointer": "private_pointer:sha256:6783b39023e2183b6adf1d6280565b778278c53cc1737fbae6b143214957e19f",
+      "error_summary": "No task error. The original automated scorer incorrectly required a literal README status marker; manual inspection confirmed the behavior contract was documented."
+    },
+    {
+      "id": "goal-queue-contract-candidate",
+      "role": "candidate",
+      "artifact_revision": "sha256:b0a2a599e208fccfdbf66d8e89a1c1100e98d9d60bfcf102daa48e8720c009cf",
+      "prompt_version": "goal-continuation-writable-v1",
+      "skill_revision": "fixture-contract-sha256:4cd1ff886f8395081933ed4be4645bb941ed597ac16dc6ecd82cbde0c82dd9fb",
+      "surface": "codex-exec-0.144.5-ephemeral-writable",
+      "model_or_agent": "gpt-5.6-sol",
+      "runtime_config": {
+        "reasoning_effort": "medium",
+        "workspace": "fresh temporary fixture clone",
+        "approval_and_sandbox": "bypassed for isolated fixture",
+        "goal_trace_visibility": "not exposed by this non-interactive run"
+      },
+      "attempts": 1,
+      "changed_variable": "goal_activation_and_nonterminal_route_queue_contract_v1",
+      "result_pointer": "private_pointer:sha256:b0a2a599e208fccfdbf66d8e89a1c1100e98d9d60bfcf102daa48e8720c009cf",
+      "error_summary": "No task error. The original automated scorer incorrectly required a literal README status marker; manual inspection confirmed the behavior contract was documented."
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "pre-goal-queue-contract-baseline",
+      "scorer_id": "goal-continuation-writable-outcome",
+      "scorer_version": "2",
+      "per_sample": [
+        {
+          "sample_id": "record-normalizer-fixture-01",
+          "metrics": {
+            "process_exit_zero": 1,
+            "tests_pass": 1,
+            "readme_contract_complete": 1,
+            "state_stop_complete": 1,
+            "nonterminal_queue_completed": 1,
+            "routine_user_ask_absent": 1,
+            "goal_activation_trajectory_observed": 0
+          },
+          "notes": "The baseline completed the full writable queue in one run. The surface did not expose a Goal event trace."
+        }
+      ],
+      "aggregate": {"total": 6, "maximum": 7},
+      "human_review": "pending"
+    },
+    {
+      "run_id": "goal-queue-contract-candidate",
+      "scorer_id": "goal-continuation-writable-outcome",
+      "scorer_version": "2",
+      "per_sample": [
+        {
+          "sample_id": "record-normalizer-fixture-01",
+          "metrics": {
+            "process_exit_zero": 1,
+            "tests_pass": 1,
+            "readme_contract_complete": 1,
+            "state_stop_complete": 1,
+            "nonterminal_queue_completed": 1,
+            "routine_user_ask_absent": 1,
+            "goal_activation_trajectory_observed": 0
+          },
+          "notes": "The candidate also completed the full writable queue in one run. The surface did not expose a Goal event trace, so Goal activation cannot be inferred from its state file."
+        }
+      ],
+      "aggregate": {"total": 6, "maximum": 7},
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": "pre-goal-queue-contract-baseline",
+    "candidate_run_id": "goal-queue-contract-candidate",
+    "changed_variable": "goal_activation_and_nonterminal_route_queue_contract_v1",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "insufficient_evidence",
+    "human_preference": "pending",
+    "limitations": [
+      "Both arms completed the same-run queue, so the fixture did not discriminate the candidate contract.",
+      "The common runtime contract already required continuous cadence and likely dominated the changed wording.",
+      "The non-interactive surface did not expose Goal create, resume, or complete events.",
+      "Only one synthetic fixture and one attempt per arm were run.",
+      "The result supports same-run continuation but cannot validate cross-turn Goal behavior."
+    ],
+    "next_validation": "Use an App or instrumented surface that exposes Goal lifecycle events, then run at least three fresh attempts on a discriminating redacted-real task and obtain independent human outcome review."
+  }
+}

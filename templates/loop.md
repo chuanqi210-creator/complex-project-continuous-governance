@@ -41,7 +41,7 @@ Use this template for a meaningful cycle that changes project state. The Loop se
 - retryable_failure_classes:
 - retry_limit_and_backoff:
 - idempotency_or_stable_id:
-- interrupt_resume_safety:
+- pause_resume_side_effect_contract:
 - rollback_or_compensation:
 - watchdog_or_stall_signal:
 
@@ -83,9 +83,24 @@ Use this template for a meaningful cycle that changes project state. The Loop se
 - residual_scan:
 - minimum_progress_signal_for_human:
 
+## Transfer Evaluation
+
+Use only when the beat evaluates an external reference implementation.
+
+- reference_id:
+- transfer_status_before_and_after:
+- same_task_input_and_measures:
+- baseline_result:
+- candidate_result:
+- comparison_artifacts:
+- adopted_rejected_not_transferable:
+- rollback_route:
+- Complex_validation_records:
+- real_complex_validation_still_needed:
+
 ## Acceptance
 
-A beat is accepted only when the forward artifact or explicit branch decision exists, the guard and evaluator are satisfied at the required level, state/indexes are updated, and the next route follows from observed results.
+A beat is accepted only when its declared outcome exists: a forward artifact for execution, or a route decision, falsified route, bounded blocker, or parking decision for diagnosis. The relevant guard and evaluator must be satisfied, state/indexes updated, and the next route derived from observed results.
 
 - beat_acceptance: accepted / rejected / partial / parked
 - acceptance_evidence:

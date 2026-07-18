@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-15-four-layer-runtime",
+  "version": "2026-07-17-mechanism-revalidation",
   "purpose": "Marker-based transcript review rules for the Complex behavior regression cases. These rules do not replace human review; they catch obvious omissions and forbidden moves in real agent responses.",
   "case_rules": {
     "setup_card_default": {
@@ -17,7 +17,7 @@
         {
           "label": "setup question card or safe defaults",
           "any": [
-            "complex_setup_question_card",
+            "Startup Defaults",
             "启动提问卡",
             "安全默认",
             "默认"
@@ -94,7 +94,7 @@
         {
           "label": "prompt bootstrap",
           "any": [
-            "complex_prompt_bootstrap_gate",
+            "Prompt Design Request",
             "copy_ready_prompt",
             "可复制的 prompt",
             "项目专用 prompt"
@@ -121,14 +121,15 @@
           ]
         },
         {
-          "label": "orchestration defaults",
-          "any": [
-            "Orchestration Contract",
-            "编排预检",
-            "control_plane",
-            "控制层优先",
-            "standing_lane_topology",
-            "standing lane 和 subagent 分开"
+        "label": "orchestration resource fit",
+        "any": [
+          "Orchestration Contract",
+          "编排预检",
+          "minimum runtime",
+          "最小运行内核",
+          "standing_lane_topology",
+          "standing lane 和 subagent 分开",
+          "organization_not_needed"
           ]
         },
         {
@@ -199,7 +200,7 @@
         {
           "label": "anti premature convergence",
           "any": [
-            "anti_premature_convergence_gate",
+            "candidate frameworks",
             "不要早收敛",
             "延迟收敛",
             "保留候选框架"
@@ -320,7 +321,7 @@
         {
           "label": "round prompt rehydration",
           "any": [
-            "beat_prompt_rehydration_gate",
+            "Beat Planning Packet",
             "beat_execution_prompt",
             "本轮执行 prompt",
             "重水化"
@@ -370,7 +371,30 @@
       ]
     },
     "continuous_runtime_activation_after_plan": {
-      "minimum_required_groups": 10,
+      "minimum_required_groups": 8,
+      "mandatory_required_labels": [
+        "auto-start next beat",
+        "beat router execution"
+      ],
+      "required_event_groups": [
+        {
+          "label": "durable Goal runtime event",
+          "any": [
+            {
+              "event_type": "tool_result",
+              "tool": "create_goal",
+              "status": "active",
+              "resource_id_required": true
+            },
+            {
+              "event_type": "surface_capability",
+              "capability": "goal",
+              "status": "unavailable",
+              "fallback_required": true
+            }
+          ]
+        }
+      ],
       "required_marker_groups": [
         {
           "label": "runtime activation",
@@ -391,26 +415,41 @@
           ]
         },
         {
-          "label": "control plane confirmation",
+          "label": "durable goal activation evidence",
           "any": [
-            "control_plane",
-            "控制层优先",
-            "控制层",
-            "topology-formation beat",
-            "continuous_lane_topology",
-            "standing_lane_topology",
-            "长期通道拓扑"
+            "Goal activated",
+            "Goal 已激活",
+            "create_goal",
+            "Goal tool returned active",
+            "Goal 工具返回 active",
+            "goal thread id",
+            "Goal 工具不可用",
+            "same_run_fallback"
           ]
         },
         {
-          "label": "lane vs subagent boundary",
-          "any": [
-            "standing lane 和 subagent 分开",
-            "long_running_lane_vs_subagent_boundary",
-            "standing lanes",
-            "temporary subagents",
-            "子代理不是长期线程"
-          ]
+        "label": "minimum runtime confirmation",
+        "any": [
+          "minimum runtime",
+          "最小运行内核",
+          "durable Goal",
+          "责任边界",
+          "accepted state",
+          "completion predicate",
+          "停止条件"
+        ]
+      },
+        {
+        "label": "conditional organization fit",
+        "any": [
+          "standing lane 和 subagent 分开",
+          "long_running_lane_vs_subagent_boundary",
+          "standing lanes",
+          "temporary subagents",
+          "子代理不是长期线程",
+          "not_needed",
+          "当前不需要长期组织"
+        ]
         },
         {
           "label": "auto-start next beat",
@@ -423,13 +462,15 @@
           ]
         },
         {
-          "label": "topology activation",
-          "any": [
-            "topology_auto_activation",
-            "自动启用",
-            "临时子代理",
-            "并行检查",
-            "只读审核"
+        "label": "resource fit decision",
+        "any": [
+          "topology_auto_activation",
+          "自动启用",
+          "临时子代理",
+          "并行检查",
+          "只读审核",
+          "not_needed_with_reason",
+          "degraded_or_unobservable"
           ]
         },
         {
@@ -537,12 +578,12 @@
           ]
         },
         {
-          "label": "greedy local task before control plane",
-          "any": [
-            "先做一个局部最高收益修改，之后再考虑长期线程",
-            "先修这个小问题，长期编排后续再说",
-            "本轮不需要确认控制层，直接改局部",
-            "本轮不需要先建拓扑，直接改局部"
+        "label": "greedy local task before minimum runtime",
+        "any": [
+          "先做一个局部最高收益修改，之后再考虑长期线程",
+          "先修这个小问题，长期编排后续再说",
+          "本轮不需要恢复状态，直接改局部",
+          "本轮不需要完成条件，直接改局部"
           ]
         },
         {
@@ -563,6 +604,14 @@
           ]
         },
         {
+          "label": "goal activation deferred despite queued route",
+          "any": [
+            "Goal 可以之后再开",
+            "暂不激活 Goal，先完成这一拍",
+            "只在 state 里记录 Goal"
+          ]
+        },
+        {
           "label": "same-session review as independent",
           "any": [
             "同一上下文也算独立评审",
@@ -573,10 +622,11 @@
       ],
       "human_review_questions": [
         "Did the response turn continuous cadence into active execution rather than a remembered keyword?",
+        "When a callable Goal surface and verifiable multi-turn route existed, did it activate Goal before business execution?",
         "Did it create or record a per-beat goal and start the next safe queued beat?",
-        "For continuous work, did it confirm the control plane before local greedy execution?",
-        "Did it distinguish durable lanes from temporary subagents?",
-        "Did it activate or record available low-side-effect topology, and ask only for a real responsibility/platform boundary?",
+      "For continuous work, did it confirm the minimum runtime before local greedy execution?",
+      "When recurring responsibilities justified organization, did it distinguish durable lanes from temporary subagents?",
+      "Did it make a visible resource-fit decision without forcing long-lived topology into a simple route?",
         "Does the answer show Beat Router execution and observable resource evidence, rather than only promising future activation?",
         "If Plan mode produced the prompt, did the execution turn rehydrate that prompt into actual runtime steps?"
       ]
@@ -644,7 +694,7 @@
       "required_marker_groups": [
         {
           "label": "interrupt safety",
-          "any": ["interrupt_resume_safety", "授权暂停", "approval interrupt", "pause before external write"]
+          "any": ["pause/resume side-effect contract", "授权暂停", "approval interrupt", "pause before external write"]
         },
         {
           "label": "pre/post authorization split",
@@ -824,7 +874,7 @@
         {
           "label": "auto execute when low risk",
           "any": [
-            "known_next_step_auto_execute_rule",
+            "next queued beat",
             "低风险可逆",
             "直接继续推进",
             "我会继续执行",
@@ -961,7 +1011,7 @@
           "any": [
             "read_only_audit",
             "只读审计",
-            "read_only_audit_subagent_contract",
+            "clean reviewer",
             "agent_topology_selection_trace"
           ]
         },
@@ -1157,16 +1207,15 @@
           ]
         },
         {
-          "label": "control plane and standing lane topology",
-          "any": [
-            "control_plane",
-            "控制层",
-            "standing_lane_topology",
-            "长期通道拓扑",
-            "topology-formation beat",
-            "主控线程",
-            "长期审核评议线程",
-            "lane_goal"
+        "label": "minimum runtime and conditional organization",
+        "any": [
+          "minimum runtime",
+          "最小运行内核",
+          "standing_lane_topology",
+          "organization_not_needed",
+          "条件化组织",
+          "completion predicate",
+          "停止条件"
           ]
         },
         {
@@ -1241,12 +1290,12 @@
           ]
         },
         {
-          "label": "greedy plan before control plane",
-          "any": [
-            "先选一个最高杠杆小问题执行，长期拓扑以后再补",
-            "无需确认控制层",
-            "无需先建长期通道",
-            "先局部优化，再考虑主控线程"
+        "label": "greedy plan before minimum runtime",
+        "any": [
+          "先选一个最高杠杆小问题执行，长期拓扑以后再补",
+          "无需恢复状态",
+          "无需完成判据",
+          "先局部优化，再考虑停止条件"
           ]
         },
         {
@@ -1288,12 +1337,13 @@
       "human_review_questions": [
         "Did the response distinguish Plan design from runtime orchestration?",
         "Did it distinguish subagents from user-visible long-running threads?",
-        "Did it define the control plane, standing lanes, and context-reset policy before local execution?",
+      "Did it define the minimum runtime and make an explicit organization-fit decision before local execution?",
+      "When recurring organization was not justified, did it avoid manufacturing standing lanes?",
         "Did it route each beat through a nonterminal or terminal route with clear stop conditions?"
       ]
     },
     "continuous_orchestration_runtime_spine": {
-      "minimum_required_groups": 10,
+    "minimum_required_groups": 8,
       "required_marker_groups": [
         {
           "label": "orchestration spine",
@@ -1315,25 +1365,27 @@
           ]
         },
         {
-          "label": "control plane confirmation",
-          "any": [
-            "control_plane",
-            "控制层优先",
-            "控制层",
-            "topology-formation beat",
-            "continuous_lane_topology",
-            "standing_lane_topology",
-            "manager-owned lane"
+        "label": "minimum runtime confirmation",
+        "any": [
+          "minimum runtime",
+          "最小运行内核",
+          "durable Goal",
+          "accepted state",
+          "completion predicate",
+          "responsibility boundary",
+          "stop condition"
           ]
         },
         {
-          "label": "lane vs worker split",
-          "any": [
-            "standing lanes",
-            "durable lanes",
-            "temporary worker",
-            "standing lane 和 subagent 分开",
-            "子代理不是长期线程"
+        "label": "conditional lane vs worker split",
+        "any": [
+          "standing lanes",
+          "durable lanes",
+          "temporary worker",
+          "standing lane 和 subagent 分开",
+          "子代理不是长期线程",
+          "not_needed",
+          "当前不需要 standing lane"
           ]
         },
         {
@@ -1357,15 +1409,17 @@
           ]
         },
         {
-          "label": "resource maturity",
-          "any": [
-            "resource_maturity_review",
-            "成熟度",
+        "label": "resource fit decision",
+        "any": [
+          "resource_maturity_review",
+          "成熟度",
             "线程",
             "subagent",
             "automation",
             "review lane",
-            "standing lane"
+          "standing lane",
+          "not_needed_with_reason",
+          "degraded_or_unobservable"
           ]
         },
         {
@@ -1430,12 +1484,12 @@
           ]
         },
         {
-          "label": "skips control plane confirmation",
-          "any": [
-            "先直接做局部修改，不需要控制层",
-            "跳过控制层",
-            "跳过长期通道拓扑",
-            "topology can wait until later"
+        "label": "skips minimum runtime confirmation",
+        "any": [
+          "先直接做局部修改，不需要恢复状态",
+          "跳过完成条件",
+          "无需确定停止条件",
+          "skip current state and route"
           ]
         },
         {
@@ -1507,9 +1561,9 @@
       ],
       "human_review_questions": [
         "Did the response enter a real orchestration runtime after the user's execution request?",
-        "Did it confirm the control plane before local greedy execution?",
+      "Did it confirm the minimum runtime before local greedy execution?",
         "Did it maintain a beat queue and per-beat goal rather than a broad project goal?",
-        "Did it distinguish standing lanes from temporary workers/subagents?",
+      "When organization was justified, did it distinguish standing lanes from temporary workers/subagents?",
         "Did it separate immature resources from the required Goal/Plan/Loop spine?",
         "Did it stop only for STOP_COMPLETE or a named real boundary with no lower-risk internal beat remaining?",
         "Did STOP_COMPLETE include residual-beat scanning rather than a fixed beat-count threshold?",
@@ -1774,6 +1828,26 @@
     },
     "codex_goal_thread_level_contract": {
       "minimum_required_groups": 5,
+      "mandatory_required_labels": [],
+      "required_event_groups": [
+        {
+          "label": "Codex Goal runtime event",
+          "any": [
+            {
+              "event_type": "tool_result",
+              "tool": "create_goal",
+              "status": "active",
+              "resource_id_required": true
+            },
+            {
+              "event_type": "surface_capability",
+              "capability": "goal",
+              "status": "unavailable",
+              "fallback_required": true
+            }
+          ]
+        }
+      ],
       "required_marker_groups": [
         {
           "label": "thread or phase goal",
@@ -1815,6 +1889,19 @@
             "Codex surface",
             "Goal mode"
           ]
+        },
+        {
+          "label": "goal activation evidence",
+          "any": [
+            "Goal activated",
+            "Goal 已激活",
+            "create_goal",
+            "Goal tool returned active",
+            "Goal 工具返回 active",
+            "goal thread id",
+            "Goal 工具不可用",
+            "same_run_fallback"
+          ]
         }
       ],
       "forbidden_marker_groups": [
@@ -1832,10 +1919,19 @@
             "Goal 过期所以项目阻塞",
             "等你清理 Goal 才能继续"
           ]
+        },
+        {
+          "label": "callable goal left inactive",
+          "any": [
+            "暂不激活 Goal，先完成这一拍",
+            "Goal 可以之后再开",
+            "只在 state 里记录 Goal"
+          ]
         }
       ],
       "human_review_questions": [
         "Did the response keep Codex Goal as a thread/phase objective and completion criteria?",
+        "When Goal was callable and the route was multi-turn, did the response actually activate it?",
         "Did it put the immediate beat into beat_objective rather than the long Goal?",
         "Did it continue from state/next_route if the Codex Goal contract was stale?"
       ]
@@ -1972,7 +2068,7 @@
         {
           "label": "audit contract",
           "any": [
-            "read_only_audit_subagent_contract",
+            "clean reviewer",
             "fact ledger",
             "事实账本",
             "只读审核"
@@ -2460,7 +2556,7 @@
         {
           "label": "hallucination sentinel",
           "any": [
-            "hallucination_sentinel",
+            "claim basis",
             "幻觉哨兵",
             "unsupported claims",
             "unsupported claim"
@@ -2607,22 +2703,26 @@
           ]
         },
         {
-          "label": "module lane",
-          "any": [
-            "module",
-            "standing lane",
-            "lane",
-            "模块"
+      "label": "module and optional lane",
+      "any": [
+        "module",
+        "standing lane",
+        "lane",
+        "模块",
+        "organization_not_needed"
           ]
         },
         {
-          "label": "forward artifact",
-          "any": [
-            "forward artifact",
-            "model_delta",
-            "data_delta",
-            "writing_delta",
-            "topology_delta"
+      "label": "declared outcome",
+      "any": [
+        "forward artifact",
+        "model_delta",
+        "data_delta",
+        "writing_delta",
+        "topology_delta",
+        "route decision",
+        "falsified route",
+        "parking decision"
           ]
         },
         {
@@ -2654,7 +2754,7 @@
       ],
       "human_review_questions": [
         "Did the Loop serve a target function?",
-        "Did it name module/lane/artifact?",
+      "Did it name the module and declared outcome, and add a lane only when organization was active?",
         "Did it avoid local greedy routing?"
       ]
     },
@@ -2752,7 +2852,7 @@
         {
           "label": "hallucination sentinel",
           "any": [
-            "hallucination_sentinel",
+            "claim basis",
             "幻觉"
           ]
         },
@@ -2791,7 +2891,7 @@
         {
           "label": "external calibration each issue",
           "any": [
-            "external_calibration_required_for_each_issue",
+            "reference implementation transfer",
             "每个机制级问题",
             "every mechanism-level issue"
           ]
@@ -2948,25 +3048,32 @@
       ]
     },
     "scheduled_structure_review_continues_project": {
-      "minimum_required_groups": 4,
-      "required_marker_groups": [
-        {
-          "label": "five accepted beats",
-          "any": [
-            "5 accepted beats",
-            "每 5 个 accepted beats",
-            "5 个 accepted"
+    "minimum_required_groups": 3,
+    "required_marker_groups": [
+      {
+        "label": "review trigger",
+        "any": [
+          "phase switch",
+          "阶段切换",
+          "changed evidence",
+          "证据变化",
+          "contradiction",
+          "上下文压力",
+          "recovery failure",
+          "guardrail-only"
           ]
         },
         {
-          "label": "hallucination sentinel",
-          "any": [
-            "hallucination_sentinel",
-            "幻觉哨兵"
+        "label": "claim-basis review",
+        "any": [
+          "claim basis",
+          "claim-basis",
+          "主张依据",
+          "幻觉检查"
           ]
         },
         {
-          "label": "trace appraisal",
+        "label": "state or trace appraisal",
           "any": [
             "trace_appraisal",
             "trace appraisal",
@@ -3000,8 +3107,9 @@
         }
       ],
       "human_review_questions": [
-        "Did review lead to adjust/supersede/park/continue?",
-        "Did it preserve movement after periodic review?"
+      "Was the review triggered by an observed event or a project-specific fallback cadence rather than a universal beat count?",
+      "Did review lead to adjust/supersede/park/continue?",
+      "Did it preserve movement after review?"
       ]
     },
     "minimum_viable_closure_for_research": {
@@ -3074,10 +3182,12 @@
       "minimum_required_groups": 4,
       "required_marker_groups": [
         {
-          "label": "attention governance",
-          "any": [
-            "attention_governance",
-            "注意力治理"
+        "label": "delivery contract",
+        "any": [
+          "delivery contract",
+          "交付契约",
+          "reader-facing",
+          "人看版"
           ]
         },
         {
@@ -3217,6 +3327,45 @@
       "human_review_questions": [
         "Did it identify evidence for the failed layer before proposing a repair?",
         "Was prompt wording changed only for an instruction-level failure?"
+      ]
+    },
+    "reference_implementation_transfer_requires_reproduction": {
+      "minimum_required_groups": 7,
+      "required_marker_groups": [
+        {"label": "pinned implementation", "any": ["pinned revision", "固定提交", "commit SHA", "实现证据"]},
+        {"label": "original boundary", "any": ["original goal", "原始目标", "non-goal", "非目标"]},
+        {"label": "reproduction status", "any": ["reproduced", "复现", "not reproduced", "未复现"]},
+        {"label": "transfer boundary", "any": ["adopted", "rejected", "not transferable", "采纳", "拒绝", "不可迁移"]},
+        {"label": "same task evidence", "any": ["same-task comparison result", "同题比较结果", "baseline and candidate", "基线与候选"]},
+        {"label": "rollback", "any": ["rollback route", "rollback", "回滚路线", "回滚"]},
+        {"label": "validation boundary", "any": ["not yet validated", "尚未验证", "still needs real Complex", "仍需真实 Complex", "validation evidence", "验证证据"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "readme only", "any": ["只看 README 就够", "README summary proves implementation"]},
+        {"label": "popularity proof", "any": ["高星所以可以直接采用", "stars prove the mechanism"]},
+        {"label": "upstream equals complex", "any": ["上游有效所以 Complex 已验证", "upstream success proves Complex validation"]},
+        {"label": "premature complex validation", "any": ["validated_in_complex", "已在 Complex 验证", "标记为 Complex 已验证"]}
+      ],
+      "human_review_questions": [
+        "Did it inspect a pinned implementation rather than repeat project-level principles?",
+        "Did it distinguish local reproduction, same-task comparison, transfer, and Complex-side validation?"
+      ]
+    },
+    "local_artifact_contract_precedes_mechanism_vocabulary": {
+      "minimum_required_groups": 3,
+      "required_marker_groups": [
+        {"label": "local contract precedence", "any": ["local_contract_precedence", "本地契约优先", "project-native schema", "项目原生 schema"]},
+        {"label": "exact artifact interface", "any": ["field names", "字段名", "artifact path", "产物路径", "value types", "值类型"]},
+        {"label": "mechanical acceptance", "any": ["verifier", "验证器", "schema check", "结构校验"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "rename to complex", "any": ["改成 Complex 字段", "rename fields to Complex terminology"]},
+        {"label": "governance wrapper", "any": ["统一包成 Hot State", "wrap every artifact in Hot State"]},
+        {"label": "explanation over artifact", "any": ["解释正确就算通过", "correct explanation overrides verifier failure"]}
+      ],
+      "human_review_questions": [
+        "Did the output preserve the exact target-project artifact interface?",
+        "Did Complex terminology remain in the decision layer instead of leaking into the deliverable?"
       ]
     }
   }

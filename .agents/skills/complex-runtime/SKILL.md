@@ -26,10 +26,11 @@ When applying Complex to a target project, this skill is the first-pass rule ind
 
 ## Codex Surface Map
 
-- Plan mode is a planning surface. Use it when available at complex or strategic checkpoints; otherwise produce a plan-shaped checkpoint without claiming the UI changed.
-- Codex Goal carries `thread_goal` or `phase_goal`, not changing beat chores.
-- `beat_objective` is the current Plan/Loop target. `goal_memory_summary` is recovery context.
+- Plan mode is a planning surface. Use it when the desired outcome, constraints, or strategic route is unclear; otherwise keep the clear objective in Goal and use a lightweight plan-shaped checkpoint without claiming the UI changed.
+- Codex Thread, Turn, Item, Goal, approval, skill, subagent, worktree, and automation are platform primitives. `thread_goal`, `phase_goal`, `beat_objective`, `goal_memory_summary`, and standing lane are Complex conventions layered on available primitives.
+- Codex Goal carries the durable objective. If the work spans multiple turns or queued beats, has a verifiable stopping condition, and the Goal tool is callable, activate it before business execution; do not merely recommend `/goal` or leave the objective in state. Changing beat chores stay in `beat_objective` and recovery context.
 - Continuous cadence advances queued beats in the same run until completion or a real responsibility/tool boundary. If cross-turn continuation was selected and a callable heartbeat/automation tool exists, activate it during harness setup and retain the resource evidence; do not merely recommend it. An accepted beat does not complete the Codex Goal while useful queued work remains.
+- Treat a non-terminal `next_route` as queued work and continue executing it while tools and the responsibility boundary permit. Goal preserves continuation when the runtime yields or crosses turns; Goal activation alone does not execute the queue and is not a stopping condition. A human-readable progress report is not a stopping condition.
 - Subagents are bounded workers. Standing lanes are durable manager-owned responsibilities.
 - Threads, worktrees, and automations are platform resources selected according to task and tool fit.
 
@@ -38,8 +39,8 @@ When applying Complex to a target project, this skill is the first-pass rule ind
 1. Restore true state and assemble the Context Working Set.
 2. Classify `project_nature`: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
 3. Assign decision rights through the responsibility boundary.
-4. Establish the control plane, operating organization, and Runtime Harness.
-5. Run the smallest meaningful target-function Progress Loop.
+4. Establish the minimum control and Runtime Harness; add organization or portfolio control only when recurring lanes or multiple modules justify them.
+5. Run a bounded target-function Progress Loop that changes an outcome, exposes a decision, or falsifies a route.
 6. Deliver to the right audience and evaluate the outcome.
 7. Leave `next_route`, accepted artifacts, recovery pointers, and layer diagnosis.
 
@@ -59,13 +60,17 @@ After compaction or handoff, verify recovery of Goal, current basis, active modu
 
 On a new target repository, find durable instructions and one authoritative five-field recovery anchor before broad scanning. If none exists, diagnose `context_failure`; inspect only bounded root facts and explicitly accepted pointers, then create the smallest project-native anchor when writable or return the missing fields and bootstrap route when read-only. Never promote a dated plan, candidate output, or thread return into current state merely because it is the newest visible file.
 
-Treat an existing anchor as valid only if authority, freshness, bounded size, and one next route are clear. Oversized or conflicting anchors trigger a state-reconciliation beat, not deeper business execution: query route/status keys selectively, retain the contradiction, compact one Hot State, and keep large manifests or ledgers warm by pointer.
+Treat an existing anchor as valid only if authority, freshness, bounded size, and one next route are clear. Oversized or conflicting anchors trigger a state-reconciliation beat, not deeper business execution: query route/status keys selectively, retain the contradiction, compact one active recovery anchor, and keep large manifests or ledgers by pointer.
 
-Make bounded inspection measurable. Check scale first; classify local key names/types before values; cap the first pass at 50 matched names or 80 text lines, 32 KiB of output, and 30 seconds per source unless a project-specific budget is justified. If a query truncates, times out, or exceeds the match budget, stop: the source does not fit the current working-set envelope, although authority still requires separate judgment. Do not broaden the query. Prefer `tools/inspect_recovery_anchor.py` or an equivalent deterministic extractor for repeated large-anchor audits, then pass only its content-minimized ledger to a clean evaluator. Do not cross the review boundary with source snippets, raw key names, absolute paths, or identifiers. The manager enforces hard worker timeout with the available harness/watchdog.
+Make bounded inspection measurable. Check scale first, classify names/types before values, and choose a project-specific match/output/time envelope. The bundled extractor's limits are safe fallback defaults, not universal protocol constants. If a query truncates, times out, or exceeds the envelope, stop: the source does not fit the current working set, although authority still requires separate judgment. Prefer `tools/inspect_recovery_anchor.py` or an equivalent deterministic extractor for repeated large-anchor audits, then pass only its content-minimized ledger to a clean evaluator. The manager enforces hard timeout with the available harness/watchdog.
 
 ### Harness
 
 Make tools, environment, side effects, logs, validation, checkpoints, retries, idempotency, rollback, and degraded routes legible. Discover capabilities just in time. Prefer mechanical checks when a repeated textual rule can be enforced by tests, schemas, hooks, or verifiers.
+
+Treat the target repository's explicit completion predicate, output path, field names, value types, and verifier as the executable interface. Complex terminology must not rename fields, add wrappers, suppress requested facts, or appear as reader-facing headings unless the target contract asks for it. Governance decides the route; the local contract decides the artifact shape.
+
+Classify responsibility as `decision ownership x side-effect class`. Put approval on the exact external or irreversible operation and preserve its payload hash, scope/version, stable action ID, and resume route. Keep retry, checkpoint, idempotency, and compensation in the Harness rather than asking the user to own them.
 
 ### Loop
 
@@ -73,7 +78,7 @@ Use:
 
 `restore -> select -> act -> observe -> evaluate -> route/retry/rollback/stop`
 
-Define an outcome completion predicate and forward artifact. For important work, separate executor and evaluator. A fixed beat count or agent self-report is not completion.
+Define an outcome completion predicate. A forward-execution beat names its forward artifact; a diagnostic beat names its route decision, falsification, bounded blocker, or parking decision. For important work, separate executor and evaluator. A fixed beat count or agent self-report is not completion.
 
 ## Cross-Layer Diagnosis
 
@@ -91,14 +96,18 @@ Repair the failed layer. Add the observed outcome to evaluation before changing 
 
 AI decides project-internal planning, reading, verification, topology fit, context compaction, reversible local commands, and next-beat routing. Ask only for Goal/public-voice changes, credentials, payment, publishing, external writes, irreversible shared-state changes, high-impact external commitments, or undelegated human value judgments.
 
-For recurring work, establish controller, human interface, literature/data, model/component, data-code, review/risk, and writing/delivery lanes. A lane is responsibility, not automatically a thread. Independent review uses clean context, a fact ledger, or a separate reviewer; same-session review is diagnostic.
+For recurring multi-lane work, establish only responsibilities that will be reused. A lane contract has accepted input/output, wake trigger, context policy, manager acceptance, retire condition, and owner/resource evidence. A lane is responsibility, not automatically a thread; a real platform resource requires its observed identifier and status. Independent review uses clean context, a fact ledger, or a separate reviewer; same-session review is diagnostic.
 
 ## External Calibration And Evidence
 
-Before mechanism-level changes, compare official docs, primary papers, standards, or mature production practice. Record source, problem matched, adopted, rejected, not transferable, micro-contract, and refresh trigger. External precedent grounds a design but does not validate Complex.
+Before mechanism-level changes, use external projects as reference implementations, not names. Discover candidates, pin and inspect their goal/non-goals, state/control path, code/configuration, tests/evaluations, operating limits, and failure boundaries; reproduce a bounded mechanism when feasible; compare it with current Complex behavior on the same task; then transfer one reversible micro-contract. Record explicit status from discovery through `validated_in_complex`. A citation, README, star count, or upstream benchmark never proves a Complex transfer. For Complex maintenance, consult `docs/active-architecture-rebaseline.json` before creating a new mechanism; prefer merging into the kernel or a boundary.
 
-Use a hallucination sentinel for important transitions and claims: current basis, external basis, inference, unsupported claim, and falsification cue.
+For a same-task comparison, use `docs/evals/experiment-program.json` rather than an informal demonstration. Freeze and hash the task, fixtures, runner, schema, and prompts; hide semantic oracle labels; change one variable; repeat stochastic arms; score environment outcome, trajectory, and blind human preference separately; and screen broken tasks, contamination, reward hacking, harness mismatch, and grader disagreement. Prefer held-out projects when the transfer decision itself is being tested. If the harness does not instantiate the claimed condition, mark `revise_and_repeat`. Automated signals without completed human review remain `insufficient_evidence`.
+
+At important transitions and claims, run a claim-basis check: current basis, external basis, inference, unsupported claim, and falsification cue.
 
 ## State And Output
 
-Keep Hot State short, Warm Index compact, and raw traces in Cold Archive by pointer. Routine human output shows only what moved, what artifact changed, what uncertainty changed, what cannot yet be claimed, and the next route.
+When measured context growth or repeated handoff justifies state tiers, keep a versioned authoritative Hot State, a compact Warm Index, and raw traces in Cold Archive by pointer. Broken pointers route to reconciliation; never guess through them. Otherwise use one compact recovery anchor. Human delivery declares the reader task, surface, claim ceiling, sensitive-information boundary, and acceptance test; keep machine recovery and observability separate unless requested.
+
+Use delivery terms to choose content, not as a mandatory outline. Human output leads with project facts, requested quantities, decision implications, and honest limits; machine output follows the project-native schema exactly.

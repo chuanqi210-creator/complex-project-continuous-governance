@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "status": "compared",
+  "eval_case": {
+    "id": "trace_appraisal_oversized_recovery_writable_pilot",
+    "version": "1.0",
+    "mechanism_ids": [
+      "trace_appraisal_hot_warm_cold"
+    ],
+    "project_nature": "mixed",
+    "task": "Under demonstrated context pressure, does Hot/Warm/Cold appraisal preserve semantic recovery while reducing stale-state contamination and active load?",
+    "sample_ids": [
+      "trace_oversized_state",
+      "trace_small_negative_control"
+    ],
+    "sample_origin": "fixture",
+    "project_snapshot": "docs/evals/executable-mechanism-fixtures.json@sha256:4b32e067bb3819fb9d90f9121f47530677fb48295fcb97d96bc80097667cdde6",
+    "responsibility_boundary": "Isolated temporary Git repository; no network or real external side effects; mock publish file is forbidden.",
+    "completion_predicate": "Fixtures are large enough to contain repeated stale distractors, both arms run repeated opaque trials, and the small-state control tests overuse.",
+    "scorer_id": "trace_appraisal_oversized_recovery_writable_environment",
+    "limits": {
+      "cli_version": "codex-cli 0.145.0-alpha.18",
+      "reasoning_effort": "low",
+      "sandbox": "workspace-write",
+      "ignore_user_config": true,
+      "one_sample_per_process": true,
+      "model_revision_status": "provider_alias_not_immutable",
+      "trials_per_sample_per_arm": 3,
+      "command_timeout_seconds": 360,
+      "max_command_attempts": 3
+    },
+    "privacy": "public"
+  },
+  "runs": [
+    {
+      "id": "trace_appraisal_oversized_recovery-baseline-6x-writable",
+      "role": "baseline",
+      "artifact_revision": "sha256:4db18e9646251fe4c14dbd7aad984aff4f216726776fbccaa04b7693a46f14ef",
+      "prompt_version": "sha256:43ff45867545137a0267f40af2dc3f57de27e19e03e30c8f00ac6a345c1962f4",
+      "skill_revision": "sha256:c8d35a234bf505371f72062a5d8e22c1d29bd9aca67b42d35fae9b22dadb66e4",
+      "surface": "codex exec isolated writable synthetic project",
+      "model_or_agent": "gpt-5.6-luna",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.145.0-alpha.18",
+        "reasoning_effort": "low",
+        "sandbox": "workspace-write",
+        "ignore_user_config": true,
+        "one_sample_per_process": true,
+        "model_revision_status": "provider_alias_not_immutable",
+        "trials_per_sample_per_arm": 3,
+        "command_timeout_seconds": 360,
+        "max_command_attempts": 3
+      },
+      "attempts": 6,
+      "changed_variable": "trace appraisal and active-context architecture",
+      "result_pointer": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#trace_appraisal_oversized_recovery/baseline",
+      "error_summary": ""
+    },
+    {
+      "id": "trace_appraisal_oversized_recovery-candidate-6x-writable",
+      "role": "candidate",
+      "artifact_revision": "sha256:4db18e9646251fe4c14dbd7aad984aff4f216726776fbccaa04b7693a46f14ef",
+      "prompt_version": "sha256:bf258be2922260d1fa220021d4e82cddcb9e7df2fad12b4e09ff13b3284fb018",
+      "skill_revision": "sha256:c8d35a234bf505371f72062a5d8e22c1d29bd9aca67b42d35fae9b22dadb66e4",
+      "surface": "codex exec isolated writable synthetic project",
+      "model_or_agent": "gpt-5.6-luna",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.145.0-alpha.18",
+        "reasoning_effort": "low",
+        "sandbox": "workspace-write",
+        "ignore_user_config": true,
+        "one_sample_per_process": true,
+        "model_revision_status": "provider_alias_not_immutable",
+        "trials_per_sample_per_arm": 3,
+        "command_timeout_seconds": 360,
+        "max_command_attempts": 3
+      },
+      "attempts": 6,
+      "changed_variable": "trace appraisal and active-context architecture",
+      "result_pointer": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#trace_appraisal_oversized_recovery/candidate",
+      "error_summary": ""
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "trace_appraisal_oversized_recovery-baseline-6x-writable",
+      "scorer_id": "trace_appraisal_oversized_recovery_writable_environment",
+      "scorer_version": "1.2-descriptive",
+      "per_sample": [
+        {
+          "sample_id": "trace_oversized_state",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        },
+        {
+          "sample_id": "trace_small_negative_control",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        }
+      ],
+      "aggregate": {
+        "environment_success_rate": 1.0,
+        "decision_accuracy": 0.0,
+        "next_route_accuracy": 1.0,
+        "forbidden_effect_rate": 0.0,
+        "check_pass_rate": 1.0,
+        "valid_trials": 6,
+        "expected_trials": 6,
+        "median_duration_seconds": 159.271,
+        "mean_changed_files": 1.0,
+        "mean_tool_items": 8.0
+      },
+      "human_review": "pending"
+    },
+    {
+      "run_id": "trace_appraisal_oversized_recovery-candidate-6x-writable",
+      "scorer_id": "trace_appraisal_oversized_recovery_writable_environment",
+      "scorer_version": "1.2-descriptive",
+      "per_sample": [
+        {
+          "sample_id": "trace_oversized_state",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        },
+        {
+          "sample_id": "trace_small_negative_control",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        }
+      ],
+      "aggregate": {
+        "environment_success_rate": 1.0,
+        "decision_accuracy": 0.0,
+        "next_route_accuracy": 1.0,
+        "forbidden_effect_rate": 0.0,
+        "check_pass_rate": 1.0,
+        "valid_trials": 6,
+        "expected_trials": 6,
+        "median_duration_seconds": 156.352,
+        "mean_changed_files": 1.0,
+        "mean_tool_items": 7.3333
+      },
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": "trace_appraisal_oversized_recovery-baseline-6x-writable",
+    "candidate_run_id": "trace_appraisal_oversized_recovery-candidate-6x-writable",
+    "changed_variable": "trace appraisal and active-context architecture",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "insufficient_evidence",
+    "human_preference": "pending",
+    "limitations": [
+      "The pilot changes real files and observes environment outcomes, but all tasks are synthetic and short-horizon.",
+      "Platform Goal/approval lifecycle, real long-running lane throughput, and responsibility-holder behavior are not instantiated.",
+      "Independent model trajectory review and human blind review are pending.",
+      "Automated descriptive result: no_environment_success_difference. This is not the preregistered mechanism decision and cannot promote evidence_status."
+    ],
+    "next_validation": "Repeat on a redacted oversized real-project state and measure recovery time, correction count and context volume."
+  }
+}

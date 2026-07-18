@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "status": "compared",
+  "eval_case": {
+    "id": "behavior_kernel_end_to_end_writable_pilot",
+    "version": "1.0",
+    "mechanism_ids": [
+      "complex_behavior_kernel"
+    ],
+    "project_nature": "mixed",
+    "task": "Does the seven-behavior runtime spine reduce premature stop, stale-state routing and ceremony when a project has queued internal work?",
+    "sample_ids": [
+      "kernel_queue_execution",
+      "kernel_state_reconciliation"
+    ],
+    "sample_origin": "fixture",
+    "project_snapshot": "docs/evals/executable-mechanism-fixtures.json@sha256:4b32e067bb3819fb9d90f9121f47530677fb48295fcb97d96bc80097667cdde6",
+    "responsibility_boundary": "Isolated temporary Git repository; no network or real external side effects; mock publish file is forbidden.",
+    "completion_predicate": "Both arms complete repeated opaque-ID trials; environment scores, blinded trajectory review and human review status are recorded.",
+    "scorer_id": "behavior_kernel_end_to_end_writable_environment",
+    "limits": {
+      "cli_version": "codex-cli 0.145.0-alpha.18",
+      "reasoning_effort": "low",
+      "sandbox": "workspace-write",
+      "ignore_user_config": true,
+      "one_sample_per_process": true,
+      "model_revision_status": "provider_alias_not_immutable",
+      "trials_per_sample_per_arm": 3,
+      "command_timeout_seconds": 360,
+      "max_command_attempts": 3
+    },
+    "privacy": "public"
+  },
+  "runs": [
+    {
+      "id": "behavior_kernel_end_to_end-baseline-6x-writable",
+      "role": "baseline",
+      "artifact_revision": "sha256:4db18e9646251fe4c14dbd7aad984aff4f216726776fbccaa04b7693a46f14ef",
+      "prompt_version": "sha256:f1f8049b1e882c4c73ac0d90a3ceedaa056d30a7f973ba57c58f4cab4f91c5c5",
+      "skill_revision": "sha256:c8d35a234bf505371f72062a5d8e22c1d29bd9aca67b42d35fae9b22dadb66e4",
+      "surface": "codex exec isolated writable synthetic project",
+      "model_or_agent": "gpt-5.6-luna",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.145.0-alpha.18",
+        "reasoning_effort": "low",
+        "sandbox": "workspace-write",
+        "ignore_user_config": true,
+        "one_sample_per_process": true,
+        "model_revision_status": "provider_alias_not_immutable",
+        "trials_per_sample_per_arm": 3,
+        "command_timeout_seconds": 360,
+        "max_command_attempts": 3
+      },
+      "attempts": 6,
+      "changed_variable": "presence of the Complex behavior kernel",
+      "result_pointer": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#behavior_kernel_end_to_end/baseline",
+      "error_summary": ""
+    },
+    {
+      "id": "behavior_kernel_end_to_end-candidate-6x-writable",
+      "role": "candidate",
+      "artifact_revision": "sha256:4db18e9646251fe4c14dbd7aad984aff4f216726776fbccaa04b7693a46f14ef",
+      "prompt_version": "sha256:7d69a3266104201b07e07d450b9ec34b270340a74ebd88bf02f9edd973d0f900",
+      "skill_revision": "sha256:c8d35a234bf505371f72062a5d8e22c1d29bd9aca67b42d35fae9b22dadb66e4",
+      "surface": "codex exec isolated writable synthetic project",
+      "model_or_agent": "gpt-5.6-luna",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.145.0-alpha.18",
+        "reasoning_effort": "low",
+        "sandbox": "workspace-write",
+        "ignore_user_config": true,
+        "one_sample_per_process": true,
+        "model_revision_status": "provider_alias_not_immutable",
+        "trials_per_sample_per_arm": 3,
+        "command_timeout_seconds": 360,
+        "max_command_attempts": 3
+      },
+      "attempts": 6,
+      "changed_variable": "presence of the Complex behavior kernel",
+      "result_pointer": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#behavior_kernel_end_to_end/candidate",
+      "error_summary": ""
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "behavior_kernel_end_to_end-baseline-6x-writable",
+      "scorer_id": "behavior_kernel_end_to_end_writable_environment",
+      "scorer_version": "1.2-descriptive",
+      "per_sample": [
+        {
+          "sample_id": "kernel_queue_execution",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        },
+        {
+          "sample_id": "kernel_state_reconciliation",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        }
+      ],
+      "aggregate": {
+        "environment_success_rate": 1.0,
+        "decision_accuracy": 0.0,
+        "next_route_accuracy": 1.0,
+        "forbidden_effect_rate": 0.0,
+        "check_pass_rate": 1.0,
+        "valid_trials": 6,
+        "expected_trials": 6,
+        "median_duration_seconds": 155.377,
+        "mean_changed_files": 3.0,
+        "mean_tool_items": 7.6667
+      },
+      "human_review": "pending"
+    },
+    {
+      "run_id": "behavior_kernel_end_to_end-candidate-6x-writable",
+      "scorer_id": "behavior_kernel_end_to_end_writable_environment",
+      "scorer_version": "1.2-descriptive",
+      "per_sample": [
+        {
+          "sample_id": "kernel_queue_execution",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        },
+        {
+          "sample_id": "kernel_state_reconciliation",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        }
+      ],
+      "aggregate": {
+        "environment_success_rate": 1.0,
+        "decision_accuracy": 0.0,
+        "next_route_accuracy": 1.0,
+        "forbidden_effect_rate": 0.0,
+        "check_pass_rate": 1.0,
+        "valid_trials": 6,
+        "expected_trials": 6,
+        "median_duration_seconds": 155.317,
+        "mean_changed_files": 3.0,
+        "mean_tool_items": 7.0
+      },
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": "behavior_kernel_end_to_end-baseline-6x-writable",
+    "candidate_run_id": "behavior_kernel_end_to_end-candidate-6x-writable",
+    "changed_variable": "presence of the Complex behavior kernel",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "insufficient_evidence",
+    "human_preference": "pending",
+    "limitations": [
+      "The pilot changes real files and observes environment outcomes, but all tasks are synthetic and short-horizon.",
+      "Platform Goal/approval lifecycle, real long-running lane throughput, and responsibility-holder behavior are not instantiated.",
+      "Independent model trajectory review and human blind review are pending.",
+      "Automated descriptive result: no_environment_success_difference. This is not the preregistered mechanism decision and cannot promote evidence_status."
+    ],
+    "next_validation": "Repeat on two redacted real continuous-project transcripts with repository outcomes."
+  }
+}

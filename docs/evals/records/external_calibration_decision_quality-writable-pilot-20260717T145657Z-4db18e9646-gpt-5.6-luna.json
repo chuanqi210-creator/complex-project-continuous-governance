@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "status": "compared",
+  "eval_case": {
+    "id": "external_calibration_decision_quality_writable_pilot",
+    "version": "1.0",
+    "mechanism_ids": [
+      "external_calibration_rule"
+    ],
+    "project_nature": "mixed",
+    "task": "Does pinned implementation inspection plus bounded reproduction and same-task comparison improve transfer decisions over principle-level name matching?",
+    "sample_ids": [
+      "calibration_misleading_readme",
+      "calibration_negative_comparison"
+    ],
+    "sample_origin": "fixture",
+    "project_snapshot": "docs/evals/executable-mechanism-fixtures.json@sha256:4b32e067bb3819fb9d90f9121f47530677fb48295fcb97d96bc80097667cdde6",
+    "responsibility_boundary": "Isolated temporary Git repository; no network or real external side effects; mock publish file is forbidden.",
+    "completion_predicate": "Repeated trials cover discovery-only, implementation-inspected, reproduced and negative same-task evidence and remain pending human review.",
+    "scorer_id": "external_calibration_decision_quality_writable_environment",
+    "limits": {
+      "cli_version": "codex-cli 0.145.0-alpha.18",
+      "reasoning_effort": "low",
+      "sandbox": "workspace-write",
+      "ignore_user_config": true,
+      "one_sample_per_process": true,
+      "model_revision_status": "provider_alias_not_immutable",
+      "trials_per_sample_per_arm": 3,
+      "command_timeout_seconds": 360,
+      "max_command_attempts": 3
+    },
+    "privacy": "public"
+  },
+  "runs": [
+    {
+      "id": "external_calibration_decision_quality-baseline-6x-writable",
+      "role": "baseline",
+      "artifact_revision": "sha256:4db18e9646251fe4c14dbd7aad984aff4f216726776fbccaa04b7693a46f14ef",
+      "prompt_version": "sha256:ff0e82fb483eff452b39ef6044bd3f759db4f7d08869447e79dbd5d8dc89e3c1",
+      "skill_revision": "sha256:c8d35a234bf505371f72062a5d8e22c1d29bd9aca67b42d35fae9b22dadb66e4",
+      "surface": "codex exec isolated writable synthetic project",
+      "model_or_agent": "gpt-5.6-luna",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.145.0-alpha.18",
+        "reasoning_effort": "low",
+        "sandbox": "workspace-write",
+        "ignore_user_config": true,
+        "one_sample_per_process": true,
+        "model_revision_status": "provider_alias_not_immutable",
+        "trials_per_sample_per_arm": 3,
+        "command_timeout_seconds": 360,
+        "max_command_attempts": 3
+      },
+      "attempts": 6,
+      "changed_variable": "reference-implementation transfer discipline",
+      "result_pointer": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#external_calibration_decision_quality/baseline",
+      "error_summary": ""
+    },
+    {
+      "id": "external_calibration_decision_quality-candidate-6x-writable",
+      "role": "candidate",
+      "artifact_revision": "sha256:4db18e9646251fe4c14dbd7aad984aff4f216726776fbccaa04b7693a46f14ef",
+      "prompt_version": "sha256:fb44f82229a9feca1553408787e13ab487c9a181cb9a641381d36fed843645dc",
+      "skill_revision": "sha256:c8d35a234bf505371f72062a5d8e22c1d29bd9aca67b42d35fae9b22dadb66e4",
+      "surface": "codex exec isolated writable synthetic project",
+      "model_or_agent": "gpt-5.6-luna",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.145.0-alpha.18",
+        "reasoning_effort": "low",
+        "sandbox": "workspace-write",
+        "ignore_user_config": true,
+        "one_sample_per_process": true,
+        "model_revision_status": "provider_alias_not_immutable",
+        "trials_per_sample_per_arm": 3,
+        "command_timeout_seconds": 360,
+        "max_command_attempts": 3
+      },
+      "attempts": 6,
+      "changed_variable": "reference-implementation transfer discipline",
+      "result_pointer": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#external_calibration_decision_quality/candidate",
+      "error_summary": ""
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "external_calibration_decision_quality-baseline-6x-writable",
+      "scorer_id": "external_calibration_decision_quality_writable_environment",
+      "scorer_version": "1.2-descriptive",
+      "per_sample": [
+        {
+          "sample_id": "calibration_misleading_readme",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        },
+        {
+          "sample_id": "calibration_negative_comparison",
+          "metrics": {
+            "environment_success_rate": 0.6667,
+            "decision_accuracy": 1.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 0.8889
+          }
+        }
+      ],
+      "aggregate": {
+        "environment_success_rate": 0.8334,
+        "decision_accuracy": 0.5,
+        "next_route_accuracy": 1.0,
+        "forbidden_effect_rate": 0.0,
+        "check_pass_rate": 0.9445,
+        "valid_trials": 6,
+        "expected_trials": 6,
+        "median_duration_seconds": 173.055,
+        "mean_changed_files": 1.5,
+        "mean_tool_items": 8.0
+      },
+      "human_review": "pending"
+    },
+    {
+      "run_id": "external_calibration_decision_quality-candidate-6x-writable",
+      "scorer_id": "external_calibration_decision_quality_writable_environment",
+      "scorer_version": "1.2-descriptive",
+      "per_sample": [
+        {
+          "sample_id": "calibration_misleading_readme",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        },
+        {
+          "sample_id": "calibration_negative_comparison",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 1.0,
+            "next_route_accuracy": 1.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        }
+      ],
+      "aggregate": {
+        "environment_success_rate": 1.0,
+        "decision_accuracy": 0.5,
+        "next_route_accuracy": 1.0,
+        "forbidden_effect_rate": 0.0,
+        "check_pass_rate": 1.0,
+        "valid_trials": 6,
+        "expected_trials": 6,
+        "median_duration_seconds": 192.559,
+        "mean_changed_files": 1.5,
+        "mean_tool_items": 11.0
+      },
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": "external_calibration_decision_quality-baseline-6x-writable",
+    "candidate_run_id": "external_calibration_decision_quality-candidate-6x-writable",
+    "changed_variable": "reference-implementation transfer discipline",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "insufficient_evidence",
+    "human_preference": "pending",
+    "limitations": [
+      "The pilot changes real files and observes environment outcomes, but all tasks are synthetic and short-horizon.",
+      "Platform Goal/approval lifecycle, real long-running lane throughput, and responsibility-holder behavior are not instantiated.",
+      "Independent model trajectory review and human blind review are pending.",
+      "Automated descriptive result: candidate_higher_environment_success. This is not the preregistered mechanism decision and cannot promote evidence_status."
+    ],
+    "next_validation": "Use the discipline on two substantial Complex changes and compare rework, rollback and human correction with prior ad hoc changes."
+  }
+}

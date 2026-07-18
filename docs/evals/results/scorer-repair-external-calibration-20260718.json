@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "kind": "post_hoc_scorer_repair_record",
+  "status": "accepted_as_oracle_repair_not_mechanism_evidence",
+  "source_result": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json",
+  "source_result_sha256": "19dffe9699f2d7361bfd129eaf246c7f51d1311ff7dc591ae63a3472c60b44ef",
+  "rescore_result": "docs/evals/results/executable-pilots-20260717T171657Z-a091c06076-rescore.json",
+  "rescore_result_sha256": "e034afed9b1d269d2efd8d3b0aeefef2b69759891a190576e0612c6244d43713",
+  "affected_experiment": "external_calibration_decision_quality",
+  "affected_trial": {
+    "arm": "baseline",
+    "sample_id": "calibration_negative_comparison",
+    "trial": 1
+  },
+  "frozen_execution_source": {
+    "fixture_sha256": "4b32e067bb3819fb9d90f9121f47530677fb48295fcb97d96bc80097667cdde6",
+    "runner_sha256": "a9e35fba27e18f2a88ebcbbfff0f5aad02b7eda9508109f4ed6a3754cd5e799d"
+  },
+  "scorer_change": {
+    "old_required_paths": [
+      "evidence.outcome_improved",
+      "evidence.corrections_improved"
+    ],
+    "new_semantic_alternatives": [
+      [
+        "evidence.outcome_improved",
+        "evidence.outcome_quality.improved"
+      ],
+      [
+        "evidence.corrections_improved",
+        "evidence.user_corrections.improved"
+      ]
+    ],
+    "task_text_changed": false,
+    "prompt_text_changed": false,
+    "model_execution_repeated": false,
+    "score_changes": 1,
+    "score_change": "false_to_true"
+  },
+  "rationale": "The frozen artifact explicitly represented both no-improvement facts as false under semantically named nested objects. The old scorer rejected the representation because it bound correctness to one arbitrary JSON path not required by the task.",
+  "validity_boundary": [
+    "This is a post-hoc scorer repair, not a preregistered mechanism win.",
+    "It repairs environment classification only.",
+    "It does not add trajectory review, human preference, or real-project benefit evidence.",
+    "It cannot promote external_calibration_rule beyond screened."
+  ]
+}

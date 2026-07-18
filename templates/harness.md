@@ -30,6 +30,14 @@ Use this template when environment, tools, recovery, or observability materially
 
 - ai_internal_decisions:
 - user_responsibility_required_for:
+- decision_ownership: ai / user / shared
+- side_effect_class: none / local_reversible / shared_reversible / external_commitment / irreversible
+- exact_operation_requiring_approval:
+- approval_payload_or_arguments_hash:
+- approval_scope_and_version:
+- stable_action_id:
+- approval_expiry_if_any:
+- post_approval_resume_route:
 - account_or_payment_boundary:
 - publishing_or_external_write_boundary:
 - irreversible_or_high-impact_boundary:
@@ -46,12 +54,28 @@ Use this template when environment, tools, recovery, or observability materially
 
 ## Mechanical Guardrails
 
+- project_native_completion_predicate:
+- exact_artifact_paths_and_schema:
+- local_contract_fields_that_must_not_be_renamed_or_wrapped:
+- evidence_or_quantities_that_must_not_be_suppressed:
 - tests_or_verifiers:
 - schemas_or_type_checks:
 - lints_hooks_or_structure_checks:
 - policy_or_approval_checks:
 - evaluator_or_independent_review:
 - textual_rule_that_should_become_mechanical:
+
+## Reference Reproduction
+
+Use only when transferring an external mechanism.
+
+- transfer_status: discovered / implementation_inspected / reproduced / comparatively_evaluated / transferred / validated_in_complex
+- bounded_mechanism_under_test:
+- pinned_fixture_or_adapter:
+- exact_reproduction_command:
+- observed_result_and_unsupported_capabilities:
+- baseline_or_same_task_comparator:
+- dependency_cost_and_degraded_route:
 
 ## Durability And Recovery
 
@@ -63,7 +87,7 @@ Use this template when environment, tools, recovery, or observability materially
 - worker_self_timeout_is_not_enforcement:
 - retry_limit_and_backoff:
 - idempotency_key_or_stable_identifier:
-- interrupt_resume_safety:
+- pause_resume_side_effect_contract:
 - rollback_or_compensation:
 - bounded_concurrency:
 - watchdog_or_stall_detection:

@@ -25,19 +25,21 @@ import {
 } from "@phosphor-icons/react";
 import blueprintImage from "./assets/project-launch-blueprint.png";
 
+const repositoryUrl = "https://github.com/chuanqi210-creator/complex-project-continuous-governance";
+
 const pages = [
-  { id: "overview", label: "概览", icon: HouseLine },
-  { id: "capabilities", label: "能力", icon: Stack },
-  { id: "mechanism", label: "机制", icon: FlowArrow },
-  { id: "maturity", label: "成熟度", icon: SealCheck },
-  { id: "scenarios", label: "场景", icon: MapTrifold },
-  { id: "advantages", label: "优势", icon: ChartLineUp },
+  { id: "overview", label: "开始", icon: HouseLine },
+  { id: "capabilities", label: "理解", icon: Stack },
+  { id: "mechanism", label: "运行", icon: FlowArrow },
+  { id: "maturity", label: "评测", icon: SealCheck },
+  { id: "scenarios", label: "参考", icon: MapTrifold },
+  { id: "advantages", label: "贡献", icon: ChartLineUp },
 ];
 
 const coreOutcomes = [
   {
     title: "强自治连续推进",
-    text: "AI 默认按 7 个行为内核推进：恢复状态、判断项目性质、划清担责边界、建立控制层和操作组织、运行目标函数 Loop、按对象交付、留下 next_route。",
+    text: "AI 默认按 7 个行为推进：恢复状态、判断项目性质、划清担责边界、建立最低充分的运行环境、执行与评价、按对象交付、留下下一路线。复杂组织只在确有多模块或重复职责时启用。",
     icon: Target,
   },
   {
@@ -52,7 +54,7 @@ const coreOutcomes = [
   },
   {
     title: "可审查恢复链",
-    text: "Hot State、Warm Index、Cold Archive、行为回归、transcript 审查和填好样例把项目推进变成可恢复、可复核、可继续的记录，同时避免把全部历史塞进每拍上下文。",
+    text: "项目状态、行为筛查、结构化评测和填好样例使推进可恢复、可复核、可继续；只有出现真实上下文压力时才启用 Hot/Warm/Cold 分层。",
     icon: UsersThree,
   },
 ];
@@ -82,53 +84,38 @@ const engineeringLayers = [
 
 const assets = [
   {
-    name: "核心协议",
-    role: "定义行为内核、Codex surface、担责边界、操作组织、目标函数 Loop、注意力治理、外部校准、幻觉哨兵和恢复规则。",
+    name: "快速入口",
+    role: "面向目标项目的任务指南：从已安装 skill、目标仓库指令和目标恢复锚点开始。",
+    file: "docs/quickstart.md",
+  },
+  {
+    name: "核心参考",
+    role: "定义稳定行为、四层诊断、Codex 平台边界、担责边界和完成语义。",
     file: "protocol/core.md",
   },
   {
-    name: "当前状态",
-    role: "记录当前恢复锚点、next_route、停止条件和活跃样例，不再维护长状态日志。",
+    name: "维护状态",
+    role: "只供维护 Complex 本身使用；目标项目不得把它装入自己的当前上下文。",
     file: "protocol/current-state.md",
   },
   {
-    name: "快速入口",
-    role: "让新代理按 README、current-state、7 步行为内核和填好样例启动。",
-    file: "docs/quickstart.md",
-  },
-  {
-    name: "完整性验证器",
-    role: "检查当前核心文件、模板、样例、行为包和站点入口是否一致，不依赖旧长日志。",
-    file: "tools/verify_complex_integrity.py",
-  },
-  {
-    name: "行为回归包",
-    role: "用 41 个高风险入口检查关键触发器、禁止行为和 Runtime Kit 记录是否仍被当前文档覆盖。",
-    file: "docs/behavior-regression-cases.json",
-  },
-  {
-    name: "Transcript 审查",
-    role: "对真实 agent 回复做 marker-based 审查，检查必需行为、禁忌行为和人工复核问题。",
-    file: "tools/review_behavior_transcript.py",
-  },
-  {
-    name: "行为审查说明",
-    role: "记录真实回复审查和端到端项目样本，衡量用户纠偏、证据边界和交付质量。",
-    file: "docs/behavior-review.md",
-  },
-  {
     name: "机制成熟度",
-    role: "把机制分成 core、validated、tested、candidate、retired，避免近期修补被误读成已被证明的核心能力。",
+    role: "区分核心、已测试和条件候选；当前没有机制仅凭结构检查被称为已验证。",
     file: "docs/mechanism-maturity.json",
   },
   {
-    name: "5 分钟上手版",
-    role: "让新代理先抓当前状态、7 步行为内核、项目性质和最小 Runtime Kit。",
-    file: "docs/quickstart.md",
+    name: "架构重基线",
+    role: "记录运行架构、公开语言、更新治理和评测系统的外部实现、保留/合并决定与下一验证。",
+    file: "docs/active-architecture-rebaseline.md",
+  },
+  {
+    name: "评测契约",
+    role: "把案例、运行、评分和人类结论分开；marker 只筛查，锁定的同题运行才比较。",
+    file: "docs/evals/README.md",
   },
   {
     name: "填好样例",
-    role: "展示 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可用运行现场。",
+    role: "展示不同项目形态的最小运行现场；样例用于说明，不自动证明机制有效。",
     file: "docs/examples/",
   },
 ];
@@ -142,101 +129,59 @@ const capabilityGroups = [
     icon: Stack,
   },
   {
-    title: "Codex Surface 对齐",
-    summary: "Plan、Goal、thread、subagent、automation 各归各位。",
+    title: "Codex 平台对齐",
+    summary: "区分平台原语和 Complex 约定。",
     detail:
-      "codex_surface_alignment 把 Complex 映射到 Codex 官方交互面：Plan mode 是规划 surface，Codex Goal 是 thread_goal 或 phase_goal，beat_objective 是每拍 Plan/Loop 目标，standing lane 是长期责任通道，subagent 是短期 worker。",
+      "Thread、Turn、Item、Goal、审批、skill、subagent、worktree 和 automation 是 Codex 平台能力；thread_goal、phase_goal、beat_objective 和 standing lane 是 Complex 的使用约定。不能把约定写成平台 API，也不能承诺当前界面没有的能力。",
     icon: Compass,
   },
   {
     title: "行为内核",
-    summary: "先做 7 个稳定行为，再查具体 gate 名称。",
+    summary: "一套内核承担通用运行，不再为每个缺陷新增 gate。",
     detail:
-      "complex_behavior_kernel 把新项目推进压缩为：恢复真实状态、判断项目性质、划清担责边界、建立控制层和操作组织、运行目标函数 Loop 或执行、按对象交付、留下 next_route。",
+      "内核负责恢复、项目性质、责任、最低充分运行环境、执行与评价、交付和恢复。提示词重水化、连续推进、来源解析、结果验收和四层诊断都属于同一个运行内核。",
     icon: FileMagnifyingGlass,
   },
   {
-    title: "双剖面运行",
-    summary: "区分证据填充型、模型发现型、混合型和执行交付型。",
+    title: "项目性质与连续性",
+    summary: "不同任务用不同权重，但都保留顶层目标。",
     detail:
-      "project_nature_router 决定本轮权重：固定模型任务少发散，未定框架任务先保留候选框架、IBIS 论据图和可区分探针。",
+      "模型发现型保护候选框架和区分性探针，证据填充型减少无谓发散。每拍从稳定目标和最新事实装配工作上下文，下一步明确时继续执行，不以固定拍数或模型自述结束。",
     icon: Graph,
   },
   {
-    title: "自适应判断",
-    summary: "让 AI 自行处理可逆细节，只在真实边界处回问。",
+    title: "担责边界",
+    summary: "项目内部决策由 AI 处理，真实外部承诺才问人。",
     detail:
-      "adaptive_judgment_controller 与 decision_rights_matrix 区分 AI 可自主判断、需要用户担责、需要人工操作或必须阻塞的事项。",
-    icon: Compass,
-  },
-  {
-    title: "抗人工漂移",
-    summary: "问人前先证明必要性，能推进就继续。",
-    detail:
-      "human_intervention_drift_guard、known_next_step_auto_execute_rule 和 context_pointer_first_intake 防止 AI 把担责边界内工作、材料整理和明确下一步甩回给用户。",
+      "目标或公开口径变化、账号付款、发布外写、不可逆共享状态和高影响承诺需要人承担；读取、验证、规划、拓扑选择、上下文整理和下一路线属于 AI。暂停与恢复还要保证副作用可重试、可回滚或有补偿。",
     icon: PuzzlePiece,
   },
   {
-    title: "Prompt 连续性",
-    summary: "每轮先把总规划、当前状态和本轮目标重水化。",
+    title: "条件化组织",
+    summary: "只有多模块或重复职责出现时，才建立长期组织和组合控制。",
     detail:
-      "complex_prompt_bootstrap_gate 先设计项目专用 prompt；prompt_rehydration_gate 确保后续 Plan 继承 thread_goal / phase_goal、goal_memory_summary、当前状态、target function 和 beat_objective，而不是只盯住眼前局部任务。",
-    icon: CheckCircle,
-  },
-  {
-    title: "控制层编排",
-    summary: "连续项目先确认目标函数、模块组合、责任边界、状态、拓扑、路由和停止条件，再进入局部执行。",
-    detail:
-      "control_plane_orchestration 把长期通道放进统一控制层：target function、module portfolio、standing lanes、forward indexes、temporary workers、Beat Router 和 stop conditions 一起决定项目怎样持续推进。",
+      "普通项目停留在内核；复杂项目才增加总控、反复使用的责任 lane、独立评审、模块组合和分支停放。lane 是责任，subagent 是短期 worker，平台线程是否创建由可用能力和任务形状决定。",
     icon: ArrowsSplit,
   },
   {
-    title: "操作组织",
-    summary: "长期项目像一个有总控和专家部门的系统，而不是一串局部任务。",
+    title: "证据与上下文",
+    summary: "当前工作集保持最小充分；重要主张明确依据和反证线索。",
     detail:
-      "operating_organization 把 controller、human interface、literature/data acquisition、model/component、data-code、review/risk、writing/delivery 分成长期责任 lane；lane 是责任，subagent 是短期 worker。",
-    icon: UsersThree,
-  },
-  {
-    title: "项目组合推进",
-    summary: "每拍验收看 forward artifact，而不是只看审计是否通过。",
-    detail:
-      "portfolio_operating_model 防止长期项目陷入局部贪心：不同模块、来源、写作 scaffold 和评审 lane 可以并行推进；QA、citation、reviewer、metadata/no-values 是护栏，不应长期成为唯一主产物。",
-    icon: Graph,
-  },
-  {
-    title: "注意力治理",
-    summary: "先跑最小可审计闭环，平时只给最低充分进展信号。",
-    detail:
-      "minimum_viable_closure_rule 要求研究、分析和原型项目尽早串起问题、数据/来源、最简模型、结果、图表/验证信号、论断、局限和下一弱点；minimum_sufficient_observability_rule 防止汇报、审计和规范整理吞掉真正推进。",
-    icon: Target,
-  },
-  {
-    title: "轻量化与外部校准",
-    summary: "保留审计能力，但不把全部历史塞进每拍上下文。",
-    detail:
-      "trace_appraisal_rule 把记录分成 Hot State、Warm Index 和 Cold Archive；external_calibration_required_for_each_issue 要求每个机制级问题都对照外部成熟实践，并用 hallucination_sentinel 区分依据、推断和未支持主张。",
+      "只装载当前判断需要的指令、状态、模块和即时材料，记录排除项与新鲜度。外部依据、当前依据、推断、未支持主张和可证伪线索在高影响节点分开；没有上下文压力时不机械维护大型冷热分层。",
     icon: Database,
   },
   {
-    title: "能力与拓扑",
-    summary: "运行资源由 AI 自判；用户只为账号、外部写入、发布等担责边界授权。",
+    title: "外部借鉴与更新",
+    summary: "借鉴落实到固定实现、边界和可逆的小契约。",
     detail:
-      "capability_discovery_cadence_gate 以事件触发为主；无事件时 lightweight keep。subagent 是短期 worker，不等于 standing lane 或 Codex thread；standing lanes、fact ledger 和 manager-owned lane record 属于运行编排判断，外部写入、账号、付款和发布才进入担责护栏。",
+      "高星和文章只负责发现候选；真正借鉴要固定版本、检查目标与非目标、代码配置测试、运行限制和失败边界，再复现、同题比较、可逆迁移。重大更新记录替代方案、缺点、兼容、评测和回滚，普通修复不走重流程。",
     icon: WarningDiamond,
   },
   {
-    title: "独立评审",
-    summary: "把同 session 诊断和真正 independent review 分开。",
+    title: "独立评审与评测",
+    summary: "说明、筛查、复现、比较和验证是五种不同证据。",
     detail:
-      "independent_review_context_separation 要求真正审查使用清上下文、独立 reviewer/thread 或事实账本；同 session 角色扮演只能标成 diagnostic。",
-    icon: Package,
-  },
-  {
-    title: "行为回归与填好样例",
-    summary: "用用例、真实回复审查、结果记录和填好样例验证新代理能否稳定落地。",
-    detail:
-      "behavior_regression_pack 覆盖 41 个高风险入口；review_behavior_transcript.py 检查真实回复；docs/examples 给出 evidence_fill、model_discovery、independent_review、portfolio、external calibration 和 operating organization 的最小可恢复运行现场。",
+      "填好样例用于说明，marker 用于筛查，固定版本 fixture 用于复现，锁定案例的 baseline/candidate 用于比较，重复真实结果才叫验证。重要评审使用清上下文；私人原始对话留在仓库外。",
     icon: ClipboardText,
   },
 ];
@@ -262,14 +207,14 @@ const mechanismSteps = [
   },
   {
     k: "04",
-    title: "确认控制层",
-    text: "连续项目先确认 Codex surface、方向、担责边界、状态、操作组织、路由、外部校准和停止条件；单轮任务可直接抓最高杠杆问题。",
-    output: "control_plane / beat_objective",
+    title: "确认最低运行条件",
+    text: "先确认 Codex surface、方向、担责边界、状态、执行能力和停止条件；只有重复职责或多模块真正出现时，才增加长期组织与组合控制。",
+    output: "minimum harness / beat_objective",
   },
   {
     k: "05",
     title: "目标函数 Loop",
-    text: "每拍说明 target function、模块、standing lane、forward artifact 和非局部贪心理由，再执行最小有意义循环。",
+    text: "每拍说明 target function、当前模块和 outcome predicate；只有启用长期组织时才写 standing lane。执行拍产生 forward artifact，诊断拍产生明确路线、反证、阻塞或停放决定。",
     output: "target-function loop",
   },
   {
@@ -324,7 +269,7 @@ const scenarios = [
     label: "模型发现型",
     icon: Graph,
     claim: "问题定义、研究框架、解释路径或故事线还没定，不能过早证据填表。",
-    lenses: ["anti_premature_convergence_gate", "ibis_argument_map_gate", "thought_search_gate", "judgment_mode: exploratory"],
+    lenses: ["project_nature_router", "candidate frameworks", "argument map", "discriminating probe"],
     outputs: ["候选框架", "issue / position / pro / con", "可区分探针", "收敛条件"],
     downgrade: "没有比较候选框架和反例之前，不能把一个局部证据缺口升级成主目标。",
   },
@@ -333,7 +278,7 @@ const scenarios = [
     label: "执行交付型",
     icon: BracketsCurly,
     claim: "主要任务是实现、包装、交付、验证或说明当前成果。",
-    lenses: ["beat_objective", "Loop", "deliverable_contract_gate", "next_route"],
+    lenses: ["beat_objective", "Progress Loop", "delivery_contract", "next_route"],
     outputs: ["窄目标", "最小验证", "交付边界", "下一轮恢复线索"],
     downgrade: "验证未覆盖的部分不能当作已完成；人看版和机器恢复记录要分开。",
   },
@@ -342,7 +287,7 @@ const scenarios = [
     label: "独立评审型",
     icon: UsersThree,
     claim: "需要客观检查某个输出或流程是否真的符合标准。",
-    lenses: ["independent_review_context_separation", "read_only_audit_subagent_contract", "fact-ledger", "decision_log"],
+    lenses: ["independent_review_context_separation", "clean reviewer", "fact ledger", "decision log"],
     outputs: ["事实账本", "清上下文评审说明", "问题/证据/结论分离", "整改建议"],
     downgrade: "同 session 角色扮演只能算诊断，不应包装成真正独立评审。",
   },
@@ -351,7 +296,7 @@ const scenarios = [
     label: "高风险边界",
     icon: ShieldCheck,
     claim: "主目标、账号/API、外部写入、公开口径、高风险主张或现实责任发生变化。",
-    lenses: ["decision_rights_matrix", "external_state_write_guard", "manual_action_required", "ask_user_necessity_gate"],
+    lenses: ["responsibility_boundary", "external side effects", "human responsibility", "rollback route"],
     outputs: ["必须回问事项", "AI 可自主事项", "人工操作边界", "回滚/降级路线"],
     downgrade: "没有授权时只能做只读分析、计划或担责边界内小验证，不能替用户执行外部影响动作。",
   },
@@ -364,15 +309,16 @@ const comparisonRows = [
   ["材料处理", "要求用户整理、搬运、摘要", "用户给路径或文件时优先自行读取和归纳"],
   ["评审独立性", "同 session 扮演评审", "区分 diagnostic 自评和清上下文 independent review"],
   ["复杂度控制", "要么过度表格化，要么完全黑箱", "行为内核给主线，模板和案例按需启用"],
-  ["恢复能力", "依赖聊天记忆", "用 current-state、next_route、样例和 verifier 恢复"],
+  ["恢复能力", "依赖聊天记忆", "用目标项目自己的恢复锚点、下一路线和可检查产物恢复"],
 ];
 
 const maturityLevels = [
-  ["core", "稳定核心", "行为内核、担责边界和交付契约这类每次都要尊重的主骨架。"],
-  ["validated", "真实验证", "经过多条真实 transcript 或端到端项目样本证明能减少纠偏或提升推进质量。"],
-  ["tested", "结构测试", "已有 behavior cases、transcript rules、填好样例或重复用户反馈支撑，但样本还不够广。"],
-  ["candidate", "候选机制", "来自近期失败模式或外部校准的好想法；匹配时可用，但不能说成已证明。"],
-  ["retired", "退役机制", "不再用于新项目，只在解释替代关系时保留。"],
+  ["core", "架构角色：核心", "每次运行都要尊重的行为主轴或担责/交付边界；这不等于效果已经验证。"],
+  ["supporting_practice", "架构角色：支持实践", "可复用但不是每次运行都要展开的做法。"],
+  ["conditional_extension", "架构角色：条件扩展", "只有匹配规模或失败模式时才启用。"],
+  ["screened", "证据状态：已筛查", "契约和外部依据已经审查，尚无有效结果比较。"],
+  ["tested", "证据状态：已测试", "存在行为筛查、样例、有限实验或项目观察，真实比较仍不完整。"],
+  ["validated", "证据状态：已验证", "不同真实项目的重复比较改善结果，并通过独立人工评审。"],
 ];
 
 function useHashRoute() {
@@ -530,7 +476,13 @@ function Overview({ go }) {
                 <strong>{asset.name}</strong>
                 <p>{asset.role}</p>
               </div>
-              <code>{asset.file}</code>
+              <a
+                href={`${repositoryUrl}/${asset.file.endsWith("/") ? "tree" : "blob"}/main/${asset.file.replace(/\/$/, "")}`}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <code>{asset.file}</code>
+              </a>
             </article>
           ))}
         </div>
@@ -641,7 +593,7 @@ function Mechanism() {
             每个结论都必须绑定证据层级。证据不足时，协议不让语言越级，从而防止把来源存在、测试通过、PR 合并或活动完成写成真实影响成立。
           </p>
           <div className="ladder">
-            {["idea_or_candidate", "source_backed", "locally_verified", "small_loop_validated", "pilot_ready", "production_or_public_claim_ready"].map(
+            {["idea_or_candidate", "source_backed", "locally_verified", "bounded_result_observed", "pilot_ready", "production_or_public_claim_ready"].map(
               (level, index) => (
                 <div className="ladder-row" key={level}>
                   <span>{index + 1}</span>
@@ -661,15 +613,15 @@ function Maturity() {
     <div className="content-page">
       <PageTitle
         label="机制成熟度"
-        title="不是每个好想法都直接进入核心。"
-        copy="Complex 把稳定核心、已测试机制、候选机制和真实行为验证分开记录。这样新代理知道哪些必须执行，哪些只在匹配失败模式时启用，哪些还需要真实 transcript 验证。"
+        title="架构角色和实证强度是两回事。"
+        copy="Complex 分开记录一条规则在系统中是否普遍适用，以及它目前有什么结果证据。核心规则也可以仍处于 tested；条件扩展也不能因为外部项目优秀就被称为 validated。"
       />
 
       <section className="mechanism-grid">
         <article className="mechanism-panel">
-          <h2>成熟度阶梯</h2>
+          <h2>两个独立轴</h2>
           <p>
-            `docs/mechanism-maturity.json` 记录每个机制的状态、所属工程层、外部依据、内部证据、行为用例、样例、升级规则和降级触发。marker 通过只是第一层，不能等同于真实项目表现优良。
+            `docs/mechanism-maturity.json` 同时记录 normative_role 与 evidence_status，以及所属工程层、外部依据、内部证据、行为用例、样例、升级规则和降级触发。角色不能替代证据，marker 通过也不能等同于真实项目表现优良。
           </p>
           <div className="gate-grid">
             {maturityLevels.map(([id, title, text]) => (
@@ -685,15 +637,15 @@ function Maturity() {
         <article className="mechanism-panel">
           <h2>真实行为验证</h2>
           <p>
-            `tools/review_behavior_transcript.py` 仍是轻量 marker 审查；`docs/evals/README.md` 补上结果记录：是否自动推进、是否产出 forward artifact、是否减少用户纠偏、是否需要升级或降级机制。
+            `tools/review_behavior_transcript.py` 只做轻量 marker 筛查；结构化评测把 eval case、baseline/candidate run 和 score record 分开。当前全量套件有 84/84 个有效可写 trial、4 次恢复重试和 0 个终止错误，但七项双臂均到达环境评分上限，因此只能说明合成契约可执行。
           </p>
           <div className="ladder">
             {[
               "behavior case",
-              "transcript rule",
-              "filled example",
-              "redacted transcript",
-              "end-to-end project sample",
+              "writable environment screen",
+              "independent trajectory review",
+              "blind human preference",
+              "repeated real-project outcome",
             ].map((level, index) => (
               <div className="ladder-row" key={level}>
                 <span>{index + 1}</span>
@@ -711,6 +663,7 @@ function Maturity() {
           <span>真正说明什么</span>
         </div>
         {[
+          ["当前状态", "不代表机制优于 native baseline", "3 项 core 为 tested；4 项条件扩展为 screened；0 项 validated"],
           ["候选机制", "不代表已经解决真实项目问题", "说明有外部依据和可测试 micro-contract"],
           ["填好样例", "不代表已被认证为最佳实践", "说明新代理有可模仿的最小运行现场"],
           ["Marker 通过", "不代表回复质量优秀", "说明没有明显漏掉关键行为或触发禁忌行为"],
@@ -821,7 +774,7 @@ function Advantages() {
         {[
           {
             title: "比提示词更强",
-            text: "它有当前状态、next_route、验证器和填好样例。下一次继续时不是靠记忆，而是按 current-state 恢复。",
+            text: "它要求目标项目维护自己的恢复锚点、下一路线和可检查产物。下一次继续时不是靠聊天记忆，也不会读取 Complex 的维护状态。",
             icon: Path,
           },
           {

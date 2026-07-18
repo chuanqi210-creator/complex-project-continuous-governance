@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "status": "compared",
+  "eval_case": {
+    "id": "consolidated-kernel-long-project",
+    "version": "1",
+    "mechanism_ids": ["complex_behavior_kernel"],
+    "project_nature": "mixed",
+    "task": "Compare the pre-consolidation Complex prompt and the consolidated kernel on the same redacted long-project continuation task.",
+    "sample_ids": ["redacted-long-project-01"],
+    "sample_origin": "redacted_real_project",
+    "project_snapshot": "redacted-long-project-01@accepted-state-v1",
+    "responsibility_boundary": "No credentials, payment, publication, external writes, irreversible operations, or public-voice changes.",
+    "completion_predicate": "Preserve the durable Goal, handle the local correction without goal drift, route the authoritative next work, and stop only at a declared outcome or real boundary.",
+    "scorer_id": "complex-long-project-outcome",
+    "limits": {
+      "same_surface": true,
+      "same_model": true,
+      "same_project_snapshot": true,
+      "same_responsibility_boundary": true
+    },
+    "privacy": "redacted"
+  },
+  "runs": [
+    {
+      "id": "pre-consolidation-baseline",
+      "role": "baseline",
+      "artifact_revision": "sha256:112d621fbefbd71c0f907db94ff0430053f603bb88fd859f2f0ce14c486d2122",
+      "prompt_version": "redacted-long-project-v1",
+      "skill_revision": "git:dff4fa9c139a02461a0d5d1b914a4a431a49d87d;sha256:78e24fcb1ac0c3807caaeda0d42f295361a42225658de524728cb9b9e3e1a634",
+      "surface": "codex-exec-0.144.5-ephemeral-read-only",
+      "model_or_agent": "gpt-5.5",
+      "runtime_config": {
+        "cwd": "/tmp",
+        "reasoning_effort": "none",
+        "skills": "isolated CODEX_HOME without skills",
+        "project_rules": "none",
+        "task_version": "redacted-long-project-v1"
+      },
+      "attempts": 1,
+      "changed_variable": "complex_runtime_skill_contract",
+      "result_pointer": "private_pointer:sha256:112d621fbefbd71c0f907db94ff0430053f603bb88fd859f2f0ce14c486d2122",
+      "error_summary": "The transport retried and fell back from WebSocket to HTTPS before completing."
+    },
+    {
+      "id": "consolidated-kernel-candidate",
+      "role": "candidate",
+      "artifact_revision": "sha256:c94b3c7dd090a413461591b71827e47ca51d214905c14fb5eccf79a1863af062",
+      "prompt_version": "redacted-long-project-v1",
+      "skill_revision": "sha256:3e19919a5e58d2feb5b3319d1efa213672a5fadf010524da5f531c81e649c8c8",
+      "surface": "codex-exec-0.144.5-ephemeral-read-only",
+      "model_or_agent": "gpt-5.5",
+      "runtime_config": {
+        "cwd": "/tmp",
+        "reasoning_effort": "none",
+        "skills": "isolated CODEX_HOME without skills",
+        "project_rules": "none",
+        "task_version": "redacted-long-project-v1"
+      },
+      "attempts": 1,
+      "changed_variable": "complex_runtime_skill_contract",
+      "result_pointer": "private_pointer:sha256:c94b3c7dd090a413461591b71827e47ca51d214905c14fb5eccf79a1863af062",
+      "error_summary": "The transport retried and fell back from WebSocket to HTTPS before completing."
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "pre-consolidation-baseline",
+      "scorer_id": "complex-long-project-outcome",
+      "scorer_version": "1",
+      "per_sample": [
+        {
+          "sample_id": "redacted-long-project-01",
+          "metrics": {
+            "durable_goal_preserved": 1,
+            "local_correction_not_hijack": 1,
+            "authoritative_next_route_preserved": 1,
+            "organization_fit_without_forcing_lanes": 1,
+            "completion_and_stop_semantics": 1,
+            "minimum_process_burden": 1
+          },
+          "notes": "Blind AI scorer found the route and Goal preserved; the response used a more detailed validation checklist."
+        }
+      ],
+      "aggregate": {"total": 6, "maximum": 6},
+      "human_review": "pending"
+    },
+    {
+      "run_id": "consolidated-kernel-candidate",
+      "scorer_id": "complex-long-project-outcome",
+      "scorer_version": "1",
+      "per_sample": [
+        {
+          "sample_id": "redacted-long-project-01",
+          "metrics": {
+            "durable_goal_preserved": 1,
+            "local_correction_not_hijack": 1,
+            "authoritative_next_route_preserved": 1,
+            "organization_fit_without_forcing_lanes": 1,
+            "completion_and_stop_semantics": 1,
+            "minimum_process_burden": 1
+          },
+          "notes": "Blind AI scorer found the route and Goal preserved; the response made the read-only boundary slightly more explicit."
+        }
+      ],
+      "aggregate": {"total": 6, "maximum": 6},
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": "pre-consolidation-baseline",
+    "candidate_run_id": "consolidated-kernel-candidate",
+    "changed_variable": "complex_runtime_skill_contract",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "insufficient_evidence",
+    "human_preference": "pending",
+    "limitations": [
+      "This is one redacted read-only simulation, not an end-to-end target repository run.",
+      "Both outputs reached the scorer ceiling, so this case does not discriminate the contracts.",
+      "The blind scorer was an AI run; independent human outcome review remains pending.",
+      "Transport retries occurred in both runs, although both completed under the same runtime configuration.",
+      "The candidate skill revision is a working-tree content hash rather than a Git commit."
+    ],
+    "next_validation": "Run two more discriminating redacted-real samples and one writable end-to-end project beat, then obtain independent human review before any maturity promotion."
+  }
+}

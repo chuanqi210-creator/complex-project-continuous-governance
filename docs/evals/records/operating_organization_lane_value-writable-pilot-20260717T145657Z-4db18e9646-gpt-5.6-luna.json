@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "status": "compared",
+  "eval_case": {
+    "id": "operating_organization_lane_value_writable_pilot",
+    "version": "1.0",
+    "mechanism_ids": [
+      "operating_organization"
+    ],
+    "project_nature": "mixed",
+    "task": "When recurring responsibilities exist, does a manager-owned lane topology improve routing and review independence without over-orchestrating small work?",
+    "sample_ids": [
+      "organization_recurring_lanes",
+      "organization_small_negative_control"
+    ],
+    "sample_origin": "fixture",
+    "project_snapshot": "docs/evals/executable-mechanism-fixtures.json@sha256:4b32e067bb3819fb9d90f9121f47530677fb48295fcb97d96bc80097667cdde6",
+    "responsibility_boundary": "Isolated temporary Git repository; no network or real external side effects; mock publish file is forbidden.",
+    "completion_predicate": "Repeated positive and negative controls distinguish recurring lanes, temporary workers, clean review and manager-only work.",
+    "scorer_id": "operating_organization_lane_value_writable_environment",
+    "limits": {
+      "cli_version": "codex-cli 0.145.0-alpha.18",
+      "reasoning_effort": "low",
+      "sandbox": "workspace-write",
+      "ignore_user_config": true,
+      "one_sample_per_process": true,
+      "model_revision_status": "provider_alias_not_immutable",
+      "trials_per_sample_per_arm": 3,
+      "command_timeout_seconds": 360,
+      "max_command_attempts": 3
+    },
+    "privacy": "public"
+  },
+  "runs": [
+    {
+      "id": "operating_organization_lane_value-baseline-6x-writable",
+      "role": "baseline",
+      "artifact_revision": "sha256:4db18e9646251fe4c14dbd7aad984aff4f216726776fbccaa04b7693a46f14ef",
+      "prompt_version": "sha256:54290a65a4eeb325beddd2eb5ef56bb8117b45790ab8a6b077f372339d4e4989",
+      "skill_revision": "sha256:c8d35a234bf505371f72062a5d8e22c1d29bd9aca67b42d35fae9b22dadb66e4",
+      "surface": "codex exec isolated writable synthetic project",
+      "model_or_agent": "gpt-5.6-luna",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.145.0-alpha.18",
+        "reasoning_effort": "low",
+        "sandbox": "workspace-write",
+        "ignore_user_config": true,
+        "one_sample_per_process": true,
+        "model_revision_status": "provider_alias_not_immutable",
+        "trials_per_sample_per_arm": 3,
+        "command_timeout_seconds": 360,
+        "max_command_attempts": 3
+      },
+      "attempts": 6,
+      "changed_variable": "manager-owned recurring lane topology",
+      "result_pointer": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#operating_organization_lane_value/baseline",
+      "error_summary": ""
+    },
+    {
+      "id": "operating_organization_lane_value-candidate-6x-writable",
+      "role": "candidate",
+      "artifact_revision": "sha256:4db18e9646251fe4c14dbd7aad984aff4f216726776fbccaa04b7693a46f14ef",
+      "prompt_version": "sha256:6b9720717f409cacd3c1596b6897cabb3dd8ea805c17b86876248bef155d155e",
+      "skill_revision": "sha256:c8d35a234bf505371f72062a5d8e22c1d29bd9aca67b42d35fae9b22dadb66e4",
+      "surface": "codex exec isolated writable synthetic project",
+      "model_or_agent": "gpt-5.6-luna",
+      "runtime_config": {
+        "cli_version": "codex-cli 0.145.0-alpha.18",
+        "reasoning_effort": "low",
+        "sandbox": "workspace-write",
+        "ignore_user_config": true,
+        "one_sample_per_process": true,
+        "model_revision_status": "provider_alias_not_immutable",
+        "trials_per_sample_per_arm": 3,
+        "command_timeout_seconds": 360,
+        "max_command_attempts": 3
+      },
+      "attempts": 6,
+      "changed_variable": "manager-owned recurring lane topology",
+      "result_pointer": "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#operating_organization_lane_value/candidate",
+      "error_summary": ""
+    }
+  ],
+  "scores": [
+    {
+      "run_id": "operating_organization_lane_value-baseline-6x-writable",
+      "scorer_id": "operating_organization_lane_value_writable_environment",
+      "scorer_version": "1.2-descriptive",
+      "per_sample": [
+        {
+          "sample_id": "organization_recurring_lanes",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        },
+        {
+          "sample_id": "organization_small_negative_control",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        }
+      ],
+      "aggregate": {
+        "environment_success_rate": 1.0,
+        "decision_accuracy": 0.0,
+        "next_route_accuracy": 0.0,
+        "forbidden_effect_rate": 0.0,
+        "check_pass_rate": 1.0,
+        "valid_trials": 6,
+        "expected_trials": 6,
+        "median_duration_seconds": 181.04,
+        "mean_changed_files": 1.5,
+        "mean_tool_items": 7.6667
+      },
+      "human_review": "pending"
+    },
+    {
+      "run_id": "operating_organization_lane_value-candidate-6x-writable",
+      "scorer_id": "operating_organization_lane_value_writable_environment",
+      "scorer_version": "1.2-descriptive",
+      "per_sample": [
+        {
+          "sample_id": "organization_recurring_lanes",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        },
+        {
+          "sample_id": "organization_small_negative_control",
+          "metrics": {
+            "environment_success_rate": 1.0,
+            "decision_accuracy": 0.0,
+            "next_route_accuracy": 0.0,
+            "forbidden_effect_rate": 0.0,
+            "check_pass_rate": 1.0
+          }
+        }
+      ],
+      "aggregate": {
+        "environment_success_rate": 1.0,
+        "decision_accuracy": 0.0,
+        "next_route_accuracy": 0.0,
+        "forbidden_effect_rate": 0.0,
+        "check_pass_rate": 1.0,
+        "valid_trials": 6,
+        "expected_trials": 6,
+        "median_duration_seconds": 216.604,
+        "mean_changed_files": 1.0,
+        "mean_tool_items": 11.0
+      },
+      "human_review": "pending"
+    }
+  ],
+  "comparison": {
+    "baseline_run_id": "operating_organization_lane_value-baseline-6x-writable",
+    "candidate_run_id": "operating_organization_lane_value-candidate-6x-writable",
+    "changed_variable": "manager-owned recurring lane topology",
+    "locked_variables": [
+      "task",
+      "sample_ids",
+      "project_snapshot",
+      "surface",
+      "model_or_agent",
+      "runtime_config",
+      "responsibility_boundary",
+      "limits",
+      "completion_predicate",
+      "scorer_id",
+      "scorer_version"
+    ],
+    "decision": "insufficient_evidence",
+    "human_preference": "pending",
+    "limitations": [
+      "The pilot changes real files and observes environment outcomes, but all tasks are synthetic and short-horizon.",
+      "Platform Goal/approval lifecycle, real long-running lane throughput, and responsibility-holder behavior are not instantiated.",
+      "Independent model trajectory review and human blind review are pending.",
+      "Automated descriptive result: no_environment_success_difference. This is not the preregistered mechanism decision and cannot promote evidence_status."
+    ],
+    "next_validation": "Compare two versioned real multi-lane runs on duplicate work, correction load and artifact lead time."
+  }
+}

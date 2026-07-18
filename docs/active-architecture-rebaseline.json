@@ -1,0 +1,365 @@
+{
+  "version": "2026-07-17",
+  "purpose": "Re-run the active Complex architecture through the implementation-grounded external transfer standard without pretending that upstream success validates Complex.",
+  "allowed_decisions": [
+    "keep",
+    "merge",
+    "demote",
+    "retire"
+  ],
+  "evidence_claim_vocabulary": {
+    "illustrates": "A filled example shows the intended shape.",
+    "screens": "A marker or checker catches a bounded structural failure.",
+    "reproduces": "A pinned upstream mechanism ran locally.",
+    "compares": "Baseline and candidate ran on the same locked case and scorer.",
+    "validates": "Repeated real Complex outcomes improved in the stated scope."
+  },
+  "object_rebaselines": [
+    {
+      "id": "runtime_architecture",
+      "external_reference_ids": [
+        "openai_codex_runtime_surfaces",
+        "symphony_orchestration_control_plane",
+        "langgraph_state_checkpoint",
+        "ralph_clean_iteration",
+        "swe_agent_aci_retry_trajectory"
+      ],
+      "inspected_artifacts": [
+        "codex-rs/app-server/README.md",
+        "SPEC.md",
+        "libs/langgraph/langgraph/graph/state.py",
+        "ralph.sh",
+        "sweagent/agent/agents.py"
+      ],
+      "rejected_patterns": [
+        "One standalone mechanism for every recent failure.",
+        "Fixed beat counts or self-reported completion.",
+        "Making a workflow engine, issue tracker, or coding benchmark mandatory."
+      ],
+      "not_transferable": "Complex must remain usable as a small Codex skill and repository runtime kit without a daemon, database, or Python workflow engine.",
+      "repository_changes": [
+        "Merged prompt rehydration, cadence, source resolution, target-function Loop, forward-artifact acceptance, interrupt-resume, and four-layer alignment into the kernel or responsibility boundary.",
+        "Reduced active mechanisms from 22 to 11.",
+        "Removed standalone validated identities until structured same-task outcome evidence exists."
+      ],
+      "next_validation": "The redacted-real comparison and writable continuation comparison both reached equal outcomes. Run repeated App or instrumented-surface samples that expose Goal lifecycle and route execution, then obtain independent human review.",
+      "provisional_micro_contracts": [
+        "One runtime kernel owns state restoration, execution, observation, routing, and stop semantics.",
+        "Platform primitives and Complex conventions are named separately.",
+        "Long-run continuation uses durable state, explicit checkpoints, bounded retries, and observable completion predicates."
+      ]
+    },
+    {
+      "id": "public_language",
+      "external_reference_ids": [
+        "kubernetes_docs_information_architecture",
+        "openai_codex_runtime_surfaces"
+      ],
+      "inspected_artifacts": [
+        "content/en/docs/contribute/style/style-guide.md",
+        "content/en/docs/contribute/style/content-guide.md",
+        "codex-rs/skills/src/assets/samples/skill-creator/SKILL.md"
+      ],
+      "rejected_patterns": [
+        "A second manually maintained copy of protocol prose in the explainer site.",
+        "Beginner documentation that exposes raw app-server schemas or candidate mechanism names.",
+        "Hard-coded volatile inventory counts when they can be derived."
+      ],
+      "not_transferable": "Kubernetes localization, Hugo, release-branch, and SIG review machinery are unnecessary for this repository.",
+      "repository_changes": [
+        "Classified protocol/current-state.md as maintainer-only.",
+        "Reframed public pages around Start, Understand, Evaluate, Reference, and Contribute.",
+        "Replaced validation overclaims with bounded evidence verbs."
+      ],
+      "next_validation": "Have a fresh user or clean agent install, locate the skill, start a target project, and explain the four public document types within five minutes.",
+      "provisional_micro_contracts": [
+        "README orients, quickstart guides a task, core describes normative behavior, and external-methods explains design rationale.",
+        "Target onboarding never imports Complex maintainer state.",
+        "Public evidence verbs follow illustrates/screens/reproduces/compares/validates."
+      ]
+    },
+    {
+      "id": "change_governance",
+      "external_reference_ids": [
+        "rust_rfc_change_governance"
+      ],
+      "inspected_artifacts": [
+        "text/0002-rfc-process.md",
+        "0000-template.md"
+      ],
+      "rejected_patterns": [
+        "An RFC for every edit.",
+        "A permanent active-tree proposal archive.",
+        "Community-consensus machinery that does not fit a small maintained runtime."
+      ],
+      "not_transferable": "Rust team authority, final-comment periods, and language-wide archival requirements do not apply.",
+      "repository_changes": [
+        "Made architecture re-baseline an explicit substantial-change packet.",
+        "Added compatibility and rollback to future mechanism-level change requirements.",
+        "Kept routine corrections on the normal edit/test path."
+      ],
+      "next_validation": "Use the packet on the next substantial schema or public-term change and compare review defects and rework with this re-baseline.",
+      "provisional_micro_contracts": [
+        "Only substantial changes require a compact decision packet.",
+        "The packet records problem evidence, design, drawbacks, alternatives, compatibility, evaluation, rollback, owner, and status.",
+        "Acceptance authorizes an experiment or transfer; it does not validate the outcome."
+      ]
+    },
+    {
+      "id": "evaluation_system",
+      "external_reference_ids": [
+        "inspect_ai_eval_records",
+        "promptfoo_eval_matrix"
+      ],
+      "inspected_artifacts": [
+        "src/inspect_ai/_eval/task/task.py",
+        "src/inspect_ai/_eval/eval.py",
+        "src/inspect_ai/_eval/score.py",
+        "src/index.ts"
+      ],
+      "rejected_patterns": [
+        "Installing a full evaluation framework as a Complex dependency.",
+        "Calling substring-marker pass validation.",
+        "Committing raw private transcripts to the active tree."
+      ],
+      "not_transferable": "Complex must support non-Python and non-model-API projects, so plain JSON records and external cold pointers remain sufficient.",
+      "repository_changes": [
+        "Unified the evaluation record contract.",
+        "Demoted both previously validated mechanisms to tested pending locked comparisons.",
+        "Made evidence claim vocabulary mechanically reviewable."
+      ],
+      "next_validation": "Convert one redacted real feedback sample into a locked baseline/candidate pair and ask a second reviewer to reproduce the maturity decision.",
+      "provisional_micro_contracts": [
+        "Separate eval_case, eval_run, and score_record identities.",
+        "Lock case version, samples, scorer, limits, and one changed variable for a comparison.",
+        "Keep marker screens separate from human outcome review and permit re-scoring without rewriting the run."
+      ]
+    }
+  ],
+  "mechanism_rebaselines": [
+    {
+      "mechanism_id": "complex_behavior_kernel",
+      "decision": "keep",
+      "normative_role_before": "core",
+      "normative_role_after": "core",
+      "evidence_status_before": "tested",
+      "evidence_status_after": "tested",
+      "external_reference_ids": [
+        "openai_codex_runtime_surfaces",
+        "symphony_orchestration_control_plane",
+        "langgraph_state_checkpoint",
+        "ralph_clean_iteration"
+      ],
+      "rationale": "One kernel is the lowest-friction home for universal runtime behavior.",
+      "next_validation": "Locked pre/post consolidation long-task comparison."
+    },
+    {
+      "mechanism_id": "responsibility_boundary",
+      "decision": "keep",
+      "normative_role_before": "core",
+      "normative_role_after": "core",
+      "evidence_status_before": "tested",
+      "evidence_status_after": "tested",
+      "external_reference_ids": [
+        "openai_codex_runtime_surfaces",
+        "langgraph_state_checkpoint",
+        "swe_agent_aci_retry_trajectory"
+      ],
+      "rationale": "Authority and side-effect ownership are universal; anti-intervention and resume safety are facets of this boundary.",
+      "next_validation": "Measure over-asking and under-asking on two real project classes."
+    },
+    {
+      "mechanism_id": "delivery_contract",
+      "decision": "keep",
+      "normative_role_before": "core",
+      "normative_role_after": "core",
+      "evidence_status_before": "tested",
+      "evidence_status_after": "tested",
+      "external_reference_ids": [
+        "kubernetes_docs_information_architecture",
+        "inspect_ai_eval_records"
+      ],
+      "rationale": "Every run needs an audience and evidence-strength contract.",
+      "next_validation": "Reader task completion and correction test."
+    },
+    {
+      "mechanism_id": "codex_surface_alignment",
+      "decision": "keep",
+      "normative_role_before": "supporting_practice",
+      "normative_role_after": "supporting_practice",
+      "evidence_status_before": "tested",
+      "evidence_status_after": "tested",
+      "external_reference_ids": [
+        "openai_codex_runtime_surfaces"
+      ],
+      "rationale": "It is a distinct platform adapter, but Complex conventions must not be called Codex primitives.",
+      "next_validation": "Same prompt on two Codex surfaces."
+    },
+    {
+      "mechanism_id": "project_nature_router",
+      "decision": "keep",
+      "normative_role_before": "supporting_practice",
+      "normative_role_after": "supporting_practice",
+      "evidence_status_before": "tested",
+      "evidence_status_after": "tested",
+      "external_reference_ids": [
+        "dspy_eval_optimization",
+        "inspect_ai_eval_records"
+      ],
+      "rationale": "Different project natures require different evaluation and search weights; current external grounding remains partial.",
+      "next_validation": "Paired evidence-fill/model-discovery task set."
+    },
+    {
+      "mechanism_id": "independent_review_context_separation",
+      "decision": "keep",
+      "normative_role_before": "supporting_practice",
+      "normative_role_after": "supporting_practice",
+      "evidence_status_before": "tested",
+      "evidence_status_after": "tested",
+      "external_reference_ids": [
+        "swe_agent_aci_retry_trajectory",
+        "inspect_ai_eval_records",
+        "ralph_clean_iteration"
+      ],
+      "rationale": "Evaluator independence is distinct from ordinary context management.",
+      "next_validation": "Clean-context versus same-session defect-finding comparison."
+    },
+    {
+      "mechanism_id": "behavior_transcript_review",
+      "decision": "keep",
+      "normative_role_before": "supporting_practice",
+      "normative_role_after": "supporting_practice",
+      "evidence_status_before": "tested",
+      "evidence_status_after": "tested",
+      "external_reference_ids": [
+        "promptfoo_eval_matrix",
+        "inspect_ai_eval_records"
+      ],
+      "rationale": "Keep marker screening, but move maturity claims to versioned run and score records.",
+      "next_validation": "One redacted baseline/candidate record with second-reviewer reproduction."
+    },
+    {
+      "mechanism_id": "operating_organization",
+      "decision": "demote",
+      "normative_role_before": "conditional_extension",
+      "normative_role_after": "conditional_extension",
+      "evidence_status_before": "screened",
+      "evidence_status_after": "screened",
+      "external_reference_ids": [
+        "symphony_orchestration_control_plane",
+        "openai_codex_runtime_surfaces",
+        "swe_agent_aci_retry_trajectory"
+      ],
+      "rationale": "Keep as a conditional multi-lane extension and remove universal core wording.",
+      "next_validation": "Single-lane versus multi-lane shadow run."
+    },
+    {
+      "mechanism_id": "portfolio_control_plane",
+      "decision": "demote",
+      "normative_role_before": "conditional_extension",
+      "normative_role_after": "conditional_extension",
+      "evidence_status_before": "screened",
+      "evidence_status_after": "screened",
+      "external_reference_ids": [
+        "symphony_orchestration_control_plane",
+        "langgraph_state_checkpoint"
+      ],
+      "rationale": "Useful for multi-module projects, excessive as a default for ordinary work.",
+      "next_validation": "Shadow controller on one real portfolio."
+    },
+    {
+      "mechanism_id": "trace_appraisal_hot_warm_cold",
+      "decision": "demote",
+      "normative_role_before": "conditional_extension",
+      "normative_role_after": "conditional_extension",
+      "evidence_status_before": "screened",
+      "evidence_status_after": "screened",
+      "external_reference_ids": [
+        "mem0_memory_lifecycle",
+        "langgraph_state_checkpoint"
+      ],
+      "rationale": "Keep only when measured context pressure exists; remove universal numeric thresholds.",
+      "next_validation": "Long-project paired recovery and context-load run."
+    },
+    {
+      "mechanism_id": "external_calibration_rule",
+      "decision": "keep",
+      "normative_role_before": "conditional_extension",
+      "normative_role_after": "conditional_extension",
+      "evidence_status_before": "screened",
+      "evidence_status_after": "screened",
+      "external_reference_ids": [
+        "dspy_eval_optimization",
+        "promptfoo_eval_matrix",
+        "mem0_memory_lifecycle",
+        "langgraph_state_checkpoint",
+        "symphony_orchestration_control_plane",
+        "ralph_clean_iteration",
+        "swe_agent_aci_retry_trajectory",
+        "openai_codex_runtime_surfaces",
+        "kubernetes_docs_information_architecture",
+        "rust_rfc_change_governance",
+        "inspect_ai_eval_records"
+      ],
+      "rationale": "It is a promotion and transfer discipline, not proof that any current transfer improved Complex.",
+      "next_validation": "Complete two locked same-task transfers with real outcome evidence."
+    }
+  ],
+  "consolidations": [
+    {
+      "removed_id": "prompt_bootstrap_and_rehydration",
+      "merged_into": "complex_behavior_kernel",
+      "reason": "Prompt contract and per-beat context assembly already own this behavior."
+    },
+    {
+      "removed_id": "continuous_cadence_contract",
+      "merged_into": "complex_behavior_kernel",
+      "reason": "Cadence is Progress Loop continuation plus Harness heartbeat, not a standalone validated mechanism."
+    },
+    {
+      "removed_id": "interrupt_resume_safety",
+      "merged_into": "responsibility_boundary",
+      "reason": "Authorization belongs to the boundary; checkpoint/idempotency belongs to the kernel harness."
+    },
+    {
+      "removed_id": "human_intervention_drift_guard",
+      "merged_into": "responsibility_boundary",
+      "reason": "It is the inverse necessity test of the same authority boundary."
+    },
+    {
+      "removed_id": "target_function_loop",
+      "merged_into": "complex_behavior_kernel",
+      "reason": "It duplicates kernel behavior five and the Progress Loop layer."
+    },
+    {
+      "removed_id": "forward_artifact_acceptance",
+      "merged_into": "complex_behavior_kernel",
+      "reason": "Forward artifact is one outcome predicate, not an independent mechanism."
+    },
+    {
+      "removed_id": "hallucination_sentinel",
+      "merged_into": "external_calibration_rule",
+      "reason": "Basis/inference/unsupported-claim separation is calibration and delivery evaluation."
+    },
+    {
+      "removed_id": "attention_governance_minimum_closure",
+      "merged_into": "complex_behavior_kernel",
+      "reason": "Thin closure is execution routing; minimum observability is delivery."
+    },
+    {
+      "removed_id": "example_currentness",
+      "merged_into": "behavior_transcript_review",
+      "reason": "Example currentness is repository evaluation QA, not runtime behavior."
+    },
+    {
+      "removed_id": "source_resolution_and_runtime_install",
+      "merged_into": "complex_behavior_kernel",
+      "reason": "Skill discovery belongs to Harness and target-anchor resolution belongs to Context."
+    },
+    {
+      "removed_id": "four_layer_runtime_alignment",
+      "merged_into": "complex_behavior_kernel",
+      "reason": "The four layers are diagnostic axes intrinsic to the kernel, not a separate validated identity."
+    }
+  ]
+}

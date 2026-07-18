@@ -1,142 +1,70 @@
 {
-  "version": "2026-07-08",
-  "purpose": "Complex Runtime Kit capability candidates for project-level continuous governance. This file is a discovery aid, not proof that a skill, tool, plugin, connector, or API is callable in the current environment.",
+  "version": "2026-07-17",
+  "purpose": "Small capability discovery manifest for Complex. Availability must still be probed in the current Codex surface.",
   "capabilities": [
     {
       "name": "complex_runtime_repo_skill",
       "type": "skill",
       "status": "recommended",
-      "use_when": "A Codex agent is asked to use Complex, design a Complex prompt, run continuous cadence, align Plan or Goal mode, or govern a long-running project.",
-      "boundary": "The official repo-scoped workflow entry is .agents/skills/complex-runtime/SKILL.md. The skill summarizes workflow; protocol/core.md remains authoritative.",
-      "verification_hint": "Confirm the response mentions codex_surface_alignment, thread_goal or phase_goal, beat_objective, responsibility boundary, and next_route before business execution."
+      "use_when": "A project is asked to use Complex, design a project contract, or run long-form continuous work.",
+      "boundary": "The workflow entry is .agents/skills/complex-runtime/SKILL.md or its user-level installation. protocol/core.md is the normative reference; protocol/current-state.md is maintainer-only.",
+      "verification_hint": "Confirm the skill is discoverable from the target-project task before copying or rereading protocol files."
     },
     {
-      "name": "portfolio_control_plane_orchestration",
+      "name": "runtime_harness_capability_discovery",
       "type": "external_method",
       "status": "recommended",
-      "use_when": "A continuous project has multiple modules, standing lanes, sources, deliverables, or repeated guardrail-only beats.",
-      "boundary": "This is a manager-thread operating model, not a platform thread or automation. It should guide beat routing and platform-resource fit; actual resource creation follows current Codex surface/tool semantics.",
-      "verification_hint": "Record target_function, module_portfolio, standing_lane_portfolio, forward_indexes, branch_parking, Hot/Warm/Cold state, and forward_artifact_acceptance before local greedy execution."
+      "use_when": "A beat may benefit from tools, skills, MCP, browser, API, subagents, worktrees, threads, or automation.",
+      "boundary": "Discover just in time. Codex primitives and Complex conventions remain distinct; project-internal topology fit does not require user permission.",
+      "verification_hint": "Record selected capability, observable resource evidence, degraded route, and side-effect boundary."
     },
     {
-      "name": "operating_organization_multi_lane",
+      "name": "conditional_operating_organization",
+      "type": "external_method",
+      "status": "backlog",
+      "use_when": "A long project has recurring responsibilities, independent evaluation, or multiple modules that cannot be managed by one simple route.",
+      "boundary": "Standing lanes are responsibilities, not automatically threads. Use only the lanes that recur; ordinary projects stay with the kernel.",
+      "verification_hint": "Compare duplicate work, correction count, and artifact lead time against a simpler topology."
+    },
+    {
+      "name": "reference_implementation_transfer",
       "type": "external_method",
       "status": "recommended",
-      "use_when": "A long project needs controller, expert, review, literature/data, code, writing, or human-interface responsibilities to recur across beats.",
-      "boundary": "A lane is a responsibility, not automatically a user-visible thread. AI decides whether platform resources fit; actual creation follows current Codex surface/tool semantics.",
-      "verification_hint": "Record controller, human_interface, literature_data_acquisition, model_component, data_code, review_risk, and writing_delivery lane contracts plus context-reset rules."
+      "use_when": "A mechanism-level route, structure, method, evaluation, prompt default, or protocol contract changes.",
+      "boundary": "Pin and inspect implementations, reproduce when meaningful, compare on the same task, transfer reversibly, and never treat upstream success as Complex validation.",
+      "verification_hint": "Run tools/check_reference_implementation_evidence.py and tools/check_active_architecture_rebaseline.py."
     },
     {
-      "name": "external_calibration_and_hallucination_sentinel",
-      "type": "external_method",
-      "status": "recommended",
-      "use_when": "A strategic route, project operating model, model choice, evaluation rule, protocol default, or public claim is being changed or relied on for many future beats.",
-      "boundary": "Use official docs, primary papers, standards, or mature production writeups. Routine beats may reuse a fresh calibration note instead of browsing again.",
-      "verification_hint": "Record source, problem_matched, adopted, rejected, not_transferable, Complex_micro_contract, refresh_trigger, unsupported claims, and falsification cues."
-    },
-    {
-      "name": "trace_appraisal_and_state_lightening",
-      "type": "external_method",
-      "status": "recommended",
-      "use_when": "A continuous project has many beats, large state files, historical artifacts, old gates, or context-pollution risk.",
-      "boundary": "Do not delete audit records by default. Demote stale material from Hot State to Warm Index or Cold Archive with recoverable pointers.",
-      "verification_hint": "Record trace_appraisal_status, retention class, hot_state_location, warm_index_locations, cold_archive_policy, and demoted pointers."
-    },
-    {
-      "name": "attention_governance_minimum_closure",
-      "type": "external_method",
-      "status": "recommended",
-      "use_when": "A research, analysis, prototype, or long-running project risks spending many beats on local audits, source gathering, or reporting before showing an end-to-end chain.",
-      "boundary": "Minimum closure is a judgment signal, not final proof. Minimum observability must not hide evidence gaps, unsupported claims, or responsibility boundaries.",
-      "verification_hint": "Record minimum_viable_closure_status, closure_chain, minimum_sufficient_observability_status, last_progress_signal, and heavy_audit_trigger."
-    },
-    {
-      "name": "complex_protocol_onboarding",
-      "type": "external_method",
-      "status": "recommended",
-      "use_when": "A new project asks to use Complex, Auto Research, or this repository as a governing method.",
-      "boundary": "Read the relevant protocol components first, then bind only the parts that fit the current project.",
-      "verification_hint": "Confirm the project has a state, evidence, decision, loop, and delivery skeleton before business execution starts."
-    },
-    {
-      "name": "protocol_scan_sequence",
-      "type": "external_method",
-      "status": "recommended",
-      "use_when": "The user asks to fully scan Complex or use Complex as the governing method in another project.",
-      "boundary": "Scan order must be explicit; do not infer the protocol from a few familiar keywords.",
-      "verification_hint": "Record protocol_scan_order, keyword_trigger_map, adopt_now, skip_now, backlog, and manual_action."
-    },
-    {
-      "name": "capability_discovery_cadence",
-      "type": "external_method",
-      "status": "recommended",
-      "use_when": "Starting a task, changing phase, hitting a blocker, approaching an external write, crossing a subagent boundary, or making a final claim.",
-      "boundary": "Do not force tool usage; record selected, rejected, backlog, and manual-action candidates.",
-      "verification_hint": "Check that named skills, tools, APIs, accounts, browsers, or databases were explicitly considered."
-    },
-    {
-      "name": "scheduled_topology_capability_review",
-      "type": "external_method",
-      "status": "recommended",
-      "use_when": "A project is running in continuous cadence, standing lanes, user-visible threads, automations, subagents, or persistent external tools.",
-      "boundary": "Use event triggers first. Three beats is only a fallback cap; no event means lightweight_keep.",
-      "verification_hint": "Record beat_index, topology_refresh_due, capability_refresh_due, adjust_or_keep decisions, and next review trigger."
-    },
-    {
-      "name": "local_file_search",
+      "name": "structured_behavior_evaluation",
       "type": "local_tool",
       "status": "recommended",
-      "use_when": "Repository facts, protocol anchors, templates, examples, or validation scripts can answer the question locally.",
-      "boundary": "Prefer local truth before asking the user or relying on memory.",
-      "verification_hint": "Use focused searches such as rg, rg --files, sed, find, or repository-specific scripts."
+      "use_when": "A behavior or mechanism is compared, promoted, demoted, or claimed to improve a project outcome.",
+      "boundary": "Markers screen only. Lock eval case, baseline/candidate runs, scorer, limits, and one changed variable before comparison.",
+      "verification_hint": "Run tools/check_eval_records.py and keep raw private transcripts outside the active repository."
     },
     {
-      "name": "complex_integrity_verifier",
+      "name": "recovery_anchor_inspection",
       "type": "local_tool",
       "status": "recommended",
-      "use_when": "Protocol, current-state, quickstart, behavior pack, Runtime Kit templates, or examples are edited.",
-      "boundary": "This verifies active repository structure; it does not prove a human-facing deliverable is good.",
-      "verification_hint": "Run tools/test_verify_complex_integrity.py and tools/verify_complex_integrity.py."
-    },
-    {
-      "name": "runtime_templates",
-      "type": "template",
-      "status": "recommended",
-      "use_when": "A project needs lightweight records for state, evidence, decisions, search, questions, loop checks, or delivery contracts.",
-      "boundary": "Templates are optional landing pads, not new mandatory protocol fields.",
-      "verification_hint": "Confirm the project can resume from state.md and can justify claims through evidence.md and decision.md."
+      "use_when": "A target project has large, missing, stale, or conflicting recovery state.",
+      "boundary": "The extractor bounds content; it does not choose authority or import Complex maintenance state into the target project.",
+      "verification_hint": "Use tools/inspect_recovery_anchor.py with a project-specific envelope and a clean evaluator."
     },
     {
       "name": "browser_or_institutional_access",
       "type": "connector",
       "status": "manual_action",
-      "use_when": "Public search is insufficient and the user names browser access, Scholar, database access, institutional accounts, or uploaded materials.",
-      "boundary": "The agent must not handle passwords or bypass authorization; user login and sensitive account actions stay manual.",
-      "verification_hint": "Record what page or source the user should open and what evidence should be returned after access."
-    },
-    {
-      "name": "subagent_or_thread_coordination",
-      "type": "external_method",
-      "status": "environment_dependent",
-      "use_when": "Standing lanes, temporary subagents, user-visible threads, worktrees, automations, or clean-context review would reduce risk or latency.",
-      "boundary": "Do not equate subagents with threads or standing lanes. Probe capability, respect tool semantics, and define contracts before delegation or platform-resource creation.",
-      "verification_hint": "Record topology choice, fact ledger or context packet, output contract, integration responsibility, observability evidence, and cleanup or stop condition."
-    },
-    {
-      "name": "goal_lifecycle_alignment",
-      "type": "external_method",
-      "status": "recommended",
-      "use_when": "Continuous cadence, Goal mode, versioned work, or loop engineering could create stale goals.",
-      "boundary": "Use Codex Goal as thread_goal or phase_goal. Keep current beat details in beat_objective and recovery continuity in goal_memory_summary and next_route.",
-      "verification_hint": "Compare thread_goal, phase_goal, goal_memory_summary, current_basis, next_route, project version, and delivery object before each beat."
+      "use_when": "Public sources are insufficient and a database, institutional account, or logged-in browser is required.",
+      "boundary": "Credentials and account actions remain user-owned; the agent should prepare the exact source, field, and return path before asking.",
+      "verification_hint": "Record the inaccessible source, required action, expected returned evidence, and continuation command."
     },
     {
       "name": "document_or_render_qa",
       "type": "skill",
       "status": "environment_dependent",
-      "use_when": "The final artifact is a Word document, PDF, slide deck, image, website, or other rendered deliverable.",
-      "boundary": "Rendering tools vary by environment; do not claim visual QA without fresh evidence.",
-      "verification_hint": "Check source/render freshness, output path, page or screenshot evidence, and residual warnings."
+      "use_when": "The deliverable is a Word document, PDF, slide deck, image, website, or other rendered artifact.",
+      "boundary": "Rendering support varies by environment; do not claim visual QA without fresh render evidence.",
+      "verification_hint": "Record source/render freshness, output path, visual evidence, and residual warnings."
     }
   ]
 }

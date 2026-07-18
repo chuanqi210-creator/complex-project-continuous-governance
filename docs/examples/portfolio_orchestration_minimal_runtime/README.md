@@ -8,7 +8,7 @@ It shows the smallest useful form of:
 - target function
 - module portfolio
 - standing lane portfolio
-- forward artifact acceptance
+- accepted forward artifacts
 - Hot State / Warm Index / Cold Archive
 - Beat Router
 
@@ -20,4 +20,4 @@ This is the flagship four-layer filled example:
 - `loop.md`: outcome-based module selection and continuation.
 - `state.md`: compact recovery and portfolio map.
 
-It does not prove every project needs a multi-lane portfolio or that the candidate four-layer mechanism is validated.
+It illustrates one conditional multi-module arrangement. It does not prove every project needs a multi-lane portfolio, and it does not validate the Complex kernel.

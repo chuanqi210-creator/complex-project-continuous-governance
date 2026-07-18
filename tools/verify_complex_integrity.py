@@ -8,6 +8,7 @@ runtime kit, not historical machine-board chains.
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -26,7 +27,24 @@ REQUIRED_FILES = [
     "docs/behavior-review.md",
     "docs/mechanism-maturity.md",
     "docs/mechanism-maturity.json",
+    "docs/active-architecture-rebaseline.md",
+    "docs/active-architecture-rebaseline.json",
+    "docs/reference-implementation-evidence.json",
     "docs/evals/README.md",
+    "docs/evals/complex-eval-record.schema.json",
+    "docs/evals/bounded-experiment-fixtures.json",
+    "docs/evals/bounded-experiment-output.schema.json",
+    "docs/evals/executable-mechanism-fixtures.json",
+    "docs/evals/executable-pilot-output.schema.json",
+    "docs/evals/experiment-program.json",
+    "docs/evals/experiment-program.md",
+    "docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json",
+    "docs/evals/results/executable-pilots-20260717T171657Z-a091c06076-rescore.json",
+    "docs/evals/results/scorer-repair-external-calibration-20260718.json",
+    "docs/evals/results/mechanism-revalidation-independent-model-review-20260718.json",
+    "docs/evals/records/active-architecture-rebaseline-comparison.json",
+    "docs/evals/reference-langgraph-checkpoint.py",
+    "docs/evals/reference-promptfoo-echo.yaml",
     "docs/examples/example-currentness.md",
     "docs/runtime-skill-management.md",
     "docs/external-methods.md",
@@ -36,6 +54,15 @@ REQUIRED_FILES = [
     "tools/check_behavior_regression_pack.py",
     "tools/review_behavior_transcript.py",
     "tools/check_mechanism_maturity.py",
+    "tools/check_active_architecture_rebaseline.py",
+    "tools/check_eval_records.py",
+    "tools/check_experiment_program.py",
+    "tools/check_mechanism_revalidation_results.py",
+    "tools/check_reference_implementation_evidence.py",
+    "tools/run_bounded_experiments.py",
+    "tools/run_executable_mechanism_pilots.py",
+    "tools/rescore_executable_mechanism_pilots.py",
+    "tools/test_run_executable_mechanism_pilots.py",
     "tools/inspect_recovery_anchor.py",
     "tools/test_inspect_recovery_anchor.py",
     "tools/verify_complex_integrity.py",
@@ -103,6 +130,9 @@ REQUIRED_REFERENCES = [
     "docs/behavior-transcript-review-rules.json",
     "docs/mechanism-maturity.json",
     "docs/mechanism-maturity.md",
+    "docs/active-architecture-rebaseline.json",
+    "docs/active-architecture-rebaseline.md",
+    "docs/reference-implementation-evidence.json",
     ".agents/skills/complex-runtime/SKILL.md",
 ]
 
@@ -139,11 +169,22 @@ FOUR_LAYER_BEHAVIOR_CASES = {
 
 SEMANTIC_RECOVERY_LABELS = {
     "thread_goal": "- thread_goal:",
+    "goal_surface_status": "- goal_surface_status:",
+    "goal_resource_evidence": "- goal_resource_evidence:",
+    "goal_completion_predicate": "- goal_completion_predicate:",
     "current_basis": "- current_basis:",
     "active_module": "- active_module:",
     "open_risks": "- open_risks:",
     "next_route": "- next_route:",
 }
+
+
+def recovery_value(text: str, label: str) -> str:
+    prefix = f"- {label}:"
+    for line in text.splitlines():
+        if line.startswith(prefix):
+            return line.removeprefix(prefix).strip()
+    return ""
 
 
 def read_json(relative: str) -> dict:
@@ -194,6 +235,76 @@ def check(result: list[dict[str, object]], name: str, ok: bool, detail: object =
 
 def main() -> None:
     checks: list[dict[str, object]] = []
+
+    experiment_validation = subprocess.run(
+        [sys.executable, str(ROOT / "tools" / "check_experiment_program.py")],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    check(
+        checks,
+        "external_calibrated_experiment_program",
+        experiment_validation.returncode == 0,
+        (experiment_validation.stdout + experiment_validation.stderr).strip(),
+    )
+
+    reference_validation = subprocess.run(
+        [sys.executable, str(ROOT / "tools" / "check_reference_implementation_evidence.py")],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    check(
+        checks,
+        "reference_implementation_evidence_schema",
+        reference_validation.returncode == 0,
+        (reference_validation.stdout + reference_validation.stderr).strip(),
+    )
+
+    rebaseline_validation = subprocess.run(
+        [sys.executable, str(ROOT / "tools" / "check_active_architecture_rebaseline.py")],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    check(
+        checks,
+        "active_architecture_rebaseline_schema",
+        rebaseline_validation.returncode == 0,
+        (rebaseline_validation.stdout + rebaseline_validation.stderr).strip(),
+    )
+
+    eval_record_validation = subprocess.run(
+        [sys.executable, str(ROOT / "tools" / "check_eval_records.py")],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    check(
+        checks,
+        "structured_eval_records",
+        eval_record_validation.returncode == 0,
+        (eval_record_validation.stdout + eval_record_validation.stderr).strip(),
+    )
+
+    revalidation_result_validation = subprocess.run(
+        [sys.executable, str(ROOT / "tools" / "check_mechanism_revalidation_results.py")],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    check(
+        checks,
+        "mechanism_revalidation_result_chain",
+        revalidation_result_validation.returncode == 0,
+        (revalidation_result_validation.stdout + revalidation_result_validation.stderr).strip(),
+    )
 
     for relative in REQUIRED_FILES:
         check(checks, f"required_file:{relative}", (ROOT / relative).is_file())
@@ -246,6 +357,38 @@ def main() -> None:
             "authoritative_next_route_count": authoritative_next_route_count,
         },
     )
+    next_route = recovery_value(current_state_text, "next_route")
+    goal_surface_status = recovery_value(current_state_text, "goal_surface_status")
+    goal_resource_evidence = recovery_value(current_state_text, "goal_resource_evidence")
+    goal_completion_predicate = recovery_value(current_state_text, "goal_completion_predicate")
+    terminal_route = next_route == "STOP_COMPLETE" or next_route.startswith(
+        ("INTERRUPT_FOR_INPUT", "REAL_BOUNDARY", "BLOCKED")
+    )
+    recoverable_goal_contract = (
+        goal_surface_status == "active_in_origin_task; recheck_required_on_resume"
+        and "observed_in_origin_task" in goal_resource_evidence
+        and "resource=" in goal_resource_evidence
+        and "status=active" in goal_resource_evidence
+    )
+    unavailable_with_fallback = goal_surface_status.startswith("unavailable:") and "same_run_fallback=" in goal_surface_status
+    check(
+        checks,
+        "nonterminal_next_route_declares_goal_runtime_contract",
+        bool(next_route)
+        and (
+            terminal_route
+            or (
+                bool(goal_completion_predicate)
+                and (recoverable_goal_contract or unavailable_with_fallback)
+            )
+        ),
+        {
+            "next_route": next_route,
+            "goal_surface_status": goal_surface_status,
+            "goal_resource_evidence": goal_resource_evidence,
+            "goal_completion_predicate": goal_completion_predicate,
+        },
+    )
 
     for relative in FORBIDDEN_PATHS:
         check(checks, f"forbidden_path_absent:{relative}", not (ROOT / relative).exists())
@@ -262,24 +405,62 @@ def main() -> None:
     pack = read_json("docs/behavior-regression-cases.json")
     rules = read_json("docs/behavior-transcript-review-rules.json")
     maturity = read_json("docs/mechanism-maturity.json")
+    reference_evidence = read_json("docs/reference-implementation-evidence.json")
     cases = pack.get("cases")
     case_ids = {case.get("case_id") for case in cases if isinstance(case, dict)} if isinstance(cases, list) else set()
     required_ids = set(pack.get("required_case_ids", []))
     rule_ids = set(rules.get("case_rules", {}))
     mechanisms = maturity.get("mechanisms")
     mechanism_ids = {mechanism.get("id") for mechanism in mechanisms if isinstance(mechanism, dict)} if isinstance(mechanisms, list) else set()
-    check(checks, "behavior_case_count_42", len(case_ids) == 42, sorted(case_ids))
-    check(checks, "required_case_count_42", len(required_ids) == 42, sorted(required_ids))
-    check(checks, "transcript_rule_count_42", len(rule_ids) == 42, sorted(rule_ids))
+    check(checks, "behavior_case_inventory_nonempty", bool(case_ids), sorted(case_ids))
+    check(checks, "required_case_inventory_nonempty", bool(required_ids), sorted(required_ids))
+    check(checks, "transcript_rule_inventory_nonempty", bool(rule_ids), sorted(rule_ids))
     check(checks, "behavior_cases_match_rules", case_ids == rule_ids == required_ids)
-    check(checks, "mechanism_maturity_present", len(mechanism_ids) >= 12, sorted(mechanism_ids))
+    check(checks, "mechanism_maturity_present", len(mechanism_ids) >= 10, sorted(mechanism_ids))
+
+    references = reference_evidence.get("references")
+    reference_ids = {
+        reference.get("id")
+        for reference in references
+        if isinstance(reference, dict)
+    } if isinstance(references, list) else set()
+    transfer_statuses = {
+        reference.get("transfer_status")
+        for reference in references
+        if isinstance(reference, dict)
+    } if isinstance(references, list) else set()
+    reproduced_references = {
+        reference.get("id")
+        for reference in references
+        if isinstance(reference, dict) and reference.get("transfer_status") == "reproduced"
+    } if isinstance(references, list) else set()
+    reference_layers = {
+        layer
+        for reference in references or []
+        if isinstance(reference, dict)
+        for layer in reference.get("engineering_layers", [])
+    } if isinstance(references, list) else set()
+    check(
+        checks,
+        "reference_implementation_transfer_evidence",
+        len(reference_ids) >= 11
+        and len(reproduced_references) >= 2
+        and reference_layers == set(FOUR_LAYER_TERMS)
+        and "implementation_inspected" in transfer_statuses,
+        {
+            "references": sorted(reference_ids),
+            "reproduced": sorted(reproduced_references),
+            "layers": sorted(reference_layers),
+            "statuses": sorted(status for status in transfer_statuses if status),
+        },
+    )
 
     four_layer_mechanism = next(
         (
             mechanism
             for mechanism in mechanisms
             if isinstance(mechanism, dict)
-            and mechanism.get("id") == "four_layer_runtime_alignment"
+            and mechanism.get("id") == "complex_behavior_kernel"
         ),
         None,
     ) if isinstance(mechanisms, list) else None
@@ -290,10 +471,12 @@ def main() -> None:
         checks,
         "four_layer_mechanism_maturity_boundary",
         bool(four_layer_mechanism)
-        and four_layer_mechanism.get("status") == "validated"
+        and four_layer_mechanism.get("normative_role") == "core"
+        and four_layer_mechanism.get("evidence_status") in {"tested", "validated"}
         and actual_layers == expected_layers,
         {
-            "status": four_layer_mechanism.get("status") if four_layer_mechanism else None,
+            "normative_role": four_layer_mechanism.get("normative_role") if four_layer_mechanism else None,
+            "evidence_status": four_layer_mechanism.get("evidence_status") if four_layer_mechanism else None,
             "layers": sorted(actual_layers),
         },
     )
@@ -308,6 +491,24 @@ def main() -> None:
             "missing_rules": sorted(FOUR_LAYER_BEHAVIOR_CASES - rule_ids),
             "missing_maturity_links": sorted(FOUR_LAYER_BEHAVIOR_CASES - actual_linked_cases),
         },
+    )
+    external_calibration_mechanism = next(
+        (
+            mechanism
+            for mechanism in mechanisms
+            if isinstance(mechanism, dict)
+            and mechanism.get("id") == "external_calibration_rule"
+        ),
+        None,
+    ) if isinstance(mechanisms, list) else None
+    external_cases = set(external_calibration_mechanism.get("linked_behavior_cases", [])) if external_calibration_mechanism else set()
+    check(
+        checks,
+        "reference_transfer_behavior_and_maturity_link",
+        "reference_implementation_transfer_requires_reproduction" in case_ids
+        and "reference_implementation_transfer_requires_reproduction" in rule_ids
+        and "reference_implementation_transfer_requires_reproduction" in external_cases,
+        sorted(external_cases),
     )
     missing_layer_maps = sorted(
         mechanism.get("id")

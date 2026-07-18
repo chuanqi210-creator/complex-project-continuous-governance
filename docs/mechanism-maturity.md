@@ -1,60 +1,85 @@
 # Mechanism Maturity
 
-Complex separates stable behavior from mechanisms that are still being tested.
+Complex keeps one small active mechanism registry. It does not give every observed failure its own gate.
 
-This matters because many Complex improvements come from real project friction. A useful fix should not automatically become a permanent core rule. It first needs a status, evidence, a promotion path, and a demotion trigger.
+Machine-readable source: `docs/mechanism-maturity.json`
 
-Machine-readable registry: `docs/mechanism-maturity.json`
+## Two Independent Axes
 
-Each mechanism also declares `engineering_layers`: `prompt`, `context`, `harness`, and/or `loop`. These tags locate the mechanism in the runtime; they are not maturity levels.
+Architecture role and empirical maturity are different questions. Calling a boundary `core` means every run must respect it; it does not mean a baseline/candidate experiment has proved an outcome improvement.
 
-## Statuses
-
-| Status | Meaning |
+| Normative role | Meaning |
 | --- | --- |
-| `core` | Stable behavior spine or boundary every Complex run should respect. |
-| `validated` | Repeated real transcripts or end-to-end project samples show that the mechanism improves behavior. |
-| `tested` | Covered by behavior cases, transcript rules, examples, or repeated user feedback, but not yet broadly validated. |
-| `candidate` | Promising mechanism from recent failures or external calibration; use when relevant, but do not present as proven. |
-| `retired` | No longer active; kept only if needed to explain a replacement. |
+| `core` | Universal execution spine or responsibility/output boundary. |
+| `supporting_practice` | Reusable practice that supports the core but is not a universal boundary. |
+| `conditional_extension` | Activate only when its scale condition or failure mode appears. |
+| `retired` | Inactive; retained only when compatibility evidence requires it. |
 
-## How To Use
+| Evidence status | Meaning |
+| --- | --- |
+| `screened` | Contract and external basis were reviewed; no valid outcome comparison supports effectiveness. |
+| `tested` | Behavior screens, filled examples, bounded pilots, or project observations exist; real comparative validation is incomplete. |
+| `validated` | Repeated, versioned real-project comparisons improve outcomes in a stated scope and pass independent human review. |
 
-New projects should execute the core behavior first:
+The evidence verbs are also fixed:
 
-1. Restore true state.
-2. Classify project nature.
-3. Assign decision rights.
-4. Establish the control plane, operating organization, and runtime harness.
-5. Run a target-function Progress Loop.
-6. Deliver to the right audience and evaluate the outcome.
-7. Leave recovery pointers and a layer-level diagnosis.
+- examples **illustrate**;
+- markers and checkers **screen**;
+- fixed-version fixtures **reproduce**;
+- locked baseline/candidate runs **compare**;
+- repeated real outcomes **validate**.
 
-Then use tested and candidate mechanisms only when their failure mode appears. For example, use `operating_organization` when a long project risks local greedy work, and use `trace_appraisal_hot_warm_cold` when the hot context is becoming too large.
+## Current Active Set
+
+### Core Role, Tested Evidence
+
+- `complex_behavior_kernel`: seven behaviors plus the Prompt, Context, Harness, and Loop diagnostic axes. Prompt rehydration, continuous cadence, source resolution, target-function execution, forward-artifact acceptance, and bounded recovery live here rather than as separate gate families.
+- `responsibility_boundary`: AI-owned project decisions, user-owned commitments, approval pauses, idempotency, rollback, and unnecessary-intervention prevention share one boundary.
+- `delivery_contract`: audience, purpose, claim strength, granularity, internal-information boundary, and minimum sufficient observability.
+
+### Supporting Practices, Tested Evidence
+
+- `codex_surface_alignment`
+- `project_nature_router`
+- `independent_review_context_separation`
+- `behavior_transcript_review`
+
+These have behavior coverage and project evidence, but none is currently labeled `validated` under the stricter comparison standard.
+
+### Conditional Extensions, Screened Evidence
+
+- `operating_organization`
+- `portfolio_control_plane`
+- `trace_appraisal_hot_warm_cold`
+- `external_calibration_rule`
+
+Conditional extensions are not startup ceremony. They activate only when recurring lanes, multiple modules, measured context pressure, or mechanism-level change makes them relevant. Their synthetic pilots show that the written contracts can execute, but the tasks disclose much of the desired answer and reach the baseline ceiling; under the strict promotion rule this remains `screened`.
+
+## Current Mechanism Readout
+
+The 2026-07-17 revalidation gives each of the three core mechanisms and four conditional candidates a falsifiable claim, implementation-level external basis, frozen baseline/candidate contract, two writable samples, three trials per sample and arm, environment/trajectory/human grader boundary, and migration decision.
+
+The final `gpt-5.6-luna` suite contains one provenance-bound run with 84/84 valid writable trials, zero terminal runtime errors, and four recovered retry events. An append-only rescore verifies unchanged task and prompt hashes and corrects one false failure caused by an overly narrow JSON path. After re-scoring, baseline and candidate reach 100% environment success for all seven mechanisms. That ceiling shows contract executability and exposes no candidate advantage. Core mechanisms remain `tested` from their wider behavior and project evidence; all four conditional mechanisms remain `screened`. Nothing moves to `validated`, and no conditional mechanism becomes core.
+
+An earlier `gpt-5.3-codex-spark` run exhausted retries in 55 of 84 trials. It is evidence that run health must be checked before mechanism ranking, not evidence against any mechanism. Earlier scorer requirements were narrowed only when they measured wording, evaluator-generated files, or an arbitrary JSON path rather than the task outcome.
+
+The method, result pointers, external borrowing, invalidated comparisons, and residual human/real-project boundary are in `docs/evals/experiment-program.md`.
+
+## Re-baseline Result
+
+The 2026-07-17 active architecture re-baseline reduced 22 mechanisms to 11. Eleven duplicate identities were merged into the kernel, responsibility boundary, delivery/evaluation, or external calibration. The previous standalone `validated` labels were removed because their evidence was useful but not stored as locked, reproducible baseline/candidate comparisons.
+
+See `docs/active-architecture-rebaseline.md` and `docs/active-architecture-rebaseline.json` for every keep, merge, demote, and next-validation decision.
 
 ## Promotion Discipline
 
-Candidate mechanisms do not move into the core protocol just because they sound right.
+A conditional extension normally needs before its evidence status can move beyond `screened`:
 
-Promotion normally requires:
+1. a behavior case and transcript rule;
+2. an implementation-grounded external basis;
+3. a filled example or template landing point;
+4. a valid bounded, versioned outcome pilot that actually instantiates the claimed mechanism.
 
-- a behavior case;
-- transcript review rules;
-- at least one filled example or template landing point;
-- external calibration for mechanism-level changes;
-- real transcript or end-to-end project evidence before claiming validation.
+`tested` becomes `validated` only after the case version, samples, project snapshot, surface/model/runtime, responsibility boundary, completion predicate, scorer, limits, and changed variable are locked; baseline and candidate run on the same task; independent human review prefers the candidate; and repeated real Complex outcomes improve. At least two reviewed records from distinct real or redacted-real sample sets, each with a `transfer_candidate` decision, must be linked from `internal_evidence` as `eval_record:docs/evals/records/<file>.json`. External success or a local upstream reproduction cannot skip this step. Normative role does not automatically change when evidence status changes.
 
-Demotion is just as important. A mechanism should be downgraded or retired if it adds visible process burden, causes local-greedy behavior, conflicts with Codex surfaces, or repeatedly passes marker checks while failing human review.
-
-## Current Interpretation
-
-The current Complex repository has:
-
-- stable core behaviors and responsibility boundaries;
-- validated continuous-cadence and four-layer runtime-alignment mechanisms backed by autonomous wakes, cross-project recovery tests, independent review, and outcome-based heartbeat shutdown;
-- tested Codex-surface, prompt-continuity, source-resolution, and intervention-boundary rules;
-- candidate operating-organization, portfolio, interrupt/resume side-effect safety, external-calibration, hallucination-sentinel, attention-governance, and example-currentness mechanisms that still need broader real transcript evidence.
-
-The four-layer runtime distinguishes Prompt Contract, Context Working Set, Runtime Harness, and Progress Loop. Its validated status means repeated local transcripts and end-to-end target-project samples improved diagnosis, semantic recovery, continuation, and stopping. It does not prove every project class or public installation is covered; demotion remains available if later evidence shows ceremony without outcome improvement.
-
-This is intentional. Complex should be honest about what is proven, what is promising, and what still needs pressure testing.
+Demotion is expected when a mechanism duplicates a stronger abstraction, creates visible process burden, conflicts with Codex, or passes marker screens while failing human outcome review.

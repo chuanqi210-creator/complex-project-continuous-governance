@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/chuanqi210-creator/complex-project-continuous-governance/docs/evals/complex-eval-record.schema.json",
+  "title": "Complex Evaluation Record",
+  "type": "object",
+  "required": ["schema_version", "status", "eval_case", "runs", "scores", "comparison"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "status": {"enum": ["planned", "screened", "compared", "reviewed"]},
+    "eval_case": {
+      "type": "object",
+      "required": ["id", "version", "mechanism_ids", "project_nature", "task", "sample_ids", "sample_origin", "project_snapshot", "responsibility_boundary", "completion_predicate", "scorer_id", "limits", "privacy"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "version": {"type": "string", "minLength": 1},
+        "mechanism_ids": {"type": "array", "items": {"type": "string", "minLength": 1}, "minItems": 1},
+        "project_nature": {"enum": ["evidence_fill", "model_discovery", "mixed", "execution_delivery"]},
+        "task": {"type": "string", "minLength": 1},
+        "sample_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "sample_origin": {"enum": ["real_project", "redacted_real_project", "synthetic", "fixture"]},
+        "project_snapshot": {"type": "string", "minLength": 1},
+        "responsibility_boundary": {"type": "string", "minLength": 1},
+        "completion_predicate": {"type": "string", "minLength": 1},
+        "scorer_id": {"type": "string", "minLength": 1},
+        "limits": {"type": "object"},
+        "privacy": {"enum": ["public", "redacted", "private_pointer"]}
+      }
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "role", "artifact_revision", "prompt_version", "skill_revision", "surface", "model_or_agent", "runtime_config", "attempts", "changed_variable", "result_pointer", "error_summary"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "role": {"enum": ["baseline", "candidate"]},
+          "artifact_revision": {"type": "string", "minLength": 1},
+          "prompt_version": {"type": "string", "minLength": 1},
+          "skill_revision": {"type": "string", "minLength": 1},
+          "surface": {"type": "string", "minLength": 1},
+          "model_or_agent": {"type": "string", "minLength": 1},
+          "runtime_config": {"type": "object"},
+          "attempts": {"type": "integer", "minimum": 1},
+          "changed_variable": {"type": "string", "minLength": 1},
+          "result_pointer": {"type": "string", "minLength": 1},
+          "error_summary": {"type": "string"}
+        }
+      }
+    },
+    "scores": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["run_id", "scorer_id", "scorer_version", "per_sample", "aggregate", "human_review"],
+        "properties": {
+          "run_id": {"type": "string", "minLength": 1},
+          "scorer_id": {"type": "string", "minLength": 1},
+          "scorer_version": {"type": "string", "minLength": 1},
+          "per_sample": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["sample_id", "metrics"],
+              "properties": {
+                "sample_id": {"type": "string", "minLength": 1},
+                "metrics": {"type": "object", "minProperties": 1},
+                "notes": {"type": "string"}
+              }
+            }
+          },
+          "aggregate": {"type": "object"},
+          "human_review": {"enum": ["pending", "pass", "fail", "mixed"]}
+        }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "required": ["baseline_run_id", "candidate_run_id", "changed_variable", "locked_variables", "decision", "human_preference", "limitations", "next_validation"],
+      "properties": {
+        "baseline_run_id": {"type": ["string", "null"]},
+        "candidate_run_id": {"type": ["string", "null"]},
+        "changed_variable": {"type": "string", "minLength": 1},
+        "locked_variables": {
+          "type": "array",
+          "items": {
+            "enum": ["task", "sample_ids", "project_snapshot", "surface", "model_or_agent", "runtime_config", "responsibility_boundary", "limits", "completion_predicate", "scorer_id", "scorer_version"]
+          }
+        },
+        "decision": {"enum": ["pending", "keep_baseline", "transfer_candidate", "revise_and_repeat", "insufficient_evidence"]},
+        "human_preference": {"enum": ["pending", "baseline", "candidate", "tie", "insufficient"]},
+        "limitations": {"type": "array", "items": {"type": "string"}},
+        "next_validation": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

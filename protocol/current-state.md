@@ -1,72 +1,82 @@
 # Complex Current State
 
-current_version: 2026-07-15
+current_version: 2026-07-18
 
 ## Recovery Anchor
 
-Complex now uses a stable seven-behavior execution spine supported by four coupled engineering layers:
+Complex uses one seven-behavior spine supported by four coupled engineering layers: Prompt Contract, Context Working Set, Runtime Harness, and Progress Loop. The layers diagnose failure; they are not four linear gates.
 
-- Prompt Contract;
-- Context Working Set;
-- Runtime Harness;
-- Progress Loop.
-
-The four layers are operating planes, not stages or new gates. The active candidate mechanism is `four_layer_runtime_alignment`; external production precedent grounds it, but cross-project end-to-end validation is still pending.
+The active architecture has three universal mechanisms, four supporting practices, and four conditional extensions. Normative role and evidence status are separate: the core and supporting practices are `tested`; the four conditional extensions remain `screened`; none is `validated`.
 
 ## Active Decisions
 
-- Diagnose `prompt_failure`, `context_failure`, `harness_failure`, `loop_failure`, or `model_limitation` before repairing defaults.
-- Keep Project Prompt Contract stable; place changing beat facts in Context Working Set.
-- Verify semantic recovery after compaction or handoff: Goal, current basis, active module, open risks, and next route.
-- Make tools, state, validation, side effects, logs, and recovery controls agent-legible.
-- Use outcome completion predicates, bounded retry, checkpoints, idempotency/compensation, and residual scan for important Loops.
-- Preserve Codex surface alignment: Goal carries thread/phase objective; `beat_objective` carries the current beat.
-- Maintain strong autonomy inside the responsibility boundary.
-- Keep operating organization, early closure, external calibration, hallucination sentinel, and Hot/Warm/Cold trace appraisal available without forcing every candidate mechanism into every beat.
-- External precedent is design evidence, not proof that Complex behavior improved.
-- Keep the repository free of historical logs and generated machine-board archives.
+- Restore one authoritative project state before routing.
+- Keep durable Goal and completion criteria stable; keep changing facts in the current working set.
+- Treat the target project's completion predicate, artifact path, schema, fields, values, quantities, and verifier as the executable interface. Complex vocabulary may govern decisions but may not reshape project artifacts.
+- Diagnose Prompt, Context, Harness, Loop, or model failure before adding prompt text.
+- Keep project-internal decisions autonomous and place user intervention only at a responsibility-bearing operation or undelegated value judgment.
+- Continue non-terminal `next_route` work until the outcome predicate or a true responsibility/tool boundary.
+- Keep operating organization, portfolio control, trace appraisal, and external transfer conditional.
+- Inspect pinned external implementations, reproduce bounded behavior when useful, compare on the same task, and transfer one reversible micro-contract.
+- Check run health before interpreting a mechanism comparison. Systemic transport or tool failure is Harness evidence, not a mechanism loss.
+- Use evidence verbs precisely: examples illustrate, markers screen, fixtures reproduce, locked runs compare, and repeated real outcomes validate.
 
 ## Active Behavior Spine
 
-1. Restore true state and assemble Context Working Set.
+1. Restore true state and assemble the Context Working Set.
 2. Classify project nature and convergence.
-3. Assign decision rights.
-4. Establish control plane, operating organization, and Runtime Harness.
-5. Run a target-function Progress Loop.
-6. Deliver and evaluate the outcome.
+3. Assign responsibility and decision rights.
+4. Establish the minimum control and Runtime Harness; add conditional organization only when justified.
+5. Run a target-function Progress Loop that changes an outcome, exposes a decision, or falsifies a route.
+6. Deliver for the intended reader and evaluate the outcome.
 7. Leave accepted artifacts, layer diagnosis, recovery pointers, and `next_route`.
+
+## Current Accepted Artifact
+
+- scope: all three `core` and all four `conditional_extension` mechanisms.
+- preregistration: `docs/evals/experiment-program.json` contains seven falsifiable claims, implementation-level external borrowing, frozen arms, writable and contract samples, graders, validity checks, migration rules, and next validations.
+- external basis: twelve pinned reference implementations; two bounded upstream reproductions.
+- frozen execution: `docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json` contains one current seven-experiment suite with 84/84 valid writable trials, zero terminal runtime errors, and four recovered retry events.
+- append-only scorer repair: `docs/evals/results/executable-pilots-20260717T171657Z-a091c06076-rescore.json` verifies unchanged task and prompt hashes, accepts two semantically equivalent JSON paths, and changes one false failure to success without repeating model execution.
+- scorer-change audit: `docs/evals/results/scorer-repair-external-calibration-20260718.json` records the old/new rule, affected trial, reason, hashes, post-hoc status, and no-promotion boundary.
+- independent review: `docs/evals/results/mechanism-revalidation-independent-model-review-20260718.json` confirms the conservative statuses and identifies answer disclosure, scorer ceiling, missing full trajectories, and pending human/real-project evidence. It is independent model review, not human review.
+- authoritative outcomes: three trials per sample and arm; after the scorer repair, baseline and candidate both reach 100% environment success for all seven mechanisms.
+- interpretation: the contracts are executable, but short synthetic samples disclose much of the desired behavior and reach the scorer ceiling. Core mechanisms remain `tested` from wider evidence; all four conditional mechanisms remain `screened`. Nothing moves to `validated` or changes normative role.
+- evidence-based repairs: add local artifact-contract precedence; classify unhealthy runs before comparison; narrow oracles that measured literal wording or agent-emitted verifier files instead of the target mechanism.
+- invalid or superseded evidence is method learning only: a `gpt-5.3-codex-spark` suite exhausted retries in 55 of 84 trials; earlier contract screens leaked oracles; and the first healthy suites used brittle scorers. None can rank mechanisms.
+
+## Active Goal
+
+- thread_goal: Re-test every active core and conditional candidate mechanism with external implementation evidence, falsifiable same-task comparisons, independent/human review boundaries, and explicit migration decisions; then align protocol, Skill, examples, maturity and verification with the observed results.
+- goal_surface_status: completed_in_origin_task
+- goal_resource_evidence: observed_in_origin_task; resource=codex_goal(threadId=019f11f6-baaf-73a0-a72d-9a59c0ce2030); status=complete
+- goal_completion_predicate: all seven mechanisms have external implementation evidence, falsifiable same-task comparisons, explicit migration decisions and clean-context model review; human/real-project limits remain explicit; stale experiment traces are compacted; repository and site checks pass; completion audit finds no unfulfilled required work.
+- active_module: none; active-architecture revalidation is complete.
+- current_basis: one healthy, provenance-bound seven-experiment suite, its append-only scorer repair, clean-context independent model review, compact current evidence set, full repository verification, and explainer-site build are complete. All seven comparisons are non-discriminating environment screens rather than candidate-preferring effectiveness evidence.
+- open_risks: synthetic ceiling effects; no blind human preference; no repeated real or redacted-real project comparison; no longitudinal lane throughput; no real Codex Goal/approval lifecycle in the writable harness.
+- next_route: STOP_COMPLETE
+
+## Completion Audit
+
+- seven of seven core/conditional mechanisms have a falsifiable claim, implementation-level external basis, frozen same-task baseline/candidate comparison, migration decision, and explicit human/real-project evidence boundary;
+- the retained full suite has 84/84 valid trials, zero terminal errors and four recovered Harness retries; the only scorer repair is append-only, hash-linked and explicitly non-promotional;
+- the clean-context independent model review covers all seven mechanisms and is not misclassified as human review;
+- maturity remains conservative: three core plus four supporting practices are `tested`, four conditional extensions are `screened`, and zero mechanisms are `validated`;
+- superseded machine traces were compacted from the active tree; one full result, one rescore, one scorer-repair record and one independent-review record remain;
+- behavior, transcript, maturity, architecture, eval-record, reference-evidence, experiment, recovery, integrity and site-build checks pass.
 
 ## Runtime Assets
 
 - Core: `protocol/core.md`
-- Prompt: `templates/prompt.md`
-- Context: `templates/context.md`
-- Harness: `templates/harness.md`
-- Loop: `templates/loop.md`
-- Flagship filled example: `docs/examples/portfolio_orchestration_minimal_runtime/`
+- Skill: `.agents/skills/complex-runtime/SKILL.md`
+- Templates: `templates/`
+- Filled examples: `docs/examples/`
 - Maturity: `docs/mechanism-maturity.json`
-- Behavior evaluation: 42 cases and 42 transcript rules
-
-## Previous Accepted Artifact
-
-- artifact: the integrity harness protects four public entrypoints, six flagship files, candidate maturity, five behavior links, and the semantic recovery contract.
-- outcome: behavior, maturity, integrity, static, and site checks passed.
-- limitation: structural protection does not prove cross-project execution quality.
-
-## Active Continuous Optimization Runtime
-
-- thread_goal: Continuously pressure-test and improve Complex until the current candidate is validated, retired, genuinely blocked, or residual scan finds no high-value internal work.
-- current_basis: the heartbeat resumed this Goal twice without user continuation; same-repository, missing-anchor, and oversized/conflicting-anchor recovery paths passed; full checks and independent re-review passed; the automation tool changed the heartbeat from ACTIVE to PAUSED after the outcome predicate and residual scan passed.
-- active_module: STOP_COMPLETE for this self-optimization Goal.
-- open_risks: source-resolution public-user breadth remains limited; the low-cost target still needs its own state-compaction beat; these remain future evidence routes rather than unfinished work in this Goal.
-- observed_real_failure: the previous accepted beat left a useful `next_route` but completed its narrow Goal without activating cross-turn continuation, requiring one user restart.
-- failure_layer: `loop_failure` plus `harness_failure`.
-- same_run_contract: continue queued beats while the Goal-level completion predicate is false.
-- cross_turn_resource: 30-minute Codex thread heartbeat created and stopped through the current automation tool.
-- resource_evidence: automation id `complex`, kind `heartbeat`, final status `PAUSED`.
-- validation_status: two autonomous wakes, three recovery shapes, bounded content-minimized extraction, clean evaluation, unit/integrity/site checks, independent review/re-review, residual scan, and heartbeat self-disable verified; continuous cadence and four-layer runtime promoted to validated.
-- next_route: STOP_COMPLETE; reopen only for new real transcript, public-user evidence, Codex surface change, or regression failure.
+- Architecture decisions: `docs/active-architecture-rebaseline.json`
+- External implementations: `docs/reference-implementation-evidence.json`
+- Experiment program: `docs/evals/experiment-program.json`
+- Behavior screens: 44 required cases and 44 transcript rules
 
 ## Stop Rule
 
-Change the protocol only when a real transcript, end-to-end project, verifier failure, user correction, or public onboarding failure exposes a repeated/high-impact gap. Otherwise keep the protocol stable and pressure-test the current candidate mechanism.
+Change a protocol default only when a repeated/high-impact project failure, discriminating experiment, verifier failure, user correction, or public onboarding failure supports the change. Otherwise keep the kernel stable and route the evidence gap to a narrower real-project test.
