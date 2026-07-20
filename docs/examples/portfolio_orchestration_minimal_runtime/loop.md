@@ -1,32 +1,24 @@
-# Filled Progress Loop: Portfolio Orchestration
+# Filled Progress Loop: Adaptive Work Topology
 
 ## Contract
 
-- beat_objective: Select and start the module that best advances the target function after the operating organization exists.
-- active_module: model chain or data source chain.
-- standing_lane: controller.
-- loop_type: strategy.
-- expected_forward_artifact: accepted portfolio route, updated branch parking ledger, and the first domain artifact or observed domain action from the selected module.
-- outcome_completion_predicate: one module is selected from current evidence, its first executable beat changes the domain environment, and the non-selected branch is explicitly kept or parked. Topology or routing metadata alone is not business completion.
-- evaluator: controller checks target-function fit; important route changes receive clean review.
-- why_not_local_greedy: the Loop compares portfolio routes before choosing a local edit.
+- beat_objective: Transform one bounded batch for work item B and classify any failure without changing the project-level prior.
+- project_nature_prior: mixed.
+- active_work_scope: work_item.
+- active_work_nature: execution_delivery.
+- active_module: B, stable record transformation.
+- selected_topology: deterministic Harness.
+- why_topology_is_smallest_sufficient: the input, mapping, output schema, and verifier are stable; parallel discussion would add coordination without information gain.
+- expected_forward_artifact: normalized batch, rejected-record index, verifier result, and accepted-state update.
+- outcome_completion_predicate: the batch is transformed, every record is accepted or explicitly rejected, the verifier passes, and the next route is derived from the observed failure class.
+- evaluator: project-native verifier; clean reviewer is not needed for this mechanical beat.
+- why_not_local_greedy: B advances the thin end-to-end closure and is not blocked by unresolved work item A.
 
-## Four-Layer Preflight
+## Observe, Diagnose, And Route
 
-- prompt_contract_version: 1.
-- context_working_set_status: current and fidelity-checked.
-- runtime_harness_status: ready; bounded workers optional.
-- failure_layer_before_execution: none.
-
-## Observe And Evaluate
-
-- observed_environment_result: metadata is a guardrail, not the global bottleneck; model/data closure can advance.
-- forward_artifact_type: route_delta plus first selected-module domain delta.
-- forward_artifact_path: portfolio map, branch parking ledger, and selected-module artifact pointer.
-- completion_predicate_result: passed only when the selected vertical-slice beat produces an observed domain change; a lane map alone is insufficient.
-
-## Route
-
-- selected_route: CONTINUE.
-- next_beat_objective: Run the selected module's vertical slice and evaluate its environment result.
-- residual_scan: keep the alternate module visible for later routing.
+- if passed: accept the artifact, update state, and route to the next portfolio item.
+- if malformed input: isolate the record, apply bounded retry or rejection, and preserve the mapping.
+- if changed assumption: stop mechanical retry and route the affected rule to work item A for model discovery.
+- mechanize_stable_judgment: allowed only after repeated stable acceptance and low disagreement.
+- completion_predicate_result: pending execution in a real project.
+- next_route: run_work_item_B_and_route_result.

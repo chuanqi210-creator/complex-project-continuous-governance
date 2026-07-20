@@ -195,8 +195,8 @@ const mechanismSteps = [
   },
   {
     k: "02",
-    title: "判断项目性质",
-    text: "先分清 evidence_fill、model_discovery、mixed 或 execution_delivery，以及当前是否已收敛。",
+    title: "分层判断工作性质",
+    text: "项目性质是长期先验；当前阶段、模块或工作单元可以采用更窄的路线。判断不确定性、程序稳定性、可并行性和评审独立性。",
     output: "project_nature_router",
   },
   {
@@ -207,14 +207,14 @@ const mechanismSteps = [
   },
   {
     k: "04",
-    title: "确认最低运行条件",
-    text: "先确认 Codex surface、方向、担责边界、状态、执行能力和停止条件；只有重复职责或多模块真正出现时，才增加长期组织与组合控制。",
-    output: "minimum harness / beat_objective",
+    title: "先定工件，再编排",
+    text: "先写清输入、动作或判断、预期工件、验收、失败恢复和状态回写；再选择主线程、确定性 Harness、临时并行、长期职责或清上下文评审。",
+    output: "artifact contract / work topology",
   },
   {
     k: "05",
     title: "目标函数 Loop",
-    text: "每拍说明 target function、当前模块和 outcome predicate；只有启用长期组织时才写 standing lane。执行拍产生 forward artifact，诊断拍产生明确路线、反证、阻塞或停放决定。",
+    text: "每拍说明 target function、当前工作单元和 outcome predicate。稳定判断可下沉为 checker 或状态机；机械流程若因前提变化反复失败，则回流到模型发现或战略判断。",
     output: "target-function loop",
   },
   {

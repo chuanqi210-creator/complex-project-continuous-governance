@@ -37,9 +37,9 @@ When applying Complex to a target project, this skill is the first-pass rule ind
 ## Runtime Spine
 
 1. Restore true state and assemble the Context Working Set.
-2. Classify `project_nature`: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
+2. Classify `project_nature` as the durable prior, then classify the active phase, module, or work item closely enough to route the current beat.
 3. Assign decision rights through the responsibility boundary.
-4. Establish the minimum control and Runtime Harness; add organization or portfolio control only when recurring lanes or multiple modules justify them.
+4. Define the active artifact contract, then establish the minimum control, Runtime Harness, and work topology; add durable organization or portfolio control only when recurrence or multiple modules justify them.
 5. Run a bounded target-function Progress Loop that changes an outcome, exposes a decision, or falsifies a route.
 6. Deliver to the right audience and evaluate the outcome.
 7. Leave `next_route`, accepted artifacts, recovery pointers, and layer diagnosis.
@@ -96,7 +96,13 @@ Repair the failed layer. Add the observed outcome to evaluation before changing 
 
 AI decides project-internal planning, reading, verification, topology fit, context compaction, reversible local commands, and next-beat routing. Ask only for Goal/public-voice changes, credentials, payment, publishing, external writes, irreversible shared-state changes, high-impact external commitments, or undelegated human value judgments.
 
+Treat the project-level nature as a prior, not a permanent route. At the active work item inspect epistemic uncertainty, procedure stability, parallel independence, evaluator independence, and responsibility. One project may use a deliberative judgment route for an unsettled assumption, a deterministic Harness for a stable transformation, and a clean evaluator for a consequential claim.
+
+Define the artifact contract before choosing resources: accepted input/current basis, operation or decision, expected artifact or diagnostic outcome, acceptance predicate, failure/recovery, and state write-back. Then choose the smallest sufficient topology: manager beat, deterministic Harness, temporary parallel workers, standing lane, clean evaluator, or exact responsibility handoff. The controller remains the integrator and project truth comes from accepted artifacts, not agent conversation.
+
 For recurring multi-lane work, establish only responsibilities that will be reused. A lane contract has accepted input/output, wake trigger, context policy, manager acceptance, retire condition, and owner/resource evidence. A lane is responsibility, not automatically a thread; a real platform resource requires its observed identifier and status. Independent review uses clean context, a fact ledger, or a separate reviewer; same-session review is diagnostic.
+
+Move stable repeated judgments downward into templates, checkers, tool contracts, or state machines. Route repeated deterministic failures upward when changing assumptions, metrics, or interpretation show that the real problem is judgment rather than execution. Expand topology only when its expected information, throughput, recovery, or independence value exceeds coordination cost.
 
 ## External Calibration And Evidence
 

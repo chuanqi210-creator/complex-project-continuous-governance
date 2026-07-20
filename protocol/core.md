@@ -17,6 +17,7 @@ Complex optimizes for durable progress toward the project target function:
 - use mature external practice before changing strategic methods or protocol defaults;
 - preserve enough evidence and recovery state for review without making reporting the project;
 - let AI decide project-internal orchestration while reserving responsibility-bearing choices for the user.
+- derive the smallest sufficient work topology from the current artifact contract and task shape, not from a fixed role chart.
 
 The main failure is local greed: optimizing the nearest visible detail while the project needs a better route, a vertical slice, a parallel responsibility lane, a context reset, a harness repair, or a higher-level decision. The second failure is governance drag: producing so much proof, state, or ceremony that governance consumes the work.
 
@@ -112,8 +113,9 @@ Loop engineering controls durable progress:
 
 Each Loop declares:
 
-- target function and module served; add a standing lane only when recurring organization is active;
+- target function, active work unit, and its current nature; add a standing lane only when recurring organization is active;
 - `beat_objective` and Loop type;
+- artifact contract and selected topology, including why it is the smallest sufficient arrangement;
 - outcome completion predicate; expected forward artifact for execution, or route/falsification/blocker/parking outcome for diagnosis;
 - relevant guard and independent evaluator when needed;
 - failure class and recovery route;
@@ -129,50 +131,67 @@ Retry only retryable failures. Use checkpoint, exponential backoff where appropr
 `complex_behavior_kernel` is the normative execution spine, not a claim that every optional mechanism bundled around it has been empirically validated:
 
 1. Restore true state and assemble the current Context Working Set.
-2. Classify `project_nature`: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
+2. Classify project nature as a durable prior, then classify the active phase, module, or work item closely enough to route the current beat.
 3. Assign decision rights through the responsibility boundary.
-4. Establish the minimum control and Runtime Harness needed for this project; add operating organization or portfolio control only when recurring lanes or multiple modules justify them.
+4. Define the current artifact contract, then compile the minimum control, Runtime Harness, and work topology needed to satisfy it; add durable organization or portfolio control only when recurrence or multiple modules justify them.
 5. Run a bounded target-function Progress Loop or execution beat that changes an outcome, exposes a decision, or falsifies a route.
 6. Deliver to the right audience and evaluate the outcome.
 7. Leave `next_route`, accepted artifacts, recovery pointers, and any layer-level diagnosis.
 
 Named mechanisms are implementation guidance. If one conflicts with the spine, the spine wins. Candidate mechanisms apply only when their matching failure mode is present.
 
-## 5. Project Nature And Convergence
+## 5. Hierarchical Work Nature And Convergence
 
-- `evidence_fill`: model, metric, formula, or frame is stable. Fill evidence, validate claims, and deliver without paying unnecessary divergence overhead.
-- `model_discovery`: the problem frame, model, metric, explanation, or story line is unsettled. Preserve 3-5 candidate frames, counterexamples, argument maps, and discriminating probes.
-- `mixed`: protect discovery until convergence conditions are met, then switch to evidence discipline.
+`project_nature` is a durable prior, not a label that forces every later task through one route:
+
+- `evidence_fill`: model, metric, formula, or frame is stable. Fill evidence, validate claims, and deliver without unnecessary divergence overhead.
+- `model_discovery`: the problem frame, model, metric, explanation, or story line is unsettled. Preserve candidate frames, counterexamples, argument maps, and discriminating probes.
+- `mixed`: protect discovery until convergence conditions are met, then switch the affected work to evidence discipline.
 - `execution_delivery`: prioritize implementation, packaging, validation, delivery, and recovery.
 
-Do not let an evidence lookup become the global target while the model is unsettled. Do not keep divergent research open after discriminating evidence and convergence criteria are satisfied.
+Classify at the narrowest scope that changes the next route: project, phase, module, then active work item. The narrower current classification controls the beat; broader classifications remain Goal and portfolio constraints. A research project may therefore use model discovery for one disputed assumption, deterministic extraction for one stable data path, and clean evaluation for one consequential claim without relabeling the whole project.
 
-## 6. Conditional Organization And Portfolio Control
+For the active work item, inspect five routing signals:
 
-Ordinary projects stay with the kernel. Activate this section only when work has recurring responsibilities, multiple modules, independent evaluation, or a demonstrated local-greedy routing problem.
+- epistemic uncertainty: settled, uncertain, or genuinely contested;
+- procedure stability: novel, partly known, or repeatable;
+- parallel independence: whether branches can advance without sharing mutable context;
+- evaluation independence: whether the result requires a clean evaluator;
+- responsibility: whether an exact operation crosses the user boundary.
 
-The controller owns:
+Do not let an evidence lookup become the global target while the model is unsettled. Do not keep divergent research open after discriminating evidence and convergence criteria are satisfied. Reclassify when observed results change these signals, not on a mechanical beat cadence.
 
-- direction: Goal, target function, project nature, completion and stop conditions;
-- authority: responsibility boundary and external commitments;
-- state: current basis, active modules, risks, accepted artifacts, and context health;
-- topology: standing lanes, temporary workers, platform resources, and evaluator independence;
-- routing: beat queue, branch parking, retry/recovery, and residual scan;
-- calibration: external basis, hallucination sentinel, and mechanism maturity.
+## 6. Artifact-First Adaptive Work Topology
 
-Each durable lane contract names responsibility, accepted input, accepted output, wake trigger, context policy, manager acceptance test, retirement condition, and current owner/resource evidence. A recorded lane is not a spawned platform resource. If a thread, subagent, worktree, or automation is created, retain the observed resource identifier and status; otherwise describe only the manager-owned responsibility.
+Ordinary work stays manager-only. Compile a larger topology only when the active work item needs it.
 
-Create only the standing lanes whose responsibilities recur:
+Before assigning an agent, lane, thread, tool, or workflow, define the artifact contract:
 
-- Controller: direction, portfolio, route, stop/park decisions.
-- Human interface: responsibility-bearing asks, explanations, and delivery alignment.
-- Literature/data acquisition: papers, official sources, databases, permission forecasts, and source escalation.
-- Model/component: assumptions, variables, interfaces, and vertical slices.
-- Data-code: schemas, scripts, hashes, reproducibility, and write boundaries.
-- Review/risk: clean-context evaluation, overclaim, false precision, and public-risk review.
-- Writing/delivery: claims, figures, methods, limitations, and reader-facing output.
+- accepted input and current basis;
+- the decision, transformation, acquisition, or evaluation to perform;
+- expected forward artifact or diagnostic route outcome;
+- acceptance predicate and evaluator;
+- failure class, recovery route, and state write-back.
 
-Standing lanes are responsibilities, not mandatory threads. Use manager work, subagents, clean reviewers, worktrees, threads, or automations according to harness capability and task shape. Independent review requires a clean reviewer, separate context, fact-ledger packet, or read-only audit worker; same-session review is diagnostic only.
+Then select the smallest sufficient topology:
+
+- **manager beat** for tightly coupled work that one context can complete and evaluate;
+- **deterministic harness** for stable transformations, repeated checks, schemas, state machines, or side-effect control;
+- **temporary parallel workers** for independent bounded branches whose outputs can be merged through artifact references;
+- **standing lane** for a responsibility that recurs across phases and has stable accepted input/output;
+- **clean evaluator** when independence matters more than conversational continuity;
+- **responsibility handoff** only for the exact operation or judgment that belongs to the user.
+
+The controller remains the sole integrator when more than one topology element is active. It owns Goal, target function, accepted state, route, branch parking, worker/lane contracts, evaluator independence, and final acceptance. Workers write bounded artifacts or references rather than becoming alternate sources of project truth.
+
+Each durable lane contract names responsibility, accepted input and output, wake trigger, context policy, manager acceptance test, retirement condition, and current resource evidence. Common responsibility families include acquisition, modeling, data/code, evaluation/risk, and delivery, but they are examples rather than a required organization chart. A recorded lane is not a spawned platform resource.
+
+Topology has two directional transitions:
+
+- when a repeated judgment has stable inputs, acceptance rules, and low disagreement, move it downward into a template, checker, tool contract, or deterministic Harness;
+- when a deterministic path repeatedly fails because assumptions, metrics, or interpretation changed, route upward to model discovery or strategic judgment instead of adding retries.
+
+Expand topology only when expected information gain, throughput, recovery, or evaluator independence exceeds coordination and context cost. Collapse or retire it when it no longer changes outcomes. Independent review requires a clean reviewer, separate context, fact-ledger packet, or read-only audit worker; same-session review is diagnostic only.
 
 ## 7. Responsibility Boundary
 

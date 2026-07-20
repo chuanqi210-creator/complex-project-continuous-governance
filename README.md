@@ -49,9 +49,9 @@ Complex remains a standalone runtime. A target repository does not need its own 
 Copy-ready high-fit request:
 
 ```text
-请先读取已安装的 Complex，并结合当前项目建立 Project Prompt Contract。请区分稳定目标与动态上下文，判断项目性质，明确担责边界、完成标准、评价方法和交付对象。
+请先读取已安装的 Complex，并结合当前项目建立 Project Prompt Contract。请区分稳定目标与动态上下文，把项目性质作为长期先验，并按当前阶段、模块或工作单元重新判断实际路线；明确担责边界、完成标准、评价方法和交付对象。
 
-随后按四层运行：每拍从稳定的 Prompt Contract 和最新状态生成 Beat Planning Packet；组装最小充分、可溯源的 Context Working Set；确认 Runtime Harness 的工具、环境、检查点和降级路线；运行以真实结果为完成条件的 Progress Loop。能在担责边界内继续时自动进入下一拍，不等我说继续。
+随后按四层运行：每拍从稳定的 Prompt Contract 和最新状态生成 Beat Planning Packet；组装最小充分、可溯源的 Context Working Set；先定义当前工件契约，再按不确定性、程序稳定性、可并行性和评审独立性选择最小充分工作拓扑；确认 Runtime Harness 的工具、环境、检查点和降级路线；运行以真实结果为完成条件的 Progress Loop。能在担责边界内继续时自动进入下一拍，不等我说继续。
 
 请先诊断问题属于 prompt、context、harness、loop 还是 model limitation，再修改对应层。不要把上下文遗漏、工具故障或停止逻辑问题都修成更长的提示词。重要评审使用清上下文；重要机制判断做外部校准；输出只要人看版。
 ```
@@ -67,12 +67,18 @@ If you want prompt design before execution:
 The seven stable behaviors are:
 
 1. Restore true state and assemble the current working context.
-2. Classify project nature: `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
+2. Classify project nature as a durable prior, then classify the active phase, module, or work item closely enough to route the current beat.
 3. Assign decision rights through a responsibility boundary.
-4. Establish the minimum control and runtime harness; add organization or portfolio control only when recurring lanes or multiple modules justify them.
+4. Define the current artifact contract, then establish the minimum control, runtime harness, and work topology; add durable organization or portfolio control only when recurrence or multiple modules justify them.
 5. Run a bounded target-function Progress Loop that changes an outcome, exposes a decision, or falsifies a route.
 6. Deliver to the right audience and evaluate the outcome.
 7. Leave `next_route`, accepted artifacts, recovery pointers, and layer diagnosis.
+
+### Adaptive work topology
+
+Complex does not impose one fixed multi-agent organization on a whole project. `project_nature` is a durable prior; the current phase, module, or work item determines the next route. Before allocating a thread, subagent, lane, tool, or workflow, Complex defines the local artifact contract: accepted input, operation or decision, expected artifact or route outcome, acceptance, failure recovery, and state write-back.
+
+It then selects the smallest sufficient arrangement: manager-only work, a deterministic Harness, temporary parallel workers, a recurring standing lane, a clean evaluator, or an exact responsibility handoff. Stable repeated judgments may become templates, checkers, tool contracts, or state machines. Repeated mechanical failures caused by changed assumptions route back to discovery or strategic judgment. This keeps domain-specific organizations in their projects while preserving one reusable control logic.
 
 ### Codex surface map
 

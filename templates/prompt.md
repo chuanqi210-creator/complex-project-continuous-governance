@@ -18,7 +18,7 @@ Use this template to separate durable project intent from changing beat context.
 - target_function:
 - completion_criteria:
 - outcome_evaluation:
-- project_nature: evidence_fill / model_discovery / mixed / execution_delivery
+- project_nature_prior: evidence_fill / model_discovery / mixed / execution_delivery
 - responsibility_boundary:
 - delivery_contract:
 - stable_project_constraints:
@@ -53,6 +53,9 @@ Assemble this before a planning checkpoint or continuous beat:
 - harness_status_and_degraded_routes:
 - beat_objective:
 - target_function_and_module_served:
+- active_work_scope_and_nature:
+- artifact_contract:
+- selected_topology_and_fit_reason:
 - standing_lane_served:
 - candidate_routes:
 - selected_route_and_reason:

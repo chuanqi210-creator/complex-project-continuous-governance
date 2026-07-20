@@ -36,3 +36,15 @@ These verbs are deliberately not interchangeable.
 The architecture is cleaner and its external basis is more concrete. One healthy provenance-bound suite and its append-only scorer repair now cover every core and conditional mechanism, but baseline and candidate reached the environment scorer ceiling in all seven. The architecture has therefore shown bounded contract executability, not that the consolidated kernel reduces correction cost or improves long-project outcomes. The next evidence units are discriminating redacted-real samples, writable end-to-end project beats, trajectory review, and blind human outcome review.
 
 Machine-readable decisions and next validations are in `docs/active-architecture-rebaseline.json`.
+
+## 2026-07-21 Topology Clarification
+
+Concrete domain workflows exposed a shared abstraction without justifying a new mechanism identity. The existing project-nature router, operating organization, and portfolio control were therefore tightened rather than expanded:
+
+- project nature is a durable prior; the active phase, module, or work item controls the current route;
+- the artifact contract precedes role, worker, lane, thread, or tool allocation;
+- topology is compiled from uncertainty, procedure stability, parallel independence, evaluator independence, and responsibility;
+- stable repeated judgment may move into deterministic Harness, while assumption-driven mechanical failure routes back to discovery;
+- accepted artifacts and one controller remain authoritative; agent conversation does not become project state.
+
+This is an architectural consolidation, not evidence promotion. Operating organization and portfolio control remain conditional and `screened` until a locked real-project comparison shows outcome or coordination value.

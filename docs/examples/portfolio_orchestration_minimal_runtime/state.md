@@ -1,54 +1,37 @@
-# State Example: Portfolio Orchestration
+# State Example: Adaptive Portfolio Orchestration
 
 ## Goal Memory
 
-- thread_goal: Produce a usable research prototype with evidence, model, data-code, review, and delivery lanes moving together.
-- phase_goal: Establish the first stable operating organization and forward indexes.
-- goal_memory_summary: The project should not optimize only the next local file edit; it needs module-level movement.
-- beat_objective: Build the portfolio map and choose the first target-function Loop.
+- thread_goal: Produce one usable, source-backed, independently reviewable deliverable across several work units.
+- phase_goal: Close the first end-to-end slice while testing whether each work item has the right topology.
+- goal_memory_summary: The project must not force one discovery or execution pattern onto every module.
+- project_nature_prior: mixed.
+- beat_objective: Run stable work item B through its deterministic Harness and classify any failure correctly.
 
-## Operating Organization
+## Work-Item Portfolio
 
-- controller_lane: owns target function, portfolio, route, and stop/park decisions.
-- human_interface_lane: asks only for responsibility-bearing boundaries and produces human-readable summaries.
-- literature_data_acquisition_lane: forecasts source, database, account, and permission needs.
-- model_component_lane: maintains model assumptions and vertical slices.
-- data_code_lane: maintains schema, scripts, hashes, and reproducibility checks.
-- review_risk_lane: reviews claims with clean fact ledgers.
-- writing_delivery_lane: turns accepted artifacts into reader-facing output.
+| Work item | Current nature | Artifact contract | Smallest sufficient topology | Status |
+| --- | --- | --- | --- | --- |
+| A: choose an unsettled explanatory frame | model_discovery | candidate positions, discriminating evidence, route decision | manager plus temporary independent branches when useful | active, not blocking B |
+| B: transform accepted records | execution_delivery | normalized dataset and verifier result | deterministic Harness | queued now |
+| C: evaluate the consequential claim | evidence_fill | fact ledger and evaluation decision | recurring clean-evaluation lane | warm |
 
-## Portfolio
+## Controller And Transitions
 
-- target_function: Move the project toward a usable, source-backed, reviewable deliverable.
-- module_portfolio:
-  - model chain: active.
-  - data source chain: active.
-  - review/risk: standing lane active.
-  - writing/delivery: warm, not blocked.
-- forward_artifact_index:
-  - topology_delta: operating organization created.
-  - state_delta: Hot/Warm/Cold state plan created.
-- branch_parking_ledger:
-  - stalled metadata-only source branch: parked until source access changes.
+- controller: owns Goal, accepted state, artifact contracts, work-item routes, integration, and stop/park decisions.
+- artifact authority: accepted project files and verifier results, not agent conversation.
+- mechanize_when: a repeated judgment has stable inputs, low disagreement, and an explicit acceptance rule.
+- route_back_when: deterministic failures trace to changed assumptions, metrics, or interpretation.
+- collapse_when: a worker, lane, or review surface no longer changes throughput, recovery, or decision quality.
 
 ## External Calibration
 
-- source: Team Topologies; Google SRE toil; NASA gate review.
-- problem_matched: local route can dominate the whole project when multiple modules can move.
-- adopted: keep durable responsibility lanes and WIP/toil review.
-- rejected: heavy enterprise reorganization.
-- not_transferable: formal team APIs and staffing models.
-- Complex_micro_contract: before a continuous project chooses the next local edit, check target function, module portfolio, lanes, forward artifact, and park/route options.
-- refresh_trigger: phase switch, repeated guardrail-only work, or user reports local-detail drift.
-
-## Hallucination Sentinel
-
-- current_basis: project has multiple independent modules.
-- external_basis: Team Topologies, SRE toil, NASA gate structure.
-- inference: an operating organization lowers local-greedy drift.
-- unsupported_claim: this exact lane set is universally optimal.
-- falsification_cue: lanes produce overhead without accepted artifacts.
+- sources: Magentic-One; Anthropic multi-agent research; Virtual Lab; Agent Laboratory.
+- adopted: controller integration, separate task/progress views, artifact handoff, clean contexts, fixed pipeline only for stable work.
+- rejected: a fixed role chart for all work and multi-agent discussion without mergeable artifacts.
+- not_transferable: domain roles, benchmark rosters, provider memory, and upstream outcome claims.
+- unvalidated_boundary: no locked real-project comparison yet shows this compiled topology outperforming the prior portfolio example.
 
 ## Next Route
 
-- next_route: run_first_progress_loop
+- next_route: run_work_item_B_and_route_result

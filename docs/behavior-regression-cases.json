@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-17-mechanism-revalidation",
+  "version": "2026-07-21-adaptive-work-topology",
   "purpose": "A compact behavior regression pack for checking whether Complex documentation still covers the behaviors that matter most when a new agent uses the protocol.",
   "required_case_ids": [
     "setup_card_default",
@@ -45,7 +45,10 @@
     "harness_legibility_and_mechanical_guardrails",
     "durable_loop_uses_outcome_completion_and_recovery",
     "cross_layer_failure_is_diagnosed_before_prompt_patch",
-    "local_artifact_contract_precedes_mechanism_vocabulary"
+    "local_artifact_contract_precedes_mechanism_vocabulary",
+    "active_work_unit_routing_overrides_project_prior",
+    "artifact_contract_precedes_topology",
+    "judgment_mechanization_and_route_back"
   ],
   "cases": [
     {
@@ -1433,6 +1436,103 @@
         "delivery_contract",
         "responsibility_boundary",
         "trace_appraisal_hot_warm_cold"
+      ]
+    },
+    {
+      "case_id": "active_work_unit_routing_overrides_project_prior",
+      "user_prompt": "整个项目属于开放研究，但当前模块只是按稳定 schema 转换一批已确认数据。是不是还要为这一拍组织多人讨论？",
+      "project_nature": "model_discovery",
+      "expected_triggers": [
+        "project_nature_prior",
+        "active work item",
+        "procedure stability",
+        "deterministic harness"
+      ],
+      "expected_behavior": [
+        "Keep model_discovery as the project-level prior while classifying the stable conversion as an execution-oriented active work item.",
+        "Let the narrower active classification control the beat without rewriting the project Goal or nature.",
+        "Use the existing schema, transformation, verifier, and recovery path as a deterministic Harness when they are stable.",
+        "Return to discovery only if observed failures reveal changing assumptions, metrics, or interpretation."
+      ],
+      "forbidden_behavior": [
+        "Force every module through the project's broad discovery topology.",
+        "Relabel the whole project because one work item is deterministic.",
+        "Create a deliberative multi-agent group for a settled transformation without expected value."
+      ],
+      "expected_runtime_records": [
+        "state.md",
+        "judgment.md",
+        "harness.md",
+        "loop.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "operating_organization",
+        "project_nature_router"
+      ]
+    },
+    {
+      "case_id": "artifact_contract_precedes_topology",
+      "user_prompt": "这是长期复杂项目，先固定创建研究、数据、评审和写作线程，再决定它们分别做什么。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "artifact contract",
+        "smallest sufficient topology",
+        "controller",
+        "resource fit"
+      ],
+      "expected_behavior": [
+        "Define accepted input, operation or decision, expected artifact or diagnostic outcome, acceptance, recovery, and state write-back before allocating resources.",
+        "Select manager work, deterministic Harness, temporary workers, standing lanes, clean evaluation, or responsibility handoff from the active work shape.",
+        "Keep one controller responsible for integration, accepted state, routing, and final acceptance when several resources are active.",
+        "Create a standing lane only for recurring responsibility and a platform resource only when the Harness exposes and justifies it."
+      ],
+      "forbidden_behavior": [
+        "Use a fixed domain role chart as the universal Complex organization.",
+        "Create threads before their accepted input, output, wake trigger, and acceptance are known.",
+        "Treat agent conversation as the authoritative project artifact."
+      ],
+      "expected_runtime_records": [
+        "judgment.md",
+        "harness.md",
+        "state.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "operating_organization",
+        "portfolio_control_plane"
+      ]
+    },
+    {
+      "case_id": "judgment_mechanization_and_route_back",
+      "user_prompt": "一个判断已经反复出现且输入和验收都稳定；另一个自动流程连续失败后发现前提已经改变。两者都继续加 agent 和重试可以吗？",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "mechanization",
+        "route back",
+        "changed assumptions",
+        "coordination_cost_and_expected_value"
+      ],
+      "expected_behavior": [
+        "Move the stable repeated judgment toward a template, checker, tool contract, or state machine at the lightest sufficient mechanization level.",
+        "Route the failing deterministic path back to model discovery or strategic judgment when assumptions or evaluation criteria changed.",
+        "Use observed disagreement, stable acceptance, and failure cause rather than beat count to decide the transition.",
+        "Retire topology that no longer changes outcomes or whose coordination cost exceeds its value."
+      ],
+      "forbidden_behavior": [
+        "Keep paying model discussion cost for a stable mechanical rule.",
+        "Retry a deterministic path indefinitely after its assumptions are falsified.",
+        "Add agents or lanes as the default repair for either failure."
+      ],
+      "expected_runtime_records": [
+        "judgment.md",
+        "harness.md",
+        "loop.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "operating_organization",
+        "project_nature_router"
       ]
     }
   ]

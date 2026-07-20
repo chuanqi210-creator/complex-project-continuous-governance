@@ -206,8 +206,8 @@
         "dspy_eval_optimization",
         "inspect_ai_eval_records"
       ],
-      "rationale": "Different project natures require different evaluation and search weights; current external grounding remains partial.",
-      "next_validation": "Paired evidence-fill/model-discovery task set."
+      "rationale": "Different project natures require different evaluation and search weights, but the project label is only a prior. The active phase, module, or work item may require a narrower route without changing the durable Goal.",
+      "next_validation": "Paired hierarchical-routing tasks that compare one project-wide label with work-item-level routing."
     },
     {
       "mechanism_id": "independent_review_context_separation",
@@ -250,8 +250,8 @@
         "openai_codex_runtime_surfaces",
         "swe_agent_aci_retry_trajectory"
       ],
-      "rationale": "Keep as a conditional multi-lane extension and remove universal core wording.",
-      "next_validation": "Single-lane versus multi-lane shadow run."
+      "rationale": "Keep as a conditional extension, but compile topology only after the active artifact contract is known. Select manager work, deterministic Harness, temporary workers, recurring lanes, or clean evaluation from work shape instead of a fixed role chart.",
+      "next_validation": "Locked real-project comparison of fixed roles, manager-only work, and artifact-first compiled topology."
     },
     {
       "mechanism_id": "portfolio_control_plane",
@@ -264,8 +264,8 @@
         "symphony_orchestration_control_plane",
         "langgraph_state_checkpoint"
       ],
-      "rationale": "Useful for multi-module projects, excessive as a default for ordinary work.",
-      "next_validation": "Shadow controller on one real portfolio."
+      "rationale": "Useful for multi-module projects when one controller preserves the target function and accepted state. It must route work items independently and keep agent conversation subordinate to accepted artifacts.",
+      "next_validation": "Shadow controller on one real portfolio containing both unsettled judgment and stable deterministic execution."
     },
     {
       "mechanism_id": "trace_appraisal_hot_warm_cold",

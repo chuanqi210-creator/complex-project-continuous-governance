@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-17-mechanism-revalidation",
+  "version": "2026-07-21-adaptive-work-topology",
   "purpose": "Marker-based transcript review rules for the Complex behavior regression cases. These rules do not replace human review; they catch obvious omissions and forbidden moves in real agent responses.",
   "case_rules": {
     "setup_card_default": {
@@ -3366,6 +3366,59 @@
       "human_review_questions": [
         "Did the output preserve the exact target-project artifact interface?",
         "Did Complex terminology remain in the decision layer instead of leaking into the deliverable?"
+      ]
+    },
+    "active_work_unit_routing_overrides_project_prior": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "project prior", "any": ["project nature prior", "项目性质先验", "project_nature_prior"]},
+        {"label": "active work item", "any": ["active work item", "当前工作单元", "active_work_nature"]},
+        {"label": "procedure stability", "any": ["procedure stability", "程序稳定性", "stable schema"]},
+        {"label": "deterministic harness", "any": ["deterministic Harness", "确定性 Harness", "机械流程"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "one route for whole project", "any": ["整个项目只能走一种路线", "one topology for the whole project"]},
+        {"label": "unnecessary deliberation", "any": ["稳定转换也必须多人讨论", "every settled transformation needs a council"]}
+      ],
+      "human_review_questions": [
+        "Did the active work-item classification control the beat without erasing the project-level prior?",
+        "Was a stable procedure routed to a mechanical path rather than unnecessary deliberation?"
+      ]
+    },
+    "artifact_contract_precedes_topology": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "artifact contract", "any": ["artifact contract", "工件契约", "accepted input"]},
+        {"label": "smallest sufficient topology", "any": ["smallest sufficient topology", "最小充分拓扑", "minimum topology"]},
+        {"label": "controller integration", "any": ["controller", "总控", "sole integrator", "唯一整合"]},
+        {"label": "resource fit", "any": ["resource fit", "资源匹配", "standing lane", "temporary worker", "clean evaluator"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "fixed role chart", "any": ["固定角色表适用于所有项目", "universal fixed role chart"]},
+        {"label": "resource before contract", "any": ["先创建线程再定义任务", "create threads before outputs are defined"]},
+        {"label": "conversation as truth", "any": ["agent 对话就是事实源", "agent conversation is the source of truth"]}
+      ],
+      "human_review_questions": [
+        "Was the expected artifact or diagnostic outcome defined before allocating resources?",
+        "Did the topology remain smaller than the coordination problem it was meant to solve?"
+      ]
+    },
+    "judgment_mechanization_and_route_back": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "mechanization", "any": ["mechanization", "机械化", "checker", "state machine", "状态机"]},
+        {"label": "route back", "any": ["route back", "回流", "返回模型发现", "return to discovery"]},
+        {"label": "changed assumptions", "any": ["changed assumptions", "前提改变", "evaluation frame changed"]},
+        {"label": "coordination cost", "any": ["coordination cost", "协调成本", "retire topology", "退役拓扑"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "permanent deliberation", "any": ["稳定规则继续长期讨论", "keep deliberating stable rules"]},
+        {"label": "blind retry", "any": ["前提失效后继续重试", "retry after assumptions are falsified"]},
+        {"label": "agents as default repair", "any": ["加 agent 就能解决", "more agents are the default repair"]}
+      ],
+      "human_review_questions": [
+        "Did stable repeated judgment move toward mechanical enforcement?",
+        "Did assumption-driven mechanical failure route upward instead of receiving more retries?"
       ]
     }
   }

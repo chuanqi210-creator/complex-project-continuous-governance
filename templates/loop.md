@@ -10,10 +10,15 @@ Use this template for a meaningful cycle that changes project state. The Loop se
 - beat_objective:
 - target_function:
 - active_module:
+- active_work_scope: project / phase / module / work_item
+- active_work_nature: evidence_fill / model_discovery / mixed / execution_delivery
 - standing_lane:
-- project_nature: evidence_fill / model_discovery / mixed / execution_delivery
+- project_nature_prior: evidence_fill / model_discovery / mixed / execution_delivery
 - loop_type: strategy / discovery / extraction / vertical_slice / closure / review / writing / delivery
 - why_not_local_greedy:
+- artifact_contract_pointer_or_summary:
+- selected_topology: manager_beat / deterministic_harness / temporary_parallel_workers / standing_lane / clean_evaluator / responsibility_handoff
+- why_topology_is_smallest_sufficient:
 - expected_forward_artifact:
 - outcome_completion_predicate:
 - relevant_guard:
@@ -69,6 +74,8 @@ Use this template for a meaningful cycle that changes project state. The Loop se
 - harness_repair_or_degrade_needed: yes / no
 - loop_route_or_stop_repair_needed: yes / no
 - model_limitation_evidence:
+- mechanize_stable_judgment: yes / no
+- route_deterministic_failure_back_to_judgment: yes / no
 
 ## Learn And Route
 

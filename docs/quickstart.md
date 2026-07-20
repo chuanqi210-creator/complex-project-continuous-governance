@@ -95,9 +95,9 @@ Define an outcome completion predicate before execution. A forward-execution bea
 ## 4. Run The Behavior Spine
 
 1. Restore state and context.
-2. Classify `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery`.
+2. Classify `evidence_fill`, `model_discovery`, `mixed`, or `execution_delivery` as the project prior, then classify the active phase, module, or work item closely enough to route the beat.
 3. Assign responsibility and decision rights.
-4. Form the minimum control and harness; add operating organization or portfolio control only when recurring lanes or multiple modules justify them.
+4. Define the active artifact contract, then form the minimum control, harness, and work topology; add durable organization or portfolio control only when recurrence or multiple modules justify them.
 5. Run a target-function Loop.
 6. Deliver and evaluate.
 7. Record accepted artifacts, layer diagnosis, and `next_route`.
@@ -116,19 +116,26 @@ Classify unexpected behavior:
 
 Repair the failed layer. Add the observed outcome to evaluation before changing defaults. Do not use a longer prompt as a universal fix.
 
-## 6. Add Organization Only When Needed
+## 6. Compile The Work Topology
 
-For recurring multi-lane work, assign only the manager-owned lanes that will be reused:
+Do not begin by inventing roles. For the active work item, define:
 
-- controller;
-- human interface;
-- literature/data acquisition;
-- model/component;
-- data-code;
-- review/risk;
-- writing/delivery.
+1. accepted input and current basis;
+2. decision, transformation, acquisition, or evaluation;
+3. expected artifact or diagnostic outcome;
+4. acceptance and evaluator;
+5. failure recovery and state write-back.
 
-A lane need not become a thread. Use manager work, subagents, clean reviewers, worktrees, threads, or automations according to harness capability. Independent review starts from clean context or a fact ledger.
+Then choose the smallest sufficient arrangement:
+
+- manager beat for tightly coupled work;
+- deterministic Harness for stable repeated procedures;
+- temporary workers for independent bounded branches;
+- standing lane for recurring responsibility;
+- clean evaluator for independence-sensitive judgment;
+- user handoff only for the exact responsibility-bearing operation.
+
+One project may use different arrangements in different modules. A lane need not become a thread. Stable recurring judgments should move toward templates, checkers, tool contracts, or state machines; a repeatedly failing mechanical path should return to discovery when its assumptions or evaluation frame are no longer stable.
 
 ## 7. Accept Progress From Outcomes
 

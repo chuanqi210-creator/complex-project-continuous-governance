@@ -77,7 +77,10 @@
         "harness_legibility_and_mechanical_guardrails",
         "durable_loop_uses_outcome_completion_and_recovery",
         "cross_layer_failure_is_diagnosed_before_prompt_patch",
-        "local_artifact_contract_precedes_mechanism_vocabulary"
+        "local_artifact_contract_precedes_mechanism_vocabulary",
+        "active_work_unit_routing_overrides_project_prior",
+        "artifact_contract_precedes_topology",
+        "judgment_mechanization_and_route_back"
       ],
       "linked_examples": [
         "evidence_fill_minimal_runtime",
@@ -208,26 +211,29 @@
         "context",
         "loop"
       ],
-      "summary": "Selects evidence_fill, model_discovery, mixed, or execution_delivery weights without turning the labels into user-facing modes.",
+      "summary": "Uses evidence_fill, model_discovery, mixed, or execution_delivery as project priors, then reclassifies the active phase, module, or work item when a narrower scope changes the route.",
       "external_basis": [
         "dspy_eval_optimization",
         "inspect_ai_eval_records"
       ],
       "internal_evidence": [
-        "Model-discovery and evidence-fill cases and examples exercise different routing weights."
+        "Model-discovery and evidence-fill cases and examples exercise different routing weights.",
+        "The 2026-07-21 behavior screen adds project-prior versus active-work-item routing and judgment-to-Harness transition cases; it screens contract coverage but is not an outcome comparison."
       ],
       "linked_behavior_cases": [
         "setup_card_default",
         "model_discovery_protect_divergence",
-        "evidence_fill_no_extra_divergence"
+        "evidence_fill_no_extra_divergence",
+        "active_work_unit_routing_overrides_project_prior",
+        "judgment_mechanization_and_route_back"
       ],
       "linked_examples": [
         "evidence_fill_minimal_runtime",
         "model_discovery_minimal_runtime"
       ],
-      "promotion_rule": "Validate after paired end-to-end samples show fewer early-convergence and over-divergence errors under a locked evaluator.",
-      "demotion_trigger": "Agents over-label projects, stall execution, or cannot switch weights as evidence changes.",
-      "refresh_trigger": "A recurring project class does not fit the four current natures."
+      "promotion_rule": "Validate after paired end-to-end samples show fewer early-convergence, over-divergence, and project-label overrouting errors under a locked evaluator.",
+      "demotion_trigger": "Agents over-label projects, stall execution, or cannot switch route weights at phase, module, or work-item scope as evidence changes.",
+      "refresh_trigger": "A recurring work shape does not fit the four current natures or hierarchical routing produces unstable decisions."
     },
     {
       "id": "independent_review_context_separation",
@@ -303,7 +309,7 @@
         "harness",
         "loop"
       ],
-      "summary": "Recurring multi-lane work may establish controller, human interface, evidence/data, model/component, data-code, review/risk, and delivery responsibilities before local optimization.",
+      "summary": "After an artifact contract is defined, recurring or parallel work may compile the smallest sufficient topology from manager work, deterministic Harness, temporary workers, standing lanes, clean evaluation, and exact responsibility handoff.",
       "external_basis": [
         "symphony_orchestration_control_plane",
         "openai_codex_runtime_surfaces",
@@ -311,6 +317,7 @@
       ],
       "internal_evidence": [
         "Behavior cases and examples define recurring-lane and clean-review contracts.",
+        "The 2026-07-21 portfolio example and three behavior cases exercise artifact-first topology selection, hierarchical work routing, mechanization, and route-back without introducing a fixed domain role chart.",
         "The provenance-bound 2026-07-17 full suite completed six baseline and six candidate trials for recurring lanes and a one-off negative control at 100% environment success in both arms. The result establishes executability but no measured lane benefit.",
         "eval_result:docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#operating_organization_lane_value"
       ],
@@ -318,15 +325,18 @@
         "orchestration_preflight_contract",
         "continuous_orchestration_runtime_spine",
         "standing_lane_operating_organization",
-        "human_interface_lane_for_long_projects"
+        "human_interface_lane_for_long_projects",
+        "active_work_unit_routing_overrides_project_prior",
+        "artifact_contract_precedes_topology",
+        "judgment_mechanization_and_route_back"
       ],
       "linked_examples": [
         "operating_organization_multi_lane_runtime",
         "portfolio_orchestration_minimal_runtime"
       ],
-      "promotion_rule": "Move to tested only after a discriminating bounded comparison shows lane value without one-off overhead. Validate only after two distinct real or redacted-real multi-lane comparisons reduce correction load, duplicate work, or artifact lead time and pass blind human review.",
-      "demotion_trigger": "Lane records or platform resources consume more work than they coordinate.",
-      "refresh_trigger": "Recurring responsibility, reviewer contamination, topology drift, or Codex multi-agent semantics change."
+      "promotion_rule": "Move to tested only after a discriminating bounded comparison shows that artifact-first topology selection improves throughput, independence, or recovery without one-off overhead. Validate only after two distinct real or redacted-real comparisons reduce correction load, duplicate work, or artifact lead time and pass blind human review.",
+      "demotion_trigger": "Topology records, agent dialogue, or platform resources consume more work than they coordinate, or a fixed role chart replaces work-item routing.",
+      "refresh_trigger": "Recurring responsibility, reviewer contamination, missed parallelism, topology drift, judgment mechanization, route-back failure, or Codex multi-agent semantics change."
     },
     {
       "id": "portfolio_control_plane",
@@ -345,6 +355,7 @@
       ],
       "internal_evidence": [
         "Cases and examples cover local-greedy routing and portfolio state.",
+        "The 2026-07-21 portfolio example keeps one controller and routes differently shaped work items through accepted artifact contracts; no locked real-project comparison has measured benefit.",
         "The provenance-bound 2026-07-17 full suite completed six baseline and six candidate trials for a local blocker and a true global boundary at 100% environment success in both arms. It instantiates the route contract but gives no evidence of advantage over native behavior.",
         "eval_result:docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#portfolio_blocked_branch_routing"
       ],
@@ -352,7 +363,8 @@
         "continuous_orchestration_runtime_spine",
         "portfolio_before_local_greedy_route",
         "audit_guardrail_not_forward_artifact",
-        "hot_warm_cold_state_lightening"
+        "hot_warm_cold_state_lightening",
+        "artifact_contract_precedes_topology"
       ],
       "linked_examples": [
         "portfolio_orchestration_minimal_runtime",

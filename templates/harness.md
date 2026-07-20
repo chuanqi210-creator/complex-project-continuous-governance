@@ -26,6 +26,18 @@ Use this template when environment, tools, recovery, or observability materially
 - tools_or_skills_intentionally_not_loaded:
 - capability_freshness_check:
 
+## Work Topology And Mechanization
+
+- artifact_contract_pointer:
+- selected_topology: manager_beat / deterministic_harness / temporary_parallel_workers / standing_lane / clean_evaluator / responsibility_handoff
+- topology_resource_evidence:
+- manager_integration_and_acceptance:
+- worker_artifact_handoff:
+- mechanization_level: judgment / template / checklist / checker / tool_contract / state_machine
+- stable_inputs_and_acceptance_evidence:
+- route_back_trigger_if_assumptions_change:
+- coordination_cost_budget:
+
 ## Responsibility And Side Effects
 
 - ai_internal_decisions:

@@ -11,7 +11,10 @@ Use this template as a compact project-native recovery anchor. Fill the core fir
 - phase_goal:
 - completion_criteria:
 - goal_memory_summary:
-- project_nature: evidence_fill / model_discovery / mixed / execution_delivery
+- project_nature_prior: evidence_fill / model_discovery / mixed / execution_delivery
+- active_work_scope: project / phase / module / work_item
+- active_work_nature: evidence_fill / model_discovery / mixed / execution_delivery
+- active_artifact_contract:
 - active_module:
 - beat_objective:
 - outcome_completion_predicate:
@@ -57,6 +60,8 @@ Use only for recurring responsibility or multiple independently moving modules.
 
 - organization_status: not_needed / active / stale
 - controller_responsibility:
+- current_topology: manager_beat / deterministic_harness / temporary_parallel_workers / standing_lane / clean_evaluator / responsibility_handoff
+- topology_fit_evidence:
 - recurring_lane_contracts: responsibility / accepted input-output / wake trigger / context policy / manager acceptance / retire condition / resource evidence
 - clean_review_context_policy:
 - temporary_worker_pool:
@@ -66,6 +71,7 @@ Use only for recurring responsibility or multiple independently moving modules.
 - parallel_portfolio_routing_decision:
 - true_global_dependency:
 - parked_branches:
+- mechanization_or_route_back_signal:
 
 ## Conditional Context And Trace Appraisal
 

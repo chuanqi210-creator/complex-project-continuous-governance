@@ -1,21 +1,29 @@
 # Filled Runtime Harness
 
-## Surfaces
+## Artifact Contract
 
-- manager: owns portfolio state and integration.
-- standing lanes: model/component, literature/data, review/risk, writing/delivery.
-- temporary workers: available only for bounded read, extraction, or review packets.
-- evaluator: project checks plus clean-context review for important delivery claims.
+- accepted input: records accepted by the evidence boundary and mapping version 3.
+- operation: normalize fields into the project-native schema.
+- expected artifact: normalized dataset plus verifier result.
+- acceptance: schema and invariant checks pass; rejected records remain traceable.
+- recovery: distinguish malformed input from invalid mapping assumption; retry only the first.
+- state write-back: accepted artifact pointer, mapping version, rejected-record index, and next route.
 
-## Legibility And Guardrails
+## Selected Topology
 
-- inspectable state: `state.md`, module index, branch parking ledger, accepted artifacts.
-- mechanical checks: artifact existence, guard result, state/index update, residual scan.
-- unavailable capability route: keep the lane contract in manager state and execute the next useful manager beat.
+- controller: owns accepted state, work-item routing, and final integration.
+- current topology: deterministic Harness for B; no temporary worker or discussion group.
+- mechanization level: schema plus checker plus transformation tool contract.
+- temporary parallel workers: reserved for independent evidence branches in contested work item A.
+- recurring clean evaluator: used for claim work item C because evaluation independence recurs.
+- topology resource evidence: manager process, local checker, and clean-review packet paths.
 
-## Recovery
+## Legibility And Recovery
 
-- checkpoint: after every accepted module artifact.
-- retry: bounded only for transient tool failure.
-- idempotency: stable beat and artifact identifiers.
-- rollback: restore last accepted portfolio checkpoint.
+- inspectable state: `state.md`, work-item index, artifact contract, checker output, and accepted artifacts.
+- mechanical checks: artifact existence, schema, invariants, state write-back, and residual scan.
+- route-back trigger: repeated failures trace to changed assumptions or evaluation criteria rather than malformed input.
+- checkpoint: after every accepted artifact.
+- retry: bounded only for transient tool or malformed-input classes.
+- idempotency: stable work-item, input, mapping, and artifact identifiers.
+- rollback: restore the last accepted artifact and mapping version.

@@ -1,23 +1,15 @@
-# Portfolio Orchestration Minimal Runtime
+# Adaptive Portfolio Orchestration Minimal Runtime
 
-Use this example when a continuous project has multiple modules, lanes, sources, or deliverables and risks getting trapped in one local path.
+Use this example when one long project contains different work shapes at the same time: an unsettled judgment, a stable repeated transformation, and a claim that needs independent evaluation.
 
-It shows the smallest useful form of:
+It shows:
 
-- `thread_goal` / `phase_goal`
-- target function
-- module portfolio
-- standing lane portfolio
-- accepted forward artifacts
-- Hot State / Warm Index / Cold Archive
-- Beat Router
+- project nature as a durable prior rather than a single route for every module;
+- work-item classification before each important beat;
+- artifact contract before threads, workers, lanes, or tools;
+- deterministic Harness for stable procedure;
+- temporary parallel work only for independent evidence branches;
+- recurring clean evaluation only where independence is reused;
+- movement from judgment to mechanization and from failed mechanics back to judgment.
 
-This is the flagship four-layer filled example:
-
-- `prompt.md`: durable Goal, target function, completion criteria, and responsibility boundary.
-- `context.md`: active portfolio working set and explicit exclusions.
-- `harness.md`: available orchestration surfaces, mechanical checks, and recovery controls.
-- `loop.md`: outcome-based module selection and continuation.
-- `state.md`: compact recovery and portfolio map.
-
-It illustrates one conditional multi-module arrangement. It does not prove every project needs a multi-lane portfolio, and it does not validate the Complex kernel.
+The files form one four-layer runtime example. The named work units are illustrative; they are not a universal role chart. This filled example does not show that the topology improves outcomes, and it remains a `current_filled_example` until a locked real-project comparison is completed.

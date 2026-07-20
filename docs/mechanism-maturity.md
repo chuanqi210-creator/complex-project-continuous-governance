@@ -46,6 +46,8 @@ The evidence verbs are also fixed:
 
 These have behavior coverage and project evidence, but none is currently labeled `validated` under the stricter comparison standard.
 
+`project_nature_router` now treats the project label as a prior and permits a narrower phase, module, or work-item classification to control the current beat. This is a clarification of routing scope, not a new mechanism or evidence promotion.
+
 ### Conditional Extensions, Screened Evidence
 
 - `operating_organization`
@@ -54,6 +56,8 @@ These have behavior coverage and project evidence, but none is currently labeled
 - `external_calibration_rule`
 
 Conditional extensions are not startup ceremony. They activate only when recurring lanes, multiple modules, measured context pressure, or mechanism-level change makes them relevant. Their synthetic pilots show that the written contracts can execute, but the tasks disclose much of the desired answer and reach the baseline ceiling; under the strict promotion rule this remains `screened`.
+
+`operating_organization` and `portfolio_control_plane` now use artifact-first topology compilation: define accepted input, expected artifact or route outcome, acceptance, recovery, and write-back before selecting manager work, deterministic Harness, temporary workers, standing lanes, clean evaluation, or responsibility handoff. Domain-specific role charts remain in domain projects and examples. This consolidation still needs a locked real-project comparison.
 
 ## Current Mechanism Readout
 

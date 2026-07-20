@@ -7,7 +7,9 @@ Use this record for a consequential route choice. Routine beats can keep the dec
 - decision:
 - thread_goal_or_phase_goal:
 - beat_objective:
-- project_nature:
+- project_nature_prior:
+- active_scope: project / phase / module / work_item
+- active_work_nature: evidence_fill / model_discovery / mixed / execution_delivery
 - current_basis:
 - uncertainty:
 - reversibility:
@@ -15,6 +17,19 @@ Use this record for a consequential route choice. Routine beats can keep the dec
 - side_effect_class: none / local_reversible / shared_reversible / external_commitment / irreversible
 - exact_responsibility_operation_if_any:
 - failure_layer: prompt / context / harness / loop / model / none / uncertain
+
+## Work Shape And Artifact Contract
+
+- epistemic_uncertainty: settled / uncertain / contested
+- procedure_stability: novel / partly_known / repeatable
+- parallel_independence: low / medium / high
+- evaluation_independence: not_needed / useful / required
+- accepted_input_and_current_basis:
+- operation_or_decision:
+- expected_artifact_or_diagnostic_outcome:
+- acceptance_predicate_and_evaluator:
+- failure_class_and_recovery:
+- state_write_back:
 
 ## Alternatives And Route
 
@@ -41,11 +56,17 @@ Use this record for a consequential route choice. Routine beats can keep the dec
 
 - organization_needed: yes / no
 - recurring_responsibility_or_module_evidence:
+- selected_topology: manager_beat / deterministic_harness / temporary_parallel_workers / standing_lane / clean_evaluator / responsibility_handoff
+- why_smallest_sufficient:
+- coordination_cost_and_expected_value:
 - standing_lane_or_worker_decision:
 - clean_review_context_decision:
 - portfolio_route_decision:
 - parallel_portfolio_routing_decision:
 - branch_parking_decision:
+- mechanize_when:
+- route_back_to_judgment_when:
+- collapse_or_retire_when:
 
 ## Conditional External Calibration
 

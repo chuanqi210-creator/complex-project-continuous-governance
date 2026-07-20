@@ -3,22 +3,24 @@
 ## Stable Base
 
 - project_prompt_contract: `prompt.md`
-- target_function: usable, source-backed, reviewable delivery.
+- target_function: usable, source-backed, independently reviewable delivery.
+- project_nature_prior: mixed.
 
 ## Active Working Set
 
-- active_module: select between model chain and data source chain.
-- current_basis: operating organization and module portfolio exist; metadata is not a global blocker.
-- open_risks: a local access route may consume attention without advancing the closure.
-- latest_accepted_artifacts: portfolio map and lane contracts.
+- active_work_item: B, normalize accepted records into the project schema.
+- active_work_nature: execution_delivery.
+- current_basis: schema, mapping rules, fixture, and verifier are accepted; work item A remains contested but is not a dependency for B.
+- open_risks: a failed conversion may reveal either a malformed record or an invalid mapping assumption.
+- latest_accepted_artifacts: work-item map, B artifact contract, and last passing fixture.
 
 ## Retrieval And Exclusions
 
-- just-in-time retrieval: module status and branch parking entries only.
-- excluded context: raw old searches, superseded route discussions, and unrelated delivery drafts.
-- exclusion reason: they do not change the current module-selection judgment.
+- just-in-time retrieval: B schema, mapping version, failing record, and verifier output only.
+- excluded context: long discussion from A, old parallel-agent transcripts, and unrelated delivery drafts.
+- exclusion reason: they do not change B unless the failure falsifies a mapping assumption.
 
 ## Recovery Fidelity
 
-- recoverable elements: Goal, target function, active modules, open bottleneck question, and next route.
+- recoverable elements: Goal, project prior, active work item and nature, accepted basis, open risk, artifact contract, selected topology, and next route.
 - fidelity result: pass.
