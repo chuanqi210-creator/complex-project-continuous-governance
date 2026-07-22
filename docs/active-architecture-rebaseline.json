@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-17",
+  "version": "2026-07-22-cross-boundary-state-reconciliation",
   "purpose": "Re-run the active Complex architecture through the implementation-grounded external transfer standard without pretending that upstream success validates Complex.",
   "allowed_decisions": [
     "keep",
@@ -22,14 +22,16 @@
         "symphony_orchestration_control_plane",
         "langgraph_state_checkpoint",
         "ralph_clean_iteration",
-        "swe_agent_aci_retry_trajectory"
+        "swe_agent_aci_retry_trajectory",
+        "matt_pocock_grilling_framework_alignment"
       ],
       "inspected_artifacts": [
         "codex-rs/app-server/README.md",
         "SPEC.md",
         "libs/langgraph/langgraph/graph/state.py",
         "ralph.sh",
-        "sweagent/agent/agents.py"
+        "sweagent/agent/agents.py",
+        "skills/productivity/grilling/SKILL.md"
       ],
       "rejected_patterns": [
         "One standalone mechanism for every recent failure.",
@@ -40,13 +42,17 @@
       "repository_changes": [
         "Merged prompt rehydration, cadence, source resolution, target-function Loop, forward-artifact acceptance, interrupt-resume, and four-layer alignment into the kernel or responsibility boundary.",
         "Reduced active mechanisms from 22 to 11.",
-        "Removed standalone validated identities until structured same-task outcome evidence exists."
+        "Removed standalone validated identities until structured same-task outcome evidence exists.",
+        "Integrated time convergence across Prompt, Harness, Loop, and Delivery: long work defines a stage result horizon and usable increment, then varies scope or route without lowering quality or confusing timebox expiry with completion.",
+        "Integrated event-triggered cross-boundary state reconciliation into Context, Harness, portfolio control, and trace appraisal: bounded local state sources retain local authority while one controller publishes a compact global control projection."
       ],
       "next_validation": "The redacted-real comparison and writable continuation comparison both reached equal outcomes. Run repeated App or instrumented-surface samples that expose Goal lifecycle and route execution, then obtain independent human review.",
       "provisional_micro_contracts": [
         "One runtime kernel owns state restoration, execution, observation, routing, and stop semantics.",
         "Platform primitives and Complex conventions are named separately.",
-        "Long-run continuation uses durable state, explicit checkpoints, bounded retries, and observable completion predicates."
+        "Long-run continuation uses durable state, explicit checkpoints, bounded retries, and observable completion predicates.",
+        "Long work exposes a decision-useful stage artifact within a project-specific horizon; horizon pressure converges scope or route while preserving the acceptance floor.",
+        "Multi-boundary projects reconcile versioned local state capsules into one controller-owned global projection at recovery, transition, handoff, dependency/conflict, stage delivery, or measured staleness; they do not duplicate every local ledger or use last-write-wins."
       ]
     },
     {
@@ -81,11 +87,15 @@
     {
       "id": "change_governance",
       "external_reference_ids": [
-        "rust_rfc_change_governance"
+        "rust_rfc_change_governance",
+        "kubernetes_kep_progressive_change_governance"
       ],
       "inspected_artifacts": [
         "text/0002-rfc-process.md",
-        "0000-template.md"
+        "0000-template.md",
+        "keps/README.md",
+        "keps/NNNN-kep-template/README.md",
+        "keps/NNNN-kep-template/kep.yaml"
       ],
       "rejected_patterns": [
         "An RFC for every edit.",
@@ -96,7 +106,8 @@
       "repository_changes": [
         "Made architecture re-baseline an explicit substantial-change packet.",
         "Added compatibility and rollback to future mechanism-level change requirements.",
-        "Kept routine corrections on the normal edit/test path."
+        "Kept routine corrections on the normal edit/test path.",
+        "Added a bounded-improvement path and explicit graduation, failure, observability, and implementation-follow-through criteria for consequential candidates."
       ],
       "next_validation": "Use the packet on the next substantial schema or public-term change and compare review defects and rework with this re-baseline.",
       "provisional_micro_contracts": [
@@ -109,13 +120,16 @@
       "id": "evaluation_system",
       "external_reference_ids": [
         "inspect_ai_eval_records",
-        "promptfoo_eval_matrix"
+        "promptfoo_eval_matrix",
+        "argo_rollouts_progressive_evidence_promotion"
       ],
       "inspected_artifacts": [
         "src/inspect_ai/_eval/task/task.py",
         "src/inspect_ai/_eval/eval.py",
         "src/inspect_ai/_eval/score.py",
-        "src/index.ts"
+        "src/index.ts",
+        "rollout/analysis.go",
+        "rollout/analysis_test.go"
       ],
       "rejected_patterns": [
         "Installing a full evaluation framework as a Complex dependency.",
@@ -126,9 +140,10 @@
       "repository_changes": [
         "Unified the evaluation record contract.",
         "Demoted both previously validated mechanisms to tested pending locked comparisons.",
-        "Made evidence claim vocabulary mechanically reviewable."
+        "Made evidence claim vocabulary mechanically reviewable.",
+        "Kept stable and candidate maintenance paths separate until explicit promotion, demotion, or rollback."
       ],
-      "next_validation": "Convert one redacted real feedback sample into a locked baseline/candidate pair and ask a second reviewer to reproduce the maturity decision.",
+      "next_validation": "Run one real substantial Complex maintenance candidate beside the stable path, then ask an independent reviewer to reproduce the promotion, keep, demotion, or rollback decision.",
       "provisional_micro_contracts": [
         "Separate eval_case, eval_run, and score_record identities.",
         "Lock case version, samples, scorer, limits, and one changed variable for a comparison.",
@@ -148,7 +163,9 @@
         "openai_codex_runtime_surfaces",
         "symphony_orchestration_control_plane",
         "langgraph_state_checkpoint",
-        "ralph_clean_iteration"
+        "ralph_clean_iteration",
+        "matt_pocock_grilling_framework_alignment",
+        "argo_rollouts_progressive_evidence_promotion"
       ],
       "rationale": "One kernel is the lowest-friction home for universal runtime behavior.",
       "next_validation": "Locked pre/post consolidation long-task comparison."
@@ -163,7 +180,8 @@
       "external_reference_ids": [
         "openai_codex_runtime_surfaces",
         "langgraph_state_checkpoint",
-        "swe_agent_aci_retry_trajectory"
+        "swe_agent_aci_retry_trajectory",
+        "matt_pocock_grilling_framework_alignment"
       ],
       "rationale": "Authority and side-effect ownership are universal; anti-intervention and resume safety are facets of this boundary.",
       "next_validation": "Measure over-asking and under-asking on two real project classes."
@@ -204,7 +222,8 @@
       "evidence_status_after": "tested",
       "external_reference_ids": [
         "dspy_eval_optimization",
-        "inspect_ai_eval_records"
+        "inspect_ai_eval_records",
+        "matt_pocock_grilling_framework_alignment"
       ],
       "rationale": "Different project natures require different evaluation and search weights, but the project label is only a prior. The active phase, module, or work item may require a narrower route without changing the durable Goal.",
       "next_validation": "Paired hierarchical-routing tasks that compare one project-wide label with work-item-level routing."
@@ -233,7 +252,8 @@
       "evidence_status_after": "tested",
       "external_reference_ids": [
         "promptfoo_eval_matrix",
-        "inspect_ai_eval_records"
+        "inspect_ai_eval_records",
+        "argo_rollouts_progressive_evidence_promotion"
       ],
       "rationale": "Keep marker screening, but move maturity claims to versioned run and score records.",
       "next_validation": "One redacted baseline/candidate record with second-reviewer reproduction."
@@ -264,8 +284,8 @@
         "symphony_orchestration_control_plane",
         "langgraph_state_checkpoint"
       ],
-      "rationale": "Useful for multi-module projects when one controller preserves the target function and accepted state. It must route work items independently and keep agent conversation subordinate to accepted artifacts.",
-      "next_validation": "Shadow controller on one real portfolio containing both unsettled judgment and stable deterministic execution."
+      "rationale": "Useful for multi-module projects when one controller preserves the target function and a compact global control projection while bounded local sources retain local authority. It must reconcile observed source generations, route work items independently, and keep agent conversation subordinate to accepted artifacts.",
+      "next_validation": "Shadow the controller on one real portfolio and compare stale global routes, duplicate work, reconciliation latency, bookkeeping load, and independent-route continuation against the existing multi-ledger baseline."
     },
     {
       "mechanism_id": "trace_appraisal_hot_warm_cold",
@@ -299,7 +319,10 @@
         "openai_codex_runtime_surfaces",
         "kubernetes_docs_information_architecture",
         "rust_rfc_change_governance",
-        "inspect_ai_eval_records"
+        "inspect_ai_eval_records",
+        "matt_pocock_grilling_framework_alignment",
+        "kubernetes_kep_progressive_change_governance",
+        "argo_rollouts_progressive_evidence_promotion"
       ],
       "rationale": "It is a promotion and transfer discipline, not proof that any current transfer improved Complex.",
       "next_validation": "Complete two locked same-task transfers with real outcome evidence."

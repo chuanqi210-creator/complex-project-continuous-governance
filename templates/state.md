@@ -10,6 +10,13 @@ Use this template as a compact project-native recovery anchor. Fill the core fir
 - thread_goal:
 - phase_goal:
 - completion_criteria:
+- time_appetite:
+- next_stage_result_horizon:
+- smallest_useful_stage_artifact:
+- stage_quality_evidence_and_claim_floor:
+- time_convergence_status: on_track / scope_convergence_due / stage_increment_ready / horizon_missed / not_applicable
+- observed_elapsed_and_artifact_progress:
+- scope_convergence_or_replan_route:
 - goal_memory_summary:
 - project_nature_prior: evidence_fill / model_discovery / mixed / execution_delivery
 - active_work_scope: project / phase / module / work_item
@@ -72,6 +79,25 @@ Use only for recurring responsibility or multiple independently moving modules.
 - true_global_dependency:
 - parked_branches:
 - mechanization_or_route_back_signal:
+
+### Cross-Boundary State Reconciliation
+
+Open this block only when more than one durable boundary maintains state.
+
+- state_boundary_map: boundary / local authority / state pointer / owner
+- global_control_projection_location:
+- global_projection_epoch_and_controller_authority:
+- reconciliation_status: not_needed / due / reconciling / reconciled / degraded
+- reconciliation_trigger: recovery / phase_or_stage_transition / handoff / topology_change / dependency_change / conflict_or_staleness / stage_delivery / staleness_fallback
+- last_reconciled_at_and_next_staleness_limit:
+- local_state_capsules: source / authority / generation_or_hash / observed_at / status / accepted_artifact / dependency_or_blocker / claim_boundary / local_next_route
+- observed_source_generations:
+- cross_boundary_dependencies_and_conflicts:
+- conflict_resolution_basis: authority / acceptance_evidence / dependency_ownership / observed_generation
+- routes_blocked_by_unresolved_conflict:
+- independent_routes_allowed_to_continue:
+- projection_write_or_checkpoint_evidence:
+- projection_epoch_rollover_or_archive_pointer:
 
 ## Conditional Context And Trace Appraisal
 

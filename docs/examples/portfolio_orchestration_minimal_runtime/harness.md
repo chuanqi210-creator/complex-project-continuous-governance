@@ -27,3 +27,12 @@
 - retry: bounded only for transient tool or malformed-input classes.
 - idempotency: stable work-item, input, mapping, and artifact identifiers.
 - rollback: restore the last accepted artifact and mapping version.
+
+## State Control
+
+- global projection writer: controller only.
+- local writers: each work item updates only its local project-native record and artifact index.
+- reconciliation input: one bounded state capsule per affected work item, with source generation/hash and accepted artifact pointer.
+- projection update: compare observed generations, reconcile dependencies and acceptance, then write one new versioned portfolio projection.
+- contradiction handling: do not use last-write-wins; isolate the dependent route and keep unrelated queued work active.
+- projection renewal: checkpoint active state into a fresh epoch when history or version fragmentation makes recovery costly; preserve old history by pointer.

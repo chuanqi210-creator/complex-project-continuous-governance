@@ -1,5 +1,16 @@
 # Filled Project Prompt Contract
 
+## Framework Decision Contract
+
+- status: complete.
+- decision_fork: whether the project should optimize local throughput or accepted end-to-end progress across differently shaped work units.
+- recommended_answer: optimize accepted end-to-end progress and compile topology from each artifact contract.
+- accepted_decision: one controller owns the project target function; work items may use different routes without changing the durable Goal.
+- rejected_alternative: force every work item through one discovery loop or one fixed multi-agent roster.
+- consequence_map: the accepted route permits deterministic Harness for stable work, temporary workers for independent evidence branches, and clean evaluation only where independence changes acceptance.
+- unresolved_empirical_question: whether compiled topology improves correction load, artifact lead time, or recovery in a locked real project.
+- reopen_trigger: the target function, primary beneficiary, responsibility boundary, or evaluation standard changes.
+
 - prompt_id: adaptive-portfolio-runtime-example
 - prompt_version: 2
 - thread_goal: Produce one usable, source-backed, independently reviewable deliverable across several differently shaped work units.

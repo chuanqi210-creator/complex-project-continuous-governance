@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-17-active-rebaseline",
+  "version": "2026-07-22-cross-boundary-state-reconciliation",
   "purpose": "Track a small set of active Complex mechanisms. Runtime behavior that belongs to the kernel, a boundary, or an engineering layer is not duplicated as a standalone mechanism.",
   "allowed_normative_roles": [
     "core",
@@ -41,12 +41,13 @@
         "harness",
         "loop"
       ],
-      "summary": "The seven-behavior spine, four diagnostic layers, prompt rehydration, continuous cadence, target-function execution, forward-artifact acceptance, bounded recovery, and source resolution form one runtime kernel rather than separate gate families.",
+    "summary": "The seven-behavior spine, four diagnostic layers, prompt rehydration, continuous cadence, target-function execution, time convergence, cross-boundary state reconciliation, forward-artifact acceptance, bounded recovery, and source resolution form one runtime kernel rather than separate gate families.",
       "external_basis": [
         "openai_codex_runtime_surfaces",
         "symphony_orchestration_control_plane",
         "langgraph_state_checkpoint",
-        "ralph_clean_iteration"
+        "ralph_clean_iteration",
+        "matt_pocock_grilling_framework_alignment"
       ],
       "internal_evidence": [
         "The kernel is the single universal execution contract in README, quickstart, protocol/core, current-state, and the repo skill.",
@@ -80,7 +81,13 @@
         "local_artifact_contract_precedes_mechanism_vocabulary",
         "active_work_unit_routing_overrides_project_prior",
         "artifact_contract_precedes_topology",
-        "judgment_mechanization_and_route_back"
+        "judgment_mechanization_and_route_back",
+        "framework_grilling_resolves_architecture_fog",
+        "framework_grilling_rejects_low_leverage_questions",
+        "self_optimization_change_unit_and_evidence_path",
+        "self_optimization_progressive_promotion_and_residual_continue",
+        "time_convergence_delivers_stage_value",
+        "cross_boundary_state_reconciliation_checkpoint"
       ],
       "linked_examples": [
         "evidence_fill_minimal_runtime",
@@ -106,7 +113,8 @@
         "openai_codex_runtime_surfaces",
         "openai_agents_hitl_approval",
         "langgraph_state_checkpoint",
-        "swe_agent_aci_retry_trajectory"
+        "swe_agent_aci_retry_trajectory",
+        "matt_pocock_grilling_framework_alignment"
       ],
       "internal_evidence": [
         "Repeated user feedback identifies unnecessary permission-seeking as a primary failure mode.",
@@ -122,7 +130,10 @@
         "downstream_local_boundary_reconciliation",
         "responsibility_boundary_not_low_risk_wording",
         "harness_legibility_and_mechanical_guardrails",
-        "local_artifact_contract_precedes_mechanism_vocabulary"
+        "local_artifact_contract_precedes_mechanism_vocabulary",
+        "framework_grilling_resolves_architecture_fog",
+        "framework_grilling_rejects_low_leverage_questions",
+        "self_optimization_change_unit_and_evidence_path"
       ],
       "linked_examples": [
         "external_calibration_micro_contract_runtime",
@@ -141,14 +152,14 @@
         "prompt",
         "loop"
       ],
-      "summary": "Audience, purpose, granularity, claim strength, and internal-information boundary determine delivery; routine observability remains minimum sufficient.",
+      "summary": "Audience, purpose, granularity, claim strength, stage-result horizon, and internal-information boundary determine delivery; routine observability remains minimum sufficient.",
       "external_basis": [
         "kubernetes_docs_information_architecture",
         "inspect_ai_eval_records"
       ],
       "internal_evidence": [
         "Longstanding user feedback requires human-facing outputs to remain readable and separate from machine recovery state.",
-        "Behavior cases cover audience alignment and over-reporting.",
+        "Behavior cases cover audience alignment, over-reporting, and time-bounded usable stage results.",
         "The provenance-bound 2026-07-17 full suite completed six baseline and six candidate trials for human-only and machine-recovery delivery at 100% environment success in both arms after local artifact precedence was applied.",
         "eval_result:docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#delivery_contract_audience_fit"
       ],
@@ -156,7 +167,8 @@
         "setup_card_default",
         "human_readable_delivery_contract",
         "minimum_sufficient_observability_not_overreporting",
-        "local_artifact_contract_precedes_mechanism_vocabulary"
+        "local_artifact_contract_precedes_mechanism_vocabulary",
+        "time_convergence_delivers_stage_value"
       ],
       "linked_examples": [
         "evidence_fill_minimal_runtime",
@@ -214,7 +226,8 @@
       "summary": "Uses evidence_fill, model_discovery, mixed, or execution_delivery as project priors, then reclassifies the active phase, module, or work item when a narrower scope changes the route.",
       "external_basis": [
         "dspy_eval_optimization",
-        "inspect_ai_eval_records"
+        "inspect_ai_eval_records",
+        "matt_pocock_grilling_framework_alignment"
       ],
       "internal_evidence": [
         "Model-discovery and evidence-fill cases and examples exercise different routing weights.",
@@ -225,7 +238,8 @@
         "model_discovery_protect_divergence",
         "evidence_fill_no_extra_divergence",
         "active_work_unit_routing_overrides_project_prior",
-        "judgment_mechanization_and_route_back"
+        "judgment_mechanization_and_route_back",
+        "framework_grilling_resolves_architecture_fog"
       ],
       "linked_examples": [
         "evidence_fill_minimal_runtime",
@@ -290,7 +304,8 @@
         "continuous_runtime_activation_after_plan",
         "example_currentness_review",
         "cross_layer_failure_is_diagnosed_before_prompt_patch",
-        "reference_implementation_transfer_requires_reproduction"
+        "reference_implementation_transfer_requires_reproduction",
+        "self_optimization_progressive_promotion_and_residual_continue"
       ],
       "linked_examples": [
         "independent_review_minimal_runtime"
@@ -348,14 +363,14 @@
         "harness",
         "loop"
       ],
-      "summary": "Multi-module projects may use one authoritative target function, module/lane portfolio, route state, branch parking, and stop condition; ordinary projects do not need this extension.",
+      "summary": "Multi-module projects may use one authoritative target function and a controller-owned global control projection over bounded local state sources, module/lane routes, dependencies, branch parking, and stop conditions; ordinary projects do not need this extension.",
       "external_basis": [
         "symphony_orchestration_control_plane",
         "langgraph_state_checkpoint"
       ],
       "internal_evidence": [
         "Cases and examples cover local-greedy routing and portfolio state.",
-        "The 2026-07-21 portfolio example keeps one controller and routes differently shaped work items through accepted artifact contracts; no locked real-project comparison has measured benefit.",
+        "The 2026-07-22 portfolio example keeps one controller, preserves local state authority, and reconciles a compact global control projection from versioned local capsules on meaningful events; no locked real-project comparison has measured benefit.",
         "The provenance-bound 2026-07-17 full suite completed six baseline and six candidate trials for a local blocker and a true global boundary at 100% environment success in both arms. It instantiates the route contract but gives no evidence of advantage over native behavior.",
         "eval_result:docs/evals/results/executable-pilots-20260717T145657Z-4db18e9646-gpt-5.6-luna.json#portfolio_blocked_branch_routing"
       ],
@@ -364,7 +379,9 @@
         "portfolio_before_local_greedy_route",
         "audit_guardrail_not_forward_artifact",
         "hot_warm_cold_state_lightening",
-        "artifact_contract_precedes_topology"
+        "artifact_contract_precedes_topology",
+        "time_convergence_delivers_stage_value",
+        "cross_boundary_state_reconciliation_checkpoint"
       ],
       "linked_examples": [
         "portfolio_orchestration_minimal_runtime",
@@ -372,7 +389,7 @@
       ],
       "promotion_rule": "Move to tested only after a discriminating multi-module shadow comparison improves routing without schema or bookkeeping regressions. Validate only after repeated real comparisons reduce false stops, duplicate work, or artifact latency and pass blind human review.",
       "demotion_trigger": "Bookkeeping becomes a substitute for execution or no longer changes routing.",
-      "refresh_trigger": "Module/lane expansion, repeated local-greedy failure, or orchestration surface change."
+      "refresh_trigger": "Module/lane expansion, stale or conflicting cross-boundary state, repeated local-greedy failure, or orchestration surface change."
     },
     {
       "id": "trace_appraisal_hot_warm_cold",
@@ -397,7 +414,8 @@
         "hot_warm_cold_state_lightening",
         "trace_appraisal_hot_warm_cold_compaction",
         "context_working_set_is_curated_and_recoverable",
-        "local_artifact_contract_precedes_mechanism_vocabulary"
+        "local_artifact_contract_precedes_mechanism_vocabulary",
+        "cross_boundary_state_reconciliation_checkpoint"
       ],
       "linked_examples": [
         "portfolio_orchestration_minimal_runtime"
@@ -429,10 +447,14 @@
         "openai_codex_runtime_surfaces",
         "kubernetes_docs_information_architecture",
         "rust_rfc_change_governance",
-        "inspect_ai_eval_records"
+        "inspect_ai_eval_records",
+        "matt_pocock_grilling_framework_alignment",
+        "kubernetes_kep_progressive_change_governance",
+        "argo_rollouts_progressive_evidence_promotion"
       ],
       "internal_evidence": [
-        "Twelve pinned reference implementations are recorded; two bounded upstream fixtures are reproduced.",
+        "Fifteen pinned reference implementations are recorded; two bounded upstream fixtures are reproduced.",
+        "The self-optimization cycle now distinguishes routine corrections, bounded improvements, and substantial changes, then keeps stable and candidate paths separate through progressive evidence rollout. This is behavior-screened integration, not Complex-side outcome validation.",
         "The active architecture re-baseline applies keep/merge/demote decisions to every remaining mechanism and four repository-wide surfaces.",
         "A seven-experiment program gives every core and conditional-extension mechanism a falsifiable claim, implementation-level external basis, frozen contract and writable samples, repeated arms, environment/trajectory/human graders, validity threats, and an explicit migration rule.",
         "The provenance-bound 2026-07-17 full suite and append-only rescore completed six baseline and six candidate trials for misleading similarity and a locked negative comparison at 100% environment success in both arms. The rescore corrected one semantically valid nested JSON path. This supports contract executability but no promotion beyond screened.",
@@ -443,7 +465,9 @@
       "linked_behavior_cases": [
         "external_calibration_before_strategic_decision",
         "external_calibration_required_for_each_issue",
-        "reference_implementation_transfer_requires_reproduction"
+        "reference_implementation_transfer_requires_reproduction",
+        "self_optimization_change_unit_and_evidence_path",
+        "self_optimization_progressive_promotion_and_residual_continue"
       ],
       "linked_examples": [
         "external_calibration_micro_contract_runtime",

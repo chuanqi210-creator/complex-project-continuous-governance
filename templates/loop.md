@@ -39,6 +39,11 @@ Use this template for a meaningful cycle that changes project state. The Loop se
 ## Budget And Durability
 
 - time_budget:
+- observed_elapsed_time_or_measurement_unavailable:
+- stage_result_horizon_served:
+- usable_increment_due_by_horizon:
+- contribution_to_stage_increment:
+- scope_convergence_route: close_thin_slice / park_peripheral / change_route / reset_appetite / not_needed
 - token_or_attention_budget:
 - tool_call_budget:
 - wip_or_concurrency_limit:
@@ -89,6 +94,11 @@ Use this template for a meaningful cycle that changes project state. The Loop se
 - next_route:
 - residual_scan:
 - minimum_progress_signal_for_human:
+- cross_boundary_reconciliation: not_needed / event_triggered / reconciled / degraded
+- affected_local_state_capsule_and_generation:
+- global_projection_update_or_conflict_route:
+- time_convergence_status: on_track / scope_convergence_due / stage_increment_ready / horizon_missed / not_applicable
+- stage_delivery_or_replan_artifact:
 
 ## Transfer Evaluation
 
@@ -108,6 +118,8 @@ Use only when the beat evaluates an external reference implementation.
 ## Acceptance
 
 A beat is accepted only when its declared outcome exists: a forward artifact for execution, or a route decision, falsified route, bounded blocker, or parking decision for diagnosis. The relevant guard and evaluator must be satisfied, state/indexes updated, and the next route derived from observed results.
+
+A stage horizon is a delivery and routing boundary, not a completion shortcut. By that horizon, provide a verified usable increment or decision-grade diagnostic. If the intended scope does not fit the remaining appetite, preserve the quality/evidence floor and converge scope instead of silently extending work or lowering acceptance.
 
 - beat_acceptance: accepted / rejected / partial / parked
 - acceptance_evidence:

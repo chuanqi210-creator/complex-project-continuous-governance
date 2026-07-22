@@ -30,6 +30,7 @@ REQUIRED_FILES = [
     "docs/active-architecture-rebaseline.md",
     "docs/active-architecture-rebaseline.json",
     "docs/reference-implementation-evidence.json",
+    "docs/self-optimization.md",
     "docs/evals/README.md",
     "docs/evals/complex-eval-record.schema.json",
     "docs/evals/bounded-experiment-fixtures.json",
@@ -133,6 +134,7 @@ REQUIRED_REFERENCES = [
     "docs/active-architecture-rebaseline.json",
     "docs/active-architecture-rebaseline.md",
     "docs/reference-implementation-evidence.json",
+    "docs/self-optimization.md",
     ".agents/skills/complex-runtime/SKILL.md",
 ]
 

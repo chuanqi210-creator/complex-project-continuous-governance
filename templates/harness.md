@@ -38,6 +38,23 @@ Use this template when environment, tools, recovery, or observability materially
 - route_back_trigger_if_assumptions_change:
 - coordination_cost_budget:
 
+## Cross-Boundary State Control
+
+Use only when multiple durable state boundaries are active.
+
+- controller_is_only_global_projection_writer:
+- local_state_write_owners_and_boundaries:
+- local_state_capsule_contract:
+- global_control_projection_schema_or_location:
+- reconciliation_event_triggers:
+- maximum_staleness_fallback:
+- source_generation_or_hash_check:
+- conflict_resolution_order:
+- atomic_or_narrow_projection_update:
+- unresolved_conflict_route_isolation:
+- independent_work_continuation:
+- projection_epoch_checkpoint_and_history_pointer:
+
 ## Responsibility And Side Effects
 
 - ai_internal_decisions:

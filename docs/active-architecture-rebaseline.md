@@ -1,5 +1,13 @@
 # Active Architecture Re-baseline
 
+## Self-Optimization Integration
+
+The 2026-07-21 maintenance pass adds no new mechanism identity. It combines the existing change-governance, external-calibration, evaluation, maturity, and continuation contracts into one self-optimization cycle. Kubernetes KEPs ground the distinction between routine and consequential change plus explicit graduation and rollback criteria; Argo Rollouts grounds stable-versus-candidate state and observed promote/abort/rollback decisions. Both references are pinned and implementation-inspected. The Complex integration is behavior-screened, not outcome-validated, until a real substantial maintenance task completes a comparable limited-use review.
+
+The 2026-07-22 time-convergence clarification also adds no mechanism identity. It closes a runtime gap between resource budgets and human-visible value: Prompt defines a project-specific appetite and stage artifact, Harness observes elapsed work, Loop converges scope or route, and Delivery exposes a usable increment or decision-grade diagnostic. Shape Up, the Scrum Guide, and NASA technical reviews calibrate this contract; no Complex outcome comparison yet proves that it shortens time-to-stage-value.
+
+The 2026-07-22 cross-boundary state clarification stays inside the existing kernel, portfolio control, and trace appraisal. It distinguishes bounded local authority from one controller-owned global control projection, refreshes that projection on meaningful events or measured staleness, and checkpoints long history into a fresh epoch. Symphony, Kubernetes controllers, Magentic-One, and Temporal ground the design, but no real Complex comparison yet shows fewer stale routes, less duplicate work, or lower reconciliation overhead.
+
 This re-baseline applies the current reference-implementation transfer standard to the active Complex architecture itself.
 
 It does not claim that every earlier mechanism was already borrowed well. The previous baseline often had a useful external principle but lacked a pinned implementation, a bounded reproduction, a same-task comparison, or a Complex outcome record.
@@ -48,3 +56,9 @@ Concrete domain workflows exposed a shared abstraction without justifying a new 
 - accepted artifacts and one controller remain authoritative; agent conversation does not become project state.
 
 This is an architectural consolidation, not evidence promotion. Operating organization and portfolio control remain conditional and `screened` until a locked real-project comparison shows outcome or coordination value.
+
+## 2026-07-21 Framework Grilling Clarification
+
+Framework Grilling resolves destination-level ambiguity before the Project Prompt Contract, but it is not a new gate or mechanism identity. The kernel asks only when competing user-owned answers can materially change the Goal, target function, architecture, responsibility boundary, or evaluation. Repository facts, tool selection, topology, implementation order, reversible choices, and experimentally answerable questions remain AI-owned.
+
+The implementation is grounded in the pinned `mattpocock/skills` v1.1.0 grilling workflow: one question at a time, inspect facts directly, provide a recommendation, and make consequences explicit. Complex rejects exhaustive interviewing and the upstream assumption that every design decision belongs to the user. Current evidence screens the contract only; a locked project-start comparison remains required before any outcome claim.

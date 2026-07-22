@@ -10,6 +10,8 @@ Use this template to separate durable project intent from changing beat context.
 
 ## Project Prompt Contract
 
+When a material framework fork exists, derive this contract from an accepted Framework Decision Contract. Do not make the user repeat resolved decisions.
+
 - prompt_id:
 - prompt_version:
 - previous_version_or_rollback_pointer:
@@ -18,6 +20,12 @@ Use this template to separate durable project intent from changing beat context.
 - target_function:
 - completion_criteria:
 - outcome_evaluation:
+- time_appetite:
+- next_stage_result_horizon:
+- smallest_useful_stage_artifact:
+- stage_artifact_audience_and_acceptance:
+- quality_evidence_and_claim_floor:
+- scope_convergence_rule:
 - project_nature_prior: evidence_fill / model_discovery / mixed / execution_delivery
 - responsibility_boundary:
 - delivery_contract:
@@ -26,6 +34,15 @@ Use this template to separate durable project intent from changing beat context.
 - model_or_codex_surface_assumptions:
 - known_failure_examples:
 - Complex_skill_or_protocol_reference:
+
+## Framework Decision Contract Reference
+
+- framework_grilling_status: complete / no_grill_needed / waiting_on_user_owned_decision
+- decision_contract_pointer_or_digest:
+- accepted_goal_architecture_and_evaluation_decisions:
+- rejected_alternatives:
+- unresolved_empirical_questions:
+- reopen_trigger:
 
 The contract should remain stable across beats. Current files, temporary tool results, and changing module details belong in `context.md` or state.
 
@@ -63,6 +80,10 @@ Assemble this before a planning checkpoint or continuous beat:
 - evaluator_or_guard:
 - forward_artifact:
 - retry_or_recovery_route:
+- beat_timebox_or_execution_budget:
+- stage_result_horizon_served:
+- contribution_to_usable_stage_increment:
+- scope_convergence_if_over_budget:
 - next_route_if_accepted:
 
 ## Prompt Rehydration

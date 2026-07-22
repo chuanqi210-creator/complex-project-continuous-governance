@@ -48,6 +48,10 @@ The extractor does not choose authority. Its default ledger emits relative sourc
 
 ## 3. Establish The Four-Layer Runtime
 
+Before freezing a new Project Prompt Contract or replacing one at a strategic reframe, run the Framework Grilling value test. Inspect project facts and relevant external basis first. Ask only about a user-owned decision fork whose plausible answers materially change the Goal, target function, architecture, responsibility boundary, or evaluation. Ask one question at a time and include the recommended answer, evidence, strongest alternative, and consequence of each route. Skip with `no_grill_needed` when the remaining uncertainty is derivable, reversible, or experimentally testable by the AI.
+
+The output is a compact Framework Decision Contract: accepted decisions, rejected alternatives, unresolved empirical questions, delegated AI decisions, and a reopen trigger. This contract feeds the Project Prompt Contract; it does not become another per-beat form.
+
 ### Prompt Contract
 
 Record the stable project contract:
@@ -56,6 +60,7 @@ Record the stable project contract:
 - completion and outcome-evaluation criteria;
 - responsibility boundary;
 - delivery contract;
+- project-specific time appetite, next stage result horizon, smallest useful stage artifact, quality/evidence floor, and scope-convergence rule;
 - stable project constraints and prompt version.
 
 Do not paste current files, temporary tool results, or the complete Complex protocol into the prompt.
@@ -68,6 +73,8 @@ Assemble:
 
 The working set must identify current basis, stale material, open risks, retrieved pointers, and next route. After compaction or handoff, verify semantic recovery rather than file presence.
 
+If several modules, repositories, threads, workflows, or standing lanes maintain separate state, preserve their local authority and add one controller-owned global control projection. Each affected boundary reports a bounded local state capsule with authority, generation/hash, observed time, status, accepted artifact pointer, dependency/blocker, claim boundary, and local next route. Reconcile at controller recovery, phase/stage transition, handoff, topology/dependency change, conflict/staleness, stage delivery, or a project-specific maximum-staleness fallback. Do not aggregate every ledger every beat, resolve disagreement by recency, or block independent routes because one boundary is unresolved.
+
 ### Runtime Harness
 
 Check the capabilities that affect this project:
@@ -77,6 +84,8 @@ Check the capabilities that affect this project:
 - side effects and responsibility boundaries;
 - tests, schemas, hooks, logs, metrics, and evaluator;
 - checkpoint, retry, timeout, idempotency, rollback, and degraded routes.
+
+For cross-boundary state, make the controller the only writer of the global control projection while local owners write local project-native state. Record which local generations the projection observed, how conflicts were resolved, which dependent routes remain blocked, and when a fresh projection epoch should replace an unwieldy history while retaining the old epoch by pointer.
 
 Treat the target project's completion predicate, artifact paths, schema, field names, value types, and verifier as the executable interface. Complex may improve routing and evaluation, but it must not rename project fields, wrap a flat payload, omit requested evidence or quantities, or turn internal governance terms into visible headings.
 
@@ -91,6 +100,8 @@ Use:
 `restore -> select -> act -> observe -> evaluate -> route/retry/rollback/stop`
 
 Define an outcome completion predicate before execution. A forward-execution beat names its forward artifact; a diagnostic beat names the route decision, falsification, bounded blocker, or parking decision it must produce. For important work, separate executor and evaluator. Do not stop from a fixed beat count or agent self-report.
+
+For long work, bind each beat budget to the next stage result horizon. If the user did not set it, the controller selects a provisional horizon without asking for routine permission. Use measured elapsed time and artifact movement when the surface exposes them; otherwise state assumptions or a range, not a fabricated ETA. A surface without scheduling uses the current run or an explicit handoff checkpoint rather than promising background work. At or before the horizon, deliver a verified usable increment or decision-grade diagnostic. If the intended scope is not converging, preserve the quality/evidence floor and close the highest-value thin slice, park peripheral branches, change route, or reset the appetite explicitly. The stage result can be delivered while the Goal and continuous cadence continue.
 
 ## 4. Run The Behavior Spine
 
@@ -177,6 +188,8 @@ Read `normative_role` and `evidence_status` separately. `core` means a universal
 Use Hot State, Warm Index, and Cold Archive only when measured context growth or handoff pressure justifies the split. At claim-sensitive transitions, separate current basis, external basis, inference, unsupported claims, and falsification cues.
 
 For substantial Complex changes, record a compact decision packet covering problem evidence, external implementation, alternatives, drawbacks, compatibility, evaluation, rollback, owner, and status. Routine fixes do not need this path.
+
+When the target is Complex itself, follow `docs/self-optimization.md`: classify the change unit, keep a stable baseline, define one reversible candidate, write the behavior/evaluation contract first, and advance through progressive evidence rollout only as far as outcomes support. After each decision, run a residual evidence scan and continue the next useful internal validation rather than stopping at documentation completion.
 
 Use evidence verbs precisely: examples illustrate, markers screen, fixtures reproduce, locked runs compare, and repeated real outcomes validate. The active decisions and evidence debt are in `docs/active-architecture-rebaseline.json`.
 

@@ -18,6 +18,18 @@ Use this record for a consequential route choice. Routine beats can keep the dec
 - exact_responsibility_operation_if_any:
 - failure_layer: prompt / context / harness / loop / model / none / uncertain
 
+## Framework Question Value Test
+
+- framework_grilling_status: not_applicable / no_grill_needed / active / complete
+- decision_fork:
+- material_framework_consequence:
+- repository_and_external_facts_checked:
+- derivable_reversible_or_testable_by_ai: yes / no
+- user_owned_or_undelegated_value_judgment: yes / no
+- recommended_answer_and_confidence:
+- strongest_alternative_and_consequence:
+- framework_decision_contract_update:
+
 ## Work Shape And Artifact Contract
 
 - epistemic_uncertainty: settled / uncertain / contested

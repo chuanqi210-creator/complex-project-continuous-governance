@@ -38,6 +38,16 @@ Use this file before final or stage delivery. The same work may need different f
 
 ## Completion Check
 
+- Stage result horizon:
+- Promised usable increment or decision-grade diagnostic:
+- Stage acceptance evidence:
+- Time-convergence judgment:
+- Remaining scope and scope-convergence decision:
+- Next stage route:
+- Cross-boundary reconciliation before stage readout: not_needed / reconciled / degraded
+- Global control projection epoch and observed source generations:
+- Unresolved local conflicts and routes they affect:
+
 - Project-native artifact path and schema preserved:
 - Requested facts and quantities preserved:
 - Contract concepts used for selection, not exported as headings without reader value:

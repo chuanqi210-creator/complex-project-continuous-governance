@@ -24,6 +24,15 @@
 - route_back_when: deterministic failures trace to changed assumptions, metrics, or interpretation.
 - collapse_when: a worker, lane, or review surface no longer changes throughput, recovery, or decision quality.
 
+## Cross-Boundary State Reconciliation
+
+- local authority: work items A, B, and C keep their own accepted artifact and local route records.
+- local state capsule: work-item ID, authority, generation/hash, observed time, accepted artifact pointer, status, dependency/blocker, claim boundary, and local next route.
+- global control projection: the controller keeps only the durable Goal, phase, current work-item status, observed source generations, cross-item dependencies, accepted artifact pointers, conflicts, stage horizon, and one portfolio next route.
+- triggers: phase/stage transition, controller recovery, work-item handoff, topology or dependency change, stale/conflicting capsule, and stage delivery; no full fan-in on every mechanical B beat.
+- conflict rule: authority and accepted artifact evidence outrank recency. An unresolved conflict in A blocks only routes depending on A; B continues when its contract is independent.
+- epoch rule: if the projection or event history becomes unwieldy, checkpoint the active fields into a fresh epoch and retain the prior epoch by pointer.
+
 ## External Calibration
 
 - sources: Magentic-One; Anthropic multi-agent research; Virtual Lab; Agent Laboratory.

@@ -49,9 +49,22 @@ A project prompt should contain only what must remain stable across many beats:
 - model or Codex-surface assumptions that materially change behavior;
 - prompt version, evidence for a patch, and rollback pointer.
 
+Long work also carries a **time convergence contract**: a project- or phase-level time appetite, the next stage result horizon, the smallest useful stage artifact, its audience and quality/claim floor, and the scope-convergence rule if observed progress does not fit the appetite. These are project-specific operating constraints, not universal durations. If the user has not set them, the controller chooses and records a provisional appetite without asking for routine permission. Use measured elapsed time and artifact throughput when available; otherwise state an assumption range instead of inventing a precise ETA. A surface that cannot schedule future work uses the current run or an explicit handoff checkpoint as the observable horizon and never promises background wake-up it cannot perform.
+
 Dynamic facts belong in the Context Working Set. The generated project prompt references the installed Complex skill and protocol; it does not duplicate the whole protocol.
 
 `prompt_rehydration` combines the stable prompt contract with the latest accepted state before each planning checkpoint or beat. A prompt patch requires an observed instruction-level failure, behavior case, transcript finding, or changed user goal. Context misses, unavailable tools, and bad stopping logic are not prompt failures by default.
+
+At project start or a strategic reframe, run **Framework Grilling** before freezing the Project Prompt Contract only when genuine framework fog remains. Its purpose is to resolve decision forks that can materially change the Goal, target function, primary beneficiary, success/failure definition, project architecture, responsibility boundary, or evaluation design. It is not a startup questionnaire and it is not a request for the user to manage implementation.
+
+Prepare before asking: inspect repository facts, accepted state, and fresh external basis; map the unresolved decision tree; remove questions whose answers are derivable, reversible, or experimentally testable by the AI. A question qualifies only when:
+
+- at least two plausible answers lead to materially different framework choices;
+- the answer cannot be obtained from accessible facts or a bounded probe;
+- the choice belongs to the user under the responsibility boundary or expresses an undelegated value judgment;
+- delaying it would risk substantial rework, invalid evaluation, or the wrong project destination.
+
+Ask one qualifying question at a time. Each question includes the recommended answer, supporting basis and assumptions, material alternatives, and the concrete framework consequence of each answer. Stop when no qualifying fork remains; do not exhaust every imaginable branch. Compile the accepted decisions, rejected alternatives, unresolved empirical questions, and reopen trigger into a **Framework Decision Contract**, then derive the Project Prompt Contract and plan. If no qualifying fork exists, record `no_grill_needed` internally and continue without ceremonial confirmation.
 
 ### 3.2 Context Working Set
 
@@ -64,6 +77,10 @@ Standard assembly order:
 At target-project entry, use the loaded Complex skill as the first-pass rule index and resolve target durable instructions plus one authoritative five-field recovery anchor before recursively scanning outputs or rereading the full Complex repository. Complex's own `protocol/current-state.md` is maintenance state, not reusable target context. If no project-native anchor exposes Goal, current basis, active module, open risks, and next route, classify `context_failure` and run a bounded bootstrap: inspect root instructions, repository status, the latest explicitly accepted artifact, and directly named pointers only. In writable execution, create the smallest project-native recovery anchor with unknowns left explicit; in read-only evaluation, return the missing fields and exact bootstrap route. Do not treat a dated plan, candidate output, thread return, or proposed controller update as accepted current state, and do not compensate with an unbounded repository scan.
 
 A discovered recovery anchor is usable only when its authority is explicit, its freshness is assessable, its current state is bounded, and it exposes one authoritative next route. If state files are oversized or disagree, do not choose by recency alone and do not load a large manifest wholesale. Route first to a bounded state-reconciliation beat: compare only route/status keys and accepted pointers, preserve contradictions, compact one active recovery anchor, and keep large ledgers by pointer.
+
+For projects with several modules, repositories, threads, workflows, or recurring lanes, use **cross-boundary state reconciliation** as a conditional controller responsibility. Each boundary remains authoritative for its local facts and artifacts. The controller owns only a compact, versioned **global control projection** for integration and routing; it does not duplicate every local ledger. An affected boundary reports a bounded **local state capsule**: source identity and authority, source generation or hash, observed time, local status, accepted artifact pointer, dependency or blocker, claim boundary, and local next route. The global projection records which source generation it observed, the project Goal and phase, active module/lane status, accepted artifact references, cross-boundary dependencies and conflicts, the current stage horizon, and one authoritative global next route.
+
+Reconcile on meaningful events: controller recovery, phase or stage transition, cross-boundary handoff, module/lane creation or retirement, changed dependency, stale or contradictory state, human stage delivery, or a project-specific maximum-staleness fallback. Do not perform a full fan-in on every beat. Resolve conflicts from declared authority, acceptance evidence, dependency ownership, and observed generation rather than file recency or last-write-wins. An unresolved contradiction blocks only routes that depend on it; independent queued work continues.
 
 `bounded inspection` is an execution budget, not an adjective. Measure file, line, or top-level-key scale before querying content. Start with metadata and local key names/types; retrieve values only for a small set of directly selected keys. The default first-pass envelope is at most 50 matched names or 80 text lines, 32 KiB of tool output, and 30 seconds for one source, unless the project declares a tighter or justified wider budget. Truncation, timeout, or a match count beyond the envelope signals that the source is not directly usable as the current working set under that envelope; it does not by itself decide authority. Stop, retain a pointer and contradiction note, and do not retry with a broader expression. When the pattern recurs, the manager uses a deterministic bounded extractor and gives a content-minimized ledger, not source snippets or raw key names, to a clean evaluator; the manager/watchdog enforces hard elapsed-time limits instead of asking a worker to self-timeout.
 
@@ -92,6 +109,7 @@ The harness records or exposes:
 - responsibility and approval boundaries for accounts, payment, publication, external writes, irreversible actions, and high-impact commitments;
 - mechanical invariants through tests, linters, hooks, schemas, or structure checks where feasible;
 - stable task identifiers, logs, metrics, traces, and evaluator evidence;
+- controller-owned source generations, reconciliation triggers, conflict records, and the global control projection when cross-boundary state is active;
 - checkpoint, timeout, retry class, backoff, idempotency, rollback, and compensation behavior;
 - bounded concurrency and degraded routes when a capability is unavailable.
 
@@ -120,11 +138,14 @@ Each Loop declares:
 - relevant guard and independent evaluator when needed;
 - failure class and recovery route;
 - time, token, tool-call, and WIP budget;
+- the stage result horizon it serves, the usable increment expected by that horizon, and the scope-convergence route if progress is insufficient;
 - why the beat is not local greedy optimization.
 
 Important Loop completion is based on environment state, tests, artifacts, or external outcomes, not a fixed beat count or the agent saying it is done. Outcome evaluation comes first; trajectory review explains why the outcome happened.
 
 Retry only retryable failures. Use checkpoint, exponential backoff where appropriate, stable identifiers, and idempotent or compensating actions. Budgets limit waste and side effects; they do not create premature completion.
+
+`time convergence` means that a human receives a verified, decision-useful stage result within an explicit horizon while the project continues toward its Goal. The Harness measures elapsed work and artifact movement when the surface permits. A long run may not cross its stage horizon silently. At or before that horizon, deliver a usable increment or decision-grade diagnostic artifact. If the intended scope is not converging, preserve quality, evidence, safety, and claim boundaries while shrinking scope around the highest-value thin closure, parking peripheral branches, changing route, or setting a new explicit appetite from observed evidence. Timebox expiry triggers delivery and routing; it never proves Goal completion.
 
 ## 4. Seven-Behavior Execution Spine
 
@@ -184,6 +205,8 @@ Then select the smallest sufficient topology:
 
 The controller remains the sole integrator when more than one topology element is active. It owns Goal, target function, accepted state, route, branch parking, worker/lane contracts, evaluator independence, and final acceptance. Workers write bounded artifacts or references rather than becoming alternate sources of project truth.
 
+When work crosses durable boundaries, “sole integrator” means the controller is the only writer of the global control projection, not the only writer in the project. Local owners update their own project-native state. The controller observes versioned local state capsules, reconciles dependencies and acceptance, then publishes a new global projection epoch atomically or through the narrowest available project-native update. A refreshed projection proves that routing state was reconciled; it does not prove the underlying research claim or artifact is correct.
+
 Each durable lane contract names responsibility, accepted input and output, wake trigger, context policy, manager acceptance test, retirement condition, and current resource evidence. Common responsibility families include acquisition, modeling, data/code, evaluation/risk, and delivery, but they are examples rather than a required organization chart. A recorded lane is not a spawned platform resource.
 
 Topology has two directional transitions:
@@ -206,6 +229,8 @@ Ask the user for responsibility-bearing boundaries:
 - human value judgments not delegated by the project.
 
 Before asking, prove the issue requires user authority or judgment. If state, files, links, or `next_route` already define an executable internal next step, continue. Read accessible directories and materials before asking the user to summarize them.
+
+Framework Grilling does not widen the user boundary. Repository facts, tool choices, implementation order, reversible architecture details, topology fit, and experimentally answerable questions remain AI-owned. A question is not justified merely because asking is polite or because an interview step was selected.
 
 Classify new user input as fact, preference, responsibility authorization, local correction, goal change, or possible noise. Local corrections patch the current beat or contract; they do not silently replace the Goal.
 
@@ -283,11 +308,13 @@ Use this extension only when measured context growth, handoff pressure, conflict
 
 Hot State is versioned and names its authority, accepted-at time, superseded version, and pointers to supporting indexes. Demote stale traces before extending it. A broken or contradictory pointer triggers a degraded reconciliation route; never guess through the gap. Trigger appraisal from observed retrieval cost, contradiction density, recovery failure, context pollution, or an upcoming handoff. Project-specific budgets may use line, byte, token, latency, or match limits; Complex does not impose one universal threshold.
 
+If the global control projection or its event history becomes stale, oversized, or version-fragmented, checkpoint the latest relevant state into a fresh projection epoch that preserves the same project identity and Goal. Carry forward only active source generations, accepted artifacts, dependencies, conflicts, horizon, and next route; retain the superseded epoch and raw events by pointer. This is state renewal, not loss of audit history.
+
 Important structural decisions use compact ADR form: Context, Decision, Consequences, Superseded by.
 
 ## 12. Planning, Cadence, And Stop Conditions
 
-Use a planning checkpoint at project start, phase switch, strategic/model/method/evaluation change, significant user correction, repeated guardrail-only work, or public delivery.
+Use a planning checkpoint at project start, phase switch, strategic/model/method/evaluation change, significant user correction, repeated guardrail-only work, or public delivery. In a multi-boundary project, run a bounded state-reconciliation checkpoint before the plan when controller recovery, cross-boundary handoff, dependency change, stage delivery, conflict, or staleness makes the global projection unreliable. At project start or strategic reframe, run the Framework Grilling value test before finalizing the durable Prompt Contract; ask only if a qualifying user-owned decision fork survives factual inspection and AI-owned probing.
 
 Before each continuous beat:
 
@@ -297,6 +324,8 @@ Before each continuous beat:
 4. choose `beat_objective` and completion predicate;
 5. execute the Progress Loop;
 6. evaluate outcome and route the next beat.
+
+Before long execution begins, define the next stage result horizon and its usable increment. Re-evaluate them when a phase changes, observed throughput invalidates the appetite, or the human-facing decision need changes. Stage delivery and Goal completion are separate: a stage result can be accepted and shown while the next beat starts automatically.
 
 Continue queued beats inside the responsibility boundary. Do not stop because a fixed number of beats ran. `STOP_COMPLETE` requires objective completion, delivery-level validation, and a residual scan showing no useful internal beat remains.
 
@@ -312,21 +341,34 @@ Delivery-contract terms are an internal selection aid, not a required table of c
 
 Routine progress uses minimum sufficient observability: what target-function segment moved, what artifact changed, what uncertainty changed, what cannot yet be claimed, and the next route. Heavy evidence packs are for phase switches, public delivery, claim upgrades, contradictions, evaluator handoff, or explicit audit.
 
+A scheduled stage readout is not routine progress theater. It contains the promised usable increment or decision-grade diagnostic, acceptance evidence, remaining scope, current time-convergence judgment, and the next stage route. If no useful artifact exists by the horizon, state that failure and re-scope, park, or route back rather than reporting activity as progress.
+
 ## 14. Runtime Kit And Evaluation
 
 Templates are optional landing pads, not mandatory fields. Use filled examples before blank templates.
 
-Routine fixes use the normal edit-and-test path. A substantial change is one that adds a public term, schema, protocol default, Codex-surface contract, or maturity promotion. It records a compact decision packet: problem evidence, external implementation, alternatives, drawbacks, compatibility impact, evaluation plan, rollback, owner, and decision status.
+Complex self-maintenance uses one **self-optimization cycle** inside the existing kernel; it is not another mechanism.
 
-Protocol maintenance sequence:
+First classify the change unit:
 
-1. Capture the failure as an outcome and trajectory record.
-2. Diagnose Prompt, Context, Harness, Loop, or model limitation.
-3. Add or refine a behavior case and transcript rule.
-4. Calibrate against external practice and state transfer boundaries.
-5. Record a versioned evaluation case, run, and score when making a comparison claim.
-6. Update a filled example and mechanism maturity evidence only when their teaching or status changes.
-7. Change normative role to `core` only when the behavior is a repeated, high-impact universal boundary; change evidence status to `validated` only through the independent real-outcome standard. Never infer one axis from the other.
+- a routine correction changes no semantic default and uses the normal edit, test, and residual-scan path;
+- a bounded improvement repairs a recurring failure inside an existing mechanism or boundary and requires a behavior case, layer diagnosis, reversible candidate, and bounded evaluation;
+- a substantial change adds or changes a public term, schema, protocol default, Codex-surface contract, normative role, or maturity claim and requires a compact change packet.
+
+The compact packet records problem evidence, Goal/non-goals, stable baseline, reversible candidate, external implementation, alternatives, drawbacks, compatibility, evaluation, graduation/failure criteria, rollout scope, observability, rollback, owner, and status. Framework Grilling applies only if a genuine user-owned destination-level fork survives inspection; routine maintenance design remains AI-owned.
+
+Run the self-optimization cycle:
+
+1. restore active architecture, maturity, current evidence debt, related behavior cases, and the concrete failure;
+2. diagnose Prompt, Context, Harness, Loop, or model limitation and define one reversible change unit;
+3. inspect or reuse a pinned external implementation and state the transferable and rejected parts;
+4. add or refine the behavior case, transcript rule, outcome predicate, and grader boundary before changing defaults;
+5. implement inside an existing mechanism or boundary unless repeated cross-project evidence justifies a new identity;
+6. use **progressive evidence rollout**: contract screen, bounded reproduction when meaningful, locked same-task comparison, shadow or limited real use, then repeated independent outcome review;
+7. choose `promote`, `keep_candidate`, `demote`, or `rollback` from explicit graduation and failure criteria;
+8. update examples, references, maturity, and recovery state only to the evidence reached, then run a residual evidence scan and continue the next useful internal validation.
+
+Keep the stable baseline available until the candidate has observable success/failure and rollback conditions. A rewritten document, passing marker, upstream success, or local reproduction cannot by itself promote the candidate. `STOP_COMPLETE` requires the maintenance Goal predicate and residual evidence scan to pass; an executable next validation is queued work, not a reason to wait for the user.
 
 Examples illustrate. Markers and checkers screen. Fixed-version fixtures reproduce. Locked baseline/candidate runs compare. Repeated real Complex outcomes validate. Do not use a stronger verb than the evidence record supports.
 

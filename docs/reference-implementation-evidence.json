@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-16",
+  "version": "2026-07-21-self-optimization",
   "purpose": "Track implementation-level evidence for external projects considered by Complex. Popularity is a discovery signal; transfer requires pinned implementation evidence, upstream validation, explicit rejection boundaries, and Complex-side reproduction or comparison.",
   "allowed_transfer_statuses": [
     "discovered",
@@ -598,6 +598,173 @@
       "rollback_route": "Keep the current compact human review record if the three-object schema adds burden without improving comparison integrity.",
       "refresh_trigger": "A maturity claim, scorer change, Inspect log/task contract change, or real transcript batch occurs.",
       "next_validation": "Apply the locked task/run/score record to a redacted real-project comparison and test whether an independent reviewer can reproduce the decision."
+    },
+    {
+      "id": "matt_pocock_grilling_framework_alignment",
+      "repository": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "pinned_commit": "d574778f94cf620fcc8ce741584093bc650a61d3",
+      "observed_at": "2026-07-21",
+      "stars_snapshot": 180000,
+      "engineering_layers": [
+        "prompt",
+        "context"
+      ],
+      "original_goal": "Sharpen a plan or design through a one-question-at-a-time interview until the consequential decisions and shared understanding are explicit.",
+      "original_non_goals": "The skill is not a long-project controller, evidence system, runtime scheduler, permission model, or proof that asking more questions improves project outcomes.",
+      "state_or_data_path": "The wrapper invokes the grilling workflow; the workflow inspects repository facts, separates facts from decisions, asks one focused question with a recommendation, and accumulates shared design understanding before implementation.",
+      "control_path": "Enter the grilling workflow, investigate codebase facts directly, identify an unresolved design decision, ask one question with the recommended answer, update understanding from the response, and repeat only while material decisions remain.",
+      "inspected_artifacts": [
+        "skills/productivity/grill-me/SKILL.md",
+        "skills/productivity/grilling/SKILL.md",
+        "skills/productivity/grill-with-docs/SKILL.md",
+        "release v1.1.0 notes"
+      ],
+      "operating_constraints": "The upstream workflow assumes an interactive user is available and intentionally gives the user broad ownership over design decisions. Complex must preserve autonomous project-internal judgment and use questions only for undelegated value or responsibility decisions.",
+      "failure_boundaries": "An exhaustive interview can delay execution, ask repository facts the agent should inspect, transfer reversible implementation choices to the user, or mistake ceremonial confirmation for alignment.",
+      "artifact_revision_provenance": "Implementation inspection is pinned to Git commit d574778f94cf620fcc8ce741584093bc650a61d3 and release v1.1.0. The approximate star count is a volatile discovery signal only.",
+      "implementation_evidence": [
+        "skills/productivity/grilling/SKILL.md requires one question at a time and a recommended answer rather than an undifferentiated questionnaire.",
+        "The v1.1.0 workflow separates codebase facts, which the agent should discover, from decisions that require user input.",
+        "skills/productivity/grill-me/SKILL.md is a thin wrapper, while grill-with-docs adds domain-modeling context instead of duplicating the interview method."
+      ],
+      "upstream_validation": [
+        "The repository packages the workflow as a reusable public skill and its v1.1.0 release explicitly strengthened facts-versus-decisions and confirmation behavior.",
+        "Repository popularity and release discipline do not show that the workflow reduces correction load in Complex projects."
+      ],
+      "candidate_transfer": "At project start or strategic reframe, inspect facts first, then ask one high-leverage framework question only when plausible answers materially change Goal, target function, architecture, responsibility boundary, or evaluation. Include a recommendation, basis, strongest alternative, and consequence map; compile the result into a Framework Decision Contract.",
+      "rejected": "Exhaustive interviewing, asking factual or reversible implementation questions, pausing when no qualifying fork remains, and assigning every design choice to the user.",
+      "not_transferable": "The upstream human-decision boundary conflicts with Complex strong autonomy; Complex retains AI ownership of tools, topology, implementation order, reversible architecture details, and experimentally answerable questions.",
+      "transfer_status": "implementation_inspected",
+      "reproduction_command": "",
+      "reproduction_result": "Not run; the next meaningful unit is a same-project startup comparison rather than executing the upstream text in isolation.",
+      "local_fixture": "",
+      "same_task_comparison": "Not run. No locked baseline/candidate project-start pair yet measures avoidable questions, framework rework, correction count, or time to an accepted Prompt Contract.",
+      "comparison_metrics": [
+        "avoidable_user_questions",
+        "framework_rework_events",
+        "user_correction_count",
+        "time_to_accepted_prompt_contract"
+      ],
+      "comparison_artifacts": [],
+      "transfer_artifact": "Provisional integration in protocol/core.md, templates/question.md, templates/prompt.md, templates/judgment.md, and the behavior regression pack. This is implementation alignment, not outcome validation.",
+      "complex_validation_evidence": "None; behavior markers screen the contract, but no real transcript or end-to-end comparison shows improved outcomes.",
+      "complex_validation_records": [],
+      "rollback_route": "Remove the Framework Decision Contract integration and retain ordinary Prompt Contract formation if paired runs show extra questioning without less rework or correction.",
+      "refresh_trigger": "A real project-start transcript, contradictory over-questioning result, upstream skill revision, or change in Codex planning interaction appears.",
+      "next_validation": "Run a locked pair of comparable project starts with and without Framework Grilling, then obtain independent human review of question quality, rework, correction load, and Prompt Contract fit."
+    },
+    {
+      "id": "kubernetes_kep_progressive_change_governance",
+      "repository": "kubernetes/enhancements",
+      "url": "https://github.com/kubernetes/enhancements",
+      "pinned_commit": "6ab9bf717d1228928740bdbfe761b6e62b870902",
+      "observed_at": "2026-07-21",
+      "stars_snapshot": 3900,
+      "engineering_layers": [
+        "prompt",
+        "context",
+        "harness",
+        "loop"
+      ],
+      "original_goal": "Give substantial Kubernetes changes a reviewable path from problem and goals through design, production-readiness analysis, testing, graduation, rollback, observability, and implementation history.",
+      "original_non_goals": "The KEP process is not required for ordinary fixes, and approval of a proposal does not prove that the implementation will succeed in production.",
+      "state_or_data_path": "A KEP README plus metadata file records status, stage, milestones, goals/non-goals, design, risks, tests, graduation criteria, production-readiness questions, alternatives, and implementation history; implementation and release evidence accrue outside the proposal text.",
+      "control_path": "Classify a change as enhancement-worthy, create and review a structured proposal, make test and production-readiness conditions explicit, implement behind staged maturity, observe outcomes, and advance or roll back according to graduation criteria.",
+      "inspected_artifacts": [
+        "keps/README.md",
+        "keps/NNNN-kep-template/README.md",
+        "keps/NNNN-kep-template/kep.yaml",
+        "keps/sig-apps/592-ttl-after-finish/README.md",
+        "keps/sig-api-machinery/555-server-side-apply/README.md"
+      ],
+      "operating_constraints": "Kubernetes uses SIG ownership, enhancement freezes, release milestones, production-readiness review, feature stages, and a large public contributor process.",
+      "failure_boundaries": "Applying a full KEP to every correction creates procedural drag; proposal completeness can still exceed implementation evidence; community stages and release milestones do not map directly to a small Codex runtime kit.",
+      "artifact_revision_provenance": "Implementation inspection is pinned to file-history commit 6ab9bf717d1228928740bdbfe761b6e62b870902 for the KEP template and companion process/example files. Repository popularity is a volatile discovery signal only.",
+      "implementation_evidence": [
+        "keps/README.md distinguishes enhancement proposals from routine contribution work and describes proposal lifecycle and ownership.",
+        "keps/NNNN-kep-template/README.md requires goals/non-goals, proposal, risks, tests, graduation criteria, upgrade/downgrade, observability, dependencies, scalability, troubleshooting, alternatives, and implementation history.",
+        "The TTL-after-finish and Server Side Apply KEPs show staged criteria, metrics, rollback considerations, and implementation follow-through rather than treating proposal acceptance as completion."
+      ],
+      "upstream_validation": [
+        "The KEP repository is Kubernetes' sustained public enhancement record and connects design review to staged feature maturity.",
+        "Kubernetes production use does not validate the Complex adaptation or justify its process cost for a small repository."
+      ],
+      "candidate_transfer": "Classify Complex maintenance changes by semantic impact; require a compact change packet only for bounded or substantial changes; make goals/non-goals, tests, graduation/failure criteria, observability, rollback, compatibility, and implementation history explicit before maturity promotion.",
+      "rejected": "A proposal for every edit, SIG-style ownership, release freezes, mandatory public archives, and copying Kubernetes alpha/beta/GA labels into Complex.",
+      "not_transferable": "Kubernetes community authority, release-train governance, cluster production-readiness scope, and feature-gate machinery exceed Complex's operating model.",
+      "transfer_status": "implementation_inspected",
+      "reproduction_command": "",
+      "reproduction_result": "Not run because the relevant unit is a real Complex substantial change governed by a compact packet, not execution of the upstream repository.",
+      "local_fixture": "",
+      "same_task_comparison": "Not run. No comparable Complex maintenance task has yet been executed with and without the new change-classification and graduation packet.",
+      "comparison_metrics": [
+        "review_defects",
+        "protocol_rework",
+        "rollback_readiness",
+        "maintenance_overhead"
+      ],
+      "comparison_artifacts": [],
+      "transfer_artifact": "Provisional integration in docs/self-optimization.md and protocol/core.md. The contract is behavior-screened, not outcome-validated.",
+      "complex_validation_evidence": "None; the next substantial Complex change must exercise the compact packet and report its overhead and decision value.",
+      "complex_validation_records": [],
+      "rollback_route": "Keep routine fixes on the normal edit/test path and remove fields that do not improve review, reversibility, or maturity decisions.",
+      "refresh_trigger": "A substantial Complex change bypasses goals/non-goals, evaluation, compatibility, observability, graduation, or rollback, or the packet becomes routine bureaucracy.",
+      "next_validation": "Apply the packet to the next substantial mechanism/default change and compare defects, rework, rollback readiness, and elapsed maintenance cost with the previous update path."
+    },
+    {
+      "id": "argo_rollouts_progressive_evidence_promotion",
+      "repository": "argoproj/argo-rollouts",
+      "url": "https://github.com/argoproj/argo-rollouts",
+      "pinned_commit": "7b85ecc5c69047300da8eca1f85a21a9d66a4f11",
+      "observed_at": "2026-07-21",
+      "stars_snapshot": 3500,
+      "engineering_layers": [
+        "harness",
+        "loop"
+      ],
+      "original_goal": "Provide progressive Kubernetes delivery with canary or blue-green steps, metric analysis, explicit promotion, abort, pause, and rollback behavior.",
+      "original_non_goals": "Argo Rollouts does not evaluate general protocol design, replace domain-specific success metrics, or prove that every candidate should receive a staged rollout.",
+      "state_or_data_path": "A Rollout resource holds stable and candidate revisions, delivery steps, analysis runs, metric results, pause/abort state, and rollout status; controllers reconcile observed cluster state with the desired rollout plan.",
+      "control_path": "Keep the stable revision serving, expose a bounded candidate step, run analysis against declared metrics, then promote, continue, pause, abort, or roll back from observed results.",
+      "inspected_artifacts": [
+        "docs/index.md",
+        "rollout/analysis.go",
+        "rollout/analysis_test.go"
+      ],
+      "operating_constraints": "The implementation assumes Kubernetes controllers, workload revisions, traffic or replica steps, metric providers, and cluster-level reconciliation.",
+      "failure_boundaries": "Bad metrics can promote a harmful candidate; fixed percentages and pauses can become ceremony; Kubernetes reconciliation semantics do not apply directly to prose, prompts, or project-governance mechanisms.",
+      "artifact_revision_provenance": "Implementation inspection is pinned to commit 7b85ecc5c69047300da8eca1f85a21a9d66a4f11 for the analysis controller and tests. Repository popularity is a volatile discovery signal only.",
+      "implementation_evidence": [
+        "docs/index.md documents canary/blue-green steps, automated analysis, promotion, abort, and rollback as observable rollout states.",
+        "rollout/analysis.go reconciles analysis execution and maps result state into rollout continuation or abort behavior.",
+        "rollout/analysis_test.go exercises analysis success, failure, inconclusive, and control-path cases rather than treating candidate creation as deployment success."
+      ],
+      "upstream_validation": [
+        "Argo Rollouts is a mature production controller with tests and explicit progressive-delivery state.",
+        "Its cluster adoption does not establish that a Complex maintenance candidate improves project outcomes."
+      ],
+      "candidate_transfer": "Keep a stable Complex baseline while a bounded candidate advances through contract screen, reproduction, same-task comparison, shadow or limited real use, and repeated outcome review; choose promote, keep, demote, or rollback from explicit graduation and failure criteria.",
+      "rejected": "Installing Argo or Kubernetes, copying traffic percentages, pausing every documentation edit, and calling a marker pass equivalent to production analysis.",
+      "not_transferable": "Replica sets, traffic routing, Kubernetes reconciliation, and metric-provider APIs are platform-specific; Complex transfers only the stable/candidate and observed promotion/abort discipline.",
+      "transfer_status": "implementation_inspected",
+      "reproduction_command": "",
+      "reproduction_result": "Not run because a Kubernetes controller fixture would reproduce Argo, not test the Complex progressive evidence decision.",
+      "local_fixture": "",
+      "same_task_comparison": "Not run. The self-optimization candidate has not yet reached a shadow or limited real-project comparison against the previous maintenance path.",
+      "comparison_metrics": [
+        "real_project_outcome",
+        "user_correction_load",
+        "false_promotion_rate",
+        "rollback_cost"
+      ],
+      "comparison_artifacts": [],
+      "transfer_artifact": "Provisional progressive evidence rollout contract in docs/self-optimization.md and protocol/core.md. No runtime dependency was added.",
+      "complex_validation_evidence": "None; current behavior cases screen the contract but do not show that it improves maintenance decisions.",
+      "complex_validation_records": [],
+      "rollback_route": "Retain the stable baseline, demote or remove the candidate contract, and restore the previous maintenance path if staged evidence adds cost without changing decisions or outcomes.",
+      "refresh_trigger": "A Complex candidate is promoted without comparable outcomes, limited-use observability is inadequate, rollback fails, or Argo's analysis/reconciliation contract changes materially.",
+      "next_validation": "Use one real substantial Complex change as a bounded candidate, compare it with the prior path, and obtain independent human review before any maturity promotion."
     }
   ]
 }

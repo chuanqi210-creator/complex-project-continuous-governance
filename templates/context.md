@@ -37,6 +37,19 @@ Use this template to assemble the smallest sufficient context for the next judgm
 - latest_accepted_artifacts:
 - current_state_pointer:
 
+## Cross-Boundary Control Projection
+
+Open only when multiple durable state boundaries are active.
+
+- global_control_projection_pointer_and_epoch:
+- controller_authority:
+- local_state_capsules_loaded:
+- observed_source_generations:
+- cross_boundary_dependencies:
+- unresolved_conflicts_and_affected_routes:
+- independent_routes_still_valid:
+- reconciliation_freshness_or_trigger:
+
 ## Just-In-Time Retrieval
 
 - warm_index_queries:

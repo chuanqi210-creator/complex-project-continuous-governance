@@ -37,6 +37,14 @@ The evidence verbs are also fixed:
 - `responsibility_boundary`: AI-owned project decisions, user-owned commitments, approval pauses, idempotency, rollback, and unnecessary-intervention prevention share one boundary.
 - `delivery_contract`: audience, purpose, claim strength, granularity, internal-information boundary, and minimum sufficient observability.
 
+Framework Grilling is not a twelfth mechanism. It is a Prompt Contract technique inside the behavior kernel and responsibility boundary: inspect facts first, ask one high-leverage framework question only when a user-owned fork can change the destination, then compile the answer into a Framework Decision Contract. The upstream implementation is pinned and inspected; the Complex transfer is behavior-screened but has no same-task outcome comparison yet.
+
+Complex self-optimization is also not a new mechanism. It is the maintenance use of the behavior kernel, external calibration, transcript/evaluation records, and maturity registry. Routine corrections remain light; bounded and substantial changes keep a stable baseline and one reversible candidate, then advance through contract screening, reproduction, same-task comparison, limited real use, and repeated outcome review only as justified. Kubernetes KEP and Argo Rollouts are pinned implementation evidence for this shape; the Complex integration is behavior-screened and has not yet completed a real maintenance-path comparison.
+
+Time convergence is not a new mechanism either. It is a cross-layer operating contract inside the kernel, delivery boundary, and conditional portfolio control. Long work must define when the human next receives a usable increment and what that increment is; if observed progress does not fit, Complex changes scope or route while preserving the quality/evidence floor. Shape Up, Scrum, and NASA provide external design precedent, but the contract currently has behavior coverage only and no locked time-to-stage-value comparison.
+
+Cross-boundary state reconciliation is likewise not a twelfth mechanism. It is a controller responsibility within the kernel plus the conditional portfolio and trace extensions. Local modules, lanes, repositories, threads, or workflows keep authority over bounded local facts; the controller refreshes one compact global control projection from versioned local state capsules only at recovery, transitions, handoffs, dependency/conflict changes, stage delivery, or measured staleness. Current evidence is documentation, a filled example, and behavior screening; no locked real-project comparison yet measures stale-route reduction, duplicate-work reduction, or reconciliation cost.
+
 ### Supporting Practices, Tested Evidence
 
 - `codex_surface_alignment`

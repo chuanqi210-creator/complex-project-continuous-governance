@@ -4,6 +4,7 @@ Use this example when one long project contains different work shapes at the sam
 
 It shows:
 
+- one completed Framework Decision Contract before the Project Prompt Contract;
 - project nature as a durable prior rather than a single route for every module;
 - work-item classification before each important beat;
 - artifact contract before threads, workers, lanes, or tools;

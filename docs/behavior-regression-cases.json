@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-21-adaptive-work-topology",
+  "version": "2026-07-22-cross-boundary-state-reconciliation",
   "purpose": "A compact behavior regression pack for checking whether Complex documentation still covers the behaviors that matter most when a new agent uses the protocol.",
   "required_case_ids": [
     "setup_card_default",
@@ -48,7 +48,13 @@
     "local_artifact_contract_precedes_mechanism_vocabulary",
     "active_work_unit_routing_overrides_project_prior",
     "artifact_contract_precedes_topology",
-    "judgment_mechanization_and_route_back"
+    "judgment_mechanization_and_route_back",
+    "framework_grilling_resolves_architecture_fog",
+    "framework_grilling_rejects_low_leverage_questions",
+    "self_optimization_change_unit_and_evidence_path",
+    "self_optimization_progressive_promotion_and_residual_continue",
+    "time_convergence_delivers_stage_value",
+    "cross_boundary_state_reconciliation_checkpoint"
   ],
   "cases": [
     {
@@ -1533,6 +1539,213 @@
         "complex_behavior_kernel",
         "operating_organization",
         "project_nature_router"
+      ]
+    },
+    {
+      "case_id": "framework_grilling_resolves_architecture_fog",
+      "user_prompt": "这是一个长期复杂项目，我知道大方向，但目标函数、主要受益对象和成功标准之间还有真实冲突。先把大框架问透，再设计总 Prompt。",
+      "project_nature": "model_discovery",
+      "expected_triggers": [
+        "Framework Grilling",
+        "decision fork",
+        "recommended answer",
+        "Framework Decision Contract"
+      ],
+      "expected_behavior": [
+        "Inspect the repository and relevant external basis before asking, then map only unresolved decision forks that can materially change the Goal, target function, architecture, responsibility boundary, or evaluation.",
+        "Ask one high-leverage question at a time and include the recommended answer, evidence or assumptions, material alternatives, and what each answer changes.",
+        "Keep the interview at framework level rather than descending into implementation preferences that the AI can decide or test reversibly.",
+        "Stop when the remaining uncertainty is derivable, reversible, or experimentally testable, then compile the accepted decisions into a Framework Decision Contract before the Project Prompt Contract and execution plan."
+      ],
+      "forbidden_behavior": [
+        "Ask a batch questionnaire or walk every imaginable branch regardless of decision value.",
+        "Start implementation while a responsibility-bearing top-level decision fork remains unresolved.",
+        "Present a question without a recommendation or without explaining what changes under each answer.",
+        "Treat the popularity of the Grill Me source as proof that the Complex adaptation is effective."
+      ],
+      "expected_runtime_records": [
+        "question.md",
+        "prompt.md",
+        "judgment.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "project_nature_router",
+        "responsibility_boundary"
+      ]
+    },
+    {
+      "case_id": "framework_grilling_rejects_low_leverage_questions",
+      "user_prompt": "项目目标和验收已经明确，仓库也写清了技术栈。你还需要问我用哪个测试命令、是否读取我给的目录、先改哪个可逆小文件吗？",
+      "project_nature": "execution_delivery",
+      "expected_triggers": [
+        "question value test",
+        "derivable fact",
+        "AI-owned decision",
+        "no_grill_needed"
+      ],
+      "expected_behavior": [
+        "Resolve repository facts by inspection and use the responsibility boundary to keep reversible project-internal choices with the AI.",
+        "Ask only when two or more plausible answers would materially alter the framework and the unresolved choice belongs to the user rather than the project Harness.",
+        "Skip Framework Grilling when no qualifying decision fork remains, record no_grill_needed internally, and continue into planning or execution.",
+        "Do not convert a Complex startup into a ceremonial interview when the Goal and acceptance contract are already adequate."
+      ],
+      "forbidden_behavior": [
+        "Ask the user for facts available in the repository, files, links, or tool output.",
+        "Ask the user to choose tools, test commands, topology, file order, or another reversible internal implementation detail.",
+        "Ask questions only to demonstrate that a Grill Me step occurred.",
+        "Pause continuous cadence after deciding no user-owned framework question exists."
+      ],
+      "expected_runtime_records": [
+        "question.md",
+        "judgment.md",
+        "loop.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "responsibility_boundary"
+      ]
+    },
+    {
+      "case_id": "self_optimization_change_unit_and_evidence_path",
+      "user_prompt": "Complex 在真实项目里再次暴露了一个失败模式。请优化协议并继续，不要因为写完规则就停下。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "self-optimization cycle",
+        "change unit",
+        "progressive evidence rollout",
+        "rollback"
+      ],
+      "expected_behavior": [
+        "Restore the active architecture, mechanism maturity, current evidence debt, and the concrete failure before selecting a repair.",
+        "Classify the change as a routine correction, bounded improvement, or substantial public-contract change so small fixes stay light and consequential changes receive explicit evidence work.",
+        "Use Framework Grilling only when a genuine top-level decision fork survives inspection; otherwise record no_grill_needed and keep project-internal design with the AI.",
+        "Diagnose the failed Prompt, Context, Harness, or Loop layer, inspect or reuse a pinned external implementation, and define one reversible change unit with baseline, success criteria, failure criteria, and rollback before editing the active architecture.",
+        "Add or update the behavior case and transcript rule before treating the candidate as covered, and merge the repair into an existing mechanism or boundary unless repeated cross-project evidence justifies a new mechanism."
+      ],
+      "forbidden_behavior": [
+        "Promote a mechanism into core from one anecdote or one successful edit.",
+        "Browse mechanically on every beat when fresh implementation evidence already covers the decision.",
+        "Treat an upstream project's success, a passing structure checker, or a rewritten document as Complex-side validation.",
+        "Ask the user to decide reversible repository-internal design, test, or rollout details."
+      ],
+      "expected_runtime_records": [
+        "decision.md",
+        "loop.md",
+        "state.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "external_calibration_rule",
+        "responsibility_boundary"
+      ]
+    },
+    {
+      "case_id": "self_optimization_progressive_promotion_and_residual_continue",
+      "user_prompt": "候选规则已经写进 Complex。请判断它能否晋级，并在还有可执行证据债务时自动进入下一步。",
+      "project_nature": "execution_delivery",
+      "expected_triggers": [
+        "progressive evidence rollout",
+        "graduation criteria",
+        "residual evidence scan",
+        "promote"
+      ],
+      "expected_behavior": [
+        "Keep an explicit stable baseline and one bounded candidate rather than replacing the active default before evidence exists.",
+        "Advance evidence through contract screening, bounded reproduction when meaningful, locked same-task comparison, shadow or limited real use, and repeated outcome review as the decision warrants.",
+        "At each evidence boundary choose promote, keep candidate, demote, or rollback using preregistered graduation and failure criteria rather than the number of beats completed.",
+        "Update mechanism maturity, reference evidence, current state, examples, and rollback pointers only to the level the evidence supports.",
+        "Run a residual evidence scan and automatically route the next executable evidence debt; stop only when the Goal completion predicate and residual scan both pass or a true responsibility boundary or blocker remains."
+      ],
+      "forbidden_behavior": [
+        "Declare the work complete because documentation and markers were updated.",
+        "Promote a candidate directly to core or validated without comparable Complex-side outcome evidence.",
+        "Stop after a fixed number of beats or leave an executable next validation waiting for the user to say continue.",
+        "Roll a candidate out without a bounded scope, observable outcome, and rollback route."
+      ],
+      "expected_runtime_records": [
+        "loop.md",
+        "decision.md",
+        "state.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "behavior_transcript_review",
+        "external_calibration_rule"
+      ]
+    },
+    {
+      "case_id": "time_convergence_delivers_stage_value",
+      "user_prompt": "这是一个长期项目。不要无限追求完善；我要在可预期时间内看到阶段性、可使用、能支持判断的成果，同时不能为了赶时间降低证据和质量底线。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "time convergence",
+        "stage result horizon",
+        "usable increment",
+        "scope convergence"
+      ],
+      "expected_behavior": [
+        "Define a project- or phase-level time appetite and a stage result horizon together with the smallest useful stage artifact, its quality floor, and its audience before long execution begins; if the user did not set them, select a provisional contract as an AI-owned planning decision.",
+        "Give each beat a bounded execution budget and show how its artifact moves the current stage toward the promised usable increment; measure elapsed time and artifact progress when the Harness exposes them instead of inventing an ETA.",
+        "At or before the stage horizon, deliver a verified usable increment or a decision-grade diagnostic artifact, not a progress-only narrative, while preserving evidence, safety, and claim boundaries.",
+        "When the work is not converging within the appetite, preserve quality and vary scope: close the highest-value thin slice, park peripheral branches, reframe the approach, or set a new explicit appetite from observed evidence.",
+        "Treat timebox expiry as a routing and delivery event rather than completion; continue the accepted next stage automatically when it remains inside the responsibility boundary."
+      ],
+      "forbidden_behavior": [
+        "Use a fixed number of beats or an expired timebox as proof that the Goal is complete.",
+        "Continue polishing indefinitely without a stage artifact visible to the human reader.",
+        "Produce ceremonial progress reports that do not contain a usable artifact, decision, falsification, or bounded blocker.",
+        "Lower verification, evidence, safety, or claim standards to meet the time appetite.",
+        "Invent precise delivery estimates without observed throughput, runtime evidence, or an explicit assumption range.",
+        "Ask the user to choose an ordinary internal timebox when the controller can set a provisional horizon from the project and runtime."
+      ],
+      "expected_runtime_records": [
+        "prompt.md",
+        "loop.md",
+        "state.md",
+        "delivery.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "delivery_contract",
+        "portfolio_control_plane"
+      ]
+    },
+    {
+      "case_id": "cross_boundary_state_reconciliation_checkpoint",
+      "user_prompt": "研究项目已经有多个模块、线程和状态记录器，各自都在更新，但没有人在关键节点统一全局状态。不要把所有内容复制进一个常驻总账，也不要每拍机械汇总；请让总控在需要时恢复全局真实状态。",
+      "project_nature": "mixed",
+      "expected_triggers": [
+        "cross-boundary state reconciliation",
+        "local state capsule",
+        "global control projection",
+        "observed generation"
+      ],
+      "expected_behavior": [
+        "Keep each module, lane, repository, thread, or workflow authoritative for its bounded local facts while one controller owns the compact global control projection used for integration and routing.",
+        "Trigger reconciliation from a phase or stage transition, cross-boundary handoff, controller recovery, dependency change, conflicting or stale state, portfolio topology change, or human stage delivery; use a project-specific maximum-staleness fallback without rewriting the global view on every beat.",
+        "Collect a bounded local state capsule from each affected boundary containing source authority, generation or hash, observed time, accepted artifact pointer, status, dependency or blocker, claim boundary, and local next route.",
+        "Reconcile desired Goal and portfolio state against observed local state, detect stale or contradictory sources without last-write-wins, and publish one versioned global control projection with source generations, cross-boundary dependencies, accepted artifacts, conflicts, stage horizon, and authoritative global next route.",
+        "Keep raw traces and local detail outside the projection; when the projection or event history grows stale or unwieldy, checkpoint the latest relevant state into a fresh epoch and retain the previous history by pointer.",
+        "Block only the dependent route when a conflict cannot be resolved; continue independent queued work inside the responsibility boundary."
+      ],
+      "forbidden_behavior": [
+        "Copy every local ledger, transcript, or artifact body into one continuously growing global state file.",
+        "Run a full portfolio reconciliation mechanically on every beat when no trigger or staleness threshold is present.",
+        "Choose the newest file as truth or use last-write-wins when sources have different authority or acceptance status.",
+        "Let multiple workers independently mutate the authoritative global route or accepted-state projection.",
+        "Pause the whole project because one local state boundary is contradictory when unrelated modules can still progress.",
+        "Treat a refreshed projection as proof that the underlying research result is correct or complete."
+      ],
+      "expected_runtime_records": [
+        "state.md",
+        "harness.md",
+        "loop.md"
+      ],
+      "linked_mechanisms": [
+        "complex_behavior_kernel",
+        "portfolio_control_plane",
+        "trace_appraisal_hot_warm_cold"
       ]
     }
   ]

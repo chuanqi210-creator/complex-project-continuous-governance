@@ -19,6 +19,7 @@
 - if passed: accept the artifact, update state, and route to the next portfolio item.
 - if malformed input: isolate the record, apply bounded retry or rejection, and preserve the mapping.
 - if changed assumption: stop mechanical retry and route the affected rule to work item A for model discovery.
+- state reconciliation: B publishes a new local state capsule after an accepted artifact. The controller refreshes the global projection only if the capsule changes a cross-item dependency, stage status, conflict, or portfolio route; an ordinary accepted B batch does not force a full portfolio fan-in.
 - mechanize_stable_judgment: allowed only after repeated stable acceptance and low disagreement.
 - completion_predicate_result: pending execution in a real project.
 - next_route: run_work_item_B_and_route_result.

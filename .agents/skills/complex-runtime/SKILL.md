@@ -48,7 +48,9 @@ When applying Complex to a target project, this skill is the first-pass rule ind
 
 ### Prompt
 
-Keep the project prompt stable and project-specific. Include Goal, target function, completion criteria, responsibility boundary, delivery contract, and evaluation. Put changing facts in context, not the master prompt. Patch a prompt only after an observed instruction-level failure or changed Goal.
+Keep the project prompt stable and project-specific. Include Goal, target function, completion criteria, responsibility boundary, delivery contract, evaluation, and a project-specific time convergence contract: time appetite, next stage result horizon, smallest useful stage artifact, quality floor, and scope-convergence rule. If the user did not set the horizon, select a provisional one as an AI-owned planning decision. A surface without scheduling uses the current run or an explicit handoff checkpoint and does not promise background wake-up. Put changing facts in context, not the master prompt. Patch a prompt only after an observed instruction-level failure or changed Goal.
+
+At project start or a strategic reframe, use Framework Grilling only for unresolved decision forks that can materially change the Goal, target function, architecture, responsibility boundary, or evaluation. Inspect repository facts and external basis first. Do not ask about facts, tools, topology, implementation order, or reversible choices the AI can decide or test. Ask one qualifying question at a time with a recommended answer, basis, alternatives, and the consequence of each answer. Stop when remaining uncertainty is derivable, reversible, or experimentally testable; compile a Framework Decision Contract before the Project Prompt Contract. If no qualifying fork remains, continue with `no_grill_needed` rather than inventing a question.
 
 ### Context
 
@@ -62,11 +64,15 @@ On a new target repository, find durable instructions and one authoritative five
 
 Treat an existing anchor as valid only if authority, freshness, bounded size, and one next route are clear. Oversized or conflicting anchors trigger a state-reconciliation beat, not deeper business execution: query route/status keys selectively, retain the contradiction, compact one active recovery anchor, and keep large manifests or ledgers by pointer.
 
+When several modules, repositories, threads, workflows, or standing lanes maintain local state, keep those local sources authoritative within their boundaries and let the controller maintain one compact global control projection. Reconcile only on controller recovery, phase/stage transition, cross-boundary handoff, topology or dependency change, stale/conflicting state, human stage delivery, or a project-specific staleness fallback. Each affected source returns a local state capsule with authority, generation/hash, observed time, accepted artifact pointer, status, dependency/blocker, claim boundary, and local next route. Record the source generations observed by the global projection; never resolve disagreement by newest-file or last-write-wins. Continue independent work while isolating an unresolved dependent route.
+
 Make bounded inspection measurable. Check scale first, classify names/types before values, and choose a project-specific match/output/time envelope. The bundled extractor's limits are safe fallback defaults, not universal protocol constants. If a query truncates, times out, or exceeds the envelope, stop: the source does not fit the current working set, although authority still requires separate judgment. Prefer `tools/inspect_recovery_anchor.py` or an equivalent deterministic extractor for repeated large-anchor audits, then pass only its content-minimized ledger to a clean evaluator. The manager enforces hard timeout with the available harness/watchdog.
 
 ### Harness
 
 Make tools, environment, side effects, logs, validation, checkpoints, retries, idempotency, rollback, and degraded routes legible. Discover capabilities just in time. Prefer mechanical checks when a repeated textual rule can be enforced by tests, schemas, hooks, or verifiers.
+
+If cross-boundary reconciliation is active, the controller alone publishes the versioned global control projection. Local owners still write their own project-native state; workers do not mutate the global route directly. When the projection or event history grows stale or unwieldy, checkpoint active state into a fresh epoch and retain old detail by pointer.
 
 Treat the target repository's explicit completion predicate, output path, field names, value types, and verifier as the executable interface. Complex terminology must not rename fields, add wrappers, suppress requested facts, or appear as reader-facing headings unless the target contract asks for it. Governance decides the route; the local contract decides the artifact shape.
 
@@ -79,6 +85,8 @@ Use:
 `restore -> select -> act -> observe -> evaluate -> route/retry/rollback/stop`
 
 Define an outcome completion predicate. A forward-execution beat names its forward artifact; a diagnostic beat names its route decision, falsification, bounded blocker, or parking decision. For important work, separate executor and evaluator. A fixed beat count or agent self-report is not completion.
+
+For long work, connect every beat budget to the next stage result horizon. Use observed elapsed time and artifact throughput when available; never invent a precise ETA. By the horizon, deliver a verified usable increment or decision-grade diagnostic. If progress does not fit the appetite, preserve quality and evidence boundaries while shrinking scope, parking peripheral work, changing route, or explicitly resetting the appetite. Timebox expiry routes and exposes work; it does not complete the Goal. After stage delivery, continue the accepted next beat inside the responsibility boundary.
 
 ## Cross-Layer Diagnosis
 
@@ -109,6 +117,12 @@ Move stable repeated judgments downward into templates, checkers, tool contracts
 Before mechanism-level changes, use external projects as reference implementations, not names. Discover candidates, pin and inspect their goal/non-goals, state/control path, code/configuration, tests/evaluations, operating limits, and failure boundaries; reproduce a bounded mechanism when feasible; compare it with current Complex behavior on the same task; then transfer one reversible micro-contract. Record explicit status from discovery through `validated_in_complex`. A citation, README, star count, or upstream benchmark never proves a Complex transfer. For Complex maintenance, consult `docs/active-architecture-rebaseline.json` before creating a new mechanism; prefer merging into the kernel or a boundary.
 
 For a same-task comparison, use `docs/evals/experiment-program.json` rather than an informal demonstration. Freeze and hash the task, fixtures, runner, schema, and prompts; hide semantic oracle labels; change one variable; repeat stochastic arms; score environment outcome, trajectory, and blind human preference separately; and screen broken tasks, contamination, reward hacking, harness mismatch, and grader disagreement. Prefer held-out projects when the transfer decision itself is being tested. If the harness does not instantiate the claimed condition, mark `revise_and_repeat`. Automated signals without completed human review remain `insufficient_evidence`.
+
+## Complex Self-Optimization
+
+When maintaining Complex itself, use `docs/self-optimization.md`. This is a maintenance mode inside the kernel, not a new mechanism. Restore the active architecture, maturity, current evidence debt, and concrete failure; classify the change unit as routine correction, bounded improvement, or substantial change; diagnose the failed engineering layer; and define one reversible candidate with baseline, outcome, failure, and rollback.
+
+Routine corrections stay on the normal edit/test path. For bounded or substantial changes, write the behavior case and grader boundary first, inspect or reuse a pinned external implementation, then use progressive evidence rollout: contract screen, bounded reproduction when meaningful, locked same-task comparison, shadow or limited real use, and repeated outcome review. Keep the stable baseline until graduation criteria are met. Choose promote, keep candidate, demote, or rollback explicitly. Update maturity and public claims only to the evidence reached, then execute the next useful residual evidence unit without asking for routine internal authorization.
 
 At important transitions and claims, run a claim-basis check: current basis, external basis, inference, unsupported claim, and falsification cue.
 

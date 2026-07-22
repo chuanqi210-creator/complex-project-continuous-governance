@@ -1,5 +1,5 @@
 {
-  "version": "2026-07-21-adaptive-work-topology",
+  "version": "2026-07-22-cross-boundary-state-reconciliation",
   "purpose": "Marker-based transcript review rules for the Complex behavior regression cases. These rules do not replace human review; they catch obvious omissions and forbidden moves in real agent responses.",
   "case_rules": {
     "setup_card_default": {
@@ -3419,6 +3419,128 @@
       "human_review_questions": [
         "Did stable repeated judgment move toward mechanical enforcement?",
         "Did assumption-driven mechanical failure route upward instead of receiving more retries?"
+      ]
+    },
+    "framework_grilling_resolves_architecture_fog": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "framework grilling", "any": ["Framework Grilling", "顶层框架质询", "框架质询"]},
+        {"label": "decision fork", "any": ["decision fork", "决策分叉", "两种答案会改变"]},
+        {"label": "recommended answer", "any": ["recommended answer", "推荐答案", "我的建议"]},
+        {"label": "framework contract", "any": ["Framework Decision Contract", "框架决策契约", "顶层决策契约"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "question batch", "any": ["请一次回答以下十个问题", "answer all of these questions", "完整问卷"]},
+        {"label": "no recommendation", "any": ["我不提供建议，你自己决定", "I have no recommendation"]},
+        {"label": "implementation before alignment", "any": ["先实现再说，之后再对齐框架", "implement before resolving the framework"]},
+        {"label": "popularity proof", "any": ["高星证明一定有效", "stars prove this works"]}
+      ],
+      "human_review_questions": [
+        "Did each question expose a framework-level fork that could materially change the project?",
+        "Did the agent provide a recommendation, evidence, alternatives, and the consequence of each answer?",
+        "Did the session stop once the remaining uncertainty was derivable, reversible, or testable?"
+      ]
+    },
+    "framework_grilling_rejects_low_leverage_questions": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "question value", "any": ["question value test", "问题价值检验", "高杠杆问题"]},
+        {"label": "derive facts", "any": ["derivable fact", "可查事实", "自行读取", "repository fact"]},
+        {"label": "ai ownership", "any": ["AI-owned decision", "AI 自行决定", "项目内部决策"]},
+        {"label": "skip interview", "any": ["no_grill_needed", "无需质询", "直接进入规划", "继续执行"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "repo fact question", "any": ["请告诉我仓库里写了什么", "please summarize the accessible repository"]},
+        {"label": "reversible choice question", "any": ["请你选择测试命令", "which reversible file should I edit first", "请你决定先改哪个小文件"]},
+        {"label": "ceremonial questioning", "any": ["为了完成 grill 环节必须提问", "must ask something to complete the grill"]},
+        {"label": "unnecessary pause", "any": ["没有问题也请确认后再继续", "wait for confirmation even though no decision remains"]}
+      ],
+      "human_review_questions": [
+        "Were facts and reversible internal choices resolved without burdening the user?",
+        "Did the agent skip the interview and continue when no user-owned framework fork remained?"
+      ]
+    },
+    "self_optimization_change_unit_and_evidence_path": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "self optimization", "any": ["self-optimization cycle", "自优化循环", "自我优化循环"]},
+        {"label": "change unit", "any": ["change unit", "变更单元", "bounded improvement", "有界改进"]},
+        {"label": "progressive evidence", "any": ["progressive evidence rollout", "渐进证据发布", "渐进式证据路径"]},
+        {"label": "rollback", "any": ["rollback", "回滚"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "single anecdote promotion", "any": ["一个案例就进入 core", "one anecdote is enough for core"]},
+        {"label": "upstream proof", "any": ["上游成功所以 Complex 已验证", "upstream success validates Complex"]},
+        {"label": "docs equal outcome", "any": ["文档写完就证明有效", "documentation proves the outcome"]},
+        {"label": "user owns internal rollout", "any": ["请你决定内部试运行方式", "user must choose the internal rollout"]}
+      ],
+      "human_review_questions": [
+        "Was the failure diagnosed before the protocol wording changed?",
+        "Was the repair one reversible change unit with an explicit baseline and rollback?",
+        "Did the response preserve a light path for routine corrections?"
+      ]
+    },
+    "self_optimization_progressive_promotion_and_residual_continue": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "progressive evidence", "any": ["progressive evidence rollout", "渐进证据发布", "渐进式证据路径"]},
+        {"label": "graduation", "any": ["graduation criteria", "晋级标准", "晋级条件"]},
+        {"label": "promotion decision", "any": ["promote", "keep candidate", "demote", "rollback", "晋级", "保留候选", "降级", "回滚"]},
+        {"label": "residual scan", "any": ["residual evidence scan", "剩余证据扫描", "证据债务扫描"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "docs stop", "any": ["文档更新完成所以停止", "stop because the docs are updated"]},
+        {"label": "fixed beat stop", "any": ["固定三拍后结束", "stop after a fixed number of beats"]},
+        {"label": "premature validated", "any": ["直接标记 validated", "immediately mark validated"]},
+        {"label": "unbounded rollout", "any": ["直接全量替换无需回滚", "replace the baseline globally without rollback"]}
+      ],
+      "human_review_questions": [
+        "Did promotion depend on comparable outcomes rather than marker coverage?",
+        "Did the candidate remain bounded and reversible until graduation criteria were met?",
+        "Did the agent continue into the next executable evidence debt without unnecessary user permission?"
+      ]
+    },
+    "time_convergence_delivers_stage_value": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "time convergence", "any": ["time convergence", "时间收敛", "时间胃口"]},
+        {"label": "stage horizon", "any": ["stage result horizon", "阶段成果时点", "阶段交付窗口"]},
+        {"label": "usable increment", "any": ["usable increment", "可用增量", "可用阶段成果"]},
+        {"label": "scope convergence", "any": ["scope convergence", "范围收敛", "缩减范围", "park peripheral"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "timebox equals done", "any": ["时间到了就算完成", "timebox expiry means complete"]},
+        {"label": "progress theater", "any": ["只汇报正在推进", "progress report is the deliverable"]},
+        {"label": "quality sacrificed", "any": ["为了按时降低证据标准", "reduce verification to meet the deadline"]},
+        {"label": "invented eta", "any": ["保证精确在某时完成", "guaranteed exact ETA without evidence"]},
+        {"label": "routine horizon delegated", "any": ["请你决定普通内部时间盒", "user must choose the routine internal timebox"]}
+      ],
+      "human_review_questions": [
+        "Did the plan promise a decision-useful stage artifact by an explicit horizon?",
+        "Did time pressure vary scope or route while preserving quality and evidence boundaries?",
+        "Did the agent distinguish stage delivery from Goal completion and continue afterward when appropriate?"
+      ]
+    },
+    "cross_boundary_state_reconciliation_checkpoint": {
+      "minimum_required_groups": 4,
+      "required_marker_groups": [
+        {"label": "reconciliation", "any": ["cross-boundary state reconciliation", "跨边界状态对账", "状态调和检查点"]},
+        {"label": "local capsule", "any": ["local state capsule", "局部状态胶囊", "边界状态摘要"]},
+        {"label": "global projection", "any": ["global control projection", "全局控制投影", "总控状态视图"]},
+        {"label": "source generation", "any": ["observed generation", "已观察版本", "source generation", "来源版本"]}
+      ],
+      "forbidden_marker_groups": [
+        {"label": "monolithic ledger", "any": ["把所有局部记录复制进总账", "copy every local ledger into the global state"]},
+        {"label": "every beat full reconciliation", "any": ["每拍完整汇总所有状态", "full reconciliation on every beat"]},
+        {"label": "last write wins", "any": ["最新文件自动是真相", "last-write-wins", "last write wins"]},
+        {"label": "distributed global mutation", "any": ["各线程都直接修改全局路线", "every worker mutates the global route"]},
+        {"label": "global halt from local conflict", "any": ["一个局部冲突就暂停整个项目", "one local conflict stops the whole project"]}
+      ],
+      "human_review_questions": [
+        "Did the controller preserve local authority while producing one compact global routing view?",
+        "Were reconciliation triggers event-driven or bounded by staleness rather than mechanically per beat?",
+        "Did conflict resolution use authority, generation, and accepted artifacts rather than recency alone?",
+        "Could independent work continue while a contradictory dependent route was isolated?"
       ]
     }
   }

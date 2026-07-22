@@ -22,6 +22,7 @@ DOC_PATHS = [
     ROOT / "docs" / "quickstart.md",
     ROOT / "docs" / "runtime-skill-management.md",
     ROOT / "docs" / "behavior-review.md",
+    ROOT / "docs" / "self-optimization.md",
 ]
 DOC_PATHS.extend(sorted((ROOT / "templates").glob("*.md")))
 

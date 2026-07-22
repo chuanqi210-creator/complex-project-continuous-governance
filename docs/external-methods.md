@@ -35,8 +35,11 @@ The machine-readable evidence is in `docs/reference-implementation-evidence.json
 | Prompt/Context | Kubernetes website | reader-oriented content types, canonical source, style/build/review discipline | Hugo, localization and SIG governance are not imported |
 | Prompt/Harness/Loop | Rust RFCs | substantial-change threshold, alternatives, drawbacks, compatibility and disposition | no RFC ceremony for routine edits and no active-tree archive |
 | Context/Harness/Loop | Inspect AI | task, run, scorer, limits, logs, retries and re-scoring as separate contracts | no framework dependency and no automated-score supremacy |
+| Prompt/Context/Harness/Loop | Kubernetes KEPs | enhancement threshold, goals/non-goals, production-readiness, testing, graduation, rollback and implementation history | no KEP ceremony, SIG governance or release train for ordinary edits |
+| Harness/Loop | Argo Rollouts | stable/candidate state, bounded exposure, metric analysis, promotion, abort and rollback | no Kubernetes dependency or fixed rollout percentages for protocol maintenance |
+| Prompt/Context | Matt Pocock Grilling | inspect facts, ask one consequential question with a recommendation, preserve a decision artifact | no exhaustive interview or transfer of reversible AI-owned choices to the user |
 
-Two bounded mechanisms are currently reproduced locally: promptfoo's zero-cost logged-output provider/assertion smoke and LangGraph's five required checkpoint capabilities. The promptfoo smoke is not a same-input baseline-versus-candidate matrix. Neither reproduction validates a Complex outcome. The other ten references remain `implementation_inspected` until their next validation is economically and semantically justified.
+Two bounded mechanisms are currently reproduced locally: promptfoo's zero-cost logged-output provider/assertion smoke and LangGraph's five required checkpoint capabilities. The promptfoo smoke is not a same-input baseline-versus-candidate matrix. Neither reproduction validates a Complex outcome. The other thirteen references remain `implementation_inspected` until their next validation is economically and semantically justified.
 
 ## Repository-wide Re-baseline
 
@@ -44,12 +47,23 @@ The 2026-07-17 re-baseline applies these implementations to four objects rather 
 
 - runtime architecture: Codex, Symphony, LangGraph, Ralph and SWE-agent;
 - public language: Kubernetes documentation and Codex skills;
-- change governance: Rust RFCs;
-- evaluation system: Inspect AI and promptfoo.
+- change governance: Rust RFCs and Kubernetes KEPs;
+- evaluation and candidate rollout: Inspect AI, promptfoo and Argo Rollouts.
 
 The resulting keep/merge/demote decisions and next validations are machine-readable in `docs/active-architecture-rebaseline.json`.
 
 ## Prompt Contract
+
+### High-leverage framework grilling
+
+- **Source:** [`mattpocock/skills` Grill Me and Grilling, v1.1.0](https://github.com/mattpocock/skills/releases/tag/v1.1.0), commit `d574778f94cf620fcc8ce741584093bc650a61d3`.
+- **Implementation observation:** the user-invoked `grill-me` wrapper delegates to one reusable `grilling` primitive. That primitive walks a decision tree one question at a time, gives a recommended answer, looks up facts in the codebase, and waits for shared understanding before enactment. The v1.1.0 release explicitly separated discoverable facts from human decisions.
+- **Production problem:** an agent begins implementation while the project destination is still ambiguous, or compensates by asking a long list of low-value questions whose answers are already available or safely delegable.
+- **Adopted:** one-question-at-a-time decision-tree traversal, fact lookup before asking, recommended answers, explicit consequences, and a durable decision artifact before the Project Prompt Contract.
+- **Rejected:** relentless coverage of every imaginable branch, treating all design decisions as human-owned, and requiring confirmation when no material fork remains.
+- **Not transferable:** repository popularity and upstream user adoption do not establish that the Complex adaptation improves project outcomes; the source is a compact interaction skill, not a long-project governance system.
+- **Complex micro-contract:** at project start or strategic reframe, ask only when two plausible user-owned answers materially alter Goal, target function, architecture, responsibility, or evaluation and cannot be resolved from facts or a bounded probe. Otherwise record `no_grill_needed` and continue.
+- **Refresh trigger:** framework misalignment causes substantial rework, users report ceremonial or foolish questions, or the upstream Grilling contract changes.
 
 ### Versioned, evaluation-driven prompts
 
@@ -107,13 +121,15 @@ The resulting keep/merge/demote decisions and next validations are machine-reada
 
 ### Durable orchestration and reconciliation
 
-- **Sources:** [OpenAI Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/), [Microsoft Agent Framework Harness](https://learn.microsoft.com/en-us/agent-framework/agents/harness), [Temporal](https://temporal.io/).
-- **Production problem:** long-running workers exit, tools fail transiently, state drifts, or duplicate side effects occur.
-- **Adopted:** single authoritative orchestration state, isolated workspaces, bounded concurrency, checkpoints, stable identifiers, retry/backoff, idempotency, reconciliation, and observability.
-- **Rejected:** assuming a worker exit means the task is complete; unlimited retry; concurrency without ownership.
-- **Not transferable:** Complex does not require a daemon, Temporal server, or Microsoft runtime.
-- **Complex micro-contract:** important harnesses declare checkpoint, retry class, backoff, idempotency/compensation, bounded concurrency, and degraded route.
-- **Refresh trigger:** transient failures repeat, duplicate work occurs, or cross-turn continuation is added.
+- **Sources:** [OpenAI Symphony](https://openai.com/index/open-source-codex-orchestration-symphony/), [Kubernetes controller pattern](https://kubernetes.io/docs/concepts/architecture/controller/), [Magentic-One](https://www.microsoft.com/en-us/research/articles/magentic-one-a-generalist-multi-agent-system-for-solving-complex-tasks/), [Temporal Event History](https://docs.temporal.io/workflow-execution/event), and [Temporal Continue-As-New](https://docs.temporal.io/workflow-execution/continue-as-new).
+- **Transfer status:** the pinned Symphony and LangGraph records in `docs/reference-implementation-evidence.json` remain the machine-readable implementation basis for the active portfolio and recovery mechanisms. Kubernetes, Magentic-One, and Temporal are fresh official design contrasts in this change; they do not add a pinned transfer or Complex validation claim.
+- **Implementation observations:** Symphony makes the tracker the work control plane and gives one orchestrator authority over dispatch, retry, stop, and reconciliation state. Kubernetes separates desired state from observed status, lets bounded controllers own different resource aspects, and records which generation was observed rather than assuming the newest write is accepted truth. Magentic-One separates the outer Task Ledger from the per-step Progress Ledger and updates the outer plan after detected stalls. Temporal uses an append-only event history for recovery but explicitly checkpoints relevant state into a fresh execution when history or code generation becomes unwieldy.
+- **Production problem:** long projects accumulate several locally useful state recorders across modules, lanes, repositories, threads, and workflows. Without a controller-level reconciliation view, global dependencies and the authoritative next route drift; copying all local state into one continuously growing master ledger creates the opposite failure.
+- **Adopted:** one controller-owned global control projection; bounded local state capsules with authority and observed generation/hash; event-triggered reconciliation plus a project-specific staleness fallback; dependency-scoped conflict isolation; checkpoint into a fresh projection epoch when history becomes unwieldy; isolated workspaces, bounded concurrency, stable identifiers, retry/backoff, idempotency, and observability.
+- **Rejected:** assuming a worker exit means the task is complete; unlimited retry; concurrency without ownership; last-write-wins; full fan-in on every beat; one monolithic ledger containing every local detail.
+- **Not transferable:** Complex does not require Kubernetes, a daemon, issue tracker, Temporal server, or Microsoft runtime. It cannot provide atomic multi-system consistency unless the target Harness supports it; the portable contract is authority, source generation, bounded capsule, one global writer, conflict route, and recovery pointer.
+- **Complex micro-contract:** local boundaries remain authoritative for local facts and artifacts. On recovery, phase/stage transition, handoff, topology/dependency change, conflict/staleness, stage delivery, or the project staleness limit, the controller gathers affected local capsules, reconciles desired Goal/portfolio state against observed generations and accepted artifacts, publishes one compact global projection, and continues independent routes. When the projection history becomes costly, carry the latest relevant state into a fresh epoch and retain old detail by pointer.
+- **Refresh trigger:** duplicate work, stale global routing, inconsistent local recorders, cross-boundary handoff failure, history growth, transient failures, or new cross-turn continuation.
 
 ### Decision ownership, exact approval, and resume safety
 
@@ -149,6 +165,17 @@ The resulting keep/merge/demote decisions and next validations are machine-reada
 - **Refresh trigger:** a real project shows topology overhead, missed parallelism, reviewer contamination, unstable handoff, or failure to move between judgment and deterministic execution.
 
 ## Progress Loop
+
+### Time appetite, usable increments, and stage reviews
+
+- **Sources:** [Basecamp Shape Up: Set Boundaries](https://basecamp.com/shapeup/1.2-chapter-03), [Shape Up: Circuit Breaker](https://basecamp.com/shapeup/2.2-chapter-08), [official Scrum Guide](https://scrumguides.org/scrum-guide.html), and the [NASA Systems Engineering Handbook](https://www.nasa.gov/wp-content/uploads/2018/09/nasa_systems_engineering_handbook_0.pdf).
+- **Implementation observation:** Shape Up fixes an investment appetite and varies scope rather than silently extending work; its circuit breaker forces reframing when the shaped solution does not fit. Scrum uses a fixed-length heartbeat whose accountable output is a usable, verified Increment, not an activity report. NASA technical reviews bind phase timing to explicit entrance/success criteria, reviewed products, and corrective action when cost, schedule, or technical trends indicate an unfavorable outcome.
+- **Production problem:** long projects can remain scientifically or technically active while providing no decision-useful result to the human for an indefinite period. A raw timebox alone creates the opposite failure if expiry is mistaken for completion or quality is sacrificed to meet the date.
+- **Adopted:** project-specific time appetite; explicit stage result horizon; smallest useful stage artifact; measured elapsed time and artifact movement; usable increment or decision-grade diagnostic by the horizon; fixed quality/evidence floor; scope convergence, parking, route change, or explicit re-appetite when progress does not fit.
+- **Rejected:** universal sprint length, fixed six-week cycles, activity-only progress reports, silent deadline extension, and treating timebox expiry as Goal completion.
+- **Not transferable:** product-team calendars, Scrum roles/events, Basecamp betting authority, and NASA review boards are not required Complex runtime structures.
+- **Complex micro-contract:** Prompt owns the appetite, horizon, stage artifact, and quality floor; Harness observes elapsed work and checkpoints; Loop converges scope and routes at the horizon; Delivery exposes the usable increment and acceptance evidence while continuous cadence proceeds to the next stage.
+- **Refresh trigger:** users wait too long for usable results, a stage produces only a status narrative, time pressure lowers evidence quality, or repeated horizon misses show the appetite is not grounded in observed throughput.
 
 ### Outcome-based completion and evaluator separation
 
@@ -191,6 +218,19 @@ The central transfer rule is diagnostic:
 5. update prompt defaults only for instruction-level failures.
 
 This prevents context omissions, unavailable tools, poor recovery, and incorrect stopping logic from turning into an ever-longer prompt.
+
+## Complex Self-Optimization
+
+### Substantial-change packet and progressive evidence rollout
+
+- **Sources:** [Kubernetes Enhancement Proposals](https://github.com/kubernetes/enhancements/blob/master/keps/README.md), [KEP template](https://github.com/kubernetes/enhancements/blob/master/keps/NNNN-kep-template/README.md), [Argo Rollouts](https://github.com/argoproj/argo-rollouts/blob/master/docs/index.md), [Argo analysis controller](https://github.com/argoproj/argo-rollouts/blob/7b85ecc5c69047300da8eca1f85a21a9d66a4f11/rollout/analysis.go), Rust RFCs, Inspect AI, and promptfoo.
+- **Implementation observation:** KEPs separate routine contribution from enhancement-level change and bind substantial proposals to goals/non-goals, testing, production-readiness, staged graduation, rollback, observability, and implementation history. Argo keeps a stable revision while a bounded candidate is observed and explicitly promoted, paused, aborted, or rolled back. Inspect and promptfoo preserve versioned task/run/score and baseline/candidate comparison boundaries.
+- **Production problem:** Complex can turn a real failure into protocol prose, pass structure checks, and stop before proving that the new default improves project outcomes. The inverse failure is making every small correction carry a large evidence ceremony.
+- **Adopted:** three change classes; one reversible change unit; stable baseline; explicit graduation/failure criteria; contract screening, bounded reproduction, same-task comparison, shadow or limited real use, repeated outcome review; promote/keep/demote/rollback; residual evidence continuation.
+- **Rejected:** a proposal for every edit, Kubernetes release governance, fixed traffic percentages, automatic promotion from marker pass, and replacing the stable baseline before rollback is possible.
+- **Not transferable:** cluster reconciliation, SIG authority, release trains, metric providers, and deployment percentages do not map to a small Codex runtime kit. They ground the state transition and evidence discipline only.
+- **Complex micro-contract:** routine corrections use edit/test/residual scan; bounded and substantial changes define one falsifiable candidate, keep the stable baseline, advance only as far as observed evidence permits, update maturity claims precisely, and automatically execute remaining internal evidence work.
+- **Refresh trigger:** a protocol change is declared complete at documentation, a candidate is promoted without comparable outcomes, a rollback cannot be executed, or maintenance procedure costs more than the decision value it creates.
 
 ## Evidence Boundary
 
